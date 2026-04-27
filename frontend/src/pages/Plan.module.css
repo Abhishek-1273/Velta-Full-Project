@@ -1,0 +1,862 @@
+/* ══════════════════════════════════════
+   Plan.module.css — matches Velta design
+   ══════════════════════════════════════ */
+
+.page {
+    overflow: hidden;
+}
+
+/* ── Hero ── */
+.hero {
+    min-height: 42vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 140px 0 60px;
+    text-align: center;
+}
+
+.bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+}
+
+.orb {
+    position: absolute;
+    top: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 700px;
+    height: 400px;
+    background: radial-gradient(ellipse, rgba(124, 58, 237, 0.09) 0%, transparent 70%);
+}
+
+.grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(99, 130, 182, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(99, 130, 182, 0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+}
+
+.heroContent {
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+.title {
+    font-family: var(--font-head);
+    font-size: clamp(36px, 5vw, 62px);
+    font-weight: 800;
+    line-height: 1.1;
+    margin: 20px 0 18px;
+}
+
+.sub {
+    color: var(--text2);
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+/* ── Form section ── */
+.formSection {
+    padding: 60px 0 120px;
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 32px;
+    align-items: start;
+}
+
+/* ── Sidebar ── */
+.sidebar {
+    position: sticky;
+    top: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-self: start;
+    /* don't stretch to tallest column */
+}
+
+.stepperCard {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    /* fixed height = 6 steps × ~56px each — never jumps */
+    min-height: 340px;
+}
+
+.stepItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+    padding-bottom: 20px;
+    cursor: pointer;
+    /* always clickable */
+    user-select: none;
+}
+
+.stepItem:last-child {
+    padding-bottom: 0;
+}
+
+.stepItem.stepDone {
+    cursor: pointer;
+}
+
+.stepBullet {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+    background: var(--bg);
+    color: var(--text2);
+    transition: all 0.25s;
+    z-index: 1;
+}
+
+.stepActive .stepBullet {
+    border-color: var(--accent);
+    background: rgba(0, 229, 255, 0.1);
+    color: var(--accent);
+    box-shadow: 0 0 16px rgba(0, 229, 255, 0.2);
+}
+
+.stepDone .stepBullet {
+    border-color: var(--accent3);
+    background: rgba(6, 255, 165, 0.1);
+    color: var(--accent3);
+}
+
+.stepLabel {
+    font-family: var(--font-head);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text3);
+    transition: color 0.25s;
+}
+
+.stepActive .stepLabel {
+    color: var(--accent);
+}
+
+.stepDone .stepLabel {
+    color: var(--text2);
+}
+
+.stepLine {
+    position: absolute;
+    left: 17px;
+    top: 36px;
+    width: 2px;
+    height: calc(100% - 36px);
+    background: var(--border);
+    z-index: 0;
+}
+
+.stepDone .stepLine {
+    background: rgba(6, 255, 165, 0.3);
+}
+
+.stepActive .stepLine {
+    background: rgba(0, 229, 255, 0.2);
+}
+
+/* ── Price box ── */
+.priceBox {
+    background: var(--surface);
+    border: 1px solid rgba(0, 229, 255, 0.2);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: 0 0 32px rgba(0, 229, 255, 0.05);
+    min-height: 180px;
+}
+
+.priceLabel {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text3);
+    margin-bottom: 8px;
+}
+
+.priceMain {
+    font-family: var(--font-head);
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--accent);
+    margin-bottom: 16px;
+    line-height: 1;
+}
+
+.priceBreakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.priceRow {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--text2);
+}
+
+.priceAdd {
+    color: var(--accent3);
+    font-weight: 600;
+}
+
+.priceNote {
+    font-size: 11px;
+    color: var(--text3);
+    text-align: center;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+}
+
+/* ── Form panel ── */
+/* .formPanel {} */
+
+.formCard {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+/* ── Step content ── */
+.stepContent {
+    padding: 40px 40px 0;
+}
+
+.stepTitle {
+    font-family: var(--font-head);
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.stepSub {
+    color: var(--text2);
+    font-size: 14px;
+    margin-bottom: 32px;
+    line-height: 1.6;
+}
+
+/* ── Fields ── */
+.grid2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-bottom: 18px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 18px;
+}
+
+.label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    color: var(--text2);
+    text-transform: uppercase;
+}
+
+.inp {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 11px 15px;
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+    resize: vertical;
+    width: 100%;
+
+}
+
+.err {
+    color: #ef4444;
+    font-size: 12px;
+    margin-top: 4px;
+    display: block;
+}
+
+/* Input error state */
+.inp:has(+ .err),
+.inpError {
+    border-color: rgba(239, 68, 68, 0.5) !important;
+}
+
+.inp:focus {
+    border-color: rgba(0, 229, 255, 0.4);
+    background: var(--bg2);
+}
+
+.inp::placeholder {
+    color: var(--text3);
+}
+
+select.inp {
+    cursor: pointer;
+}
+
+/* ── Plan cards ── */
+.planGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 8px;
+}
+
+.planCard {
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px 20px;
+    cursor: pointer;
+    transition: all 0.25s;
+    position: relative;
+    background: var(--bg);
+}
+
+.planCard:hover {
+    border-color: rgba(0, 229, 255, 0.35);
+    transform: translateY(-3px);
+}
+
+.planCardActive {
+    border-color: var(--accent) !important;
+    background: rgba(0, 229, 255, 0.05) !important;
+    box-shadow: 0 0 24px rgba(0, 229, 255, 0.12);
+}
+
+.planHighlight {
+    border-color: rgba(6, 255, 165, 0.3);
+}
+
+.popularBadge {
+    position: absolute;
+    top: -11px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent3);
+    color: #000;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 3px 12px;
+    border-radius: 100px;
+    white-space: nowrap;
+    letter-spacing: 0.05em;
+}
+
+.planName {
+    font-family: var(--font-head);
+    font-size: 16px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.planPrice {
+    font-family: var(--font-head);
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+}
+
+.planSub {
+    font-size: 11px;
+    color: var(--text3);
+    margin-bottom: 8px;
+    margin-top: 3px;
+}
+
+.planEmployees {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent3);
+    margin-bottom: 14px;
+    padding: 4px 10px;
+    background: rgba(6, 255, 165, 0.08);
+    border-radius: 100px;
+    display: inline-block;
+}
+
+.planPerks {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.planPerks li {
+    font-size: 12px;
+    color: var(--text2);
+    display: flex;
+    gap: 7px;
+}
+
+.planPerks li span {
+    color: var(--accent3);
+    font-weight: 700;
+}
+
+/* ── Feature cards ── */
+.featGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 8px;
+}
+
+.featCard {
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 16px;
+    cursor: pointer;
+    transition: all 0.25s;
+    position: relative;
+    background: var(--bg);
+    text-align: center;
+}
+
+.featCard:hover {
+    border-color: rgba(0, 229, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.featCardActive {
+    border-color: var(--accent) !important;
+    background: rgba(0, 229, 255, 0.06) !important;
+    box-shadow: 0 0 18px rgba(0, 229, 255, 0.1);
+}
+
+.featCheck {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--accent);
+    background: var(--bg2);
+    transition: all 0.2s;
+}
+
+.featCardActive .featCheck {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #000;
+}
+
+.featIcon {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.featName {
+    font-family: var(--font-head);
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.featDesc {
+    font-size: 11px;
+    color: var(--text3);
+    line-height: 1.5;
+    margin-bottom: 8px;
+}
+
+.featPrice {
+    font-family: var(--font-head);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent3);
+}
+
+/* ── Team section ── */
+.teamSection {
+    margin-top: 8px;
+}
+
+.teamHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.teamTitle {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    color: var(--text2);
+    text-transform: uppercase;
+}
+
+.addBtn {
+    background: rgba(0, 229, 255, 0.08);
+    border: 1px solid rgba(0, 229, 255, 0.25);
+    color: var(--accent);
+    font-family: var(--font-head);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.addBtn:hover {
+    background: rgba(0, 229, 255, 0.14);
+}
+
+.empRow {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.removeBtn {
+    background: rgba(239, 68, 68, 0.08);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 12px;
+    flex-shrink: 0;
+    transition: all 0.2s;
+}
+
+.removeBtn:hover {
+    background: rgba(239, 68, 68, 0.18);
+}
+
+/* ── Toggle ── */
+.toggleRow {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 16px 20px;
+    margin-bottom: 18px;
+}
+
+.toggle {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggleSlider {
+    position: absolute;
+    inset: 0;
+    background: var(--surface2);
+    border-radius: 24px;
+    cursor: pointer;
+    transition: 0.3s;
+    border: 1px solid var(--border);
+}
+
+.toggleSlider::before {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    left: 2px;
+    top: 2px;
+    background: var(--text3);
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.toggle input:checked+.toggleSlider {
+    background: rgba(0, 229, 255, 0.15);
+    border-color: var(--accent);
+}
+
+.toggle input:checked+.toggleSlider::before {
+    transform: translateX(20px);
+    background: var(--accent);
+}
+
+.toggleLabel {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.toggleSub {
+    font-size: 12px;
+    color: var(--text3);
+    margin-top: 2px;
+}
+
+/* ── Review ── */
+.reviewGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.reviewBlock {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 18px;
+}
+
+.reviewBlockTitle {
+    font-family: var(--font-head);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+}
+
+.reviewRow {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-bottom: 10px;
+}
+
+.reviewRow:last-child {
+    margin-bottom: 0;
+}
+
+.reviewLabel {
+    font-size: 10px;
+    color: var(--text3);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.reviewVal {
+    font-size: 13px;
+    color: var(--text);
+    font-weight: 500;
+    word-break: break-word;
+}
+
+.totalBox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 229, 255, 0.06);
+    border: 1px solid rgba(0, 229, 255, 0.25);
+    border-radius: var(--radius-sm);
+    padding: 16px 20px;
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--text2);
+}
+
+.totalAmt {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--accent);
+}
+
+/* ── Nav ── */
+.formNav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 24px 40px;
+    border-top: 1px solid var(--border);
+    background: var(--bg2);
+}
+
+/* ── Success ── */
+.successPage {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 24px;
+}
+
+.successCard {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid rgba(6, 255, 165, 0.25);
+    border-radius: 24px;
+    padding: 64px 48px;
+    text-align: center;
+    max-width: 480px;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 0 60px rgba(6, 255, 165, 0.08);
+}
+
+.successOrb {
+    position: absolute;
+    top: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 200px;
+    background: radial-gradient(ellipse, rgba(6, 255, 165, 0.1), transparent 70%);
+    pointer-events: none;
+}
+
+.successIcon {
+    font-size: 64px;
+}
+
+.successCard h2 {
+    font-family: var(--font-head);
+    font-size: 28px;
+    font-weight: 800;
+}
+
+.successCard p {
+    color: var(--text2);
+    line-height: 1.7;
+}
+
+.successDetail {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 14px 20px;
+    font-family: var(--font-head);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text2);
+}
+
+.successAmt {
+    color: var(--accent3);
+    font-size: 20px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+    .layout {
+        grid-template-columns: 240px 1fr;
+    }
+
+    .planGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .featGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .reviewGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .layout {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        position: static;
+    }
+
+    .stepperCard {
+        display: none;
+    }
+
+    .grid2 {
+        grid-template-columns: 1fr;
+    }
+
+    .stepContent {
+        padding: 24px 20px 0;
+    }
+
+    .formNav {
+        padding: 20px;
+    }
+
+    .featGrid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .container {
+        flex-direction: column;
+    }
+
+    .formPanel {
+        order: 1;
+    }
+
+    .sidebar {
+        order: 2;
+    }
+
+}
+
+@media (max-width: 480px) {
+    .featGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .planGrid {
+        grid-template-columns: 1fr;
+    }
+}

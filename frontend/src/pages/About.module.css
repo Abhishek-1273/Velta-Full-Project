@@ -1,0 +1,228 @@
+.page {
+    overflow: hidden;
+}
+
+.hero {
+    min-height: 55vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 140px 0 80px;
+    text-align: center;
+}
+
+.bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+}
+
+.orb {
+    position: absolute;
+    top: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 700px;
+    height: 500px;
+    background: radial-gradient(ellipse, rgba(124, 58, 237, 0.08) 0%, transparent 70%);
+}
+
+.grid {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(99, 130, 182, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(99, 130, 182, 0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+}
+
+.heroContent {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.title {
+    font-family: var(--font-head);
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 800;
+    line-height: 1.1;
+    margin: 20px 0 24px;
+}
+
+.sub {
+    color: var(--text2);
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.h2 {
+    font-family: var(--font-head);
+    font-size: clamp(26px, 3.5vw, 40px);
+    font-weight: 800;
+    line-height: 1.2;
+    margin: 16px 0 20px;
+}
+
+.story {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.storyLeft p {
+    color: var(--text2);
+    line-height: 1.8;
+    margin-bottom: 16px;
+}
+
+.highlights {
+    display: flex;
+    gap: 32px;
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+}
+
+.hl span {
+    font-family: var(--font-head);
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--accent);
+    display: block;
+}
+
+.hl p {
+    font-size: 13px;
+    color: var(--text3);
+    margin-top: 4px;
+}
+
+.storyRight {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.visionCard,
+.missionCard {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px;
+    transition: all 0.3s;
+}
+
+.visionCard:hover,
+.missionCard:hover {
+    border-color: rgba(0, 229, 255, 0.3);
+    transform: translateX(4px);
+}
+
+.vcIcon,
+.mcIcon {
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.visionCard h3,
+.missionCard h3 {
+    font-family: var(--font-head);
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.visionCard p,
+.missionCard p {
+    color: var(--text2);
+    line-height: 1.7;
+}
+
+.valuesSection {
+    padding: 100px 0;
+    background: var(--bg2);
+}
+
+.valuesGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.valueCard {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px 24px;
+    transition: all 0.3s;
+}
+
+.valueCard:hover {
+    border-color: rgba(0, 229, 255, 0.3);
+    transform: translateY(-4px);
+}
+
+.valueIcon {
+    font-size: 32px;
+    margin-bottom: 14px;
+}
+
+.valueCard h3 {
+    font-family: var(--font-head);
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.valueCard p {
+    color: var(--text2);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.ctaBand {
+    padding: 60px 0;
+    background: linear-gradient(135deg, rgba(0, 229, 255, 0.05), rgba(124, 58, 237, 0.05));
+    border-top: 1px solid var(--border);
+}
+
+.bandInner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+}
+
+.bandInner h2 {
+    font-family: var(--font-head);
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.bandInner p {
+    color: var(--text2);
+}
+
+@media (max-width: 900px) {
+    .valuesGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .story {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .valuesGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .bandInner {
+        flex-direction: column;
+        text-align: center;
+    }
+}
