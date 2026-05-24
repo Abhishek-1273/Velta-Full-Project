@@ -1,0 +1,261 @@
+/* Wrapper */
+.wrapper {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+/* FAB Button */
+.fab {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #00e5ff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  box-shadow: 0 4px 24px rgba(0,229,255,0.4);
+  transition: all 0.25s ease;
+  position: relative;
+  flex-shrink: 0;
+}
+.fab:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 32px rgba(0,229,255,0.6);
+}
+
+/* Unread badge */
+.badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 20px;
+  height: 20px;
+  background: #ef4444;
+  color: white;
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--bg, #080c12);
+}
+
+/* Chat Window */
+.window {
+  width: 360px;
+  height: 520px;
+  background: #0d1320;
+  border: 1px solid rgba(99,130,182,0.2);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 8px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(0,229,255,0.1);
+  animation: slideUp 0.25s ease;
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 18px;
+  background: linear-gradient(135deg, rgba(0,229,255,0.1), rgba(124,58,237,0.08));
+  border-bottom: 1px solid rgba(99,130,182,0.15);
+  flex-shrink: 0;
+}
+.headerLeft { display: flex; align-items: center; gap: 10px; }
+.avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00e5ff, #7c3aed);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 16px;
+  color: white;
+  flex-shrink: 0;
+}
+.headerName { font-weight: 700; font-size: 14px; color: #f0f4ff; }
+.headerStatus { display: flex; align-items: center; gap: 5px; font-size: 11px; color: #8da4c8; margin-top: 2px; }
+.dot { width: 7px; height: 7px; border-radius: 50%; background: #06ffa5; flex-shrink: 0; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
+.closeBtn {
+  background: rgba(255,255,255,0.07);
+  border: none;
+  color: #8da4c8;
+  cursor: pointer;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  transition: all 0.2s;
+}
+.closeBtn:hover { background: rgba(255,255,255,0.15); color: #f0f4ff; }
+
+/* Messages */
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  scrollbar-width: thin;
+  scrollbar-color: #1e2a3d transparent;
+}
+.messages::-webkit-scrollbar { width: 4px; }
+.messages::-webkit-scrollbar-thumb { background: #1e2a3d; border-radius: 2px; }
+
+.msg { display: flex; align-items: flex-end; gap: 8px; }
+.msgUser { flex-direction: row-reverse; }
+
+.msgAvatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00e5ff, #7c3aed);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 12px;
+  color: white;
+  flex-shrink: 0;
+}
+
+.msgBubble {
+  max-width: 75%;
+  padding: 10px 14px;
+  border-radius: 16px;
+  font-size: 13px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+.msgBot .msgBubble {
+  background: #161e2e;
+  color: #f0f4ff;
+  border-bottom-left-radius: 4px;
+  border: 1px solid rgba(99,130,182,0.12);
+}
+.msgUser .msgBubble {
+  background: #00e5ff;
+  color: #000;
+  border-bottom-right-radius: 4px;
+  font-weight: 500;
+}
+
+/* Typing indicator */
+.typing { display: flex; gap: 4px; padding: 2px 0; }
+.typing span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #4d6390;
+  animation: blink 1.4s infinite;
+}
+.typing span:nth-child(2) { animation-delay: 0.2s; }
+.typing span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes blink { 0%,100%{opacity:0.3;transform:scale(1)} 50%{opacity:1;transform:scale(1.2)} }
+
+/* Quick questions */
+.quickWrap {
+  padding: 0 12px 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.quickBtn {
+  background: rgba(0,229,255,0.08);
+  border: 1px solid rgba(0,229,255,0.2);
+  color: #00e5ff;
+  border-radius: 100px;
+  padding: 5px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.quickBtn:hover { background: rgba(0,229,255,0.15); border-color: rgba(0,229,255,0.4); }
+
+/* Input */
+.inputWrap {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  padding: 12px 14px;
+  border-top: 1px solid rgba(99,130,182,0.12);
+  background: #080c12;
+  flex-shrink: 0;
+}
+.input {
+  flex: 1;
+  background: #161e2e;
+  border: 1px solid rgba(99,130,182,0.2);
+  border-radius: 12px;
+  padding: 10px 14px;
+  color: #f0f4ff;
+  font-size: 13px;
+  font-family: inherit;
+  resize: none;
+  outline: none;
+  max-height: 100px;
+  line-height: 1.5;
+  transition: border-color 0.2s;
+}
+.input:focus { border-color: rgba(0,229,255,0.35); }
+.input::placeholder { color: #4d6390; }
+
+.sendBtn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #00e5ff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+.sendBtn:hover:not(.sendDisabled) { transform: scale(1.08); background: #33ecff; }
+.sendDisabled { background: #1e2a3d; color: #4d6390; cursor: not-allowed; }
+
+/* Footer */
+.footer {
+  text-align: center;
+  font-size: 10px;
+  color: #4d6390;
+  padding: 6px 0 8px;
+  background: #080c12;
+  flex-shrink: 0;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .wrapper { bottom: 16px; right: 16px; }
+  .window { width: calc(100vw - 32px); height: 480px; }
+}

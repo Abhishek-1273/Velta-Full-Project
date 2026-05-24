@@ -1,0 +1,82 @@
+<svg width="240" height="240" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Purple Gradient -->
+    <linearGradient id="mainGradient" x1="30" y1="20" x2="210" y2="220" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#C084FC"/>
+      <stop offset="0.5" stop-color="#8B5CF6"/>
+      <stop offset="1" stop-color="#6D28D9"/>
+    </linearGradient>
+
+    <!-- Background Gradient -->
+    <linearGradient id="bgGradient" x1="0" y1="0" x2="240" y2="240" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#12051E"/>
+      <stop offset="1" stop-color="#22083B"/>
+    </linearGradient>
+
+    <!-- Glow -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+
+  <!-- Outer Border -->
+  <rect x="2" y="2" width="236" height="236" rx="40"
+        stroke="#A855F7" stroke-opacity="1" stroke-width="2"/>
+
+  <!-- Ambient Glow -->
+  <circle cx="120" cy="120" r="92" fill="#A855F7" opacity="0.08"/>
+  <circle cx="120" cy="120" r="66" fill="#C084FC" opacity="0.05"/>
+
+  <!-- Floating Particles -->
+  <circle cx="52" cy="58" r="3" fill="#D8B4FE" opacity="0.6"/>
+  <circle cx="188" cy="50" r="2.5" fill="#F3E8FF" opacity="0.6"/>
+  <circle cx="198" cy="184" r="3" fill="#D8B4FE" opacity="0.4"/>
+
+  <!-- Main Hexagon -->
+  <path d="M120 48L182 84V156L120 192L58 156V84L120 48Z"
+        fill="url(#mainGradient)"
+        filter="url(#glow)"/>
+
+  <!-- Inner Glass Layer -->
+  <path d="M120 66L166 92V148L120 174L74 148V92L120 66Z"
+        fill="#FFFFFF"
+        fill-opacity="0.08"
+        stroke="#FFFFFF"
+        stroke-opacity="0.12"
+        stroke-width="1.5"/>
+
+  <!-- Central AI Eye -->
+  <ellipse cx="120" cy="120" rx="36" ry="24"
+           fill="#12051E" opacity="0.78"/>
+
+  <circle cx="120" cy="120" r="11"
+          fill="#FFFFFF" opacity="0.96"/>
+
+  <circle cx="120" cy="120" r="4"
+          fill="#8B5CF6"/>
+
+
+
+  <!-- Side Bars -->
+  <rect x="84" y="96" width="4" height="48" rx="2"
+        fill="white" opacity="0.22"/>
+
+  <rect x="152" y="96" width="4" height="48" rx="2"
+        fill="white" opacity="0.22"/>
+
+  <!-- Reflection -->
+  <ellipse cx="120" cy="204" rx="68" ry="10"
+           fill="#A855F7" opacity="0.08"/>
+
+  <!-- Top Shine -->
+  <path d="M60 34C94 12 146 12 180 34"
+        stroke="white"
+        stroke-opacity="0.08"
+        stroke-width="8"
+        stroke-linecap="round"/>
+</svg>
