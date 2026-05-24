@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
 import { toast } from 'sonner'
-import styles from './SignIn.module.css'
+import styles from './Signin.module.css'
 
 export default function SignIn() {
   const navigate = useNavigate()
