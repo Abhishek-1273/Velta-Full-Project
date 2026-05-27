@@ -487,10 +487,13 @@
 /* ── Responsive ── */
 @media (max-width: 500px) {
     .cardInner {
-        padding: 28px 20px 24px;
+        padding:  28px 20px 24px;
     }
 
     .title {
         font-size: 24px;
     }
+    .wrapper {
+    margin-top: 10px;
+}
 }
