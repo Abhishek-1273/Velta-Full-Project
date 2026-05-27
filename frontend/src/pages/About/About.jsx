@@ -34,8 +34,8 @@ export default function About() {
               <p>So we built Velta — a company dedicated to closing that gap.</p>
               <div className={styles.highlights}>
                 <div className={styles.hl}><span>2026</span><p>Velta founded</p></div>
-                <div className={styles.hl}><span>50+</span><p>Businesses served</p></div>
-                <div className={styles.hl}><span>5+</span><p>Industries covered</p></div>
+                <div className={styles.hl}><span>2+</span><p>Businesses served</p></div>
+                <div className={styles.hl}><span>2+</span><p>Industries covered</p></div>
               </div>
             </div>
             <div className={styles.storyRight}>

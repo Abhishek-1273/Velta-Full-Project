@@ -11,8 +11,8 @@ const sendTokenCookie = (res, user) => {
 
     res.cookie('token', token, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',  // ensure NODE_ENV=production in prod
-        sameSite: 'lax',
+        secure: true,  // ensure NODE_ENV=production in prod
+        sameSite: 'none',
         maxAge: 24 * 60 * 60 * 1000,  // 1 day in ms
     });
 
@@ -36,9 +36,9 @@ export const signup = async (req, res) => {
 
         // ── Validate required fields ──────────────────────────────
         const missing = [];
-        if (!name?.trim())     missing.push('name');
-        if (!email?.trim())    missing.push('email');
-        if (!password)         missing.push('password');
+        if (!name?.trim()) missing.push('name');
+        if (!email?.trim()) missing.push('email');
+        if (!password) missing.push('password');
 
         if (missing.length) {
             return res.status(400).json({
@@ -125,8 +125,8 @@ export const signin = async (req, res) => {
 export const signout = (req, res) => {
     res.clearCookie('token', {
         httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: 'lax',
+        secure: true,
+        sameSite: 'none',
     });
     return res.json({ success: true, message: 'Signed out successfully.' });
 };
