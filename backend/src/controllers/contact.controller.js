@@ -1,20 +1,13 @@
 import { Contact } from '../models/Contact.model.js';
 import { sendToWebhook } from '../utils/webhook.js';
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
 
-// ── Nodemailer transporter ────────────────────────────────────────
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: process.env.NOTIFY_EMAIL,        // gmail
-        pass: process.env.NOTIFY_EMAIL_PASS,   // gmail app password
-    },
-});
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 // ── Send notification email to owner ─────────────────────────────
 const sendNotificationEmail = async ({ fullName, businessName, phoneNumber, email, message }) => {
-    const mailOptions = {
-        from: `"Velta Contact Form" <${process.env.NOTIFY_EMAIL}>`,
+    await resend.emails.send({
+        from: 'Velta Contact <onboarding@resend.dev>',
         to: process.env.NOTIFY_EMAIL,
         subject: `🔔 New Lead: ${fullName} — ${businessName}`,
         html: `
@@ -53,7 +46,7 @@ const sendNotificationEmail = async ({ fullName, businessName, phoneNumber, emai
                     </table>
                 </div>
 
-                <div style="margin-top: 20px; display: flex; gap: 12px;">
+                <div style="margin-top: 20px;">
                     <a href="tel:${phoneNumber}" style="background: #0091a1; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block; margin-right: 10px;">📞 Call Now</a>
                     <a href="https://wa.me/${phoneNumber.replace(/[^0-9]/g, '')}" style="background: #25D366; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block;">💬 WhatsApp</a>
                 </div>
@@ -63,16 +56,13 @@ const sendNotificationEmail = async ({ fullName, businessName, phoneNumber, emai
                 </p>
             </div>
         `,
-    };
-
-    await transporter.sendMail(mailOptions);
+    });
 };
 
 // ── POST /api/contact ────────────────────────────────────────────
 const createContact = async (req, res) => {
     const { fullName, businessName, phoneNumber, email, message } = req.body;
 
-    // ── 1. Validate ───────────────────────────────────────────────
     const fieldErrors = {};
     if (!fullName?.trim()) fieldErrors.fullName = 'Full name is required';
     if (!businessName?.trim()) fieldErrors.businessName = 'Business name is required';
@@ -84,15 +74,10 @@ const createContact = async (req, res) => {
         fieldErrors.email = 'Enter a valid email address';
 
     if (Object.keys(fieldErrors).length) {
-        return res.status(400).json({
-            success: false,
-            message: 'Please fix the errors below.',
-            errors: fieldErrors,
-        });
+        return res.status(400).json({ success: false, message: 'Please fix the errors below.', errors: fieldErrors });
     }
 
     try {
-        // ── 2. Save to MongoDB ─────────────────────────────────────
         const newContact = await Contact.create({
             fullName: fullName.trim(),
             businessName: businessName.trim(),
@@ -103,14 +88,15 @@ const createContact = async (req, res) => {
 
         console.log('✅ Contact saved — ID:', newContact._id);
 
-        // ── 3. Send email + n8n webhook (non-blocking) ─────────────
+        // Non-blocking email + webhook
         sendNotificationEmail({
             fullName: newContact.fullName,
             businessName: newContact.businessName,
             phoneNumber: newContact.phoneNumber,
             email: newContact.email,
             message: newContact.message,
-        }).catch(err => console.error('⚠️ Email notification failed:', err.message));
+        }).then(() => console.log('✅ Email sent!'))
+            .catch(err => console.error('⚠️ Email failed:', err.message));
 
         sendToWebhook(process.env.N8N_CONTACT_WEBHOOK, {
             event: 'contact_form',
@@ -123,20 +109,13 @@ const createContact = async (req, res) => {
             submittedAt: new Date().toISOString(),
         });
 
-        // ── 4. Respond ────────────────────────────────────────────
-        return res.status(201).json({
-            success: true,
-            message: 'Message sent successfully.',
-        });
+        return res.status(201).json({ success: true, message: 'Message sent successfully.' });
 
     } catch (err) {
         if (err.name === 'ValidationError') {
-            const errors = Object.fromEntries(
-                Object.entries(err.errors).map(([k, v]) => [k, v.message])
-            );
+            const errors = Object.fromEntries(Object.entries(err.errors).map(([k, v]) => [k, v.message]));
             return res.status(400).json({ success: false, message: 'Validation failed.', errors });
         }
-
         console.error('❌ contact controller error:', err.message);
         return res.status(500).json({ success: false, message: 'Server error. Please try again.' });
     }
