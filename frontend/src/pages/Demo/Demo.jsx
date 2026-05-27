@@ -1,5 +1,17 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import styles from './Demo.module.css'
+
+// ─── Lock body scroll when any modal is open ───────────────────────
+function useBodyScrollLock(active) {
+  useEffect(() => {
+    if (active) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => { document.body.style.overflow = '' }
+  }, [active])
+}
 
 
 // ─── Your 4 actual videos ───────────────────────────────────────────
@@ -37,7 +49,7 @@ const videos = [
   {
     id: 4,
     file: '/videos/dashboard.mp4',
-    thumb: '/svg/dashboard.svg',          
+    thumb: '/svg/dashboard.svg',
     tag: 'Analytics Dashboard',
     title: 'CRM Dashboard & Team Performance',
     desc: 'Live charts and graphs showing total leads, conversion rates, and exactly how much work each employee has done — spot who\'s performing and who needs a nudge.',
@@ -97,6 +109,7 @@ const features = [
 
 // ─── Video Modal ─────────────────────────────────────────────────────
 function VideoModal({ video, onClose }) {
+  useBodyScrollLock(!!video)
   if (!video) return null
   return (
     <div className={styles.modalOverlay} onClick={onClose}>
@@ -127,6 +140,7 @@ function VideoModal({ video, onClose }) {
 
 // ─── Screenshot lightbox ─────────────────────────────────────────────
 function ImageModal({ img, onClose }) {
+  useBodyScrollLock(!!img)
   if (!img) return null
   return (
     <div className={styles.modalOverlay} onClick={onClose}>
