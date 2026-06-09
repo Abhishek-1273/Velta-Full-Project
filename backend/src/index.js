@@ -1,14 +1,13 @@
+import 'dotenv/config' 
 import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
-import dotenv from 'dotenv';
 import connectDB from './config/db.js';
 import authRoutes from './routes/auth.routes.js';
 import contactRouter from './routes/contact.routes.js';
 import planRouter from './routes/plan.routes.js';
 import chatRouter from './routes/chat.routes.js'
 
-dotenv.config();
 
 // ── Validate critical env vars early ─────────────────────────────
 const REQUIRED_ENV = ['MONGO_URI', 'JWT_SECRET'];
@@ -20,12 +19,24 @@ if (missing.length) {
 
 const app = express();
 
+app.set('trust proxy', 1)
+
 // ── Connect MongoDB ───────────────────────────────────────────────
 connectDB();
 
 // ── CORS ──────────────────────────────────────────────────────────
+// ── CORS ──────────────────────────────────────────────────────────
+const allowedOrigins = (process.env.CLIENT_URL || 'http://localhost:5173')
+    .split(',')
+    .map(o => o.trim().replace(/\/$/, '')); // strip trailing slash
+
 app.use(cors({
-    origin: process.env.CLIENT_URL || 'http://localhost:5173',
+    origin: (origin, cb) => {
+        if (!origin || allowedOrigins.includes(origin.replace(/\/$/, ''))) {
+            return cb(null, true);
+        }
+        return cb(new Error(`CORS blocked: ${origin}`));
+    },
     credentials: true,
 }));
 

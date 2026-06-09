@@ -3,6 +3,6 @@ import createPlan from '../controllers/plan.controller.js';
  
 const router = express.Router();
  
-router.post('/', createPlan);
+router.post('/create', createPlan);
  
 export default router;

@@ -309,7 +309,7 @@
 }
 
 .ssBadge {
-    position: absolute;       
+    position: absolute;
     font-family: var(--font-head);
     font-size: 11px;
     font-weight: 700;
@@ -317,10 +317,11 @@
     text-transform: uppercase;
     padding: 4px 12px;
     border-radius: 100px;
-    margin-bottom: 10px;   
+    margin-bottom: 10px;
     top: 12px;
-    left: 12px; 
+    left: 12px;
 }
+
 .ssInfo {
     padding: 20px 20px 22px 22px;
 }
@@ -413,6 +414,7 @@
     cursor: pointer;
     transition: background 0.2s;
 }
+
 .modalClose:hover {
     background: rgba(255, 255, 255, 0.15);
 }
@@ -617,6 +619,130 @@
     flex-shrink: 0;
 }
 
+/* ── Plans Section ── */
+.plansSection {
+    padding: 80px 0;
+    position: relative;
+}
+
+.plansGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+.planCard {
+    position: relative;
+    background: var(--surface, #fff);
+    border: 1px solid var(--border, #e5e7eb);
+    border-radius: 20px;
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.planCard:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.1);
+}
+
+.planHighlight {
+    border-color: var(--accent, #0091a1);
+    box-shadow: 0 12px 40px rgba(0, 145, 161, 0.18);
+}
+
+.popularBadge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent, #0091a1);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 6px 14px;
+    border-radius: 999px;
+}
+
+.planName {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.planPrice {
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.planSub {
+    font-size: 13px;
+    color: var(--muted, #6b7280);
+    margin-top: 4px;
+}
+
+.planEmployees {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 16px 0;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border, #e5e7eb);
+}
+
+.planPerks {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+}
+
+.planPerks li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--text, #111827);
+}
+
+.planPerks li span {
+    color: var(--accent, #0091a1);
+    font-weight: 700;
+}
+
+.planBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    background: var(--accent, #0091a1);
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.planBtn:hover {
+    opacity: 0.9;
+}
+
+@media (max-width: 860px) {
+    .plansGrid {
+        grid-template-columns: 1fr;
+        max-width: 420px;
+    }
+}
+
 .flowSection {
     padding: 100px 0;
     background: var(--bg2);
@@ -726,7 +852,8 @@
         overflow-y: auto;
     }
 
-    .modal, .imgModalInner {
+    .modal,
+    .imgModalInner {
         margin: auto;
     }
 }

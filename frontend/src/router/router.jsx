@@ -14,15 +14,11 @@ import Plan from '../pages/Plan/Plan.jsx'
 import SignIn from '../pages/auth/Signin.jsx'
 import SignUp from '../pages/auth/Signup.jsx'
 import RootError from '../pages/errors/RootError.jsx'
+import TermsOfService from '../pages/TermsOfService/TermsOfService.jsx'
 import NotFound from '../pages/errors/NotFound.jsx'
 
 // ─────────────────────────────────────────────────────────────────
 // LOADERS
-// ─────────────────────────────────────────────────────────────────
-
-// Called once for RootLayout — restores session from cookie.
-// Returns { user } or { user: null }. Never throws so the whole
-// tree doesn't crash on a network hiccup.
 export async function rootLoader() {
   try {
     const user = await checkSession()
@@ -32,8 +28,7 @@ export async function rootLoader() {
   }
 }
 
-// Guard for protected routes (/demo, /plan).
-// Reads the cached result from the root loader via parentData.
+
 export async function protectedLoader({ request }) {
   try {
     const user = await checkSession()
@@ -80,6 +75,7 @@ export const router = createBrowserRouter([
       { path: 'about', element: <About /> },
       { path: 'product', element: <Product /> },
       { path: 'contact', element: <Contact /> },
+      { path: 'terms', element: <TermsOfService /> },
 
       // ── Auth pages (redirect if already logged in)
       {

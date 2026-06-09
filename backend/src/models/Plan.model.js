@@ -1,10 +1,5 @@
 import mongoose from "mongoose";
 
-const employeeSchema = new mongoose.Schema({
-    name: { type: String, trim: true },
-    email: { type: String, trim: true, lowercase: true }
-}, { _id: false });
-
 const planSchema = new mongoose.Schema({
 
     // ── Business Info ──────────────────────────────────────────────
@@ -32,73 +27,31 @@ const planSchema = new mongoose.Schema({
         minlength: [8, 'Phone too short'],
         maxlength: [15, 'Phone too long']
     },
-    industry: {
-        type: String,
-        trim: true,
-        lowercase: true
-    },
-    address: {
-        type: String,
-        trim: true
-    },
-    business_description: {
-        type: String,
-        trim: true
-    },
 
     // ── Plan ──────────────────────────────────────────────────────
     plan_type: {
         type: String,
         required: [true, 'Plan type is required'],
         enum: {
-            values: ['starter', 'growth', 'enterprise'],
-            message: 'Plan must be starter, growth, or enterprise'
+            values: ['Starter', 'Pro', 'Enterprise'],
+            message: 'Plan must be Starter, Pro, or Enterprise'
         },
-        default: 'growth'
+        default: 'Pro'
     },
 
-    // ── Features ──────────────────────────────────────────────────
-    features_selected: {
-        type: [String],
-        enum: {
-            values: ['ai', 'rag', 'bulk', 'followup', 'dashboard'],
-            message: 'Invalid feature: {VALUE}'
-        },
-        default: []
-    },
-    rag_enabled: {
+    // ── Terms & Services ──────────────────────────────────────────
+    agreed_to_terms: {
         type: Boolean,
-        default: false
+        default: false,
+        required: [true, 'Must agree to Terms & Services']
     },
-
-    // ── API Keys ──────────────────────────────────────────────────
-    whatsapp_number: {
+    terms_accepted_at: {
+        type: Date,
+        default: null
+    },
+    terms_version: {
         type: String,
-        trim: true
-    },
-    whatsapp_api_key: {
-        type: String,
-        trim: true
-    },
-    openai_api_key: {
-        type: String,
-        trim: true
-    },
-
-    // ── Team ──────────────────────────────────────────────────────
-    employees: {
-        type: [employeeSchema],
-        default: []
-    },
-
-    // ── AI Config ─────────────────────────────────────────────────
-    system_prompt: {
-        type: String,
-        trim: true
-    },
-    questions: {
-        type: String,
-        trim: true
+        default: '1.0'
     },
 
     // ── Meta ──────────────────────────────────────────────────────

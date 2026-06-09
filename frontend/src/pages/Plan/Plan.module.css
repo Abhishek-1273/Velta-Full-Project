@@ -22,220 +22,12 @@
     overflow: hidden;
 }
 
-.orb {
-    position: absolute;
-    top: -20%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 700px;
-    height: 400px;
-    background: radial-gradient(ellipse, rgba(124, 58, 237, 0.09) 0%, transparent 70%);
-}
 
-.grid {
-    position: absolute;
-    inset: 0;
-    background-image:
-        linear-gradient(rgba(99, 130, 182, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(99, 130, 182, 0.04) 1px, transparent 1px);
-    background-size: 60px 60px;
-}
-
-.heroContent {
-    position: relative;
-    z-index: 1;
-    max-width: 640px;
-    margin: 0 auto;
-}
-
-.title {
-    font-family: var(--font-head);
-    font-size: clamp(36px, 5vw, 62px);
-    font-weight: 800;
-    line-height: 1.1;
-    margin: 20px 0 18px;
-}
-
-.sub {
-    color: var(--text2);
-    font-size: 17px;
-    line-height: 1.7;
-}
 
 /* ── Form section ── */
 .formSection {
-    padding: 60px 0 120px;
+    padding-bottom:60px;
 }
-
-.layout {
-    display: grid;
-    grid-template-columns: 280px 1fr;
-    gap: 32px;
-    align-items: start;
-}
-
-/* ── Sidebar ── */
-.sidebar {
-    position: sticky;
-    top: 100px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-self: start;
-    /* don't stretch to tallest column */
-}
-
-.stepperCard {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 28px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    /* fixed height = 6 steps × ~56px each — never jumps */
-    min-height: 340px;
-}
-
-.stepItem {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    position: relative;
-    padding-bottom: 20px;
-    cursor: pointer;
-    /* always clickable */
-    user-select: none;
-}
-
-.stepItem:last-child {
-    padding-bottom: 0;
-}
-
-.stepItem.stepDone {
-    cursor: pointer;
-}
-
-.stepBullet {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    border: 1.5px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 15px;
-    flex-shrink: 0;
-    background: var(--bg);
-    color: var(--text2);
-    transition: all 0.25s;
-    z-index: 1;
-}
-
-.stepActive .stepBullet {
-    border-color: var(--accent);
-    background: rgba(0, 229, 255, 0.1);
-    color: var(--accent);
-    box-shadow: 0 0 16px rgba(0, 229, 255, 0.2);
-}
-
-.stepDone .stepBullet {
-    border-color: var(--accent3);
-    background: rgba(6, 255, 165, 0.1);
-    color: var(--accent3);
-}
-
-.stepLabel {
-    font-family: var(--font-head);
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--text3);
-    transition: color 0.25s;
-}
-
-.stepActive .stepLabel {
-    color: var(--accent);
-}
-
-.stepDone .stepLabel {
-    color: var(--text2);
-}
-
-.stepLine {
-    position: absolute;
-    left: 17px;
-    top: 36px;
-    width: 2px;
-    height: calc(100% - 36px);
-    background: var(--border);
-    z-index: 0;
-}
-
-.stepDone .stepLine {
-    background: rgba(6, 255, 165, 0.3);
-}
-
-.stepActive .stepLine {
-    background: rgba(0, 229, 255, 0.2);
-}
-
-/* ── Price box ── */
-.priceBox {
-    background: var(--surface);
-    border: 1px solid rgba(0, 229, 255, 0.2);
-    border-radius: var(--radius);
-    padding: 24px;
-    box-shadow: 0 0 32px rgba(0, 229, 255, 0.05);
-    min-height: 180px;
-}
-
-.priceLabel {
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--text3);
-    margin-bottom: 8px;
-}
-
-.priceMain {
-    font-family: var(--font-head);
-    font-size: 32px;
-    font-weight: 800;
-    color: var(--accent);
-    margin-bottom: 16px;
-    line-height: 1;
-}
-
-.priceBreakdown {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 12px;
-}
-
-.priceRow {
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-    color: var(--text2);
-}
-
-.priceAdd {
-    color: var(--accent3);
-    font-weight: 600;
-}
-
-.priceNote {
-    font-size: 11px;
-    color: var(--text3);
-    text-align: center;
-    padding-top: 12px;
-    border-top: 1px solid var(--border);
-}
-
-/* ── Form panel ── */
-/* .formPanel {} */
 
 .formCard {
     background: var(--surface);
@@ -298,7 +90,6 @@
     transition: border-color 0.2s, background 0.2s;
     resize: vertical;
     width: 100%;
-
 }
 
 .err {
@@ -308,8 +99,6 @@
     display: block;
 }
 
-/* Input error state */
-.inp:has(+ .err),
 .inpError {
     border-color: rgba(239, 68, 68, 0.5) !important;
 }
@@ -413,6 +202,8 @@ select.inp {
     display: flex;
     flex-direction: column;
     gap: 7px;
+    padding: 0;
+    margin: 0;
 }
 
 .planPerks li {
@@ -427,298 +218,15 @@ select.inp {
     font-weight: 700;
 }
 
-/* ── Feature cards ── */
-.featGrid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
-    margin-bottom: 8px;
-}
-
-.featCard {
-    border: 1.5px solid var(--border);
-    border-radius: var(--radius);
-    padding: 20px 16px;
-    cursor: pointer;
-    transition: all 0.25s;
-    position: relative;
-    background: var(--bg);
-    text-align: center;
-}
-
-.featCard:hover {
-    border-color: rgba(0, 229, 255, 0.3);
-    transform: translateY(-2px);
-}
-
-.featCardActive {
-    border-color: var(--accent) !important;
-    background: rgba(0, 229, 255, 0.06) !important;
-    box-shadow: 0 0 18px rgba(0, 229, 255, 0.1);
-}
-
-.featCheck {
-    position: absolute;
-    top: 10px;
-    right: 12px;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    border: 1.5px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 10px;
-    font-weight: 700;
-    color: var(--accent);
-    background: var(--bg2);
-    transition: all 0.2s;
-}
-
-.featCardActive .featCheck {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: #000;
-}
-
-.featIcon {
-    font-size: 28px;
-    margin-bottom: 8px;
-}
-
-.featName {
-    font-family: var(--font-head);
-    font-size: 13px;
-    font-weight: 700;
-    margin-bottom: 5px;
-}
-
-.featDesc {
-    font-size: 11px;
-    color: var(--text3);
-    line-height: 1.5;
-    margin-bottom: 8px;
-}
-
-.featPrice {
-    font-family: var(--font-head);
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--accent3);
-}
-
-/* ── Team section ── */
-.teamSection {
-    margin-top: 8px;
-}
-
-.teamHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 14px;
-}
-
-.teamTitle {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.07em;
-    color: var(--text2);
-    text-transform: uppercase;
-}
-
-.addBtn {
-    background: rgba(0, 229, 255, 0.08);
-    border: 1px solid rgba(0, 229, 255, 0.25);
-    color: var(--accent);
-    font-family: var(--font-head);
-    font-size: 12px;
-    font-weight: 700;
-    padding: 6px 14px;
-    border-radius: 100px;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-.addBtn:hover {
-    background: rgba(0, 229, 255, 0.14);
-}
-
-.empRow {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.removeBtn {
-    background: rgba(239, 68, 68, 0.08);
-    border: 1px solid rgba(239, 68, 68, 0.2);
-    color: #ef4444;
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 12px;
-    flex-shrink: 0;
-    transition: all 0.2s;
-}
-
-.removeBtn:hover {
-    background: rgba(239, 68, 68, 0.18);
-}
-
-/* ── Toggle ── */
-.toggleRow {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: 16px 20px;
-    margin-bottom: 18px;
-}
-
-.toggle {
-    position: relative;
-    display: inline-block;
-    width: 44px;
-    height: 24px;
-    flex-shrink: 0;
-}
-
-.toggle input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.toggleSlider {
-    position: absolute;
-    inset: 0;
-    background: var(--surface2);
-    border-radius: 24px;
-    cursor: pointer;
-    transition: 0.3s;
-    border: 1px solid var(--border);
-}
-
-.toggleSlider::before {
-    content: '';
-    position: absolute;
-    width: 18px;
-    height: 18px;
-    left: 2px;
-    top: 2px;
-    background: var(--text3);
-    border-radius: 50%;
-    transition: 0.3s;
-}
-
-.toggle input:checked+.toggleSlider {
-    background: rgba(0, 229, 255, 0.15);
-    border-color: var(--accent);
-}
-
-.toggle input:checked+.toggleSlider::before {
-    transform: translateX(20px);
-    background: var(--accent);
-}
-
-.toggleLabel {
-    font-size: 14px;
-    font-weight: 600;
-}
-
-.toggleSub {
-    font-size: 12px;
-    color: var(--text3);
-    margin-top: 2px;
-}
-
-/* ── Review ── */
-.reviewGrid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    margin-bottom: 24px;
-}
-
-.reviewBlock {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: 18px;
-}
-
-.reviewBlockTitle {
-    font-family: var(--font-head);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 14px;
-}
-
-.reviewRow {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    margin-bottom: 10px;
-}
-
-.reviewRow:last-child {
-    margin-bottom: 0;
-}
-
-.reviewLabel {
-    font-size: 10px;
-    color: var(--text3);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-.reviewVal {
-    font-size: 13px;
-    color: var(--text);
-    font-weight: 500;
-    word-break: break-word;
-}
-
-.totalBox {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(0, 229, 255, 0.06);
-    border: 1px solid rgba(0, 229, 255, 0.25);
-    border-radius: var(--radius-sm);
-    padding: 16px 20px;
-    font-family: var(--font-head);
-    font-weight: 700;
-    font-size: 15px;
-    color: var(--text2);
-}
-
-.totalAmt {
-    font-size: 24px;
-    font-weight: 800;
-    color: var(--accent);
-}
-
-/* ── Nav ── */
+/* ── Form nav ── */
 .formNav {
     display: flex;
-    align-items: center;
+    justify-content: flex-end;
     gap: 12px;
-    padding: 24px 40px;
-    border-top: 1px solid var(--border);
-    background: var(--bg2);
+    padding: 32px 40px;
 }
 
-/* ── Success ── */
+/* ── Success page ── */
 .successPage {
     min-height: 100vh;
     display: flex;
@@ -789,38 +297,264 @@ select.inp {
     font-size: 20px;
 }
 
+/* ── Checkbox (Terms & Services) ── */
+.checkboxGroup {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 18px 22px;
+    margin-top: 28px;
+    margin-bottom: 8px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.checkboxGroup:hover {
+    border-color: var(--accent);
+}
+
+.checkboxInput {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    border: 2px solid var(--border);
+    border-radius: 6px;
+    background: var(--bg2);
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s;
+}
+
+.checkboxInput:hover {
+    border-color: var(--accent);
+}
+
+.checkboxInput:checked {
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
+.checkboxInput:checked::after {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 2px;
+    width: 6px;
+    height: 11px;
+    border: solid #000;
+    border-width: 0 2.5px 2.5px 0;
+    transform: rotate(45deg);
+}
+
+.checkboxLabel {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.5;
+}
+
+.checkboxLabel a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.checkboxLabel a:hover {
+    text-decoration: underline;
+    color: rgba(0, 229, 255, 0.8);
+}
+
+.checkboxGroupError {
+    border-color: rgba(239, 68, 68, 0.5);
+    background: rgba(239, 68, 68, 0.03);
+}
+
+/* ── Terms Modal (blur background) ── */
+.modalOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(8, 12, 20, 0.55);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.modalCard {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    width: 100%;
+    max-width: 640px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    max-height: 85vh;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+    animation: slideUp 0.25s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modalHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+}
+
+.modalHeader h2 {
+    font-family: var(--font-head);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0;
+}
+
+/* Tabs — pinned, don't scroll */
+.termsTabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+    flex-shrink: 0;
+}
+
+.termsTab {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text2);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s ease;
+}
+
+.termsTab:hover {
+    border-color: var(--accent, #0091a1);
+    color: var(#ffffff);
+}
+
+.termsTabActive {
+    background: var(--accent, #0091a1);
+    border-color: var(--accent, #0091a1);
+    color: #fff;
+}
+
+.termsTabNum {
+    font-size: 11px;
+    opacity: 0.75;
+}
+
+/* Body — the only scrollable part */
+.modalBody {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 24px;
+    color: var(--text2);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.modalBody h3 {
+    color: var(--text);
+    font-family: var(--font-head);
+    font-size: 15px;
+    font-weight: 600;
+    margin: 20px 0 8px;
+}
+
+.modalBody h3:first-child {
+    margin-top: 0;
+}
+
+.modalBody p,
+.modalBody li {
+    margin: 0 0 10px;
+}
+
+.modalBody ul {
+    padding-left: 20px;
+}
+
+.termsNav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 28px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+}
+
+.termsNavCount {
+    font-size: 13px;
+    color: var(--text2);
+    font-weight: 600;
+}
+
+.modalFooter {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    padding: 16px 24px;
+    border-top: 1px solid var(--border);
+    flex-shrink: 0;
+}
+
 /* ── Responsive ── */
 @media (max-width: 1024px) {
-    .layout {
-        grid-template-columns: 240px 1fr;
-    }
-
     .planGrid {
-        grid-template-columns: 1fr;
-    }
-
-    .featGrid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .reviewGrid {
         grid-template-columns: 1fr;
     }
 }
 
 @media (max-width: 768px) {
-    .layout {
-        grid-template-columns: 1fr;
-    }
-
-    .sidebar {
-        position: static;
-    }
-
-    .stepperCard {
-        display: none;
-    }
-
     .grid2 {
         grid-template-columns: 1fr;
     }
@@ -833,30 +567,25 @@ select.inp {
         padding: 20px;
     }
 
-    .featGrid {
-        grid-template-columns: 1fr 1fr;
+    .planGrid {
+        grid-template-columns: 1fr;
     }
 
-    .container {
-        flex-direction: column;
+    .modalCard {
+        max-height: 90vh;
     }
-
-    .formPanel {
-        order: 1;
-    }
-
-    .sidebar {
-        order: 2;
-    }
-
 }
 
 @media (max-width: 480px) {
-    .featGrid {
+    .planGrid {
         grid-template-columns: 1fr;
     }
 
-    .planGrid {
-        grid-template-columns: 1fr;
+    .checkboxGroup {
+        align-items: flex-start;
+    }
+
+    .modalFooter {
+        flex-direction: column-reverse;
     }
 }

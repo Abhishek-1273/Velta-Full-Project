@@ -9,11 +9,13 @@ const sendTokenCookie = (res, user) => {
         { expiresIn: process.env.JWT_EXPIRES_IN || '1d' }
     );
 
+    const isProd = process.env.NODE_ENV === 'production';
+
     res.cookie('token', token, {
         httpOnly: true,
-        secure: true,  // ensure NODE_ENV=production in prod
-        sameSite: 'none',
-        maxAge: 24 * 60 * 60 * 1000,  // 1 day in ms
+        secure: isProd,                       // HTTPS-only in prod
+        sameSite: isProd ? 'none' : 'lax',    // 'none' needed for cross-site prod cookies
+        maxAge: 24 * 60 * 60 * 1000,
     });
 
     return token;
@@ -123,10 +125,11 @@ export const signin = async (req, res) => {
 
 // ── POST /api/auth/signout ───────────────────────────────────────
 export const signout = (req, res) => {
+    const isProd = process.env.NODE_ENV === 'production';
     res.clearCookie('token', {
         httpOnly: true,
-        secure: true,
-        sameSite: 'none',
+        secure: isProd,
+        sameSite: isProd ? 'none' : 'lax',
     });
     return res.json({ success: true, message: 'Signed out successfully.' });
 };

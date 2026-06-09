@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import Plan from '../Plan/Plan.jsx'
 import styles from './Demo.module.css'
 
 // ─── Lock body scroll when any modal is open ───────────────────────
@@ -107,6 +108,34 @@ const features = [
   { icon: <img src='/icons/bulk.png' alt='bulk-msg' width="50" />, title: 'Bulk Messaging', items: ['Send offers and updates', 'Notify customers instantly', 'One-click broadcast'] },
 ]
 
+const plans = [
+  {
+    id: 'Starter',
+    name: 'Starter',
+    price: '₹999',
+    sub: 'per month',
+    employees: 'Up to 5 members',
+    perks: ['WhatsApp integration', 'Basic AI assistant', 'Email support'],
+  },
+  {
+    id: 'Pro',
+    name: 'Pro',
+    price: '₹2,999',
+    sub: 'per month',
+    employees: 'Up to 20 members',
+    perks: ['Everything in Starter', 'RAG knowledge base', 'Priority support'],
+    popular: true,
+  },
+  {
+    id: 'Enterprise',
+    name: 'Enterprise',
+    price: 'Custom',
+    sub: 'contact us',
+    employees: 'Unlimited members',
+    perks: ['Everything in Pro', 'Dedicated manager', 'Custom integrations'],
+  },
+]
+
 // ─── Video Modal ─────────────────────────────────────────────────────
 function VideoModal({ video, onClose }) {
   useBodyScrollLock(!!video)
@@ -187,12 +216,12 @@ export default function Demo() {
           <div className="container">
             <div className={styles.heroContent}>
               <div className="tag">Our Product</div>
-              <h1 className={styles.title}>WhatsFlow<br /><span className="gradient-text">Smart WhatsApp Automation Engine</span></h1>
-              <p className={styles.sub}>The complete system that manages leads, automates replies, and increases conversions — all from WhatsApp.</p>
+              <h1 className={styles.title}>Choose Your <br /><span className="gradient-text">Plan</span></h1>
+              <p className={styles.sub}>Simple, transparent pricing. Fill in your details and pick a plan to get started.</p>
             </div>
           </div>
         </section>
-
+        <Plan />
         <section className="section">
           <div className="container">
             <div style={{ textAlign: 'center', marginBottom: 64 }}>

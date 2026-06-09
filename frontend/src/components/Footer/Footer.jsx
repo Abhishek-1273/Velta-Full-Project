@@ -31,12 +31,13 @@ export default function Footer() {
               <h4>Product</h4>
               <Link to="/">Home</Link>
               <Link to="/product">Product</Link>
-              <Link to="/demo">Demo</Link>
+              <Link to="/demo">WhatsFlow</Link>
             </div>
             <div className={styles.col}>
               <h4>Company</h4>
               <Link to="/about">About</Link>
               <Link to="/contact">Contact</Link>
+              <Link to="/terms">Term of Service</Link>
             </div>
             <div className={styles.col}>
               <h4>Contact</h4>
