@@ -28,7 +28,6 @@ export async function rootLoader() {
   }
 }
 
-
 export async function protectedLoader({ request }) {
   try {
     const user = await checkSession()
@@ -38,8 +37,9 @@ export async function protectedLoader({ request }) {
     }
     return { user }
   } catch (err) {
-    if (err instanceof Response) throw err   // let redirect pass through
-    throw redirect('/signin')
+    if (err instanceof Response) throw err  // redirect pass through — zaroor chahiye
+    // Network error / timeout = user ko redirect mat karo, null return karo
+    return { user: null }
   }
 }
 
