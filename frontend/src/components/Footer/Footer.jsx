@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useTheme } from '../../context/ThemeContext.jsx'
 import { toast } from 'sonner'
-import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaPaperPlane, FaSun, FaMoon } from 'react-icons/fa'
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaPaperPlane, FaSun, FaMoon } from 'react-icons/fa'
 import styles from './Footer.module.css'
 
 export default function Footer() {
@@ -61,16 +61,13 @@ export default function Footer() {
           <div className={styles.col}>
             <span className={styles.colTitle}>Follow Us</span>
             <div className={styles.socialsRow}>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className={styles.socialCircle} aria-label="Facebook">
+              <a href="https://www.facebook.com/share/1bDqBcbFh8/" target="_blank" rel="noopener noreferrer" className={styles.socialCircle} aria-label="Facebook">
                 <FaFacebookF />
               </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className={styles.socialCircle} aria-label="Twitter">
-                <FaTwitter />
-              </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className={styles.socialCircle} aria-label="Instagram">
+              <a href="https://www.instagram.com/velta_ai?igsh=MTJicmZrM2kxa2dxcQ==" target="_blank" rel="noopener noreferrer" className={styles.socialCircle} aria-label="Instagram">
                 <FaInstagram />
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className={styles.socialCircle} aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/company/velta-ai/" target="_blank" rel="noopener noreferrer" className={styles.socialCircle} aria-label="LinkedIn">
                 <FaLinkedinIn />
               </a>
             </div>
