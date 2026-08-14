@@ -3,22 +3,101 @@
 
 <head>
   <meta charset="UTF-8" />
+  <script>
+    (function() {
+      const saved = localStorage.getItem('velta-theme');
+      const theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description"
-    content="Velta - Smart WhatsApp Automation for Indian SMBs. Convert leads into customers automatically." />
+    content="VeltaZ - Smart WhatsApp Automation for Indian SMBs. Convert leads into customers automatically." />
   <meta name="description" content="WhatsFlow — AI powered WhatsApp automation for businesses" />
-  <meta property="og:title" content="Velta — AI Products" />
+  <meta property="og:title" content="VeltaZ — AI Products" />
   <meta property="og:image" content="your-og-image.png" />
-  <title>Velta – Business Automation</title>
+  <title>VeltaZ – Business Automation</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
     rel="stylesheet" />
+  <style>
+    #preloader-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999999;
+      transition: transform 0.65s cubic-bezier(0.85, 0, 0.15, 1);
+      transform: translateY(0);
+      pointer-events: all;
+    }
+    html[data-theme="light"] #preloader-overlay {
+      background: #FFFFFF;
+    }
+    html[data-theme="dark"] #preloader-overlay {
+      background: #050505;
+    }
+    .preloader-logo-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.35s ease, transform 0.35s ease;
+      opacity: 1;
+    }
+    .preloader-logo {
+      height: 70px;
+      object-fit: contain;
+      opacity: 0;
+      animation: preloaderEntrance 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards,
+                 preloaderBreathing 2.2s ease-in-out infinite 0.7s;
+    }
+    @keyframes preloaderEntrance {
+      0% {
+        transform: scale(0.7) translateY(20px);
+        opacity: 0;
+        filter: blur(8px);
+      }
+      100% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+        filter: blur(0);
+      }
+    }
+    @keyframes preloaderBreathing {
+      0%, 100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.15));
+      }
+      50% {
+        transform: scale(1.03);
+        filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.45));
+      }
+    }
+    #preloader-overlay.fade-out {
+      transform: translateY(-100%);
+      pointer-events: none;
+    }
+    #preloader-overlay.fade-out .preloader-logo-container {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+  </style>
 </head>
 
 <body>
+  <div id="preloader-overlay">
+    <div class="preloader-logo-container">
+      <img src="/logo/logo.png" alt="VeltaZ Logo" class="preloader-logo" />
+    </div>
+  </div>
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
 </body>

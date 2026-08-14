@@ -16,6 +16,11 @@ import SignUp from '../pages/auth/Signup.jsx'
 import RootError from '../pages/errors/RootError.jsx'
 import TermsOfService from '../pages/TermsOfService/TermsOfService.jsx'
 import NotFound from '../pages/errors/NotFound.jsx'
+import WhatsFlow from '../pages/WhatsFlow/WhatsFlow.jsx'
+import Services from '../pages/Services/Services.jsx'
+import Docket14 from '../pages/Docket14/Docket14.jsx'
+import KinProperty from '../pages/KinProperty/KinProperty.jsx'
+import ProtectedPageWrapper from '../components/Protect/ProtectedPageWrapper.jsx'
 
 // ─────────────────────────────────────────────────────────────────
 // LOADERS
@@ -44,19 +49,8 @@ export async function protectedLoader({ request }) {
 }
 
 // Redirect already-authed users away from signin/signup
-export async function guestLoader({ request }) {
-  try {
-    const user = await checkSession()
-    if (user) {
-      const url = new URL(request.url)
-      const from = url.searchParams.get('from') || '/'
-      throw redirect(from)
-    }
-    return null
-  } catch (err) {
-    if (err instanceof Response) throw err
-    return null
-  }
+export async function guestLoader() {
+  return null
 }
 
 // ─────────────────────────────────────────────────────────────────
@@ -73,13 +67,19 @@ export const router = createBrowserRouter([
       // ── Public pages
       { index: true, element: <Home /> },
       { path: 'about', element: <About /> },
-      { path: 'product', element: <Product /> },
+      { path: 'services', element: <Services /> },
       { path: 'contact', element: <Contact /> },
       { path: 'terms', element: <TermsOfService /> },
+      { path: 'privacy', element: <TermsOfService /> },
 
       // ── Auth pages (redirect if already logged in)
       {
         path: 'signin',
+        loader: guestLoader,
+        element: <SignIn />,
+      },
+      {
+        path: 'login',
         loader: guestLoader,
         element: <SignIn />,
       },
@@ -90,6 +90,22 @@ export const router = createBrowserRouter([
       },
 
       // ── Protected pages
+      {
+        path: 'products',
+        element: <ProtectedPageWrapper><Product /></ProtectedPageWrapper>,
+      },
+      {
+        path: 'products/whatsflow',
+        element: <ProtectedPageWrapper><WhatsFlow /></ProtectedPageWrapper>,
+      },
+      {
+        path: 'products/docket14',
+        element: <ProtectedPageWrapper><Docket14 /></ProtectedPageWrapper>,
+      },
+      {
+        path: 'products/kin-property',
+        element: <ProtectedPageWrapper><KinProperty /></ProtectedPageWrapper>,
+      },
       {
         path: 'demo',
         loader: protectedLoader,

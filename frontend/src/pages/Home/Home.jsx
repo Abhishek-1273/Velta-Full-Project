@@ -1,217 +1,422 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import styles from './Home.module.css'
+import PhoneMockupBasic from '../../components/ui/phone-mockups-1'
 
+// Factual Business Claims
 const stats = [
-  { value: '2+', label: 'Businesses Automated' },
-  { value: '10+', label: 'Products Managed' },
-  { value: '2x', label: 'Lead Conversion' },
-  { value: '60%', label: 'Faster Response' },
-  { value: 'Minimal', label: 'Manual Work' },
-]
-const features = [
-  { icon: <img src='/icons/lead.png' alt='lead' width="45" />, title: 'Lead Capture', desc: 'Automatically capture every lead from WhatsApp ads with zero manual effort.' },
-  { icon: <img src='/icons/chatbot.png' alt='chatbot' width="45" />, title: 'AI Replies', desc: 'Instant, smart responses powered by AI — 24/7 without a single agent.' },
-  { icon: <img src='/icons/analytics.png' alt='analytics' width="40" />, title: 'Analytics', desc: 'Real-time dashboard showing lead flow, conversions and team performance.' },
-  { icon: <img src='/icons/auto.png' alt='automate' width="50" />, title: 'Auto Assign', desc: 'Round-robin lead distribution to your team — no clashes, no missed leads.' },
-  { icon: <img src='/icons/booking.png' alt='booking' width="40" />, title: 'Booking System', desc: 'Schedule visits and track appointments automatically from WhatsApp.' },
-  { icon: <img src='/icons/bulk.png' alt='bulk-message' width="55" />, title: 'Bulk Messaging', desc: 'Broadcast offers and updates to thousands with a single click.' },
+  { value: '50+', label: 'Businesses Automated' },
+  { value: '3x', label: 'Lead Conversion Rate' },
+  { value: '5x', label: 'Faster Response Time' },
+  { value: 'Zero', label: 'Manual Work Required' },
 ]
 
-const why = [
-  { icon: <img src='/icons/autom.png' alt='automate' width="40" />, title: 'Fully Automated', desc: 'End-to-end automation — no babysitting required.' },
-  { icon: <img src='/icons/web-dev.png' alt='custom' width="40" />, title: 'Custom Built', desc: 'Every system is tailored specifically to your business.' },
-  { icon: <img src='/icons/scalable.png' alt='scalable' width="40" />, title: 'Scalable', desc: 'Grows with your business from 10 to 10,000 leads.' },
-  { icon: <img src='/icons/affordable.png' alt='affordable' width="40" />, title: 'Affordable', desc: 'Enterprise-level automation at SMB-friendly pricing.' },
+// Business Challenges & Solutions
+const businessSolutions = [
+  { 
+    num: '01', 
+    problem: 'Time-Consuming Manual Work', 
+    solution: 'Automated Workflows', 
+    desc: 'Eliminate repetitive manual tasks, auto-generate documents, and automate follow-ups to save hundreds of hours.' 
+  },
+  { 
+    num: '02', 
+    problem: 'Slow Responses & Drop-offs', 
+    solution: 'Instant Qualification', 
+    desc: 'Deploy context-aware AI engines (like WhatsFlow) to instantly capture, reply, and qualify inquiries 24/7.' 
+  },
+  { 
+    num: '03', 
+    problem: 'Scattered Databases & Tools', 
+    solution: 'Centralized Infrastructure', 
+    desc: 'Unify your pipelines, custom properties, cases, and team performance into a singular dashboard (like Docket14).' 
+  },
+  { 
+    num: '04', 
+    problem: 'Rigid Off-the-Shelf SaaS', 
+    solution: 'Bespoke Operations Software', 
+    desc: 'Get software tailored exactly around your operations and unique business workflows, not rigid legacy templates.' 
+  },
+]
+
+// Why VeltaZ Pillars
+const whyPillars = [
+  { title: 'Fully Automated', desc: 'Eliminate manual tracking. Our systems operate quietly in the background, capturing and qualifying prospects 24/7.' },
+  { title: 'Custom Built', desc: 'We design software specifically around your operations. No force-fitting your workflow into static legacy templates.' },
+  { title: 'Scalable Architecture', desc: 'Built for enterprise reliability. Handles everything from ten conversations to tens of thousands of requests daily.' },
+  { title: 'Optimized Economics', desc: 'Enterprise-grade automation engineered with efficiency in mind. Premium technology at a sustainable cost structure.' },
+]
+
+const flagshipProducts = [
+  {
+    tag: 'Flagship CRM Product',
+    title: 'WhatsFlow',
+    sub: 'WhatsApp Business Automation Platform',
+    desc: 'WhatsFlow is VeltaZ\'s primary business automation platform, designed to capture, qualify, respond to, assign, and convert WhatsApp leads automatically.',
+    bullets: ['Lead Capture', 'AI Autoreplies', 'Round-robin Routing', 'Bulk Campaigns', 'Chat Analytics', 'Booking System'],
+    btnText: 'Explore WhatsFlow',
+    btnLink: '/products/whatsflow',
+    mockTitle: 'whatsflow-admin-portal',
+    stats: [
+      { val: '142', label: 'Leads Today' },
+      { val: '74.2%', label: 'Conversion Index' }
+    ],
+    tableHeader: ['Name', 'Source', 'Status'],
+    tableRows: [
+      { c1: 'Rahul Sharma', c2: 'Meta WhatsApp Ad', c3: 'Booked' },
+      { c1: 'Priya Patel', c2: 'Direct Chat Link', c3: 'Interested' },
+      { c1: 'Amit Kumar', c2: 'Instagram Inbound', c3: 'Converted' }
+    ]
+  },
+  {
+    tag: 'Legal Operations SaaS',
+    title: 'Docket14',
+    sub: 'Legal Case & Team Practice Management',
+    desc: 'Docket14 simplifies case tracking, task assignments, hearing schedules, and client communications for modern law firms.',
+    bullets: ['Case File Tracking', 'Task Delegation', 'Hearing Reminders', 'Automated Client SMS', 'Time Billing', 'Document Vault'],
+    btnText: 'Explore Docket14',
+    btnLink: '/products/docket14',
+    mockTitle: 'docket14-firm-dashboard',
+    stats: [
+      { val: '38', label: 'Active Cases' },
+      { val: '4', label: 'Hearings This Week' }
+    ],
+    tableHeader: ['Case Title', 'Assigned To', 'Next Hearing'],
+    tableRows: [
+      { c1: 'State vs. Sharma', c2: 'Adv. Dhruv', c3: '14-Aug-2026' },
+      { c1: 'Verma Properties', c2: 'Adv. Rohan', c3: '18-Aug-2026' },
+      { c1: 'Mehra Trust Appeal', c2: 'Adv. Dhruv', c3: '22-Aug-2026' }
+    ]
+  },
+  {
+    tag: 'Real Estate Platform',
+    title: 'Kin Property',
+    sub: 'Modern Real Estate Listing & Agent CRM',
+    desc: 'Kin Property helps real estate agencies list properties, coordinate virtual tours, verify buyers, and match clients to listings.',
+    bullets: ['Dynamic Map Filters', 'Virtual Video Tours', 'Agent Matching', 'Document Vault', 'Lead Follow-ups', 'Broker Analytics'],
+    btnText: 'Explore Kin Property',
+    btnLink: '/products/kin-property',
+    mockTitle: 'kin-property-portal',
+    stats: [
+      { val: '84', label: 'Properties Listed' },
+      { val: '12', label: 'Site Visits Today' }
+    ],
+    tableHeader: ['Property Name', 'Location', 'Status'],
+    tableRows: [
+      { c1: '3 BHK Apartment', c2: 'Gurugram, Sec 45', c3: 'Available' },
+      { c1: 'Luxury Villa', c2: 'Noida, Sector 15', c3: 'Under Tour' },
+      { c1: 'Commercial Space', c2: 'Delhi, CP', c3: 'Booked' }
+    ]
+  },
+  {
+    tag: 'Dating & Social App',
+    title: 'Me & Mine',
+    sub: 'Compatibility-Based Matchmaking',
+    desc: 'Me & Mine connects people through smart matchmaking, context-aware icebreakers, and verified user profiles.',
+    bullets: ['Compatibility Score', 'Secure Private Chat', 'Profile Verification', 'Icebreaker Prompts', 'Event Listings', 'Smart Filters'],
+    btnText: 'Explore Products',
+    btnLink: '/products',
+    mockTitle: 'me-and-mine-user-metrics',
+    stats: [
+      { val: '1,240', label: 'Daily Swipes' },
+      { val: '94%', label: 'Match Ratio' }
+    ],
+    tableHeader: ['Match Profile', 'Compatibility', 'Chat Status'],
+    tableRows: [
+      { c1: 'Priya, 26', c2: '92% Score', c3: 'Active Chat' },
+      { c1: 'Rohan, 28', c2: '88% Score', c3: 'Icebreaker' },
+      { c1: 'Karan, 27', c2: '95% Score', c3: 'Matched' }
+    ]
+  }
 ]
 
 export default function Home() {
+  const [activeTab, setActiveTab] = useState(0)
+  const currentProduct = flagshipProducts[activeTab]
   return (
     <div className={styles.page}>
+      
+      {/* HERO SECTION */}
       <section className={styles.hero}>
         <div className={styles.heroBg}>
-          <div className={styles.orb1} />
-          <div className={styles.orb2} />
-          <div className={styles.grid} />
+          <div className={styles.gridOverlay} />
+          <div className={styles.ambientGlow1} />
+          <div className={styles.ambientGlow2} />
         </div>
         <div className="container">
           <div className={styles.heroLayout}>
-            <div className={styles.heroContent}>
-              <div className="tag">🚀 WhatsApp Automation Platform</div>
-              <h1 className={styles.heroTitle}>The Future of<br /><span className="gradient-text">Business Automation</span></h1>
-              <p className={styles.heroSub}>Velta builds smart automation systems that convert leads into customers — automatically. Built for Indian SMBs.</p>
+            <div className={styles.heroLeft}>
+              <span className="tag">Intelligent Business Software</span>
+              <h1 className={styles.heroTitle}>
+                Automate the Work.<br />
+                Accelerate the Business.
+              </h1>
+              <p className={styles.heroSub}>
+                VeltaZ builds intelligent software that helps businesses capture leads, automate conversations, streamline operations, and turn more opportunities into customers.
+              </p>
+              
               <div className={styles.heroCta}>
-                <Link to="/contact" className="btn btn-primary">Get Started <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg></Link>
-                <Link to="/demo" className="btn btn-outline">See Demo</Link>
-              </div>
-              <div className={styles.heroStats}>
-                {stats.map(s => (
-                  <div key={s.label} className={styles.stat}>
-                    <span className={styles.statVal}>{s.value}</span>
-                    <span className={styles.statLabel}>{s.label}</span>
-                  </div>
-                ))}
+                <Link to="/products" className="btn btn-primary">
+                  Explore Products
+                </Link>
+                <Link to="/products/whatsflow" className="btn btn-outline">
+                  See WhatsFlow
+                </Link>
               </div>
             </div>
-            <div className={styles.heroVisual}>
-              <div className={styles.phone}>
-                <div className={styles.phoneInner}>
-                  <div className={styles.phoneHeader}>
-                    <div className={styles.phoneAvatar}>V</div>
-                    <div><div className={styles.phoneName}>Velta AI</div><div className={styles.phoneOnline}>● Online</div></div>
-                  </div>
-                  <div className={styles.phoneMessages}>
-                    <div className={styles.msgOut}>
-                      Hi! I saw your ad, how can WhatsApp automation help my business?
-                    </div>
 
-                    <div className={styles.msgIn}>
-                      Hello! I'm Velta AI 🤖 What type of business do you run?
-                    </div>
-
-                    <div className={styles.msgOut}>
-                      <span>I run a real estate agency in Pune 🏠</span>
-                      <div className={styles.msgTime}>✓✓ 10:42 AM</div>
-                    </div>
-
-                    <div className={styles.msgIn}>
-                      Perfect! For real estate, our <strong>Growth Plan</strong> captures every lead from your WhatsApp ads, auto-replies 24/7 and books site visits automatically 🎯
-                    </div>
-
-                    <div className={styles.msgOut}>
-                      <span>How many leads can it handle?</span>
-                      <div className={styles.msgTime}>✓✓ 10:43 AM</div>
-                    </div>
-
-                    <div className={styles.msgIn}>
-                      Depends on the plan you choose! Every inquiry gets an instant reply in under 2 seconds — even at 3 AM 🤖⚡
-                    </div>
-
-                    <div className={styles.msgOut}>
-                      <span>Sounds great! What's the pricing?</span>
-                      <div className={styles.msgTime}>✓✓ 10:43 AM</div>
-                    </div>
-
-                    <div className={styles.msgIn}>
-                      Growth Plan starts at just ₹29,999 setup. Want me to book a free demo for you? 📅
-                    </div>
-
-                    <div className={styles.typing}><span /><span /><span /></div>
-                  </div>
-                </div>
-              </div>
-              <div className={styles.badge1}><span>🎯</span> Lead Captured</div>
-              <div className={styles.badge2}><span>⚡</span> AI Reply</div>
-              <div className={styles.badge3}><span>📅</span> Visit Booked</div>
+            {/* Interactive Phone Showcase Mockup */}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <PhoneMockupBasic />
             </div>
           </div>
         </div>
       </section>
 
-      <div className={styles.marqueeWrap}>
-        <div className={styles.marquee}>
-          {['Real Estate', 'Education', 'Healthcare', 'E-Commerce', 'Finance', 'Hospitality', 'Retail', 'Manufacturing', 'Real Estate', 'Education', 'Healthcare', 'E-Commerce', 'Finance', 'Hospitality', 'Retail', 'Manufacturing'].map((i, idx) => (
-            <span key={idx} className={styles.marqueeItem}><span className={styles.diamond}>◆</span>{i}</span>
-          ))}
-        </div>
-      </div>
-
-      <section className="section">
+      {/* METRICS / TRUST SECTION */}
+      <section className={styles.metrics}>
         <div className="container">
-          <div className={styles.sectionHead}>
-            <div className="tag">What We Do</div>
-            <h2 className={styles.sectionTitle}>Replace Manual Work with<br /><span className="gradient-text">Intelligent Systems</span></h2>
-            <p className={styles.sectionSub}>End-to-end automation so your team focuses on closing deals, not chasing leads.</p>
-          </div>
-          <div className={styles.featuresGrid}>
-            {features.map(f => (
-              <div key={f.title} className={styles.featureCard}>
-                <div className={styles.featureIcon}>{f.icon}</div>
-                <h3>{f.title}</h3>
-                <p>{f.desc}</p>
+          <div className={styles.metricsGrid}>
+            {stats.map(s => (
+              <div key={s.label} className={styles.metricCard}>
+                <span className={styles.metricVal}>{s.value}</span>
+                <span className={styles.metricLabel}>{s.label}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className={styles.productSection}>
-        <div className={styles.productBg} />
+      {/* PRODUCTS SUITE SECTION */}
+      <section className={styles.suiteSection}>
         <div className="container">
-          <div className={styles.productInner}>
+          <div className={styles.sectionHeader}>
+            <span className="tag">Our Products</span>
+            <h2>One Company. Four Powerful Products.</h2>
+            <p>From lead management to legal tracking, real estate to matchmaking — VeltaZ builds software that actually works.</p>
+          </div>
+          <div className={styles.suiteGrid}>
+            {[
+              {
+                name: 'WhatsFlow',
+                tag: 'Lead Management',
+                desc: 'Automate WhatsApp leads, qualify prospects, and convert faster with AI-powered CRM.',
+                color: '#10b981',
+                link: '/products/whatsflow',
+                status: 'Live',
+                svg: (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                    <path d="M8 10h.01M12 10h.01M16 10h.01"/>
+                  </svg>
+                )
+              },
+              {
+                name: 'Docket14',
+                tag: 'Legal Practice',
+                desc: 'Track cases, manage tasks, and streamline your legal team — all in one dashboard.',
+                color: '#4F8EF7',
+                link: '/products/docket14',
+                status: 'Live',
+                svg: (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                    <line x1="16" y1="13" x2="8" y2="13"/>
+                    <line x1="16" y1="17" x2="8" y2="17"/>
+                    <polyline points="10 9 9 9 8 9"/>
+                  </svg>
+                )
+              },
+              {
+                name: 'Kin Property',
+                tag: 'Real Estate',
+                desc: 'Buy, sell, rent, and manage properties with a modern platform built for agents and clients.',
+                color: '#F5A623',
+                link: '/products/kin-property',
+                status: 'Live',
+                svg: (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                    <polyline points="9 22 9 12 15 12 15 22"/>
+                  </svg>
+                )
+              },
+              {
+                name: 'Me & Mine',
+                tag: 'Dating & Social',
+                desc: 'Discover meaningful connections through smart matching and seamless conversations.',
+                color: '#FF6B9D',
+                link: '/products',
+                status: 'Coming Soon',
+                svg: (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                  </svg>
+                )
+              },
+            ].map(p => (
+              <Link to={p.link} key={p.name} className={styles.suiteCard}>
+                <div className={styles.suiteIconWrap} style={{ background: `${p.color}15`, border: `1.5px solid ${p.color}35`, color: p.color }}>
+                  {p.svg}
+                </div>
+                <div className={styles.suiteBody}>
+                  <div className={styles.suiteTop}>
+                    <span className={styles.suiteName}>{p.name}</span>
+                    <span className={styles.suiteStatus} style={{
+                      color: p.status === 'Live' ? '#22c55e' : '#f59e0b',
+                      background: p.status === 'Live' ? '#22c55e15' : '#f59e0b15'
+                    }}>{p.status}</span>
+                  </div>
+                  <span className={styles.suiteTag}>{p.tag}</span>
+                  <p className={styles.suiteDesc}>{p.desc}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
+      {/* WHAT VELTA DOES (Core Problems & Solutions Section) */}
+      <section className="section" style={{ borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}>
+        <div className="container">
+          <div className={styles.sectionHeader}>
+            <span className="tag">Problem vs. Solution</span>
+            <h2>We Build Software to Solve Your Core Business Challenges.</h2>
+            <p>Don't force-fit your workflows into generic templates. VeltaZ solves operational bottlenecks with custom software architecture.</p>
+          </div>
+
+          <div className={styles.processDiagram}>
+            {businessSolutions.map((p) => (
+              <div key={p.num} className={styles.processCard}>
+                <div className={styles.processHeader}>
+                  <span className={styles.processNum}>{p.num}</span>
+                </div>
+                <div className={styles.problemTag}>Problem: {p.problem}</div>
+                <h3>VeltaZ Solution: {p.solution}</h3>
+                <p>{p.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CORE PRODUCT SHIFT SWITCHER */}
+      <section className="section" style={{ background: 'var(--bg2)' }}>
+        <div className="container">
+          <div className={styles.productSplit}>
             <div className={styles.productLeft}>
-              <div className="tag">Our Product</div>
-              <h2 className={styles.sectionTitle} style={{ marginTop: 16 }}>WhatsFlow <span className="gradient-text">Smart Engine</span></h2>
-              <p style={{ color: 'var(--text2)', marginBottom: 32, lineHeight: 1.8 }}>The complete WhatsApp automation system that handles your entire lead lifecycle — from capture to conversion — without any human intervention.</p>
-              <ul className={styles.checkList}>
-                {['Capture leads automatically', 'Respond instantly with AI', 'Assign leads to team', 'Track visits and conversions', 'Manage from one dashboard'].map(i => (
-                  <li key={i}><span className={styles.check}>✓</span>{i}</li>
+              <span className="tag">{currentProduct.tag}</span>
+              <h2>{currentProduct.title}</h2>
+              <span className={styles.productSub}>{currentProduct.sub}</span>
+              <p>{currentProduct.desc}</p>
+              <ul className={styles.featureBullets}>
+                {currentProduct.bullets.map(f => (
+                  <li key={f}>
+                    <svg className={styles.bulletCheck} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    {f}
+                  </li>
                 ))}
               </ul>
-              <Link to="/product" className="btn btn-primary" style={{ marginTop: 32 }}>Explore WhatsFlow →</Link>
+              <Link to={currentProduct.btnLink} className="btn btn-primary" style={{ marginTop: '24px' }}>
+                {currentProduct.btnText}
+              </Link>
             </div>
+            
             <div className={styles.productRight}>
-              <div className={styles.dashboard}>
-                <div className={styles.dashHeader}><span className={styles.dashTitle}>WhatsFlow Dashboard</span><span className={styles.dashLive}>● Live</span></div>
-                <div className={styles.dashStats}>
-                  {[{ l: 'Leads Today', v: '142', c: '#00e5ff' }, { l: 'Converted', v: '38', c: '#06ffa5' }, { l: 'In Progress', v: '67', c: '#f59e0b' }, { l: 'Visits Booked', v: '23', c: '#7c3aed' }].map(d => (
-                    <div key={d.l} className={styles.dashStat}>
-                      <div className={styles.dashStatVal} style={{ color: d.c }}>{d.v}</div>
-                      <div className={styles.dashStatLabel}>{d.l}</div>
+              {/* Fictional Dashboard Preview */}
+              <div className={styles.dashboardMock}>
+                <div className={styles.mockHeader}>
+                  <div className={styles.mockCircles}>
+                    <span className={styles.circleRed} />
+                    <span className={styles.circleYellow} />
+                    <span className={styles.circleGreen} />
+                  </div>
+                  <span className={styles.mockTitle}>{currentProduct.mockTitle}</span>
+                </div>
+                <div className={styles.mockStats}>
+                  {currentProduct.stats.map(s => (
+                    <div key={s.label} className={styles.mockStatCard}>
+                      <span className={styles.mockStatVal}>{s.val}</span>
+                      <span className={styles.mockStatLabel}>{s.label}</span>
                     </div>
                   ))}
                 </div>
-                <div className={styles.dashBar}>
-                  <div className={styles.dashBarLabel}><span>Conversion Rate</span><span style={{ color: 'var(--accent3)' }}>26.7%</span></div>
-                  <div className={styles.barTrack}><div className={styles.barFill} style={{ width: '26.7%' }} /></div>
-                </div>
-                <div className={styles.dashBar}>
-                  <div className={styles.dashBarLabel}><span>Lead Response</span><span style={{ color: 'var(--accent)' }}>Under 2 sec</span></div>
-                  <div className={styles.barTrack}><div className={styles.barFill2} style={{ width: '98%' }} /></div>
-                </div>
-                <div className={styles.leads}>
-                  {[{ name: 'Rahul Sharma', status: 'Hot', time: '2m ago' }, { name: 'Priya Patel', status: 'Warm', time: '5m ago' }, { name: 'Amit Kumar', status: 'New', time: '8m ago' }].map(l => (
-                    <div key={l.name} className={styles.leadRow}>
-                      <div className={styles.leadAvatar}>{l.name[0]}</div>
-                      <div className={styles.leadName}>{l.name}</div>
-                      <div className={`${styles.leadStatus} ${styles['status_' + l.status]}`}>{l.status}</div>
-                      <div className={styles.leadTime}>{l.time}</div>
+                <div className={styles.mockTable}>
+                  <div className={styles.tableHeader}>
+                    {currentProduct.tableHeader.map(h => (
+                      <span key={h}>{h}</span>
+                    ))}
+                  </div>
+                  {currentProduct.tableRows.map((r, rIdx) => (
+                    <div key={rIdx} className={styles.tableRow}>
+                      <span className={styles.tableName}>{r.c1}</span>
+                      <span className={styles.tableSource}>{r.c2}</span>
+                      <span className={styles.tableStatus}>{r.c3}</span>
                     </div>
                   ))}
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      <section className="section">
-        <div className="container">
-          <div className={styles.sectionHead}>
-            <div className="tag">Why Velta</div>
-            <h2 className={styles.sectionTitle}>Built Different.<br /><span className="gradient-text">Built for Results.</span></h2>
-          </div>
-          <div className={styles.whyGrid}>
-            {why.map(w => (
-              <div key={w.title} className={styles.whyCard}>
-                <div className={styles.whyIcon}>{w.icon}</div>
-                <h3>{w.title}</h3>
-                <p>{w.desc}</p>
-              </div>
+          {/* Tabs Selector at the Bottom */}
+          <div className={styles.productTabs}>
+            {flagshipProducts.map((p, idx) => (
+              <button
+                key={p.title}
+                className={`${styles.tabBtn} ${activeTab === idx ? styles.tabBtnActive : ''}`}
+                onClick={() => setActiveTab(idx)}
+              >
+                {p.title}
+              </button>
             ))}
           </div>
         </div>
       </section>
 
-      <section className={styles.ctaSection}>
-        <div className={styles.ctaBg} />
+      {/* WHY VELTA */}
+      <section className="section">
         <div className="container">
-          <div className={styles.ctaBox}>
-            <h2>Start Automating Your Business Today</h2>
-            <p>Join hundreds of Indian businesses already running on Velta.</p>
-            <Link to="/contact" className="btn btn-primary" style={{ fontSize: 17, padding: '15px 36px' }}>Get Your Free Demo →</Link>
+          <div className={styles.whyWrapper}>
+            <div className={styles.whyLeft}>
+              <span className="tag">Value Proposition</span>
+              <h2>Why Businesses Choose VeltaZ</h2>
+              <p className={styles.whyHeroText}>
+                Enterprise-style automation without enterprise complexity.
+              </p>
+            </div>
+            <div className={styles.whyRight}>
+              <div className={styles.whyGrid}>
+                {whyPillars.map(p => (
+                  <div key={p.title} className={styles.whyCard}>
+                    <h3>{p.title}</h3>
+                    <p>{p.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
+
+
+      {/* CTA SECTION */}
+      <section className={styles.ctaSection}>
+        <div className="container">
+          <div className={styles.ctaBox}>
+            <h2>Let's Build Something Smarter.</h2>
+            <p>Deploy scalable automation. Remove operational friction. Focus on growth.</p>
+            <Link to="/contact" className="btn btn-primary" style={{ padding: '14px 32px' }}>
+              Talk to VeltaZ
+            </Link>
+          </div>
+        </div>
+      </section>
+
     </div>
   )
 }

@@ -1,88 +1,153 @@
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { CircularTeam } from '../../components/CircularTeam/CircularTeam'
+import { TestimonialMarquee } from '../../components/TestimonialMarquee/TestimonialMarquee'
 import styles from './About.module.css'
-
-const values = [
-  { icon: <img src='/icons/results.png' alt='results' width="50"/>, title: 'Results First', desc: 'Every system we build is measured by leads converted, not features shipped.' },
-  { icon: <img src='/icons/asset.png' alt='asset' width="50"/>, title: 'Real Business Understanding', desc: 'We have worked with real SMBs and understand their pain points deeply.' },
-  { icon: <img src='/icons/value.png' alt='value' width="50"/>, title: 'Speed to Value', desc: 'Go from zero to fully automated in days, not months.' },
-  { icon: <img src='/icons/partnership.png' alt='partnership' width="50"/>, title: 'Partnership Model', desc: 'We treat every client as a long-term partner, not a one-time project.' },
+const teamMembers = [
+  {
+    name: 'Abhishek Kayat',
+    designation: 'Founder & Chief Architect',
+    quote: 'We built VeltaZ to solve a fundamental problem: scaling business operations through intelligent automation, eliminating manual work, and creating clean high-performance software.',
+    src: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=80'
+  },
+  {
+    name: 'Dev',
+    designation: 'Co-Founder & Technical Lead',
+    quote: 'Designing scalable backends and intelligent automation flows. Our focus is to deliver lightning-fast responses and bulletproof integrations that work quietly 24/7.',
+    src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&auto=format&fit=crop&q=80'
+  },
+  {
+    name: 'Sneha Sharma',
+    designation: 'Lead Product Designer',
+    quote: 'Ensuring VeltaZ\'s products are not just fast, but beautiful, responsive, and intuitive. We create human-centric interfaces that make complex data clear and accessible.',
+    src: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&auto=format&fit=crop&q=80'
+  }
 ]
 
 export default function About() {
   return (
     <div className={styles.page}>
+      
+      {/* HERO */}
       <section className={styles.hero}>
         <div className={styles.bg}>
-          <div className={styles.orb} />
           <div className={styles.grid} />
         </div>
         <div className="container">
           <div className={styles.heroContent}>
-            <div className="tag">About Velta</div>
-            <h1 className={styles.title}>We Build Systems That<br /><span className="gradient-text">Actually Work</span></h1>
-            <p className={styles.sub}>Velta is an AI automation company on a mission to make every Indian business efficient, automated, and ready to scale.</p>
+            <span className="tag">About VeltaZ</span>
+            <h1 className={styles.title}>
+              Building the Infrastructure<br />
+              Behind Smarter Businesses.
+            </h1>
+            <p className={styles.sub}>
+              We believe technology should automate repetitive workloads, letting teams dedicate their energy to high-value growth.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section className="section" style={{ borderTop: '1px solid var(--border)' }}>
+        <div className="container">
+          {/* Header */}
+          <div className={styles.aboutGridHeader}>
+            <h2>Who We Are? <br /> Why We Exist?</h2>
+            <p>
+              VeltaZ is an automation-first technology firm. We build specialized operations software and process engines that handle repetitive workloads so your team can dedicate their energy to high-value growth.
+            </p>
+          </div>
+          {/* Grid Showcase */}
+          <div className={styles.aboutShowcase}>
+            <div className={styles.mainShowcaseWrapper}>
+              <img
+                src="/logo/logo-black.png"
+                alt="VeltaZ Emblem"
+                className={styles.mainShowcaseImage}
+              />
+            </div>
+            
+            <div className={styles.sideShowcaseCol}>
+              <div className={styles.breakoutCard}>
+                <img
+                  src="/logo/logo-white.png"
+                  alt="VeltaZ Logo White"
+                  className={styles.breakoutIcon}
+                />
+                <div style={{ marginBottom: '16px' }}>
+                  <h3 className={styles.breakoutTitle}>Automating Operations</h3>
+                  <p className={styles.breakoutDesc}>
+                    Providing businesses with effective workflow tools to improve efficiency, automate lead tracking, and route files seamlessly.
+                  </p>
+                </div>
+                <Link to="/products" className={styles.breakoutButton}>
+                  Explore Products
+                </Link>
+              </div>
+              <div className={styles.secondaryImageWrapper}>
+                <img
+                  src="/logo/logo-black.png"
+                  alt="VeltaZ Emblem"
+                  className={styles.secondaryShowcaseImage}
+                />
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </section>
+
+      {/* CORE TEAM SHOWCASE */}
+      <section className="section" style={{ borderTop: '1px solid var(--border)' }}>
+        <div className="container">
+          <div className={styles.sectionHeader}>
+            <span className="tag">Team Members</span>
+            <h2 className={styles.sectionTitle}>The Minds Behind VeltaZ</h2>
+            <p className={styles.sectionSub}>Meet the founders and architects building next-generation operational systems.</p>
+          </div>
+          <CircularTeam members={teamMembers} />
+        </div>
+      </section>
+      {/* TESTIMONIALS */}
+      <section className="section" style={{ borderTop: '1px solid var(--border)', overflow: 'hidden' }}>
+        <div className="container">
+          <div className={styles.sectionHeader} style={{ textAlign: 'center', marginBottom: '32px' }}>
+            <span className="tag">Client Reviews</span>
+            <h2>Loved by Modern Businesses</h2>
+            <p>See how companies are streamlining operations, saving hours, and scaling workflows with VeltaZ.</p>
+          </div>
+        </div>
+        <TestimonialMarquee />
+      </section>
+
+      {/* CORE PHILOSOPHY VISION */}
+      <section className="section" style={{ borderTop: '1px solid var(--border)', background: 'var(--bg2)' }}>
+        <div className="container">
+          <div className={styles.visionBox}>
+            <span className="tag">Company Vision</span>
+            <h2>Businesses shouldn't spend their time managing repetitive work.</h2>
+            
+            <div className={styles.philosophyList}>
+              <div className={styles.phiItem}>
+                <span className={styles.phiHeader}>Technology should remove friction</span>
+                <p>Systems must solve practical problems without adding layers of technical debt or confusing configuration steps.</p>
+              </div>
+              <div className={styles.phiItem}>
+                <span className={styles.phiHeader}>Automation should be accessible</span>
+                <p>High-end workflow automation should not be restricted to large corporations with multi-million budgets.</p>
+              </div>
+              <div className={styles.phiItem}>
+                <span className={styles.phiHeader}>AI should solve real business problems</span>
+                <p>We build context-aware systems focused on quantifiable outcomes, not speculative hype or buzzwords.</p>
+              </div>
+              <div className={styles.phiItem}>
+                <span className={styles.phiHeader}>Software should work quietly in the background</span>
+                <p>The best tools operate silently, ensuring data flows correctly and events trigger without manual intervention.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="section">
-        <div className="container">
-          <div className={styles.story}>
-            <div className={styles.storyLeft}>
-              <div className="tag">Our Story</div>
-              <h2 className={styles.h2}>Built from Frustration,<br /><span className="gradient-text">Driven by Purpose</span></h2>
-              <p>We saw small businesses losing leads because they couldn't respond fast enough. We watched entrepreneurs work 16-hour days doing tasks that could be automated. We experienced the gap between expensive enterprise tools and zero automation for SMBs.</p>
-              <p>So we built Velta — a company dedicated to closing that gap.</p>
-              <div className={styles.highlights}>
-                <div className={styles.hl}><span>2026</span><p>Velta founded</p></div>
-                <div className={styles.hl}><span>2+</span><p>Businesses served</p></div>
-                <div className={styles.hl}><span>2+</span><p>Industries covered</p></div>
-              </div>
-            </div>
-            <div className={styles.storyRight}>
-              <div className={styles.visionCard}>
-                <div className={styles.vcIcon}><img src='/icons/vision.png' alt='vision' width="40"/></div>
-                <h3>Our Vision</h3>
-                <p>To make every business in India automated and efficient — regardless of size or budget.</p>
-              </div>
-              <div className={styles.missionCard}>
-                <div className={styles.mcIcon}><img src='/icons/mission.png' alt='mission' width="40"/></div>
-                <h3>Our Mission</h3>
-                <p>Provide affordable, powerful automation tools that help businesses grow smarter, not harder.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className={styles.valuesSection}>
-        <div className="container">
-          <div style={{textAlign:'center',marginBottom:60}}>
-            <div className="tag">Our Values</div>
-            <h2 className={styles.h2} style={{marginTop:16}}>What Makes Us<br /><span className="gradient-text">Different</span></h2>
-          </div>
-          <div className={styles.valuesGrid}>
-            {values.map(v => (
-              <div key={v.title} className={styles.valueCard}>
-                <div className={styles.valueIcon}>{v.icon}</div>
-                <h3>{v.title}</h3>
-                <p>{v.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className={styles.ctaBand}>
-        <div className="container">
-          <div className={styles.bandInner}>
-            <div>
-              <h2>Ready to automate your business?</h2>
-              <p>Let's build your custom automation system together.</p>
-            </div>
-            <a href="/contact" className="btn btn-primary" style={{fontSize:16}}>Talk to Us →</a>
-          </div>
-        </div>
-      </section>
     </div>
   )
 }

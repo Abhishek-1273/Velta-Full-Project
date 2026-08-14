@@ -1,5 +1,4 @@
 import { Plan } from '../models/Plan.model.js';
-import { sendToWebhook } from '../utils/webhook.js';
 
 const VALID_PLANS = ['Starter', 'Pro', 'Enterprise'];
 
@@ -61,19 +60,7 @@ const createPlan = async (req, res) => {
 
         console.log('✅ Plan saved — ID:', newPlan._id);
 
-        // ── 3. Notify n8n (non-blocking) ───────────────────────────
-        sendToWebhook(process.env.N8N_PLAN_WEBHOOK, {
-            event:             'plan_submission',
-            id:                String(newPlan._id),
-            owner_name:        newPlan.owner_name,
-            business_name:     newPlan.business_name,
-            email:             newPlan.email,
-            phone:             newPlan.phone,
-            plan_type:         newPlan.plan_type,
-            agreed_to_terms:   newPlan.agreed_to_terms,
-            terms_accepted_at: newPlan.terms_accepted_at,
-            submittedAt:       new Date().toISOString(),
-        });
+
 
         // ── 4. Respond ────────────────────────────────────────────
         return res.status(201).json({

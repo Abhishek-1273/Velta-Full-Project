@@ -207,7 +207,6 @@ export default function Demo() {
 
       {/* ── Hero ── */}
 
-      <div className={styles.page}>
         <section className={styles.hero}>
           <div className={styles.bg}>
             <div className={styles.orb1} /><div className={styles.orb2} />
@@ -263,9 +262,8 @@ export default function Demo() {
                 </div>
               ))}
             </div>
-          </div>
-        </section>
-      </div>
+        </div>
+      </section>
 
 
 

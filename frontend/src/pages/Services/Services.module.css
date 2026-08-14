@@ -1,0 +1,369 @@
+.page {
+  background-color: var(--bg);
+  min-height: 100vh;
+  color: var(--text);
+  font-family: var(--font-body);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Hero Section ── */
+.hero {
+  padding: 96px 0 20px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.grid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(var(--border) 1px, transparent 1px);
+  background-size: 32px 32px;
+  opacity: 0.4;
+  mask-image: radial-gradient(circle at 50% 50%, black, transparent 80%);
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, black, transparent 80%);
+}
+
+.heroContent {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-family: var(--font-head);
+  font-size: clamp(34px, 5.5vw, 56px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  margin: 12px 0 10px;
+}
+
+.sub {
+  font-size: 16px;
+  color: var(--text2);
+  line-height: 1.5;
+  max-width: 580px;
+}
+
+/* ── Services Grid Section ── */
+.servicesSection {
+  padding: 48px 0 30px;
+  position: relative;
+  z-index: 1;
+}
+
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+/* ── Card Styling ── */
+.serviceCard {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 30px rgba(0,0,0,0.03);
+}
+
+.serviceCard:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent);
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.15),
+    0 0 30px rgba(212, 175, 55, 0.08);
+}
+
+/* Accent Glow Effect behind card on hover */
+.cardGlow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.serviceCard:hover .cardGlow {
+  opacity: 1;
+}
+
+.iconWrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  transition: all 0.3s ease;
+}
+
+.serviceCard:hover .iconWrapper {
+  transform: scale(1.1);
+}
+
+.serviceCard h3 {
+  font-family: var(--font-head);
+  font-size: 22px;
+  font-weight: 750;
+  color: var(--text);
+}
+
+.serviceDesc {
+  font-size: 14px;
+  color: var(--text2);
+  line-height: 1.6;
+}
+
+/* Bullet list inside cards */
+.bullets {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.bullets li {
+  font-size: 13px;
+  color: var(--text2);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.bulletCheck {
+  flex-shrink: 0;
+}
+
+/* Preview / Demo Section within cards */
+.previewSection {
+  margin-top: 12px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.badge {
+  font-family: var(--font-head);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 6px;
+  display: block;
+}
+
+.previewText {
+  font-size: 12px;
+  color: var(--text3);
+  font-style: italic;
+}
+
+/* ── Interactive Demo Showcase Block ── */
+.demoShowcaseSection {
+  padding: 80px 0;
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+
+.showcaseWrapper {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.showcaseLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.showcaseLeft h2 {
+  font-family: var(--font-head);
+  font-size: 38px;
+  font-weight: 800;
+  margin: 16px 0;
+  color: var(--text);
+}
+
+.showcaseLeft p {
+  font-size: 15px;
+  color: var(--text2);
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+.showcaseGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  width: 100%;
+}
+
+.showcaseItem {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.showcaseItem h5 {
+  font-family: var(--font-head);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+}
+
+.showcaseItem p {
+  font-size: 12px;
+  color: var(--text3);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.showcaseRight {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* S24 Ultra mockup layout for showcasing 3 mobile apps within services page */
+.phoneDeck {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  height: 480px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.miniPhone {
+  position: absolute;
+  width: 180px;
+  height: 370px;
+  background: #ffffff;
+  border-radius: 22px;
+  border: 5px solid #2a2a2a;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}.miniPhone img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.phone1 {
+  transform: translateX(-60px) rotate(-8deg) scale(0.9);
+  z-index: 1;
+  opacity: 0.6;
+}
+
+.phone2 {
+  z-index: 3;
+  transform: translateX(0) scale(1);
+}
+
+.phone3 {
+  transform: translateX(60px) rotate(8deg) scale(0.9);
+  z-index: 2;
+  opacity: 0.6;
+}
+
+.phoneDeck:hover .phone1 {
+  transform: translateX(-110px) rotate(-12deg) scale(0.92);
+  opacity: 0.95;
+}
+
+.phoneDeck:hover .phone2 {
+  transform: translateY(-10px) scale(1.05);
+}
+
+.phoneDeck:hover .phone3 {
+  transform: translateX(110px) rotate(12deg) scale(0.92);
+  opacity: 0.95;
+}
+
+/* ── CTA Section ── */
+.ctaSection {
+  padding: 100px 0;
+  text-align: center;
+}
+
+.ctaBox {
+  max-width: 650px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.ctaBox h2 {
+  font-family: var(--font-head);
+  font-size: 38px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.ctaBox p {
+  font-size: 16px;
+  color: var(--text2);
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .servicesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .servicesGrid {
+    grid-template-columns: 1fr;
+  }
+  .showcaseWrapper {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .phoneDeck {
+    height: 400px;
+  }
+}

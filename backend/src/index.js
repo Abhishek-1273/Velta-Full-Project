@@ -80,7 +80,7 @@ app.use("/api/chat", chatRouter);
 
 // ── Health check ──────────────────────────────────────────────────
 app.get('/', (_req, res) => {
-    res.json({ status: 'OK', message: 'Velta API running', env: process.env.NODE_ENV });
+    res.json({ status: 'OK', message: 'VeltaZ API running', env: process.env.NODE_ENV });
 });
 
 // ── 404 for unknown API routes ────────────────────────────────────

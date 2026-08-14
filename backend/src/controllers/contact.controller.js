@@ -1,5 +1,4 @@
 import { Contact } from '../models/Contact.model.js';
-import { sendToWebhook } from '../utils/webhook.js';
 import { Resend } from 'resend';
 import dotenv from 'dotenv'
 
@@ -10,13 +9,13 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 // ── Send notification email to owner ─────────────────────────────
 const sendNotificationEmail = async ({ fullName, businessName, phoneNumber, email, message }) => {
     await resend.emails.send({
-        from: 'Velta Contact <onboarding@resend.dev>',
+        from: 'VeltaZ Contact <onboarding@resend.dev>',
         to: process.env.NOTIFY_EMAIL,
         subject: `🔔 New Lead: ${fullName} — ${businessName}`,
         html: `
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #f9f9f9; padding: 24px; border-radius: 12px;">
                 <h2 style="color: #0091a1; margin-bottom: 4px;">New Contact Form Submission</h2>
-                <p style="color: #666; margin-top: 0;">Someone filled your contact form on Velta</p>
+                <p style="color: #666; margin-top: 0;">Someone filled your contact form on VeltaZ</p>
                 
                 <div style="background: white; border-radius: 10px; padding: 24px; margin-top: 20px; border: 1px solid #e5e5e5;">
                     <table style="width: 100%; border-collapse: collapse;">
@@ -101,16 +100,7 @@ const createContact = async (req, res) => {
         }).then(() => console.log('✅ Email sent!'))
             .catch(err => console.error('⚠️ Email failed:', err.message));
 
-        sendToWebhook(process.env.N8N_CONTACT_WEBHOOK, {
-            event: 'contact_form',
-            id: String(newContact._id),
-            fullName: newContact.fullName,
-            businessName: newContact.businessName,
-            phoneNumber: newContact.phoneNumber,
-            email: newContact.email,
-            message: newContact.message,
-            submittedAt: new Date().toISOString(),
-        });
+
 
         return res.status(201).json({ success: true, message: 'Message sent successfully.' });
 

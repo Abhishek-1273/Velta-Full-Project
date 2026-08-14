@@ -1,0 +1,313 @@
+.carouselRoot {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.carouselContainer {
+  position: relative;
+  width: 100%;
+}
+
+.grabFrame {
+  cursor: grab;
+  overflow: hidden;
+  padding: 12px 0 16px;
+  outline: none;
+  touch-action: pan-y;
+  user-select: none;
+  width: 100%;
+}
+
+.grabFrame:active {
+  cursor: grabbing;
+}
+
+.cardContainer {
+  position: relative;
+  user-select: none;
+}
+
+.card {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 20px;
+  background-color: var(--bg2);
+  border: 1px solid var(--border);
+  will-change: transform, opacity;
+  transition: border-color 0.3s ease;
+}
+
+.cardActive {
+  border-color: var(--accent);
+}
+
+.cardImg {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  user-select: none;
+  pointer-events: none;
+}
+
+.arrowBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 200;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  padding: 10px;
+  color: var(--text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.arrowBtn:hover {
+  background: var(--accent);
+  color: #000;
+  border-color: var(--accent);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+}
+
+.prevBtn {
+  left: 20px;
+}
+
+.nextBtn {
+  right: 20px;
+}
+
+/* ── Caption Section ── */
+.caption {
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  animation: fadeIn 0.4s ease forwards;
+  width: 100%;
+}
+
+.captionTitle {
+  font-family: var(--font-head);
+  font-size: 24px;
+  font-weight: 850;
+  color: var(--text);
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+
+.captionSubtitle {
+  font-size: 13px;
+  color: var(--text2);
+  text-align: left;
+  max-width: 450px;
+  line-height: 1.5;
+}
+
+/* Meta Data List */
+.metaList {
+  margin-top: 0;
+  width: 100%;
+  max-width: 400px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.metaRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.metaRow:last-child {
+  border-bottom: none;
+}
+
+.metaLabel {
+  color: var(--text2);
+  font-size: 11px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Accented dot on left of label */
+.metaLabel::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent, #D4AF37);
+  box-shadow: 0 0 6px var(--accent, #D4AF37);
+}
+
+.metaValue {
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 700;
+  text-align: right;
+  letter-spacing: 0.02em;
+}
+
+/* ── Details Block underneath Carousel ── */
+.infoWrapper {
+  margin-top: 28px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.detailsRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.cardCol {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  /* Push card to center-left of right col */
+}
+
+.textCol {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  /* Push text to center-right of left col */
+}
+
+/* ── Pagination Dots ── */
+.pagination {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.dot {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dot::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--text2);
+  opacity: 0.3;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dot:hover::before {
+  opacity: 0.8;
+}
+
+.activeDot::before {
+  width: 18px;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--accent);
+  opacity: 1;
+  box-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .detailsRow {
+    flex-direction: column;
+    /* Text on top, card below it */
+    gap: 20px;
+    padding: 0 20px;
+  }
+
+  .cardCol,
+  .textCol {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .caption {
+    align-items: center;
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .captionSubtitle {
+    text-align: center;
+  }
+
+  .tagList {
+    justify-content: center;
+  }
+}
+
+.tagList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.featureTag {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--accent);
+  background: rgba(212, 175, 55, 0.06);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  border-radius: 5px;
+  padding: 3px 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
