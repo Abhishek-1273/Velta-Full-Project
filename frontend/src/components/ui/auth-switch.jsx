@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { toast } from "sonner";
-import { FaUser, FaEnvelope, FaLock, FaArrowLeft } from "react-icons/fa";
+import { FaUser, FaEnvelope, FaLock, FaArrowLeft, FaEye, FaEyeSlash } from "react-icons/fa";
 
 export default function AuthSwitch({ defaultMode = 'signin', isModal = false }) {
   const navigate = useNavigate();
@@ -14,6 +14,8 @@ export default function AuthSwitch({ defaultMode = 'signin', isModal = false }) 
   // Form states
   const [signInForm, setSignInForm] = useState({ email: '', password: '' });
   const [signUpForm, setSignUpForm] = useState({ name: '', businessName: 'VeltaZ Business', email: '', phone: '1234567890', password: '' });
+  const [showLoginPassword, setShowLoginPassword] = useState(false);
+  const [showSignUpPassword, setShowSignUpPassword] = useState(false);
 
   // Client-side instant guest check
   useEffect(() => {
@@ -224,6 +226,33 @@ export default function AuthSwitch({ defaultMode = 'signin', isModal = false }) 
           font-size: 1rem;
           color: #111111;
           width: 100%;
+        }
+
+        .password-toggle-btn {
+          position: absolute;
+          right: 20px;
+          top: 50%;
+          transform: translateY(-50%);
+          background: none;
+          border: none;
+          outline: none;
+          color: #666666;
+          cursor: pointer;
+          font-size: 1.1rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0;
+          z-index: 10;
+        }
+
+        .password-toggle-btn:hover {
+          color: #C9A227;
+        }
+
+        .input-field input::-ms-reveal,
+        .input-field input::-ms-clear {
+          display: none !important;
         }
 
         .input-field input::placeholder {
@@ -541,15 +570,24 @@ export default function AuthSwitch({ defaultMode = 'signin', isModal = false }) 
                     required
                   />
                 </div>
-                <div className="input-field">
+                <div className="input-field" style={{ position: 'relative' }}>
                   <i><FaLock /></i>
                   <input
-                    type="password"
+                    type={showLoginPassword ? "text" : "password"}
                     placeholder="Password"
                     value={signInForm.password}
                     onChange={(e) => setSignInForm({ ...signInForm, password: e.target.value })}
                     required
+                    style={{ paddingRight: '45px' }}
                   />
+                  <button
+                    type="button"
+                    className="password-toggle-btn"
+                    onClick={() => setShowLoginPassword(!showLoginPassword)}
+                    aria-label="Toggle password visibility"
+                  >
+                    {showLoginPassword ? <FaEyeSlash /> : <FaEye />}
+                  </button>
                 </div>
                 <input type="submit" value={loading ? "Loading..." : "Login"} className="btn solid" disabled={loading} />
               </form>
@@ -577,15 +615,24 @@ export default function AuthSwitch({ defaultMode = 'signin', isModal = false }) 
                     required
                   />
                 </div>
-                <div className="input-field">
+                <div className="input-field" style={{ position: 'relative' }}>
                   <i><FaLock /></i>
                   <input
-                    type="password"
+                    type={showSignUpPassword ? "text" : "password"}
                     placeholder="Password"
                     value={signUpForm.password}
                     onChange={(e) => setSignUpForm({ ...signUpForm, password: e.target.value })}
                     required
+                    style={{ paddingRight: '45px' }}
                   />
+                  <button
+                    type="button"
+                    className="password-toggle-btn"
+                    onClick={() => setShowSignUpPassword(!showSignUpPassword)}
+                    aria-label="Toggle password visibility"
+                  >
+                    {showSignUpPassword ? <FaEyeSlash /> : <FaEye />}
+                  </button>
                 </div>
                 <input type="submit" value={loading ? "Loading..." : "Sign up"} className="btn" disabled={loading} />
               </form>
