@@ -73,6 +73,12 @@ export default function Navbar() {
           <div className={styles.rightGroup}>
             {/* NAV LINKS */}
             <ul className={`${styles.links} ${open ? styles.open : ''}`}>
+              {/* MOBILE DRAWER HEADER LOGO */}
+              <li className={styles.mobileLogoItem}>
+                <Link to="/" className={styles.mobileLogoLink} onClick={() => setOpen(false)}>
+                  <img src="/logo/logo.png?v=2" alt="Veltaz Logo" className={styles.mobileLogoImg} />
+                </Link>
+              </li>
               {links.map(l => (
                 <li key={l.to}>
                   <Link

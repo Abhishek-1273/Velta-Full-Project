@@ -333,6 +333,10 @@
   pointer-events: auto;
 }
 
+.mobileLogoItem {
+  display: none;
+}
+
 /* ================= MOBILE AUTH ================= */
 .mobileAuth {
   display: none;
@@ -414,13 +418,25 @@
     background: var(--bg);
     flex-direction: column;
     align-items: flex-start;
-    padding: 100px 24px 40px;
+    padding: 30px 24px 40px;
     gap: 8px;
     border-left: 1px solid var(--border);
     transform: translateX(100%);
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     z-index: 100;
     overflow-y: auto;
+  }
+
+  .mobileLogoItem {
+    display: block;
+    width: 100%;
+    margin-bottom: 24px;
+    padding-left: 12px;
+  }
+
+  .mobileLogoImg {
+    height: 24px;
+    display: block;
   }
 
   .links.open {

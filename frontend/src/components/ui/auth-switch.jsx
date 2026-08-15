@@ -497,7 +497,7 @@ export default function AuthSwitch({ defaultMode = 'signin', isModal = false }) 
         @media (max-width: 870px) {
           .auth-container {
             min-height: auto;
-            height: 630px;
+            height: 520px;
             width: 90%;
             max-width: 420px;
             margin: 20px auto;

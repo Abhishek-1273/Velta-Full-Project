@@ -1395,6 +1395,38 @@
     padding: 8px;
     font-size: 14px;
   }
+
+  /* Employee Card Mobile Fixes */
+  .empHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .empAvatar {
+    width: 38px;
+    height: 38px;
+    font-size: 14px;
+  }
+
+  .empInfoBlock {
+    width: 100%;
+  }
+
+  .empActiveControls {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px dashed var(--border);
+    padding-top: 12px;
+    margin-top: 6px;
+  }
+
+  .empStatsRow {
+    flex-wrap: wrap;
+    gap: 8px 12px;
+  }
 }
 
 
