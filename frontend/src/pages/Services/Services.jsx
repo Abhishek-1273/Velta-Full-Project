@@ -7,7 +7,7 @@ const servicesSlides = [
   {
     title: 'Website Development',
     subtitle: 'We design and build bespoke, high-performance web systems tailored to your business operations. Optimized for loading speed, device responsiveness, and top SEO ranking.',
-    src: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&auto=format&fit=crop&q=80',
+    src: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1786802524/Website_Development_m3kdra.png',
     alt: 'Website Development Services',
     features: ['React/Next.js SPAs', 'Custom Admin Portals', 'Lighthouse Score 98%+', 'Kin CRM Integrations', 'On-Page SEO Systems', 'SSL Data Isolation'],
     meta: [
@@ -20,7 +20,7 @@ const servicesSlides = [
   {
     title: 'Mobile Applications',
     subtitle: 'Custom hybrid iOS and Android applications engineered with fluid 60fps micro-animations, push notifications, and reliable offline-first database synchronization.',
-    src: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=600&auto=format&fit=crop&q=80',
+    src: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1786802524/Mobile_Development_j7nyto.png',
     alt: 'Mobile Applications Services',
     features: ['Hybrid iOS & Android', 'Offline Synchronization', '60 FPS Transitions', 'Push Notification APIs', 'Native Hardware Access', 'WhatsFlow Suite Ready'],
     meta: [
@@ -33,7 +33,7 @@ const servicesSlides = [
   {
     title: 'Automation Systems',
     subtitle: 'Connect your inbound lead channels, CRM platforms, and message triggers in a single operational loop to automatically route prospects and save manual entry hours.',
-    src: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&auto=format&fit=crop&q=80',
+    src: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1786802524/Automations_Systems_a2xnhc.png',
     alt: 'Automation Systems Services',
     features: ['CRM Pipeline Automation', 'Lead Routing Systems', 'WhatsFlow Lead Engine', 'Google Sheets Integration', 'Invoice & PDF Automation', 'SMTP Email Drips'],
     meta: [
@@ -46,7 +46,7 @@ const servicesSlides = [
   {
     title: 'Paid Campaigns',
     subtitle: 'Targeted advertising campaigns on Facebook and Instagram directly integrated with WhatsFlow AI qualification funnels to maximize lead generation ROI.',
-    src: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&auto=format&fit=crop&q=80',
+    src: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1786802524/Paid_Campaigns_ixnhiu.png',
     alt: 'Paid Campaigns Services',
     features: ['Meta Ad Campaigns', 'Instagram Target Ads', 'A/B Budget Testing', 'WhatsFlow Funnel Hooks', 'ROI Conversion Lift', 'Audience Demographics'],
     meta: [
@@ -59,9 +59,9 @@ const servicesSlides = [
   {
     title: 'Social Media Handling',
     subtitle: 'Establish a high-authority digital presence on Instagram and LinkedIn with consistent branding guides, professional copywriting, and creative Reels content curation.',
-    src: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&auto=format&fit=crop&q=80',
+    src: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1786802524/SocialMedia_Handling_beghhh.png',
     alt: 'Social Media Handling Services',
-    features: ['Instagram Handles', 'LinkedIn Pages', 'Reels Clipping', 'Post Curation'],
+    features: ['Instagram Profile Scale', 'LinkedIn Page Scaling', 'Reels & Video Curation', 'Organic Post Curation', 'Weekly Content Calendar', 'Targeted Lead Pipelines'],
     meta: [
       { label: 'Channels Curation', value: 'Instagram & LinkedIn' },
       { label: 'Deliverables', value: 'Posters, Reels Editing, Copy' },
@@ -72,9 +72,9 @@ const servicesSlides = [
   {
     title: 'Graphic & 3D Designing',
     subtitle: 'Premium visual assets including brand logos, style books, high-fidelity Figma UX wireframes, and custom 3D product renders with smooth light animations.',
-    src: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&auto=format&fit=crop&q=80',
+    src: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1786802524/Graphics_3d_Designing_z4gsnc.png',
     alt: 'Graphic & 3D Designing Services',
-    features: ['3D Product Renders', 'Logo Design', 'Figma Wireframes', 'Style Guides'],
+    features: ['3D Product Rendering', 'Premium Logo Redesigns', 'High-Fidelity Figma UX', 'Corporate Style Guides', 'Brand Identity Design', 'UI/UX System Audits'],
     meta: [
       { label: 'Visual Assets', value: 'Logos, Vector Posters' },
       { label: '3D Renders', value: 'Product modeling & animation' },

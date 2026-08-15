@@ -246,6 +246,31 @@
   filter: drop-shadow(0 24px 35px rgba(0, 0, 0, 0.35)) drop-shadow(0 8px 12px rgba(0, 0, 0, 0.18));
 }
 
+.secondaryImageWrapper {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.secondaryImageWrapper:hover {
+  transform: translateY(-4px);
+}
+
+.secondaryShowcaseImage {
+  height: 100px;
+  width: auto;
+  object-fit: contain;
+  opacity: 0.8;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.12));
+}
+
 .sideShowcaseCol {
   display: flex;
   flex-direction: column;
@@ -558,18 +583,30 @@
     gap: 24px;
   }
 
+  .mainShowcaseWrapper {
+    height: 420px;
+  }
+
   .mainShowcaseImage {
-    height: 380px;
+    height: 200px;
+    max-width: 70%;
+  }
+
+  .secondaryImageWrapper {
+    display: none !important;
   }
 
   .sideShowcaseCol {
-    flex-direction: row;
+    flex-direction: column;
     gap: 24px;
+    height: auto;
   }
 
   .breakoutCard {
-    width: 50%;
+    width: 100%;
     min-height: auto;
+    justify-content: flex-start;
+    gap: 24px;
   }
 
   .secondaryShowcaseImage {
@@ -589,6 +626,15 @@
 }
 
 @media (max-width: 580px) {
+  .mainShowcaseWrapper {
+    height: 320px;
+  }
+
+  .mainShowcaseImage {
+    height: 150px;
+    max-width: 70%;
+  }
+
   .sideShowcaseCol {
     flex-direction: column;
   }
