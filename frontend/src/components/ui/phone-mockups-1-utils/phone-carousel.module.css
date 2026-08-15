@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 16px 0 60px;
+  padding: 10px 0 40px;
   overflow: visible;
 }
 .phonesLayout {
@@ -14,7 +14,7 @@
   align-items: center;
   width: 100%;
   max-width: 600px;
-  height: 470px;
+  height: 410px;
 }
 
 /* ── Slot System ── */
@@ -27,25 +27,25 @@
 }
 
 .center {
-  transform: translateX(0) scale(1);
+  transform: translateX(0) scale(0.85);
   opacity: 1;
   z-index: 5;
   pointer-events: all;
 }
 .left {
-  transform: translateX(-150px) scale(0.77);
+  transform: translateX(-120px) scale(0.65);
   opacity: 0.34;
   z-index: 2;
   pointer-events: none;
 }
 .right {
-  transform: translateX(150px) scale(0.77);
+  transform: translateX(120px) scale(0.65);
   opacity: 0.34;
   z-index: 2;
   pointer-events: none;
 }
 .hidden {
-  transform: translateX(0) scale(0.5);
+  transform: translateX(0) scale(0.4);
   opacity: 0;
   z-index: 0;
   pointer-events: none;

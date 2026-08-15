@@ -56,8 +56,8 @@ export default function Docket14() {
               and audit associate expenses directly.
             </p>
             <div className={styles.heroButtons}>
-              <a href="#showcase" className="btn btn-primary">Watch Demo Videos</a>
-              <Link to="/contact" className="btn btn-outline">Request Custom Audit</Link>
+              <a href="#showcase" className={`btn btn-primary ${styles.primaryBtnOverride}`}>Watch Demo Videos</a>
+              <Link to="/contact" className={`btn btn-outline ${styles.outlineBtnOverride}`}>Request Custom Audit</Link>
             </div>
           </div>
         </div>

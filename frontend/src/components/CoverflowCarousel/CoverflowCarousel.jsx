@@ -42,6 +42,7 @@ export function CoverflowCarousel({
   const dragRef = useRef(null)
 
   const [selected, setSelected] = useState(0)
+  const [resetKey, setResetKey] = useState(0)
 
   const indexAt = useCallback(
     (pos) => ((Math.round(pos) % count) + count) % count,
@@ -107,6 +108,7 @@ export function CoverflowCarousel({
 
   const goTo = useCallback(
     (index) => {
+      setResetKey(prev => prev + 1)
       const target = loop
         ? index + Math.round((targetRef.current - index) / count) * count
         : index
@@ -116,11 +118,15 @@ export function CoverflowCarousel({
   )
 
   const nudge = useCallback(
-    (by) => settle(clamp(Math.round(targetRef.current) + by)),
+    (by) => {
+      setResetKey(prev => prev + 1)
+      settle(clamp(Math.round(targetRef.current) + by))
+    },
     [clamp, settle]
   )
 
   const onPointerDown = (event) => {
+    setResetKey(prev => prev + 1)
     if (rafRef.current !== null) {
       cancelAnimationFrame(rafRef.current)
       rafRef.current = null
@@ -129,6 +135,8 @@ export function CoverflowCarousel({
     targetRef.current = posRef.current
     dragRef.current = {
       id: event.pointerId,
+      startX: event.clientX,
+      startY: event.clientY,
       x: event.clientX,
       pos: posRef.current,
       v: 0,
@@ -158,6 +166,23 @@ export function CoverflowCarousel({
     const drag = dragRef.current
     if (!drag || drag.id !== event.pointerId) return
     dragRef.current = null
+
+    const deltaX = Math.abs(event.clientX - drag.startX)
+    const deltaY = Math.abs(event.clientY - drag.startY)
+    const duration = performance.now() - drag.t
+
+    // If pointer moved very little and released quickly, treat it as a click
+    if (deltaX < 6 && deltaY < 6 && duration < 300) {
+      const cardEl = event.target.closest('.' + styles.card)
+      if (cardEl) {
+        const clickedIndex = parseInt(cardEl.getAttribute('data-index'), 10)
+        if (!isNaN(clickedIndex)) {
+          goTo(clickedIndex)
+          return
+        }
+      }
+    }
+
     const carried = Math.max(-2, Math.min(2, drag.v * 0.18))
     settle(clamp(Math.round(posRef.current + carried)))
   }
@@ -186,16 +211,13 @@ export function CoverflowCarousel({
     []
   )
 
-  const [isHovered, setIsHovered] = useState(false)
-
   // Auto-play interval
   useEffect(() => {
-    if (isHovered) return
     const interval = setInterval(() => {
       nudge(1)
     }, 3200)
     return () => clearInterval(interval)
-  }, [nudge, isHovered])
+  }, [nudge, resetKey])
 
   const active = slides[selected]
 
@@ -206,8 +228,6 @@ export function CoverflowCarousel({
       role="region"
       aria-roledescription="carousel"
       aria-label={label}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
     >
       {/* CENTERED CAROUSEL DECK */}
       <div className={styles.carouselContainer}>
@@ -245,11 +265,12 @@ export function CoverflowCarousel({
                 ref={(node) => {
                   cardRefs.current[index] = node
                 }}
+                data-index={index}
                 role="group"
                 aria-roledescription="slide"
                 aria-label={`${index + 1} of ${count}`}
                 className={`${styles.card} ${index === selected ? styles.cardActive : ''}`}
-                style={{ width: 'var(--cf-card)' }}
+                style={{ width: 'var(--cf-card)', cursor: 'pointer' }}
               >
                 <img
                   src={slide.src}

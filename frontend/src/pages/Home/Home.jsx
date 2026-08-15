@@ -5,10 +5,10 @@ import PhoneMockupBasic from '../../components/ui/phone-mockups-1'
 
 // Factual Business Claims
 const stats = [
-  { value: '50+', label: 'Businesses Automated' },
+  { value: '50+', label: 'Proprietary Systems Deployed' },
   { value: '3x', label: 'Lead Conversion Rate' },
   { value: '5x', label: 'Faster Response Time' },
-  { value: 'Zero', label: 'Manual Work Required' },
+  { value: 'Zero', label: 'Bespoke Tailored Systems' },
 ]
 
 // Business Challenges & Solutions
@@ -16,14 +16,14 @@ const businessSolutions = [
   { 
     num: '01', 
     problem: 'Time-Consuming Manual Work', 
-    solution: 'Automated Workflows', 
-    desc: 'Eliminate repetitive manual tasks, auto-generate documents, and automate follow-ups to save hundreds of hours.' 
+    solution: 'Tailored Operations', 
+    desc: 'Unburden your operations. Build private document portals, custom workflow routing, and secure integrations built to your exact specs.' 
   },
   { 
     num: '02', 
     problem: 'Slow Responses & Drop-offs', 
-    solution: 'Instant Qualification', 
-    desc: 'Deploy context-aware AI engines (like WhatsFlow) to instantly capture, reply, and qualify inquiries 24/7.' 
+    solution: 'Secure Flow Routing', 
+    desc: 'Deploy context-aware private software engines (like WhatsFlow) to securely capture, route, and manage corporate inquiries 24/7.' 
   },
   { 
     num: '03', 
@@ -34,14 +34,14 @@ const businessSolutions = [
   { 
     num: '04', 
     problem: 'Rigid Off-the-Shelf SaaS', 
-    solution: 'Bespoke Operations Software', 
+    solution: 'Custom Enterprise Software', 
     desc: 'Get software tailored exactly around your operations and unique business workflows, not rigid legacy templates.' 
   },
 ]
 
 // Why VeltaZ Pillars
 const whyPillars = [
-  { title: 'Fully Automated', desc: 'Eliminate manual tracking. Our systems operate quietly in the background, capturing and qualifying prospects 24/7.' },
+  { title: 'Bespoke & Private', desc: 'Keep your business operations secure. Our custom software is fully owned by you, built for your internal teams, with isolated hosting.' },
   { title: 'Custom Built', desc: 'We design software specifically around your operations. No force-fitting your workflow into static legacy templates.' },
   { title: 'Scalable Architecture', desc: 'Built for enterprise reliability. Handles everything from ten conversations to tens of thousands of requests daily.' },
   { title: 'Optimized Economics', desc: 'Enterprise-grade automation engineered with efficiency in mind. Premium technology at a sustainable cost structure.' },
@@ -49,10 +49,10 @@ const whyPillars = [
 
 const flagshipProducts = [
   {
-    tag: 'Flagship CRM Product',
+    tag: 'Custom CRM Suite',
     title: 'WhatsFlow',
-    sub: 'WhatsApp Business Automation Platform',
-    desc: 'WhatsFlow is VeltaZ\'s primary business automation platform, designed to capture, qualify, respond to, assign, and convert WhatsApp leads automatically.',
+    sub: 'Private WhatsApp CRM System',
+    desc: 'WhatsFlow is a custom private CRM and team routing platform, built to securely manage customer chats, qualify inquiries, and distribute tasks automatically.',
     bullets: ['Lead Capture', 'AI Autoreplies', 'Round-robin Routing', 'Bulk Campaigns', 'Chat Analytics', 'Booking System'],
     btnText: 'Explore WhatsFlow',
     btnLink: '/products/whatsflow',
@@ -69,7 +69,7 @@ const flagshipProducts = [
     ]
   },
   {
-    tag: 'Legal Operations SaaS',
+    tag: 'Private Legal CRM',
     title: 'Docket14',
     sub: 'Legal Case & Team Practice Management',
     desc: 'Docket14 simplifies case tracking, task assignments, hearing schedules, and client communications for modern law firms.',
@@ -146,13 +146,15 @@ export default function Home() {
         <div className="container">
           <div className={styles.heroLayout}>
             <div className={styles.heroLeft}>
-              <span className="tag">Intelligent Business Software</span>
+              <span className="tag">Custom Software Development</span>
               <h1 className={styles.heroTitle}>
-                Automate the Work.<br />
-                Accelerate the Business.
+                Custom Apps & Software
               </h1>
+              <p className={styles.heroTagline}>
+                Systems by VeltaZ. Success by default.
+              </p>
               <p className={styles.heroSub}>
-                VeltaZ builds intelligent software that helps businesses capture leads, automate conversations, streamline operations, and turn more opportunities into customers.
+                We build custom CRMs, client databases, and automated workflows designed around your unique team operations. No rigid templates, no limits.
               </p>
               
               <div className={styles.heroCta}>
@@ -192,7 +194,7 @@ export default function Home() {
         <div className="container">
           <div className={styles.sectionHeader}>
             <span className="tag">Our Products</span>
-            <h2>One Company. Four Powerful Products.</h2>
+            <h2>One Company. Multiple Powerful Products.</h2>
             <p>From lead management to legal tracking, real estate to matchmaking — VeltaZ builds software that actually works.</p>
           </div>
           <div className={styles.suiteGrid}>

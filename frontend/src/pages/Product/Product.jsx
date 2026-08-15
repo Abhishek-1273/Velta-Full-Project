@@ -10,7 +10,7 @@ const veltaProducts = [
     name: 'WhatsFlow',
     tagline: 'WhatsApp Lead Management Platform',
     desc: 'Capture, qualify, respond to, assign, and convert WhatsApp leads automatically. Includes a unified web admin portal and native employee mobile application workflows.',
-    color: '#10b981',
+    color: '#0ea5e9',
     features: [
       'Automated lead qualification via AI',
       'Round-robin representative routing',
@@ -61,7 +61,7 @@ const veltaProducts = [
     name: 'Docket14',
     tagline: 'Legal Practice Management & Tracking',
     desc: 'Centralized case management and task tracking engine for law firms. Enables senior partners to monitor case stages, deadlines, and associate assignments in real time.',
-    color: '#4f8ef7',
+    color: '#1f2937',
     features: [
       'Associate assignment matrices',
       'Case stage transition trackers',
@@ -112,7 +112,7 @@ const veltaProducts = [
     name: 'Kin Property Management',
     tagline: 'Property Management & Marketplace',
     desc: 'A comprehensive portal designed to buy, sell, rent, and manage properties. Streamlines lead matching, listing verifications, and property management workflows.',
-    color: '#f5a623',
+    color: '#d4af37',
     features: [
       'Buy/Sell/Rent listing engines',
       'Property location map widgets',
@@ -281,15 +281,15 @@ export default function Product() {
                   </div>
 
                   {p.id === 'whatsflow' ? (
-                    <Link to="/products/whatsflow" className="btn btn-primary" style={{ marginTop: '24px' }}>
+                    <Link to="/products/whatsflow" className={`btn btn-primary ${styles.whatsflowBtn}`} style={{ marginTop: '24px' }}>
                       Explore WhatsFlow
                     </Link>
                   ) : p.id === 'docket14' ? (
-                    <Link to="/products/docket14" className="btn btn-primary" style={{ marginTop: '24px' }}>
+                    <Link to="/products/docket14" className={`btn btn-primary ${styles.docketBtn}`} style={{ marginTop: '24px' }}>
                       Explore Docket14
                     </Link>
                   ) : p.id === 'realestate' ? (
-                    <Link to="/products/kin-property" className="btn btn-primary" style={{ marginTop: '24px' }}>
+                    <Link to="/products/kin-property" className={`btn btn-primary ${styles.kinBtn}`} style={{ marginTop: '24px' }}>
                       Explore Kin Property
                     </Link>
                   ) : p.status === 'active' ? (
@@ -309,7 +309,7 @@ export default function Product() {
                       style={{ pointerEvents: 'all', position: 'relative', zIndex: 10 }}
                     >
                       <span className={styles.pulseDotPink} />
-                      Join Waitlist
+                      Join Matchmaking Waitlist
                     </button>
                   )}
                 </div>

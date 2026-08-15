@@ -7,13 +7,13 @@ const teamMembers = [
   {
     name: 'Abhishek Kayat',
     designation: 'Founder & Chief Architect',
-    quote: 'We built VeltaZ to solve a fundamental problem: scaling business operations through intelligent automation, eliminating manual work, and creating clean high-performance software.',
+    quote: 'We built VeltaZ to solve a fundamental problem: scaling business operations through bespoke software engineering, securing operations, and creating clean high-performance software.',
     src: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=80'
   },
   {
     name: 'Dev',
     designation: 'Co-Founder & Technical Lead',
-    quote: 'Designing scalable backends and intelligent automation flows. Our focus is to deliver lightning-fast responses and bulletproof integrations that work quietly 24/7.',
+    quote: 'Designing scalable backends and secure private systems. Our focus is to deliver lightning-fast responses and bulletproof integrations that work quietly 24/7.',
     src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&auto=format&fit=crop&q=80'
   },
   {
@@ -41,7 +41,7 @@ export default function About() {
               Behind Smarter Businesses.
             </h1>
             <p className={styles.sub}>
-              We believe technology should automate repetitive workloads, letting teams dedicate their energy to high-value growth.
+              We believe technology should power proprietary operational ecosystems, letting teams focus their energy on high-value scaling.
             </p>
           </div>
         </div>
@@ -52,7 +52,7 @@ export default function About() {
           <div className={styles.aboutGridHeader}>
             <h2>Who We Are? <br /> Why We Exist?</h2>
             <p>
-              VeltaZ is an automation-first technology firm. We build specialized operations software and process engines that handle repetitive workloads so your team can dedicate their energy to high-value growth.
+              VeltaZ is a bespoke technology agency. We engineer custom private software applications and proprietary systems that run your business operations securely and efficiently.
             </p>
           </div>
           {/* Grid Showcase */}
@@ -73,9 +73,9 @@ export default function About() {
                   className={styles.breakoutIcon}
                 />
                 <div style={{ marginBottom: '16px' }}>
-                  <h3 className={styles.breakoutTitle}>Automating Operations</h3>
+                  <h3 className={styles.breakoutTitle}>Custom Software Engineering</h3>
                   <p className={styles.breakoutDesc}>
-                    Providing businesses with effective workflow tools to improve efficiency, automate lead tracking, and route files seamlessly.
+                    Providing organizations with proprietary, custom-built application ecosystems that secure data, optimize operations, and scale seamlessly.
                   </p>
                 </div>
                 <Link to="/products" className={styles.breakoutButton}>
