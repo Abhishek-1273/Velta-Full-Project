@@ -434,8 +434,13 @@
     padding-left: 12px;
   }
 
-  .mobileLogoImg {
-    height: 24px;
+  .mobileLogoText {
+    font-family: var(--font-head);
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: -0.03em;
     display: block;
   }
 
