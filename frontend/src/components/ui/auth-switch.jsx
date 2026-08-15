@@ -497,7 +497,7 @@ export default function AuthSwitch({ defaultMode = 'signin', isModal = false }) 
         @media (max-width: 870px) {
           .auth-container {
             min-height: auto;
-            height: 480px;
+            height: 580px;
             width: 90%;
             max-width: 420px;
             margin: 20px auto;
@@ -505,7 +505,7 @@ export default function AuthSwitch({ defaultMode = 'signin', isModal = false }) 
           }
           .signin-signup {
             width: 100%;
-            top: 64%;
+            top: 70%;
             transform: translate(-50%, -50%);
             transition: 1s 0.8s ease-in-out;
           }
@@ -521,7 +521,7 @@ export default function AuthSwitch({ defaultMode = 'signin', isModal = false }) 
             flex-direction: row;
             justify-content: space-around;
             align-items: center;
-            padding: 0.8rem 8%;
+            padding: 1.5rem 8%;
             grid-column: 1 / 2;
           }
           .right-panel {
@@ -536,30 +536,32 @@ export default function AuthSwitch({ defaultMode = 'signin', isModal = false }) 
             transition-delay: 0.8s;
           }
           .panel h3 {
-            font-size: 1rem;
-            margin-bottom: 2px;
+            font-size: 1.15rem;
+            margin-bottom: 4px;
           }
           .panel p {
-            display: none !important;
+            font-size: 0.75rem;
+            padding: 0.5rem 0;
+            display: block !important;
           }
           .btn.transparent {
-            width: 90px;
-            height: 28px;
-            font-size: 0.65rem;
+            width: 110px;
+            height: 35px;
+            font-size: 0.7rem;
           }
           .auth-container:before {
             width: 1500px;
             height: 1500px;
             transform: translateX(-50%);
             left: 30%;
-            bottom: 74%;
+            bottom: 58%;
             right: initial;
             top: initial;
             transition: 2s ease-in-out;
           }
           .auth-container.sign-up-mode:before {
             transform: translate(-50%, 100%);
-            bottom: 26%;
+            bottom: 42%;
             right: initial;
           }
           .auth-container.sign-up-mode .left-panel .content {
@@ -572,7 +574,7 @@ export default function AuthSwitch({ defaultMode = 'signin', isModal = false }) 
             transform: translateY(300px);
           }
           .auth-container.sign-up-mode .signin-signup {
-            top: 36%;
+            top: 30%;
             transform: translate(-50%, -50%);
           }
         }
