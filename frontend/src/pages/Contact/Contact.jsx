@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import api from '../../api/api.js'
 import { toast } from 'sonner'
-import { FaEnvelope, FaWhatsapp, FaCheck } from 'react-icons/fa'
+import { FaEnvelope, FaWhatsapp, FaCheck, FaMapMarkerAlt } from 'react-icons/fa'
 import styles from './Contact.module.css'
 const INIT = { fullName: '', businessName: '', phoneNumber: '', email: '', whatToAutomate: '', message: '' }
 
@@ -97,6 +97,15 @@ export default function Contact() {
                   <div>
                     <span className={styles.detailLabel}>WhatsApp Broadcast</span>
                     <a href="https://wa.me/919960240648" target="_blank" rel="noopener noreferrer" className={styles.detailVal}>Chat with an Architect</a>
+                  </div>
+                </div>
+                <div className={styles.detailItem}>
+                  <span className={styles.detailIcon}><FaMapMarkerAlt /></span>
+                  <div>
+                    <span className={styles.detailLabel}>Headquarters</span>
+                    <span className={styles.detailVal} style={{ color: 'var(--text2)', fontSize: '0.95rem' }}>
+                      Office 405, G Wing, Mega Center,<br />Hadapsar, Pune, India
+                    </span>
                   </div>
                 </div>
               </div>
