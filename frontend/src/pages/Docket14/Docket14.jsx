@@ -110,7 +110,7 @@ export default function Docket14() {
                   <div className={styles.phoneCameraPill} />
                   <video 
                     ref={employeeVideoRef}
-                    src="https://res.cloudinary.com/dqc1awrnc/video/upload/v1786553613/Employee_Docket_14_z6mkms.mp4" 
+                    src="https://res.cloudinary.com/dqc1awrnc/video/upload/v1786782535/Employee_Docket_14_mixgsb.mp4" 
                     autoPlay 
                     loop 
                     muted 
@@ -150,7 +150,7 @@ export default function Docket14() {
                   <div className={styles.phoneCameraPill} />
                   <video 
                     ref={adminVideoRef}
-                    src="https://res.cloudinary.com/dqc1awrnc/video/upload/v1786553610/Admin_Docket_14_bqwukx.mp4" 
+                    src="https://res.cloudinary.com/dqc1awrnc/video/upload/v1786782545/Admin_Docket_14_lf6icd.mp4" 
                     autoPlay 
                     loop 
                     muted 
