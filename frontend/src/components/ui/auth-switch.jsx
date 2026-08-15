@@ -154,8 +154,8 @@ export default function AuthSwitch({ defaultMode = 'signin', isModal = false }) 
         .auth-container {
           position: relative;
           width: 100%;
-          max-width: 760px;
-          height: 480px;
+          max-width: 580px;
+          height: 350px;
           background: #ffffff;
           border: 1px solid rgba(0, 0, 0, 0.06);
           border-radius: 20px;
@@ -188,7 +188,7 @@ export default function AuthSwitch({ defaultMode = 'signin', isModal = false }) 
           align-items: center;
           justify-content: center;
           flex-direction: column;
-          padding: 0 3rem;
+          padding: 0 1.5rem;
           transition: all 0.2s 0.7s;
           overflow: hidden;
           grid-column: 1 / 2;
@@ -206,20 +206,20 @@ export default function AuthSwitch({ defaultMode = 'signin', isModal = false }) 
         }
 
         .title {
-          font-size: 1.85rem;
+          font-size: 1.35rem;
           color: #111111;
-          margin-bottom: 8px;
+          margin-bottom: 6px;
           font-weight: 800;
           letter-spacing: -0.02em;
         }
 
         .input-field {
-          max-width: 380px;
+          max-width: 250px;
           width: 100%;
           background-color: #f3f4f6;
           border: 1px solid transparent;
-          margin: 6px 0;
-          height: 48px;
+          margin: 4px 0;
+          height: 36px;
           border-radius: 10px;
           display: grid;
           grid-template-columns: 15% 85%;
@@ -236,7 +236,7 @@ export default function AuthSwitch({ defaultMode = 'signin', isModal = false }) 
 
         .input-field i {
           text-align: center;
-          line-height: 48px;
+          line-height: 36px;
           color: #666666;
           transition: 0.5s;
           font-size: 1.05rem;
@@ -250,9 +250,10 @@ export default function AuthSwitch({ defaultMode = 'signin', isModal = false }) 
           background: none;
           outline: none;
           border: none;
-          line-height: 1;
+          height: 100%;
+          line-height: normal;
           font-weight: 500;
-          font-size: 1rem;
+          font-size: 0.95rem;
           color: #111111;
           width: 100%;
         }
@@ -291,16 +292,16 @@ export default function AuthSwitch({ defaultMode = 'signin', isModal = false }) 
 
         .btn {
           width: 100%;
-          max-width: 380px;
+          max-width: 250px;
           background: #C9A227;
           color: #ffffff;
           border: none;
           outline: none;
-          height: 44px;
+          height: 34px;
           border-radius: 10px;
           text-transform: uppercase;
           font-weight: 700;
-          margin: 12px 0 0 0;
+          margin: 8px 0 0 0;
           cursor: pointer;
           transition: all 0.2s ease;
           font-size: 0.85rem;
@@ -326,19 +327,20 @@ export default function AuthSwitch({ defaultMode = 'signin', isModal = false }) 
           display: flex;
           flex-direction: column;
           align-items: flex-end;
-          justify-content: space-around;
+          justify-content: center;
+          gap: 15px;
           text-align: center;
           z-index: 6;
         }
 
         .left-panel {
           pointer-events: all;
-          padding: 3rem 17% 2rem 12%;
+          padding: 2rem 12% 1.5rem 8%;
         }
 
         .right-panel {
           pointer-events: none;
-          padding: 3rem 12% 2rem 17%;
+          padding: 2rem 8% 1.5rem 12%;
         }
 
         .panel .content {
