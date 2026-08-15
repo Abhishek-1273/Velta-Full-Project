@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { toast } from "sonner";
-import { FaUser, FaEnvelope, FaLock, FaArrowLeft, FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaUser, FaEnvelope, FaLock, FaArrowLeft, FaEye, FaEyeSlash, FaPhone } from "react-icons/fa";
 
 export default function AuthSwitch({ defaultMode = 'signin', isModal = false }) {
   const navigate = useNavigate();
@@ -13,7 +13,7 @@ export default function AuthSwitch({ defaultMode = 'signin', isModal = false }) 
 
   // Form states
   const [signInForm, setSignInForm] = useState({ email: '', password: '' });
-  const [signUpForm, setSignUpForm] = useState({ name: '', businessName: 'VeltaZ Business', email: '', phone: '1234567890', password: '' });
+  const [signUpForm, setSignUpForm] = useState({ name: '', businessName: 'VeltaZ Business', email: '', phone: '', password: '' });
   const [showLoginPassword, setShowLoginPassword] = useState(false);
   const [showSignUpPassword, setShowSignUpPassword] = useState(false);
 
@@ -63,10 +63,39 @@ export default function AuthSwitch({ defaultMode = 'signin', isModal = false }) 
 
   const handleSignUp = async (e) => {
     e.preventDefault();
-    if (!signUpForm.name.trim() || !signUpForm.email.trim() || !signUpForm.password) {
+    
+    // 1. Basic empty check
+    if (!signUpForm.name.trim() || !signUpForm.email.trim() || !signUpForm.phone.trim() || !signUpForm.password) {
       toast.error('Please fill in all fields');
       return;
     }
+    
+    // 2. Username length validation
+    if (signUpForm.name.trim().length < 3) {
+      toast.error('Username must be at least 3 characters long');
+      return;
+    }
+    
+    // 3. Email regex validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(signUpForm.email.trim())) {
+      toast.error('Please enter a valid email address');
+      return;
+    }
+    
+    // 4. Phone number regex validation (at least 7 to 15 digits)
+    const phoneRegex = /^[0-9+\s\-]{7,15}$/;
+    if (!phoneRegex.test(signUpForm.phone.trim())) {
+      toast.error('Please enter a valid phone number (7-15 digits)');
+      return;
+    }
+    
+    // 5. Password length validation
+    if (signUpForm.password.length < 6) {
+      toast.error('Password must be at least 6 characters long');
+      return;
+    }
+
     setLoading(true);
     try {
       await signup(signUpForm);
@@ -612,6 +641,16 @@ export default function AuthSwitch({ defaultMode = 'signin', isModal = false }) 
                     placeholder="Email"
                     value={signUpForm.email}
                     onChange={(e) => setSignUpForm({ ...signUpForm, email: e.target.value })}
+                    required
+                  />
+                </div>
+                <div className="input-field">
+                  <i><FaPhone /></i>
+                  <input
+                    type="tel"
+                    placeholder="Phone Number"
+                    value={signUpForm.phone}
+                    onChange={(e) => setSignUpForm({ ...signUpForm, phone: e.target.value })}
                     required
                   />
                 </div>
