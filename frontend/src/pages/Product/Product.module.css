@@ -54,7 +54,14 @@
 .productsList {
   display: flex;
   flex-direction: column;
-  gap: 96px;
+  gap: 64px;
+}
+
+.productDivider {
+  height: 1px;
+  width: 100%;
+  background: radial-gradient(circle, var(--border) 0%, transparent 80%);
+  opacity: 0.8;
 }
 
 /* ================= PRODUCT CARD ================= */

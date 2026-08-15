@@ -154,8 +154,8 @@ export default function AuthSwitch({ defaultMode = 'signin', isModal = false }) 
         .auth-container {
           position: relative;
           width: 100%;
-          max-width: 900px;
-          height: 550px;
+          max-width: 760px;
+          height: 480px;
           background: #ffffff;
           border: 1px solid rgba(0, 0, 0, 0.06);
           border-radius: 20px;
@@ -206,9 +206,9 @@ export default function AuthSwitch({ defaultMode = 'signin', isModal = false }) 
         }
 
         .title {
-          font-size: 2.2rem;
+          font-size: 1.85rem;
           color: #111111;
-          margin-bottom: 15px;
+          margin-bottom: 8px;
           font-weight: 800;
           letter-spacing: -0.02em;
         }
@@ -218,9 +218,9 @@ export default function AuthSwitch({ defaultMode = 'signin', isModal = false }) 
           width: 100%;
           background-color: #f3f4f6;
           border: 1px solid transparent;
-          margin: 10px 0;
-          height: 55px;
-          border-radius: 55px;
+          margin: 6px 0;
+          height: 48px;
+          border-radius: 10px;
           display: grid;
           grid-template-columns: 15% 85%;
           padding: 0 0.4rem;
@@ -236,10 +236,10 @@ export default function AuthSwitch({ defaultMode = 'signin', isModal = false }) 
 
         .input-field i {
           text-align: center;
-          line-height: 55px;
+          line-height: 48px;
           color: #666666;
           transition: 0.5s;
-          font-size: 1.1rem;
+          font-size: 1.05rem;
           font-style: normal;
           display: flex;
           align-items: center;
@@ -290,19 +290,20 @@ export default function AuthSwitch({ defaultMode = 'signin', isModal = false }) 
         }
 
         .btn {
-          width: 150px;
+          width: 100%;
+          max-width: 380px;
           background: #C9A227;
           color: #ffffff;
           border: none;
           outline: none;
-          height: 49px;
-          border-radius: 49px;
+          height: 44px;
+          border-radius: 10px;
           text-transform: uppercase;
-          font-weight: 600;
-          margin: 10px 0;
+          font-weight: 700;
+          margin: 12px 0 0 0;
           cursor: pointer;
-          transition: 0.2s;
-          font-size: 0.9rem;
+          transition: all 0.2s ease;
+          font-size: 0.85rem;
           box-shadow: 0 4px 12px rgba(201, 162, 39, 0.2);
         }
 
@@ -491,13 +492,17 @@ export default function AuthSwitch({ defaultMode = 'signin', isModal = false }) 
 
         @media (max-width: 870px) {
           .auth-container {
-            min-height: 800px;
-            height: 100vh;
+            min-height: auto;
+            height: 630px;
+            width: 90%;
+            max-width: 420px;
+            margin: 20px auto;
+            border-radius: 20px;
           }
           .signin-signup {
             width: 100%;
-            top: 95%;
-            transform: translate(-50%, -100%);
+            top: 60%;
+            transform: translate(-50%, -50%);
             transition: 1s 0.8s ease-in-out;
           }
           .signin-signup,
@@ -563,8 +568,8 @@ export default function AuthSwitch({ defaultMode = 'signin', isModal = false }) 
             transform: translateY(300px);
           }
           .auth-container.sign-up-mode .signin-signup {
-            top: 5%;
-            transform: translate(-50%, 0);
+            top: 34%;
+            transform: translate(-50%, -50%);
           }
         }
 

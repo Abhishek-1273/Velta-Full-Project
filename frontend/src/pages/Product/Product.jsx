@@ -258,7 +258,9 @@ export default function Product() {
         <div className="container">
           <div className={styles.productsList}>
             {veltaProducts.map((p, idx) => (
-              <div key={p.id} className={styles.productCard}>
+              <React.Fragment key={p.id}>
+                {idx > 0 && <div className={styles.productDivider} />}
+                <div className={styles.productCard}>
                 <div className={styles.productInfo}>
                   <span className={`${styles.statusLabel} ${p.status === 'development' ? styles.devBadge : styles.activeBadge}`}>
                     {p.badge}
@@ -345,6 +347,7 @@ export default function Product() {
                   </div>
                 </div>
               </div>
+            </React.Fragment>
             ))}
           </div>
         </div>

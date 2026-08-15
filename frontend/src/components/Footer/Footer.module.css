@@ -206,8 +206,11 @@
 
 @media (max-width: 900px) {
   .top {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 40px;
+  }
+  .newsletter {
+    grid-column: 1 / -1;
   }
   .bottom {
     flex-direction: column;

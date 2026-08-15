@@ -338,6 +338,11 @@
   display: none;
 }
 
+/* ================= MOBILE THEME TOGGLE ================= */
+.mobileThemeToggle {
+  display: none;
+}
+
 /* ================= MOBILE USER ================= */
 .mobileUser {
   width: 100%;
@@ -449,5 +454,27 @@
     padding: 10px;
     border: 1px solid var(--border);
     border-radius: var(--radius);
+  }
+
+  .mobileThemeToggle {
+    display: block;
+    width: 100%;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+  }
+
+  .mobileToggleInner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 8px 12px;
+  }
+
+  .mobileToggleInner span {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text2);
   }
 }

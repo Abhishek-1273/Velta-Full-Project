@@ -85,6 +85,14 @@ export default function Navbar() {
                 </li>
               ))}
 
+              {/* MOBILE THEME TOGGLE */}
+              <li className={styles.mobileThemeToggle}>
+                <div className={styles.mobileToggleInner}>
+                  <span>Appearance</span>
+                  <ThemeToggle />
+                </div>
+              </li>
+
               {/* MOBILE AUTH */}
               <li className={styles.mobileAuth}>
                 {user ? (

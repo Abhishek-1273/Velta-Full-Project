@@ -1,7 +1,10 @@
 import React, { useState, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { FaArrowLeft } from 'react-icons/fa'
 import styles from './WhatsFlow.module.css'
 
 export default function WhatsFlow() {
+  const navigate = useNavigate()
   // Main view switcher: 'employee' or 'admin'
   const [portalView, setPortalView] = useState('employee')
   
@@ -147,7 +150,9 @@ export default function WhatsFlow() {
 
   return (
     <div className={styles.page}>
-      
+      <button onClick={() => navigate(-1)} className={styles.backBtn} aria-label="Go back">
+        <FaArrowLeft />
+      </button>
       {/* Toast Alert popup */}
       {showToast && (
         <div className={styles.toastNotification}>

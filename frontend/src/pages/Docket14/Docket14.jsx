@@ -1,8 +1,10 @@
 import React, { useState, useRef } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { FaArrowLeft } from 'react-icons/fa'
 import styles from './Docket14.module.css'
 
 export default function Docket14() {
+  const navigate = useNavigate()
   // Video player refs and playing states
   const employeeVideoRef = useRef(null)
   const adminVideoRef = useRef(null)
@@ -35,7 +37,9 @@ export default function Docket14() {
 
   return (
     <div className={styles.page}>
-      
+      <button onClick={() => navigate(-1)} className={styles.backBtn} aria-label="Go back">
+        <FaArrowLeft />
+      </button>
       {/* HERO SECTION */}
       <section className={styles.hero}>
         <div className={styles.heroBg}>
