@@ -221,9 +221,9 @@ export default function AuthSwitch({ defaultMode = 'signin', isModal = false }) 
           margin: 4px 0;
           height: 36px;
           border-radius: 10px;
-          display: grid;
-          grid-template-columns: 15% 85%;
-          padding: 0 0.4rem;
+          display: flex;
+          align-items: center;
+          padding: 0 10px;
           position: relative;
           transition: 0.3s;
         }
@@ -235,15 +235,15 @@ export default function AuthSwitch({ defaultMode = 'signin', isModal = false }) 
         }
 
         .input-field i {
-          text-align: center;
-          line-height: 36px;
           color: #666666;
           transition: 0.5s;
-          font-size: 1.05rem;
+          font-size: 1rem;
           font-style: normal;
           display: flex;
           align-items: center;
           justify-content: center;
+          margin-right: 8px;
+          flex-shrink: 0;
         }
 
         .input-field input {
@@ -251,11 +251,13 @@ export default function AuthSwitch({ defaultMode = 'signin', isModal = false }) 
           outline: none;
           border: none;
           height: 100%;
-          line-height: normal;
+          flex: 1;
           font-weight: 500;
           font-size: 0.95rem;
           color: #111111;
           width: 100%;
+          padding: 0;
+          margin: 0;
         }
 
         .password-toggle-btn {
