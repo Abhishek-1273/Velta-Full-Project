@@ -76,7 +76,7 @@ export default function Navbar() {
               {/* MOBILE DRAWER HEADER LOGO */}
               <li className={styles.mobileLogoItem}>
                 <Link to="/" className={styles.mobileLogoLink} onClick={() => setOpen(false)}>
-                  <img src="/logo/logo.png?v=2" alt="Veltaz Logo" className={styles.mobileLogoImg} />
+                  <img src="/logo/logo-gold.png" alt="Veltaz Emblem" className={styles.mobileLogoImg} />
                 </Link>
               </li>
               {links.map(l => (
