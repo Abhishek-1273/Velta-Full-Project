@@ -50,6 +50,14 @@ export async function protectedLoader({ request }) {
 
 // Redirect already-authed users away from signin/signup
 export async function guestLoader() {
+  try {
+    const user = await checkSession()
+    if (user) {
+      throw redirect('/')
+    }
+  } catch (err) {
+    if (err instanceof Response) throw err  // redirect pass through
+  }
   return null
 }
 

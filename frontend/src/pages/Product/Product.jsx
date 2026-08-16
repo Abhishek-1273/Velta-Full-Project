@@ -10,7 +10,7 @@ const veltaProducts = [
     name: 'WhatsFlow',
     tagline: 'WhatsApp Lead Management Platform',
     desc: 'Capture, qualify, respond to, assign, and convert WhatsApp leads automatically. Includes a unified web admin portal and native employee mobile application workflows.',
-    color: '#0ea5e9',
+    color: '#0284c7',
     features: [
       'Automated lead qualification via AI',
       'Round-robin representative routing',
@@ -112,7 +112,7 @@ const veltaProducts = [
     name: 'Kin Property Management',
     tagline: 'Property Management & Marketplace',
     desc: 'A comprehensive portal designed to buy, sell, rent, and manage properties. Streamlines lead matching, listing verifications, and property management workflows.',
-    color: '#d4af37',
+    color: '#b8973b',
     features: [
       'Buy/Sell/Rent listing engines',
       'Property location map widgets',
@@ -260,7 +260,7 @@ export default function Product() {
             {veltaProducts.map((p, idx) => (
               <React.Fragment key={p.id}>
                 {idx > 0 && <div className={styles.productDivider} />}
-                <div className={styles.productCard}>
+                <div className={styles.productCard} data-product-id={p.id}>
                 <div className={styles.productInfo}>
                   <span className={`${styles.statusLabel} ${p.status === 'development' ? styles.devBadge : styles.activeBadge}`}>
                     {p.badge}

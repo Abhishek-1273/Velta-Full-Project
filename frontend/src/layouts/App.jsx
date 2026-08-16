@@ -6,7 +6,7 @@ import Navbar from '../components/Navbar/Navbar.jsx'
 import Footer from '../components/Footer/Footer.jsx'
 import PageTransition from '../components/Animation/PageTransition.jsx'
 import VeltaChat from '../components/VeltaChat/VeltaChat.jsx'
-import AuthSwitch from '../components/ui/auth-switch.jsx'
+
 
 export default function RootLayout() {
   const location = useLocation()
@@ -31,7 +31,7 @@ export default function RootLayout() {
         <ScrollRestoration />
         {!isAuthPage && <Navbar />}
         {isAuthPage ? (
-          <AuthSwitch defaultMode={location.pathname === '/signup' ? 'signup' : 'signin'} />
+          <Outlet />
         ) : (
           <PageTransition>
             <Outlet />

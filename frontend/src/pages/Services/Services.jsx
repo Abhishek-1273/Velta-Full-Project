@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { createPortal } from 'react-dom'
 import { Link } from 'react-router-dom'
 import { CoverflowCarousel } from '../../components/CoverflowCarousel/CoverflowCarousel'
 import styles from './Services.module.css'
@@ -84,7 +85,49 @@ const servicesSlides = [
   }
 ]
 
+const socialImages = [
+  {
+    title: 'LinkedIn Company Page (iPad View)',
+    desc: 'Velta LinkedIn corporate authority presence',
+    src: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1786862364/LinkedIn_bxqjpj.jpg'
+  },
+  {
+    title: 'Instagram Creative Grid (Laptop View)',
+    desc: 'Bespoke grid aesthetic and post handling',
+    src: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1786873647/Instagram_Page_Handling_odzgs1.png'
+  },
+  {
+    title: 'Instagram Insights (Views)',
+    desc: 'Reel views and engagement analytics',
+    src: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1786862364/Instagram_Views_gjeylm.jpg'
+  },
+  {
+    title: 'Instagram Analytics (Graph)',
+    desc: 'Account reach impressions growth metrics',
+    src: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1786862364/Instagram_Insights_x8jsae.jpg'
+  },
+  {
+    title: 'Organic Follower Scaling',
+    desc: 'Follower gain and growth velocity over 30 days',
+    src: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1786862364/Instagram_Followers_gnkqhb.jpg'
+  }
+]
+
 export default function Services() {
+  const [activeIdx, setActiveIdx] = useState(0)
+  const [activeLightboxImg, setActiveLightboxImg] = useState(null)
+
+  React.useEffect(() => {
+    if (activeLightboxImg) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [activeLightboxImg])
+
   return (
     <div className={styles.page}>
       
@@ -172,6 +215,149 @@ export default function Services() {
         </div>
       </section>
 
+      {/* SOCIAL MEDIA SHOWCASE SECTION */}
+      <section className={styles.demoShowcaseSection} style={{ borderTop: '1px solid var(--border)' }}>
+        <div className="container">
+          <div className={`${styles.showcaseWrapper} ${styles.showcaseWrapperReverse}`}>
+            <div className={styles.showcaseLeft}>
+              <span className="tag">Organic Curation</span>
+              <h2>Social Media & LinkedIn Handling</h2>
+              <p>
+                We curate high-authority brand aesthetics, LinkedIn B2B posts, and creative Reels content calendars that generate organic client traction.
+              </p>
+
+              <div className={styles.liveLinksRow}>
+                <span className={styles.liveLabel}>Live Reels:</span>
+                <a href="https://www.instagram.com/reel/DbxGmIyK1fA/?igsh=NDJvYjVuMTQ1bmpt" target="_blank" rel="noopener noreferrer" className={styles.liveLink}>
+                  Campaign Reel #1 ↗
+                </a>
+                <span className={styles.divider}>•</span>
+                <a href="https://www.instagram.com/reel/DbppDy8q-RL/?igsh=MXQ0dWphMDhwcXBlNg==" target="_blank" rel="noopener noreferrer" className={styles.liveLink}>
+                  Campaign Reel #2 ↗
+                </a>
+              </div>
+              
+              <div className={styles.showcaseGrid}>
+                <div className={styles.showcaseItem}>
+                  <h5>LinkedIn Scaling</h5>
+                  <p>Professional profiles, B2B updates, and lead outreach copies.</p>
+                </div>
+                <div className={styles.showcaseItem}>
+                  <h5>Instagram Grid</h5>
+                  <p>Clean, unified brand styling blocks and carousel sliders.</p>
+                </div>
+                <div className={styles.showcaseItem}>
+                  <h5>Reels & Trimming</h5>
+                  <p>Dynamic video edits, custom text captions, and short clipping.</p>
+                </div>
+                <div className={styles.showcaseItem}>
+                  <h5>Automated Flows</h5>
+                  <p>Weekly content plans mapped and queued with zero post-day effort.</p>
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.showcaseRight}>
+              <div className={styles.phoneDeck}>
+                <div className={`${styles.miniPhone} ${styles.phone1}`}>
+                  <img src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1786862364/Instagram_Followers_gnkqhb.jpg" alt="Velta Instagram Follower Growth" />
+                </div>
+                <div className={`${styles.miniPhone} ${styles.phone2}`}>
+                  <img src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1786862364/Instagram_Insights_x8jsae.jpg" alt="Velta Instagram Insights Graph" />
+                </div>
+                <div className={`${styles.miniPhone} ${styles.phone3}`}>
+                  <img src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1786862364/Instagram_Views_gjeylm.jpg" alt="Velta Instagram Reels Views" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Device Row (iPad on left, Laptop on right) */}
+          <div className={styles.bottomDeviceRow}>
+            {/* iPad Mockup */}
+            <div className={styles.ipadMockup} onClick={() => setActiveLightboxImg("https://res.cloudinary.com/dqc1awrnc/image/upload/v1786862364/LinkedIn_bxqjpj.jpg")} title="Click to view full screen">
+              <div className={styles.ipadScreen}>
+                <img src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1786862364/LinkedIn_bxqjpj.jpg" alt="Velta LinkedIn Page on Tablet" />
+              </div>
+            </div>
+
+            {/* Laptop Mockup */}
+            <div className={styles.laptopMockup} onClick={() => setActiveLightboxImg("https://res.cloudinary.com/dqc1awrnc/image/upload/v1786873647/Instagram_Page_Handling_odzgs1.png")} title="Click to view full screen">
+              <div className={styles.laptopScreen}>
+                <img src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1786873647/Instagram_Page_Handling_odzgs1.png" alt="Velta Instagram Profile on Laptop" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* GRAPHIC DESIGN SHOWCASE SECTION */}
+      <section className={styles.demoShowcaseSection} style={{ borderTop: '1px solid var(--border)' }}>
+        <div className="container">
+          <div className={styles.showcaseWrapper}>
+            <div className={styles.showcaseLeft}>
+              <span className="tag">Brand Identity</span>
+              <h2>Graphic & 3D Logo Audits</h2>
+              <p>
+                We audit flat, outdated vector assets and redesign them into premium matte black corporate marks, style guides, and high-fidelity Figma UX wireframes.
+              </p>
+              
+              <div className={styles.showcaseGrid}>
+                <div className={styles.showcaseItem}>
+                  <h5>Logo Redesigns</h5>
+                  <p>Upgrades from generic color symbols to premium corporate logos.</p>
+                </div>
+                <div className={styles.showcaseItem}>
+                  <h5>Figma UI/UX</h5>
+                  <p>High-fidelity wireframes and interactive web mockups.</p>
+                </div>
+                <div className={styles.showcaseItem}>
+                  <h5>3D Modeling</h5>
+                  <p>Custom product renders with realistic textures and lighting angles.</p>
+                </div>
+                <div className={styles.showcaseItem}>
+                  <h5>Brand Guidelines</h5>
+                  <p>Corporate typography scales, typography books, and vector files.</p>
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.showcaseRight}>
+              <div className={styles.phoneDeck}>
+                <div className={`${styles.miniPhone} ${styles.phone1}`}>
+                  <img src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1786872697/Veltaz_xw1lgm.png" alt="Velta Logo Design Layout" />
+                </div>
+                <div className={`${styles.miniPhone} ${styles.phone2}`}>
+                  <img src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1786878180/KinProperty_bb9c1m.png" alt="Creative Logo Design Workspace" />
+                </div>
+                <div className={`${styles.miniPhone} ${styles.phone3}`}>
+                  <img src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1786872696/Me_and_Mine_sjol5s.png" alt="Velta Tech Assets Mockup" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Comparison Row (2D Blueprint Plan vs 3D Model Visualization) */}
+          <div className={styles.bottomComparisonRow}>
+            {/* 2D Plan (Before) */}
+            <div className={styles.comparisonCardLarge} onClick={() => setActiveLightboxImg("https://res.cloudinary.com/dqc1awrnc/image/upload/v1786875137/2dPlot_uepahq.jpg")} title="Click to view full screen">
+              <div className={styles.cardBadge}>2D Draft Plan</div>
+              <div className={styles.cardImageContainerLarge} style={{ background: '#ffffff' }}>
+                <img src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1786875137/2dPlot_uepahq.jpg" alt="2D Layout Plan Blueprint" />
+              </div>
+            </div>
+
+            {/* 3D Model (After) */}
+            <div className={styles.comparisonCardLarge} onClick={() => setActiveLightboxImg("https://res.cloudinary.com/dqc1awrnc/image/upload/v1786862364/3dPlot_q1mlsy.png")} title="Click to view full screen">
+              <div className={styles.cardBadge}>3D Render Concept</div>
+              <div className={styles.cardImageContainerLarge} style={{ background: '#0b0f19' }}>
+                <img src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1786862364/3dPlot_q1mlsy.png" alt="3D Model Visualization Render" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className={styles.ctaSection}>
         <div className="container">
@@ -184,6 +370,25 @@ export default function Services() {
           </div>
         </div>
       </section>
+
+      {/* Lightbox Modal */}
+      {activeLightboxImg && createPortal(
+        <div 
+          className={styles.lightboxOverlay} 
+          onClick={() => setActiveLightboxImg(null)}
+        >
+          <div className={styles.lightboxContent} onClick={(e) => e.stopPropagation()}>
+            <button 
+              className={styles.lightboxClose} 
+              onClick={() => setActiveLightboxImg(null)}
+            >
+              &times;
+            </button>
+            <img src={activeLightboxImg} alt="Enlarged View" />
+          </div>
+        </div>,
+        document.body
+      )}
 
     </div>
   )

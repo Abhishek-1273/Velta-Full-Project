@@ -5,22 +5,22 @@ import { TestimonialMarquee } from '../../components/TestimonialMarquee/Testimon
 import styles from './About.module.css'
 const teamMembers = [
   {
-    name: 'Abhishek Kayat',
-    designation: 'Founder & Chief Architect',
-    quote: 'We built VeltaZ to solve a fundamental problem: scaling business operations through bespoke software engineering, securing operations, and creating clean high-performance software.',
-    src: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=80'
+    name: 'Dhruv',
+    designation: 'Co-Founder & CEO',
+    quote: 'VeltaZ was born to make operations seamless. I lead our business growth, marketing, and client communications, ensuring that the custom software ecosystems we build align perfectly with our clients\' real-world scaling goals.',
+    src: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1786874509/Dhruv_wcdpti.png'
   },
   {
-    name: 'Dev',
-    designation: 'Co-Founder & Technical Lead',
-    quote: 'Designing scalable backends and secure private systems. Our focus is to deliver lightning-fast responses and bulletproof integrations that work quietly 24/7.',
-    src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&auto=format&fit=crop&q=80'
+    name: 'Arman',
+    designation: 'Co-Founder & CTO',
+    quote: 'We architect bulletproof technology. My focus is engineering ultra-secure backend infrastructures, custom APIs, and high-performance databases that handle heavy operational loads silently and reliably.',
+    src: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1786874508/Arman_b46q6r.png'
   },
   {
-    name: 'Sneha Sharma',
-    designation: 'Lead Product Designer',
-    quote: 'Ensuring VeltaZ\'s products are not just fast, but beautiful, responsive, and intuitive. We create human-centric interfaces that make complex data clear and accessible.',
-    src: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&auto=format&fit=crop&q=80'
+    name: 'Abhishek',
+    designation: 'Co-Founder & CPO',
+    quote: 'I am obsessed with product perfection. From high-fidelity user flows to custom product design, I bridge backend functionality with premium UX, ensuring every system we build looks stunning and works flawlessly.',
+    src: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1786874508/Abhishek_rpscb3.png'
   }
 ]
 

@@ -348,6 +348,186 @@
   margin-bottom: 12px;
 }
 
+.showcaseWrapperReverse {
+  grid-template-columns: 1fr 1.2fr;
+}
+
+.showcaseWrapperReverse .showcaseLeft {
+  order: 2;
+}
+
+.showcaseWrapperReverse .showcaseRight {
+  order: 1;
+}
+
+/* Bottom Device Row (iPad on Left, Laptop on Right - Centered) */
+.bottomDeviceRow {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 48px;
+  margin-top: 50px;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.bottomDeviceRow .ipadMockup {
+  position: relative;
+  width: 320px;
+  aspect-ratio: 4/3; /* landscape tablet mode */
+  background: #111;
+  border: 8px solid #222;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bottomDeviceRow .ipadScreen {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  overflow-y: auto;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.bottomDeviceRow .ipadScreen::-webkit-scrollbar {
+  display: none;
+}
+
+.bottomDeviceRow .ipadScreen img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.bottomDeviceRow .laptopMockup {
+  position: relative;
+  width: 600px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bottomDeviceRow .laptopScreen {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/10;
+  background: #fff;
+  border: 10px solid #222;
+  border-radius: 18px;
+  overflow-y: auto;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  box-shadow: 0 15px 35px rgba(0,0,0,0.35);
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.bottomDeviceRow .laptopScreen::-webkit-scrollbar {
+  display: none;
+}
+
+.bottomDeviceRow .laptopScreen img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Hover effects */
+.bottomDeviceRow:hover .ipadMockup {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.45);
+}
+
+.bottomDeviceRow:hover .laptopMockup {
+  transform: translateY(-8px) scale(1.02);
+}
+
+
+
+/* Bottom Comparison Row (2D vs 3D) */
+.bottomComparisonRow {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 48px;
+  margin-top: 60px;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.comparisonCardLarge {
+  width: 380px;
+  position: relative;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cardImageContainerLarge {
+  width: 100%;
+  aspect-ratio: 4/3; /* landscape view */
+  overflow: hidden;
+  position: relative;
+}
+
+.cardImageContainerLarge img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  filter: contrast(1.08) brightness(1.01); /* sharpens text/lines */
+}
+
+.comparisonCardLarge:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.18);
+  border-color: var(--accent);
+}
+
+.cardBadge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  z-index: 3;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
 /* ── Responsive ── */
 @media (max-width: 1024px) {
   .servicesGrid {
@@ -363,8 +543,145 @@
     grid-template-columns: 1fr;
     gap: 40px;
   }
+  .showcaseWrapperReverse .showcaseLeft {
+    order: 1;
+  }
+  .showcaseWrapperReverse .showcaseRight {
+    order: 2;
+  }
   .phoneDeck {
     height: 400px;
   }
+  .bottomDeviceRow {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin-top: 30px;
+    padding: 0;
+  }
+  .bottomDeviceRow .laptopMockup {
+    width: 90%;
+    max-width: 320px;
+  }
+  .bottomDeviceRow .ipadMockup {
+    width: 70%;
+    max-width: 220px;
+  }
+  .bottomComparisonRow {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin-top: 30px;
+    padding: 0;
+  }
+  .comparisonCardLarge {
+    width: 90%;
+    max-width: 380px;
+  }
 }
 
+/* Click-to-Zoom cursor indicators */
+.bottomDeviceRow .ipadMockup,
+.bottomDeviceRow .laptopMockup,
+.comparisonCardLarge {
+  cursor: pointer;
+}
+
+/* Lightbox Modal CSS */
+.lightboxOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: zoom-out;
+  animation: fadeIn 0.25s ease;
+}
+
+.lightboxContent {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: zoomIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lightboxContent img {
+  max-width: 90%;
+  max-height: 82vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  border: 1.5px solid rgba(255,255,255,0.1);
+  cursor: default;
+}
+
+.lightboxClose {
+  position: absolute;
+  top: -45px;
+  right: 0;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 36px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.lightboxClose:hover {
+  color: #fff;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Live Links Row */
+.liveLinksRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: -16px;
+  margin-bottom: 24px;
+}
+
+.liveLabel {
+  color: var(--text-muted);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 11px;
+}
+
+.liveLink {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 13px;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+.liveLink:hover {
+  color: var(--text-main);
+  text-decoration: underline;
+}
+
+.divider {
+  color: var(--border);
+  font-size: 12px;
+}

@@ -91,8 +91,8 @@ export default function AuthSwitch({ defaultMode = 'signin', isModal = false }) 
     }
     
     // 5. Password length validation
-    if (signUpForm.password.length < 6) {
-      toast.error('Password must be at least 6 characters long');
+    if (signUpForm.password.length < 8) {
+      toast.error('Password must be at least 8 characters long');
       return;
     }
 

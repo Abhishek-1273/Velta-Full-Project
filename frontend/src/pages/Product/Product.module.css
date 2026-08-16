@@ -501,14 +501,14 @@
 
 /* WhatsFlow Custom Button */
 .whatsflowBtn {
-  background: #0ea5e9 !important;
-  border-color: #0ea5e9 !important;
+  background: #0284c7 !important;
+  border-color: #0284c7 !important;
   color: #ffffff !important;
 }
 .whatsflowBtn:hover {
-  background: #0284c7 !important;
-  border-color: #0284c7 !important;
-  box-shadow: 0 4px 14px rgba(14, 165, 233, 0.4) !important;
+  background: #0369a1 !important;
+  border-color: #0369a1 !important;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.4) !important;
   transform: translateY(-2px);
 }
 
@@ -527,14 +527,34 @@
 
 /* Kin Property Custom Button */
 .kinBtn {
-  background: #d4af37 !important;
-  border-color: #d4af37 !important;
+  background: #b8973b !important;
+  border-color: #b8973b !important;
   color: #ffffff !important;
 }
 .kinBtn:hover {
-  background: #c29b2b !important;
-  border-color: #c29b2b !important;
-  box-shadow: 0 4px 14px rgba(212, 175, 55, 0.4) !important;
+  background: #a3822d !important;
+  border-color: #a3822d !important;
+  box-shadow: 0 4px 14px rgba(184, 151, 59, 0.4) !important;
   transform: translateY(-2px);
+}
+
+/* ── Docket14 Dark Theme Icon Visibility Overrides ── */
+:global([data-theme="dark"]) .productCard[data-product-id="docket14"] .nodeIcon {
+  color: var(--text) !important;
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+:global([data-theme="dark"]) .productCard[data-product-id="docket14"] .nodeStatusBadge {
+  color: var(--text2) !important;
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+:global([data-theme="dark"]) .productCard[data-product-id="docket14"] .statusDot {
+  background-color: var(--text2) !important;
+}
+
+:global([data-theme="dark"]) .productCard[data-product-id="docket14"] .nodeConnector {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.01) 100%) !important;
 }
 

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
+import api from '../../api/api.js'
 import styles from './Plan.module.css'
 
 const plans = [
@@ -147,22 +148,17 @@ const PlanSimple = () => {
         setErrors({})
         setLoading(true)
         try {
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/plan/create`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    ...formData,
-                    raw_data: { timestamp: new Date().toISOString() },
-                }),
+            const { data } = await api.post('/plan/create', {
+                ...formData,
+                raw_data: { timestamp: new Date().toISOString() },
             })
-            const data = await response.json()
-            if (!response.ok) {
-                setErrors(data.errors || { general: data.message })
-                return
-            }
             setSuccess(true)
         } catch (err) {
-            setErrors({ general: 'Network error. Please try again.' })
+            if (err.response) {
+                setErrors(err.response.data?.errors || { general: err.userMessage })
+            } else {
+                setErrors({ general: err.userMessage || 'Network error. Please try again.' })
+            }
             console.error('Submit error:', err)
         } finally {
             setLoading(false)

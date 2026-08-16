@@ -5,37 +5,37 @@ import PhoneMockupBasic from '../../components/ui/phone-mockups-1'
 
 // Factual Business Claims
 const stats = [
-  { value: '50+', label: 'Proprietary Systems Deployed' },
-  { value: '3x', label: 'Lead Conversion Rate' },
+  { value: '3+', label: 'Flagship Products Deployed' },
+  { value: '3x', label: 'Lead Conversion Lift' },
   { value: '5x', label: 'Faster Response Time' },
-  { value: 'Zero', label: 'Bespoke Tailored Systems' },
+  { value: '100%', label: 'Bespoke Tailored Systems' },
 ]
 
 // Business Challenges & Solutions
 const businessSolutions = [
   { 
     num: '01', 
-    problem: 'Time-Consuming Manual Work', 
-    solution: 'Tailored Operations', 
-    desc: 'Unburden your operations. Build private document portals, custom workflow routing, and secure integrations built to your exact specs.' 
+    problem: 'Time-Consuming Lead Chores', 
+    solution: 'Tailored CRM Routing', 
+    desc: 'Unburden your chat operations. Deploy secure lead qualifiers, round-robin representative routing, and instant automated chat flows (like WhatsFlow).' 
   },
   { 
     num: '02', 
-    problem: 'Slow Responses & Drop-offs', 
-    solution: 'Secure Flow Routing', 
-    desc: 'Deploy context-aware private software engines (like WhatsFlow) to securely capture, route, and manage corporate inquiries 24/7.' 
+    problem: 'Legal Practice Disarray', 
+    solution: 'Centralized Case Dashboards', 
+    desc: 'Unify hearing history logs, court case status transitions, associate tasks, and document lockers in a singular secure workspace (like Docket14).' 
   },
   { 
     num: '03', 
-    problem: 'Scattered Databases & Tools', 
-    solution: 'Centralized Infrastructure', 
-    desc: 'Unify your pipelines, custom properties, cases, and team performance into a singular dashboard (like Docket14).' 
+    problem: 'Scattered Property Management', 
+    solution: 'Automated Listing Portals', 
+    desc: 'Buy, sell, rent, and manage listing verifications with location mapping, tenant agreement storage, and agent matching algorithms (like Kin Property).' 
   },
   { 
     num: '04', 
     problem: 'Rigid Off-the-Shelf SaaS', 
     solution: 'Custom Enterprise Software', 
-    desc: 'Get software tailored exactly around your operations and unique business workflows, not rigid legacy templates.' 
+    desc: 'Get private proprietary software engineered specifically around your workflows, fully owned by you with zero license subscription fees.' 
   },
 ]
 

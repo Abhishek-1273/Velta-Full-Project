@@ -72,6 +72,32 @@ app.use('/api/auth/signin', (req, res, next) => {
     next();
 });
 
+// ── Simple in-process rate limiter for chat endpoint ──────────────
+const chatLimits = new Map();  // ip → { count, resetAt }
+const CHAT_WINDOW  = 10 * 60 * 1000;  // 10 min
+const CHAT_LIMIT   = 30;
+
+app.use('/api/chat', (req, res, next) => {
+    const ip  = req.ip;
+    const now = Date.now();
+    const rec = chatLimits.get(ip);
+
+    if (rec && now < rec.resetAt) {
+        if (rec.count >= CHAT_LIMIT) {
+            const wait = Math.ceil((rec.resetAt - now) / 60000);
+            return res.status(429).json({
+                success: false,
+                message: `Too many chat requests. Please try again in ${wait} minute${wait !== 1 ? 's' : ''}.`,
+            });
+        }
+        rec.count++;
+    } else {
+        chatLimits.set(ip, { count: 1, resetAt: now + CHAT_WINDOW });
+    }
+
+    next();
+});
+
 // ── Routes ────────────────────────────────────────────────────────
 app.use('/api/auth',    authRoutes);
 app.use('/api/contact', contactRouter);

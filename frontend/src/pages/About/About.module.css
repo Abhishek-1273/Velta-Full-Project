@@ -237,13 +237,13 @@
   width: auto;
   object-fit: contain;
   opacity: 1;
-  filter: drop-shadow(0 14px 22px rgba(0, 0, 0, 0.25)) drop-shadow(0 4px 6px rgba(0, 0, 0, 0.12));
+  filter: var(--logo-filter, drop-shadow(0 14px 22px rgba(0, 0, 0, 0.25)) drop-shadow(0 4px 6px rgba(0, 0, 0, 0.12)));
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
 }
 
 .mainShowcaseWrapper:hover .mainShowcaseImage {
   transform: translateY(-8px) scale(1.04);
-  filter: drop-shadow(0 24px 35px rgba(0, 0, 0, 0.35)) drop-shadow(0 8px 12px rgba(0, 0, 0, 0.18));
+  filter: var(--logo-filter-hover, drop-shadow(0 24px 35px rgba(0, 0, 0, 0.35)) drop-shadow(0 8px 12px rgba(0, 0, 0, 0.18)));
 }
 
 .secondaryImageWrapper {
@@ -384,6 +384,7 @@
   flex-direction: column;
   gap: 8px;
 }
+
 .breakoutList li {
   display: flex;
   align-items: flex-start;
@@ -546,7 +547,7 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background-image: 
+  background-image:
     linear-gradient(to right, var(--border) 1.5px, transparent 1.5px),
     linear-gradient(to bottom, var(--border) 1.5px, transparent 1.5px);
   background-size: 60px 60px;
@@ -560,6 +561,7 @@
 :global([data-theme="dark"]) {
   --logo-brightness: 3;
 }
+
 :global([data-theme="light"]) {
   --logo-brightness: 0.25;
 }
@@ -572,7 +574,7 @@
     margin-bottom: 40px;
     text-align: center;
   }
-  
+
   .aboutGridHeader p {
     max-width: 600px;
     margin: 0 auto;
@@ -618,7 +620,7 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
   }
-  
+
   .philosophyList {
     grid-template-columns: 1fr;
     gap: 20px;
@@ -652,14 +654,14 @@
     grid-template-columns: 1fr;
     gap: 20px;
   }
-  
+
   .achievementsCard {
     padding: 32px 20px;
   }
 }
 
-
-
-
-
-
+/* ── Dark Theme Variables ── */
+:global([data-theme="dark"]) {
+  --logo-filter: invert(1) brightness(1.5) drop-shadow(0 14px 22px rgba(255, 255, 255, 0.15)) drop-shadow(0 4px 6px rgba(255, 255, 255, 0.08));
+  --logo-filter-hover: invert(1) brightness(1.65) drop-shadow(0 24px 35px rgba(255, 255, 255, 0.25)) drop-shadow(0 8px 12px rgba(255, 255, 255, 0.12));
+}
