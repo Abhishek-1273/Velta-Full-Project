@@ -25,12 +25,10 @@ app.set('trust proxy', 1)
 connectDB();
 
 // ── CORS ──────────────────────────────────────────────────────────
-const allowedOrigins = [
-    ...(process.env.CLIENT_URL || 'http://localhost:5173').split(','),
-    'https://veltalabs.net',
-    'https://www.veltalabs.net',
-    'https://velta-full-project.vercel.app'
-].map(o => o.trim().replace(/\/$/, '')); // strip trailing slash
+// ── CORS ──────────────────────────────────────────────────────────
+const allowedOrigins = (process.env.CLIENT_URL || 'http://localhost:5173')
+    .split(',')
+    .map(o => o.trim().replace(/\/$/, '')); // strip trailing slash
 
 app.use(cors({
     origin: (origin, cb) => {
