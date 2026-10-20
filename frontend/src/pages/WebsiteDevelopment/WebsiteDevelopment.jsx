@@ -271,7 +271,7 @@ export default function WebsiteDevelopment() {
               <div className={styles.cardTop}>
                 <div className={styles.cardTagRow}>
                   <span className={`${styles.cardTag} ${styles.popularBadge}`}>Option B · Manageable</span>
-                  <span style={{ fontSize: 12, color: '#60a5fa', fontWeight: 700 }}>Database / CMS</span>
+                  <span className={styles.cmsBadge}>Database / CMS</span>
                 </div>
                 <h3 className={styles.cardTitle}>Dynamic Website</h3>
                 <div className={styles.cardSubtitle}>Best for businesses that need manageable, changing content</div>
