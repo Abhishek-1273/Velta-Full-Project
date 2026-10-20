@@ -191,11 +191,7 @@ export default function SeoBloggingGbp() {
                     alt="Google Search Console Organic Traffic Growth" 
                     className={styles.heroImg}
                   />
-                  <div className={styles.heroImgOverlay}>
-                    <span className="tag" style={{ background: 'rgba(0,0,0,0.8)', border: '1px solid rgba(255,255,255,0.2)', color: '#fff' }}>
-                      Verified Client Performance
-                    </span>
-                  </div>
+                  
                 </div>
               </div>
             </div>
