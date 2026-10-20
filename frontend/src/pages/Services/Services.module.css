@@ -1140,3 +1140,113 @@
     bottom: 0;
   }
 }
+
+/* ========================================================
+   RESPONSIVE SHOWCASE WRAPPERS (STACK CLEANLY ON MOBILE)
+   ======================================================== */
+@media (max-width: 900px) {
+  .showcaseWrapper,
+  .showcaseWrapperReverse {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 32px !important;
+  }
+
+  .showcaseWrapper .showcaseLeft,
+  .showcaseWrapperReverse .showcaseLeft {
+    order: 1 !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .showcaseWrapper .showcaseRight,
+  .showcaseWrapperReverse .showcaseRight {
+    order: 2 !important;
+    width: 100% !important;
+    margin: 16px auto 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  .showcaseGrid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+    width: 100% !important;
+  }
+
+  /* Mockups Scaled & Centered Without Overlapping Content */
+  .deviceMockupDuo {
+    max-width: 330px !important;
+    padding: 0 0 20px 0 !important;
+    margin: 0 auto !important;
+  }
+
+  .laptopMockupWrapper {
+    width: 86% !important;
+  }
+
+  .mobileMockupWrapper {
+    width: 120px !important;
+    right: 0px !important;
+    bottom: -6px !important;
+  }
+
+  .phoneDeck {
+    max-width: 320px !important;
+    height: 330px !important;
+    margin: 0 auto !important;
+  }
+
+  .miniPhone {
+    width: 135px !important;
+  }
+
+  .phone1 {
+    transform: translateX(-65px) rotate(-8deg) scale(0.9) !important;
+    opacity: 0.9 !important;
+  }
+  .phone2 {
+    transform: translateY(0) scale(1) !important;
+    opacity: 1 !important;
+  }
+  .phone3 {
+    transform: translateX(65px) rotate(8deg) scale(0.9) !important;
+    opacity: 0.9 !important;
+  }
+
+  .phoneDeck:hover .phone1 {
+    transform: translateX(-75px) rotate(-10deg) scale(0.92) !important;
+  }
+  .phoneDeck:hover .phone3 {
+    transform: translateX(75px) rotate(10deg) scale(0.92) !important;
+  }
+
+  .overlapMobileMockup {
+    width: 115px !important;
+    right: 0px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .showcaseGrid {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  .phoneDeck {
+    max-width: 290px !important;
+    height: 300px !important;
+  }
+
+  .miniPhone {
+    width: 120px !important;
+  }
+
+  .phone1 {
+    transform: translateX(-50px) rotate(-6deg) scale(0.9) !important;
+  }
+  .phone3 {
+    transform: translateX(50px) rotate(6deg) scale(0.9) !important;
+  }
+}
