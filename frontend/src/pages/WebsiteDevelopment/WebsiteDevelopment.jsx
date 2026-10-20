@@ -504,16 +504,7 @@ export default function WebsiteDevelopment() {
             {/* STATIC CARE */}
             <div className={styles.careCard}>
               <h3 className={styles.careTitle}>Static Website Care</h3>
-              <div className={styles.careSub}>For standard business & portfolio sites</div>
-
-              <div className={styles.carePriceRow}>
-                <span className={styles.carePriceNum} style={{ fontSize: 24 }}>Custom Care Retainer</span>
-                <span className={styles.carePricePeriod}>Monthly Retainer</span>
-              </div>
-
-              <div className={styles.careBillingNote}>
-                Tailored to your website scope • Ongoing technical support
-              </div>
+              <div className={styles.careSub}>For standard business & portfolio sites • Ongoing monthly support</div>
 
               <ul className={styles.careList}>
                 <li className={styles.careItem}>
@@ -552,16 +543,7 @@ export default function WebsiteDevelopment() {
             {/* DYNAMIC CARE */}
             <div className={`${styles.careCard} ${styles.careCardFeatured}`}>
               <h3 className={styles.careTitle}>Dynamic Website Care</h3>
-              <div className={styles.careSub}>For database-driven portals & CMS platforms</div>
-
-              <div className={styles.carePriceRow}>
-                <span className={styles.carePriceNum} style={{ fontSize: 24 }}>Dedicated Systems Care</span>
-                <span className={styles.carePricePeriod}>Monthly Retainer</span>
-              </div>
-
-              <div className={styles.careBillingNote}>
-                Database & CMS patching • Priority technical support
-              </div>
+              <div className={styles.careSub}>For database-driven portals & CMS platforms • Priority monthly support</div>
 
               <ul className={styles.careList}>
                 <li className={styles.careItem}>
