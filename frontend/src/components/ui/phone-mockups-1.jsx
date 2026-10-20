@@ -3,7 +3,7 @@ import PhoneCarousel from './phone-mockups-1-utils/phone-carousel'
 
 const images = [
   {
-    src: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1786538474/Screenshot_20260812_174058_WhatsFlow.jpg_kjed9h.jpg',
+    src: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1792475226/whatsflow_cbybon.jpg',
     alt: 'WhatsFlow app',
   },
   {

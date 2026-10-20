@@ -124,7 +124,7 @@ export default function MobileAppDevelopment() {
       name: "WhatsFlow Mobile App",
       category: "Field Operations & Lead Capture",
       desc: "Instant lead intake, pipeline qualification, and automated WhatsApp messaging hooks built for real-time sales coordination.",
-      img: "https://res.cloudinary.com/dqc1awrnc/image/upload/v1786538474/Screenshot_20260812_174058_WhatsFlow.jpg_kjed9h.jpg",
+      img: "https://res.cloudinary.com/dqc1awrnc/image/upload/v1792475226/whatsflow_cbybon.jpg",
       tags: ["Real-time CRM", "WhatsApp API", "Role Permissions"],
       link: "/products/whatsflow"
     },
@@ -210,7 +210,7 @@ export default function MobileAppDevelopment() {
                   <img src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1786538519/Screenshot_20260812_180225_Docket_14.jpg_nxm7zh.jpg" alt="Docket14 Mobile App" />
                 </div>
                 <div className={`${styles.mockupPhone} ${styles.phoneCenter}`}>
-                  <img src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1786538474/Screenshot_20260812_174058_WhatsFlow.jpg_kjed9h.jpg" alt="WhatsFlow Mobile App" />
+                  <img src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1792475226/whatsflow_cbybon.jpg" alt="WhatsFlow Mobile App" />
                 </div>
                 <div className={`${styles.mockupPhone} ${styles.phoneRight}`}>
                   <img src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1786538759/IMG-20260726-WA0025.jpg_1_uq78d1.jpg" alt="Me & Mine Social App" />
