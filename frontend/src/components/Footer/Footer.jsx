@@ -22,7 +22,7 @@ export default function Footer() {
         <div className={styles.top}>
           {/* Column 1: Newsletter */}
           <div className={styles.newsletter}>
-            <h3>Stay<br />Connected</h3>
+            <h3>Stay Connected</h3>
             <p>Join our newsletter for the latest updates and exclusive offers.</p>
             <form onSubmit={handleSubscribe} className={styles.inputWrapper}>
               <input

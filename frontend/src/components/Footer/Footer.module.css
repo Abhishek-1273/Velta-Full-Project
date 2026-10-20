@@ -43,12 +43,14 @@
   position: relative;
   display: flex;
   align-items: center;
-  max-width: 280px;
+  width: 100%;
+  max-width: 360px;
   background: var(--bg2);
   border: 1px solid var(--border);
   border-radius: 30px;
-  padding: 4px 6px 4px 16px;
+  padding: 5px 6px 5px 18px;
   transition: border-color 0.25s, box-shadow 0.25s;
+  box-sizing: border-box;
 }
 
 .inputWrapper:focus-within {
@@ -211,6 +213,20 @@
   }
   .newsletter {
     grid-column: 1 / -1;
+    width: 100%;
+  }
+  .newsletter h3 {
+    font-size: 26px;
+    white-space: nowrap;
+  }
+  .newsletter p {
+    max-width: 100% !important;
+  }
+  .inputWrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 6px 8px 6px 18px !important;
   }
   .bottom {
     flex-direction: column;
