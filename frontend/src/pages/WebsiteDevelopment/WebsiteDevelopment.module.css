@@ -1334,3 +1334,14 @@
   box-shadow: 0 2px 8px rgba(37, 99, 235, 0.35);
   white-space: nowrap;
 }
+
+@media (max-width: 640px) {
+  .browserUrl {
+    max-width: 165px !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    font-size: 9.5px !important;
+    padding: 3px 8px !important;
+  }
+}

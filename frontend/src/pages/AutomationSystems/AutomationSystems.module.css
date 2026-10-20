@@ -864,3 +864,54 @@
     padding: 2px 8px !important;
   }
 }
+
+/* Prevent accidental full-card blue text-selection and tap-highlights on mobile */
+.coreCard {
+  -webkit-tap-highlight-color: transparent !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
+
+.coreCardSelected {
+  background: var(--surface) !important;
+  border-color: #06b6d4 !important;
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.25) !important;
+}
+
+:global([data-theme="light"]) .coreCardSelected {
+  background: #ffffff !important;
+  border-color: #06b6d4 !important;
+  box-shadow: 0 4px 20px rgba(6, 182, 212, 0.2) !important;
+}
+
+.urlMobileText {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .mockupHeader {
+    padding: 8px 10px !important;
+    gap: 6px !important;
+  }
+  .mockupUrl {
+    padding: 3px 8px !important;
+    font-size: 10px !important;
+    max-width: 165px !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    flex: 1 !important;
+  }
+  .urlDesktopText {
+    display: none !important;
+  }
+  .urlMobileText {
+    display: inline !important;
+    white-space: nowrap !important;
+  }
+  .livePulseBadge {
+    font-size: 10px !important;
+    padding: 2px 6px !important;
+    white-space: nowrap !important;
+  }
+}

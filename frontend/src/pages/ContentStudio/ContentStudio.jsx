@@ -728,9 +728,8 @@ export default function ContentStudio() {
                     rel="noopener noreferrer"
                     className={styles.offerBtn}
                   >
-                    <span>
-                      Start with ₹1,499 Trial on WhatsApp
-                    </span>
+                    <span className={styles.offerBtnDesktopText}>Start with ₹1,499 Trial on WhatsApp</span>
+                    <span className={styles.offerBtnMobileText}>Start with ₹1,499 Trial</span>
                     <span className={styles.btnArrow}>→</span>
                   </a>
                   <div className={styles.offerSubNote} style={{ marginTop: 10 }}>

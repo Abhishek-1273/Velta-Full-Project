@@ -495,7 +495,12 @@ export default function WebsiteDevelopment() {
                     <span className={styles.dotGreen} />
                   </div>
                   <div className={styles.browserUrl}>
-                    {projectTab === 'website' ? 'https://kinpropertymanagement.com' : 'https://admin.kinpropertymanagement.com'}
+                    <span className={styles.urlDesktopText}>
+                      {projectTab === 'website' ? 'https://kinpropertymanagement.com' : 'https://admin.kinpropertymanagement.com'}
+                    </span>
+                    <span className={styles.urlMobileText}>
+                      {projectTab === 'website' ? 'kinproperty.com' : 'admin.kinproperty.com'}
+                    </span>
                   </div>
                 </div>
                 <div className={styles.projectVideoContainer}>

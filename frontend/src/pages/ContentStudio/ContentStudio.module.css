@@ -2449,3 +2449,45 @@
     white-space: nowrap !important;
   }
 }
+
+.offerBtnMobileText {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .offerCard {
+    margin: 0 10px !important;
+    max-width: calc(100vw - 20px) !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+  .offerMainRow {
+    padding: 22px 14px !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+  }
+  .offerLeftCol, .offerRightCol {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .offerPriceSub {
+    font-size: 13.5px !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+  .offerBtn {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 13px 14px !important;
+    font-size: 13.5px !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+  .offerBtnDesktopText {
+    display: none !important;
+  }
+  .offerBtnMobileText {
+    display: inline !important;
+  }
+}

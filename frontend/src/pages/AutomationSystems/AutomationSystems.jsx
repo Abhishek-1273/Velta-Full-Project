@@ -223,7 +223,8 @@ export default function AutomationSystems() {
                   </div>
                   <div className={styles.mockupUrl}>
                     <FaBolt className={styles.boltIcon} />
-                    <span>pipeline.veltaz.internal/live-telemetry</span>
+                    <span className={styles.urlDesktopText}>pipeline.veltaz.internal/live-telemetry</span>
+            <span className={styles.urlMobileText}>pipeline.veltaz.internal</span>
                   </div>
                   <span className={styles.livePulseBadge}>
                     <span className={styles.liveDot} /> Active 99.98%
