@@ -244,7 +244,7 @@ export default function SeoBloggingGbp() {
           </div>
 
           <div className={styles.problemFooterNotice}>
-            <FaInfoCircle size={18} color="var(--brand)" />
+            <FaInfoCircle size={18} color="#10b981" />
             <span>
               <strong>Our Approach:</strong> We review your existing situation, identify practical opportunities and prioritise work according to your business's genuine commercial needs.
             </span>
@@ -481,7 +481,7 @@ export default function SeoBloggingGbp() {
                 {/* WHAT'S INCLUDED */}
                 <div className={styles.includedCol}>
                   <h4>
-                    <FaCheckCircle color="var(--brand)" />
+                    <FaCheckCircle color="#10b981" />
                     <span>What's Included Every Month</span>
                   </h4>
                   <ul className={styles.featureList}>
