@@ -7,86 +7,87 @@ import styles from './Services.module.css'
 const servicesSlides = [
   {
     title: 'Website Development',
-    subtitle: 'We design and build high-performance web systems tailored to your business operations. Optimized for loading speed, device responsiveness, and top SEO ranking.',
+    subtitle: 'We design and build modern, high-speed business websites and web portals tailored to your brand, optimized for mobile responsiveness and Google search ranking.',
     src: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1792408083/web_development_4k_fyoa97.jpg',
     alt: 'Website Development Services',
-    features: ['React/Next.js SPAs', 'Custom Admin Portals', 'Lighthouse Score 98%+', 'Kin CRM Integrations', 'On-Page SEO Systems', 'SSL Data Isolation'],
+    features: ['Custom Responsive Design', 'Admin Dashboard & CMS', 'Fast Page Loading Speed', 'Lead Forms & WhatsApp Hook', 'On-Page Google SEO', 'Free SSL & Security Setup'],
     meta: [
-      { label: 'Featured CRM', value: 'Kin Property Web Portal' },
-      { label: 'Speed Score', value: '98%+ Lighthouse Rating' },
-      { label: 'Tech Stack', value: 'React / Node / Vite SPA' },
-      { label: 'Security', value: 'SSL & Data Isolation' }
+      { label: 'Deliverables', value: 'Business Website & Admin Panel' },
+      { label: 'Key Features', value: 'Mobile-First, Fast & Responsive' },
+      { label: 'Tech Stack', value: 'React / Node.js / Modern Web' },
+      { label: 'SEO & Security', value: 'Google Indexing & Free SSL' }
     ]
   },
   {
     title: 'Mobile Applications',
-    subtitle: 'Custom hybrid iOS and Android applications engineered with fluid 60fps micro-animations, push notifications, and reliable offline-first database synchronization.',
+    subtitle: 'Custom Android and iOS applications built with React Native for fast loading, smooth user experience, instant push notifications, and cloud database sync.',
     src: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1792408082/mobile_app_development_4k_xzvwcd.jpg',
     alt: 'Mobile Applications Services',
-    features: ['Hybrid iOS & Android', 'Offline Synchronization', '60 FPS Transitions', 'Push Notification APIs', 'Native Hardware Access', 'WhatsFlow Suite Ready'],
+    features: ['Android & iOS Apps', 'React Native Framework', 'Instant Push Notifications', 'Secure Login & OTP', 'Clean UI & Fast Loading', 'Cloud Database Sync'],
     meta: [
-      { label: 'Suites Built', value: 'WhatsFlow, Docket14, Me & Mine' },
-      { label: 'Framework', value: 'React Native' },
-      { label: 'Native Features', value: 'Push Notification Sync' },
-      { label: 'Target OS', value: 'iOS, Android & Tablets' }
+      { label: 'Platforms', value: 'Google Play & Apple App Store' },
+      { label: 'Framework', value: 'React Native (Single Codebase)' },
+      { label: 'Core Features', value: 'Push Alerts, OTP & User Roles' },
+      { label: 'Backend', value: 'REST APIs & Cloud Database' }
     ]
   },
   {
     title: 'Automation Systems',
-    subtitle: 'Connect your inbound lead channels, CRM platforms, and message triggers in a single operational loop to automatically route prospects and save manual entry hours.',
+    subtitle: 'Automate repetitive daily tasks by connecting your lead forms, WhatsApp, Google Sheets, and CRM to respond to leads instantly without manual copy-pasting.',
     src: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1792408086/automation_system_4k_i2rc1i.jpg',
     alt: 'Automation Systems Services',
-    features: ['CRM Pipeline Automation', 'Lead Routing Systems', 'WhatsFlow Lead Engine', 'Google Sheets Integration', 'Invoice & PDF Automation', 'SMTP Email Drips'],
+    features: ['Instant Lead Routing', 'WhatsApp Automation', 'Google Sheets Integration', 'CRM Pipeline Setup', 'Automated PDF Invoices', 'Email Notification Drips'],
     meta: [
-      { label: 'Lead Routing', value: 'WhatsFlow Round-Robin' },
-      { label: 'Integrations', value: 'Salesforce, Zoho, Google Sheets' },
-      { label: 'Auto Tasks', value: 'Invoicing & PDF generation' },
-      { label: 'Email System', value: 'SMTP Automated drips' }
+      { label: 'Lead Capture', value: 'Website Forms, Ads & WhatsApp' },
+      { label: 'Integrations', value: 'Google Sheets, CRM & Webhooks' },
+      { label: 'Automated Tasks', value: 'Instant Alerts & Invoice PDFs' },
+      { label: 'Follow-ups', value: 'Automated WhatsApp & Email' }
     ]
   },
   {
     title: 'Performance Marketing',
-    subtitle: 'High-ROI paid advertising campaigns engineered across Meta Campaign Ads, Insta Boost Ads, Google Ads, ChatGPT Ads, and LinkedIn Ads to capture qualified inbound leads.',
+    subtitle: 'Targeted paid advertising campaigns across Facebook, Instagram, Google, and LinkedIn engineered to generate qualified enquiries and genuine customer sales leads.',
     src: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1792408082/digital_marketing_4k_hwpovn.jpg',
     alt: 'Performance Marketing Services',
     features: [
-      'Meta Campaign Ads',
-      'Insta Boost Ads',
-      'Google Ads',
-      'ChatGPT Ads',
-      'LinkedIn Ads'
+      'Meta Ads (Facebook & Instagram)',
+      'Google Search & Keyword Ads',
+      'LinkedIn B2B Advertising',
+      'Lead Form Optimization',
+      'Ad Creatives & Copywriting',
+      'Retargeting & ROI Tracking'
     ],
     meta: [
-      { label: 'Social Ads', value: 'Meta Campaign Ads & Insta Boost' },
-      { label: 'Search & AI', value: 'Google Ads & ChatGPT Ads' },
-      { label: 'B2B Network', value: 'LinkedIn Ads' },
-      { label: 'Lead Funnel', value: 'Direct CRM routing & high ROI' }
+      { label: 'Ad Platforms', value: 'Meta (FB & Insta) & Google Ads' },
+      { label: 'Campaign Goal', value: 'High-Intent Customer Leads' },
+      { label: 'Targeting', value: 'Audience Research & Retargeting' },
+      { label: 'Reporting', value: 'Live Lead Alerts & ROI Analytics' }
     ]
   },
   {
     title: 'Social Media Handling',
-    subtitle: 'Establish a high-authority digital presence on Instagram and LinkedIn with consistent branding guides, professional copywriting, and creative Reels content curation.',
+    subtitle: 'Build an active and trusted brand presence on Instagram and LinkedIn with high-quality graphic posts, engaging Reels, and consistent content scheduling.',
     src: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1792408083/social_media_linkedin_handling_4k_jbzz4r.jpg',
     alt: 'Social Media Handling Services',
-    features: ['Instagram Profile Scale', 'LinkedIn Page Scaling', 'Reels & Video Curation', 'Organic Post Curation', 'Weekly Content Calendar', 'Targeted Lead Pipelines'],
+    features: ['Instagram & LinkedIn Growth', 'Creative Posters & Banners', 'Short Video / Reels Editing', 'Engaging Captions & Hashtags', 'Monthly Content Calendar', 'Profile Branding & Optimization'],
     meta: [
-      { label: 'Channels Curation', value: 'Instagram & LinkedIn' },
-      { label: 'Deliverables', value: 'Posters, Reels Editing, Copy' },
-      { label: 'Engagement', value: 'Organic growth & leads' },
-      { label: '3D Content', value: 'Abstract video generation' }
+      { label: 'Channels', value: 'Instagram, LinkedIn & Facebook' },
+      { label: 'Deliverables', value: 'Custom Posts, Reels & Stories' },
+      { label: 'Strategy', value: 'Advance Content Calendar & Copy' },
+      { label: 'Goal', value: 'Brand Trust & Organic Reach' }
     ]
   },
   {
     title: 'Search Engine Optimization (SEO)',
-    subtitle: 'Data-driven technical SEO audits, keyword ranking strategies, speed optimizations (98+ Lighthouse), and on-page schema architecture to dominate Google search results.',
+    subtitle: 'Improve your Google search rankings and local Google Maps visibility so potential customers find your business first when searching for your services.',
     src: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1792408089/seo_google_ranking_4k_wrf7wj.jpg',
     alt: 'Search Engine Optimization (SEO) Services',
-    features: ['Technical SEO Audits', 'Local SEO & GMB Domination', 'High-Intent Keyword Research', 'Schema & Rich Snippets', '98+ Lighthouse Speed', 'Competitor Gap Analysis'],
+    features: ['Google 1st Page Keyword Focus', 'Google Business Profile (GMB)', 'On-Page SEO & Meta Tags', 'Website Speed Optimization', 'Local Search & Map Ranking', 'Monthly Keyword Reports'],
     meta: [
-      { label: 'Organic Search', value: 'Google SERP Ranking' },
-      { label: 'Audit Score', value: '98%+ Core Web Vitals' },
-      { label: 'Architecture', value: 'JSON-LD Schema Markup' },
-      { label: 'Local Visibility', value: 'Google Business Profile' }
+      { label: 'Search Ranking', value: 'Targeted Keyword Ranking' },
+      { label: 'Local Visibility', value: 'Google Business Profile (GMB)' },
+      { label: 'Optimization', value: 'Page Speed, Meta & Sitemaps' },
+      { label: 'Reporting', value: 'Transparent Monthly Analytics' }
     ]
   }
 ]
@@ -221,7 +222,7 @@ export default function Services() {
                     boxShadow: '0 4px 14px rgba(37, 99, 235, 0.3)' 
                   }}
                 >
-                  <span>Explore Website Packages & Pricing</span>
+                  <span>Explore Website Development Services</span>
                   <span style={{ fontSize: '20px', alignContent: "center" }}>→</span>
                 </Link>
               </div>
@@ -287,8 +288,8 @@ export default function Services() {
                   <p>Interactive concept: matchmaking UI, location filters & chat flows.</p>
                 </div>
                 <div className={styles.showcaseItem}>
-                  <h5>Offline Sync</h5>
-                  <p>Guaranteed sync logic for low network coverage zones.</p>
+                  <h5>Cloud Sync & Push Alerts</h5>
+                  <p>Smooth background synchronization and real-time push alerts.</p>
                 </div>
               </div>
               {/* Direct Link to Mobile App Development Portal */}
@@ -532,7 +533,7 @@ export default function Services() {
                     boxShadow: '0 4px 14px rgba(37, 99, 235, 0.3)' 
                   }}
                 >
-                  <span>Explore SEO, Blogging & GBP Packages</span>
+                  <span>Explore SEO & Google Ranking Services</span>
                   <span style={{ fontSize: '20px', alignContent: "center" }}>→</span>
                 </Link>
               </div>
