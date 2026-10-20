@@ -106,181 +106,6 @@
   gap: 20px;
 }
 
-.authButtons {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-/* ================= SIGN IN BUTTON ================= */
-.signInBtn {
-  font-family: var(--font-head);
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text2);
-  text-decoration: none;
-  padding: 8px 16px;
-  transition: color 0.15s ease;
-  white-space: nowrap;
-}
-
-.signInBtn:hover {
-  color: var(--text);
-}
-
-/* ================= USER MENU ================= */
-.userMenu {
-  position: relative;
-}
-
-.avatarBtn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: none;
-  border: 1px solid var(--border);
-  border-radius: 40px;
-  padding: 4px 10px 4px 4px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  color: inherit;
-}
-
-.avatarBtn:hover {
-  border-color: var(--accent);
-  background: rgba(212, 175, 55, 0.04);
-}
-
-.avatarCircle {
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  background: var(--accent);
-  color: #000000;
-  font-size: 11px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.avatarInfo {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.avatarName {
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--text);
-}
-
-.chevron {
-  color: var(--text3);
-  transition: transform 0.2s ease;
-}
-
-.chevronUp {
-  transform: rotate(180deg);
-}
-
-/* ================= ROLE BADGE ================= */
-.roleBadge {
-  font-size: 9px;
-  font-weight: 700;
-  padding: 1px 6px;
-  border-radius: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-}
-
-.userBadge {
-  background: rgba(212, 175, 55, 0.08);
-  color: var(--accent);
-  border: 1px solid var(--border-gold);
-}
-
-.adminBadge {
-  background: rgba(251, 191, 36, 0.1);
-  color: #fbbf24;
-  border: 1px solid rgba(251, 191, 36, 0.15);
-}
-
-/* ================= DROPDOWN ================= */
-.dropdown {
-  position: absolute;
-  top: calc(100% + 12px);
-  right: 0;
-  min-width: 220px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 6px;
-  box-shadow: var(--shadow);
-  z-index: 200;
-}
-
-.dropdownHeader {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px;
-}
-
-.dropdownAvatar {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: var(--accent);
-  color: #000000;
-  font-size: 13px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.dropdownName {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text);
-}
-
-.dropdownEmail {
-  font-size: 11px;
-  color: var(--text2);
-}
-
-.dropdownDivider {
-  height: 1px;
-  background: var(--border);
-  margin: 6px 0;
-}
-
-.dropdownLogout {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  width: 100%;
-  padding: 8px;
-  border-radius: var(--radius-sm);
-  border: none;
-  background: none;
-  color: #ef4444;
-  font-size: 12px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.15s ease;
-  text-align: left;
-}
-
-.dropdownLogout:hover {
-  background: rgba(239, 68, 68, 0.08);
-}
-
 /* ================= BURGER ================= */
 .burger {
   display: none;
@@ -337,68 +162,198 @@
   display: none;
 }
 
-/* ================= MOBILE AUTH ================= */
-.mobileAuth {
-  display: none;
-}
-
 /* ================= MOBILE THEME TOGGLE ================= */
 .mobileThemeToggle {
   display: none;
 }
 
-/* ================= MOBILE USER ================= */
-.mobileUser {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
+/* ================= RESPONSIVE ================= */
 
-.mobileUserInfo {
+/* ================= SERVICES MEGA MENU DROPDOWN ================= */
+.dropdownParent {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 8px 0;
 }
 
-.mobileAvatar {
+.dropdownTriggerWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.dropdownTrigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.chevron {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0.75;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+  opacity: 1;
+  color: var(--accent);
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: calc(100% + 14px);
+  right: -80px;
+  width: 620px;
+  max-width: calc(100vw - 32px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.2s;
+  z-index: 120;
+}
+
+/* Hover bridge so menu doesn't disappear when mouse moves from link to dropdown */
+.dropdownMenu::before {
+  content: '';
+  position: absolute;
+  top: -18px;
+  left: 0;
+  right: 0;
+  height: 18px;
+}
+
+.dropdownVisible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.dropdownCard {
+  background: var(--surface);
+  border: 1px solid var(--border-gold);
+  border-radius: 16px;
+  padding: 18px 20px;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.4), 0 0 24px rgba(212, 175, 55, 0.08);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+.dropdownHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.dropdownEyebrow {
+  font-family: var(--font-head);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+
+.viewAllLink {
+  font-family: var(--font-head);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text3);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.viewAllLink:hover {
+  color: var(--accent);
+}
+
+/* 2-COLUMN GRID OF THE 6 REAL SERVICES */
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.serviceCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  background: transparent;
+  border: 1px solid transparent;
+  transition: all 0.18s ease;
+}
+
+.serviceCard:hover {
+  background: rgba(212, 175, 55, 0.08);
+  border-color: rgba(212, 175, 55, 0.25);
+  transform: translateY(-2px);
+}
+
+.serviceCardActive {
+  background: rgba(212, 175, 55, 0.1);
+  border-color: var(--border-gold);
+}
+
+.serviceIconWrap {
   width: 32px;
   height: 32px;
-  border-radius: 50%;
-  background: var(--accent);
-  color: #000000;
-  font-size: 13px;
-  font-weight: 700;
+  border-radius: 8px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: center;
+  color: var(--accent);
+  font-size: 14px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  transition: all 0.18s ease;
 }
 
-.mobileUserName {
+.serviceCard:hover .serviceIconWrap {
+  border-color: var(--accent);
+  background: rgba(212, 175, 55, 0.2);
+  color: #fff;
+  transform: scale(1.08);
+}
+
+.serviceText {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.serviceTitle {
+  font-family: var(--font-head);
   font-size: 13px;
   font-weight: 600;
-  color: var(--text);
+  color: var(--text-main);
+  line-height: 1.25;
+  transition: color 0.18s ease;
 }
 
-.logoutBtn {
-  width: 100%;
-  padding: 10px;
-  border-radius: var(--radius);
-  border: 1px solid rgba(239, 68, 68, 0.2);
-  background: rgba(239, 68, 68, 0.04);
-  color: #ef4444;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.15s ease;
+.serviceCard:hover .serviceTitle {
+  color: var(--accent);
 }
 
-.logoutBtn:hover {
-  background: rgba(239, 68, 68, 0.08);
+.serviceDesc {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.35;
 }
 
-/* ================= RESPONSIVE ================= */
+/* Mobile Submenu Defaults (Desktop) */
+.mobileSubmenu {
+  display: none;
+}
+
 @media (max-width: 900px) {
   .desktopActions {
     display: none;
@@ -413,12 +368,12 @@
     top: 0;
     right: 0;
     bottom: 0;
-    width: 280px;
+    width: 290px;
     height: 100vh;
     background: var(--bg);
     flex-direction: column;
     align-items: flex-start;
-    padding: 30px 24px 40px;
+    padding: 30px 20px 40px;
     gap: 8px;
     border-left: 1px solid var(--border);
     transform: translateX(100%);
@@ -458,24 +413,6 @@
     background: var(--bg2);
   }
 
-  .mobileAuth {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    width: 100%;
-    margin-top: 24px;
-    padding-top: 24px;
-    border-top: 1px solid var(--border);
-  }
-
-  .mobileAuth .signInBtn {
-    width: 100%;
-    text-align: center;
-    padding: 10px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-  }
-
   .mobileThemeToggle {
     display: block;
     width: 100%;
@@ -496,5 +433,68 @@
     font-size: 14px;
     font-weight: 500;
     color: var(--text2);
+  }
+
+  .dropdownParent {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dropdownTriggerWrapper {
+    width: 100%;
+  }
+
+  .dropdownTrigger {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .dropdownMenu {
+    display: none !important;
+  }
+
+  .mobileSubmenu {
+    display: none;
+    list-style: none;
+    margin: 0;
+    padding: 6px 0 6px 10px;
+    width: 100%;
+    flex-direction: column;
+    gap: 4px;
+    border-left: 2px solid var(--border-gold);
+    margin-left: 8px;
+  }
+
+  .mobileSubmenu.mobileSubmenuOpen {
+    display: flex;
+  }
+
+  .mobileSubLink {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-head);
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--text2);
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .mobileSubLink:hover,
+  .mobileSubLink.mobileSubActive {
+    color: var(--accent);
+    background: var(--bg2);
+  }
+
+  .mobileSubIcon {
+    display: flex;
+    align-items: center;
+    color: var(--accent);
+    font-size: 12px;
+    flex-shrink: 0;
   }
 }

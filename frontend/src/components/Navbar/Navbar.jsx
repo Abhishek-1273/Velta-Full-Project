@@ -1,24 +1,60 @@
 import { useState, useEffect, useRef } from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import styles from './Navbar.module.css'
 import ThemeToggle from '../Theme/ThemeToggle'
-import { useAuth } from '../../context/AuthContext'
-const links = [
-  { to: '/', label: 'Home' },
-  { to: '/products', label: 'Products' },
-  { to: '/services', label: 'Services' },
-  { to: '/about', label: 'About Us' },
-  { to: '/contact', label: 'Contact' },
+import { 
+  FaLaptopCode, FaMobileAlt, FaSearch, 
+  FaVideo, FaCogs, FaBullhorn 
+} from 'react-icons/fa'
+
+const veltaServices = [
+  {
+    to: '/services/website-development',
+    title: 'Website Development',
+    desc: 'Modern SPAs, business websites & custom admin portals',
+    icon: <FaLaptopCode />,
+  },
+  {
+    to: '/services/mobile-app-development',
+    title: 'Mobile Applications',
+    desc: 'Hybrid iOS & Android apps with offline sync & 60fps',
+    icon: <FaMobileAlt />,
+  },
+  {
+    to: '/services/seo-blogging-google-business-profile',
+    title: 'SEO & Google Profile',
+    desc: 'Technical search ranking, blogging & verified GBP setup',
+    icon: <FaSearch />,
+  },
+  {
+    to: '/content',
+    title: 'Content Studio & Social Media',
+    desc: 'Reels, video creation & LinkedIn / Instagram branding',
+    icon: <FaVideo />,
+  },
+  {
+    to: '/services/automation-systems',
+    title: 'Automation Systems',
+    desc: 'Lead routing, CRM pipeline automation & message triggers',
+    icon: <FaCogs />,
+  },
+  {
+    to: '/services/performance-marketing',
+    title: 'Performance Marketing',
+    desc: 'Meta Campaign Ads, Insta Boost, Google Ads, ChatGPT & LinkedIn Ads',
+    icon: <FaBullhorn />,
+  },
 ]
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
-  const [dropdownOpen, setDropdownOpen] = useState(false)
+  const [servicesOpen, setServicesOpen] = useState(false)
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false)
+  const dropdownTimerRef = useRef(null)
   const location = useLocation()
-  const navigate = useNavigate()
-  const { user, logout } = useAuth()
-  const dropdownRef = useRef(null)
+
+  const isServicesActive = location.pathname.startsWith('/services') || location.pathname === '/content'
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
@@ -28,31 +64,24 @@ export default function Navbar() {
 
   useEffect(() => {
     setOpen(false)
-    setDropdownOpen(false)
+    setServicesOpen(false)
+    setMobileServicesOpen(false)
   }, [location])
 
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : 'auto'
   }, [open])
 
-  useEffect(() => {
-    const handler = (e) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
-        setDropdownOpen(false)
-      }
-    }
-    document.addEventListener('mousedown', handler)
-    return () => document.removeEventListener('mousedown', handler)
-  }, [])
-
-  const handleLogout = async () => {
-    await logout()
-    setDropdownOpen(false)
-    navigate('/')
+  const handleMouseEnter = () => {
+    if (dropdownTimerRef.current) clearTimeout(dropdownTimerRef.current)
+    setServicesOpen(true)
   }
 
-  const avatar = user?.name?.charAt(0).toUpperCase() || '?'
-  const isAdmin = user?.role === 'admin'
+  const handleMouseLeave = () => {
+    dropdownTimerRef.current = setTimeout(() => {
+      setServicesOpen(false)
+    }, 180)
+  }
 
   return (
     <>
@@ -79,17 +108,138 @@ export default function Navbar() {
                   <img src="/logo/logo-gold.png" alt="Veltaz Emblem" className={styles.mobileLogoImg} />
                 </Link>
               </li>
-              {links.map(l => (
-                <li key={l.to}>
+
+              {/* 1. HOME */}
+              <li>
+                <Link
+                  to="/"
+                  onClick={() => setOpen(false)}
+                  className={`${styles.link} ${location.pathname === '/' ? styles.active : ''}`}
+                >
+                  Home
+                </Link>
+              </li>
+
+
+
+              {/* 3. SERVICES (CLEAN 6-SERVICE DROPDOWN) */}
+              <li
+                className={styles.dropdownParent}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+              >
+                {/* Desktop Link / Mobile Expand */}
+                <div className={styles.dropdownTriggerWrapper}>
                   <Link
-                    to={l.to}
-                    onClick={() => setOpen(false)}
-                    className={`${styles.link} ${location.pathname === l.to ? styles.active : ''}`}
+                    to="/services"
+                    onClick={(e) => {
+                      if (window.innerWidth <= 900) {
+                        e.preventDefault()
+                        setMobileServicesOpen(prev => !prev)
+                      } else {
+                        setOpen(false)
+                      }
+                    }}
+                    className={`${styles.link} ${styles.dropdownTrigger} ${isServicesActive ? styles.active : ''}`}
+                    aria-expanded={servicesOpen}
+                    aria-haspopup="true"
                   >
-                    {l.label}
+                    <span>Services</span>
+                    <svg
+                      className={`${styles.chevron} ${(servicesOpen || mobileServicesOpen) ? styles.chevronOpen : ''}`}
+                      width="12"
+                      height="12"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
                   </Link>
-                </li>
-              ))}
+                </div>
+
+                {/* DESKTOP DROPDOWN (ONLY OUR 6 REAL SERVICES) */}
+                <div className={`${styles.dropdownMenu} ${servicesOpen ? styles.dropdownVisible : ''}`}>
+                  <div className={styles.dropdownCard}>
+                    <div className={styles.dropdownHeader}>
+                      <span className={styles.dropdownEyebrow}>Our Services</span>
+                      <Link 
+                        to="/services" 
+                        className={styles.viewAllLink}
+                        onClick={() => {
+                          setServicesOpen(false)
+                          setOpen(false)
+                        }}
+                      >
+                        All Services Overview →
+                      </Link>
+                    </div>
+
+                    <div className={styles.servicesGrid}>
+                      {veltaServices.map((s, idx) => (
+                        <Link
+                          key={idx}
+                          to={s.to}
+                          onClick={() => {
+                            setServicesOpen(false)
+                            setOpen(false)
+                          }}
+                          className={styles.serviceCard}
+                        >
+                          <div className={styles.serviceIconWrap}>
+                            {s.icon}
+                          </div>
+                          <div className={styles.serviceText}>
+                            <span className={styles.serviceTitle}>{s.title}</span>
+                            <span className={styles.serviceDesc}>{s.desc}</span>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* MOBILE ACCORDION SUBMENU */}
+                <ul className={`${styles.mobileSubmenu} ${mobileServicesOpen ? styles.mobileSubmenuOpen : ''}`}>
+                  {veltaServices.map((s, idx) => (
+                    <li key={idx}>
+                      <Link
+                        to={s.to}
+                        onClick={() => setOpen(false)}
+                        className={styles.mobileSubLink}
+                      >
+                        <span className={styles.mobileSubIcon}>{s.icon}</span>
+                        <span>{s.title}</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+
+              {/* 4. ABOUT US */}
+              <li>
+                <Link
+                  to="/about"
+                  onClick={() => setOpen(false)}
+                  className={`${styles.link} ${location.pathname === '/about' ? styles.active : ''}`}
+                >
+                  About Us
+                </Link>
+              </li>
+
+              {/* 5. CONTACT */}
+              <li>
+                <Link
+                  to="/contact"
+                  onClick={() => setOpen(false)}
+                  className={`${styles.link} ${location.pathname === '/contact' ? styles.active : ''}`}
+                >
+                  Contact
+                </Link>
+              </li>
 
               {/* MOBILE THEME TOGGLE */}
               <li className={styles.mobileThemeToggle}>
@@ -98,87 +248,11 @@ export default function Navbar() {
                   <ThemeToggle />
                 </div>
               </li>
-
-              {/* MOBILE AUTH */}
-              <li className={styles.mobileAuth}>
-                {user ? (
-                  <div className={styles.mobileUser}>
-                    <div className={styles.mobileUserInfo}>
-                      <div className={styles.mobileAvatar}>{avatar}</div>
-                      <div>
-                        <div className={styles.mobileUserName}>{user.name}</div>
-                        <span className={`${styles.roleBadge} ${isAdmin ? styles.adminBadge : styles.userBadge}`}>
-                          {isAdmin ? 'Admin' : 'User'}
-                        </span>
-                      </div>
-                    </div>
-                    <button className={styles.logoutBtn} onClick={handleLogout}>
-                      Logout
-                    </button>
-                  </div>
-                ) : (
-                  <>
-                    <Link to="/login" className={styles.signInBtn} onClick={() => setOpen(false)}>
-                      Log In
-                    </Link>
-                    <Link to="/signup" className="btn btn-primary" style={{ width: '100%', marginTop: '8px' }} onClick={() => setOpen(false)}>
-                      Get Started
-                    </Link>
-                  </>
-                )}
-              </li>
             </ul>
 
             {/* DESKTOP ACTIONS */}
             <div className={styles.desktopActions}>
               <ThemeToggle />
-
-              {user ? (
-                <div className={styles.userMenu} ref={dropdownRef}>
-                  <button
-                    className={styles.avatarBtn}
-                    onClick={() => setDropdownOpen(o => !o)}
-                  >
-                    <div className={styles.avatarCircle}>{avatar}</div>
-                    <div className={styles.avatarInfo}>
-                      <span className={styles.avatarName}>{user.name.split(' ')[0]}</span>
-                    </div>
-                    <svg className={`${styles.chevron} ${dropdownOpen ? styles.chevronUp : ''}`} width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <polyline points="6 9 12 15 18 9" />
-                    </svg>
-                  </button>
-
-                  {dropdownOpen && (
-                    <div className={styles.dropdown}>
-                      <div className={styles.dropdownHeader}>
-                        <div className={styles.dropdownAvatar}>{avatar}</div>
-                        <div>
-                          <div className={styles.dropdownName}>{user.name}</div>
-                          <div className={styles.dropdownEmail}>{user.email}</div>
-                        </div>
-                      </div>
-                      <div className={styles.dropdownDivider} />
-                      <button className={styles.dropdownLogout} onClick={handleLogout}>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                          <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4" />
-                          <polyline points="16 17 21 12 16 7" />
-                          <line x1="21" y1="12" x2="9" y2="12" />
-                        </svg>
-                        Logout
-                      </button>
-                    </div>
-                  )}
-                </div>
-              ) : (
-                <div className={styles.authButtons}>
-                  <Link to="/login" className={styles.signInBtn}>
-                    Log In
-                  </Link>
-                  <Link to="/signup" className="btn btn-primary">
-                    Get Started
-                  </Link>
-                </div>
-              )}
             </div>
           </div>
 

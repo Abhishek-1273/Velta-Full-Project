@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api',
-  withCredentials: true,  // send httpOnly cookie automatically
+  withCredentials: true,
   timeout: 30000,
 })
 
@@ -23,20 +23,5 @@ api.interceptors.response.use(
     return Promise.reject(err)
   }
 )
-
-// ── Helpers used by route loaders ───────────────────────────────
-
-/**
- * Called by the root loader on every navigation.
- * Returns the user object or null — never throws to the router.
- */
-export async function checkSession() {
-  try {
-    const { data } = await api.get('/auth/me')
-    return data.user ?? null
-  } catch {
-    return null
-  }
-}
 
 export default api

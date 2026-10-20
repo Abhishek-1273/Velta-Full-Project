@@ -45,16 +45,16 @@ export default function Footer() {
             <Link to="/" className={styles.link}>Home</Link>
             <Link to="/about" className={styles.link}>About Us</Link>
             <Link to="/services" className={styles.link}>Services</Link>
-            <Link to="/products" className={styles.link}>Products</Link>
+            
             <Link to="/contact" className={styles.link}>Contact</Link>
           </div>
 
           {/* Column 3: Our Products */}
           <div className={styles.col}>
-            <span className={styles.colTitle}>Our Products</span>
-            <Link to="/products/whatsflow" className={styles.link}>WhatsFlow</Link>
-            <Link to="/products/docket14" className={styles.link}>Docket14</Link>
-            <Link to="/products/kin-property" className={styles.link}>Kin Property</Link>
+            <span className={styles.colTitle}>Live Suites</span>
+            <Link to="/products/whatsflow" className={styles.link}>WhatsFlow CRM</Link>
+            <Link to="/products/docket14" className={styles.link}>Docket14 Legal</Link>
+            <Link to="/services/mobile-app-development#apps-showcase" className={styles.link}>Me & Mine Prototype</Link>
           </div>
 
           {/* Column 4: Follow Us */}

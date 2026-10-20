@@ -95,21 +95,7 @@
 }
 
 /* Accent Glow Effect behind card on hover */
-.cardGlow {
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 60%);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  pointer-events: none;
-}
 
-.serviceCard:hover .cardGlow {
-  opacity: 1;
-}
 
 .iconWrapper {
   width: 48px;
@@ -187,7 +173,7 @@
 
 /* ── Interactive Demo Showcase Block ── */
 .demoShowcaseSection {
-  padding: 80px 0;
+  padding: 36px 0;
   background: var(--bg2);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
@@ -196,8 +182,8 @@
 
 .showcaseWrapper {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 64px;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 48px;
   align-items: center;
 }
 
@@ -209,23 +195,23 @@
 
 .showcaseLeft h2 {
   font-family: var(--font-head);
-  font-size: 38px;
+  font-size: clamp(26px, 3vw, 32px);
   font-weight: 800;
-  margin: 16px 0;
+  margin: 8px 0 10px;
   color: var(--text);
 }
 
 .showcaseLeft p {
-  font-size: 15px;
+  font-size: 14px;
   color: var(--text2);
-  line-height: 1.6;
-  margin-bottom: 28px;
+  line-height: 1.5;
+  margin-bottom: 14px;
 }
 
 .showcaseGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
+  gap: 14px;
   width: 100%;
 }
 
@@ -233,25 +219,25 @@
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
-  padding: 18px;
+  padding: 10px 14px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
 
 .showcaseItem h5 {
   font-family: var(--font-head);
-  font-size: 14px;
+  font-size: 13.5px;
   font-weight: 700;
   color: var(--text);
   margin: 0;
 }
 
 .showcaseItem p {
-  font-size: 12px;
+  font-size: 11.5px;
   color: var(--text3);
   margin: 0;
-  line-height: 1.5;
+  line-height: 1.45;
 }
 
 .showcaseRight {
@@ -264,8 +250,8 @@
 .phoneDeck {
   position: relative;
   width: 100%;
-  max-width: 420px;
-  height: 480px;
+  max-width: 390px;
+  height: 420px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -273,12 +259,12 @@
 
 .miniPhone {
   position: absolute;
-  width: 180px;
-  height: 370px;
+  width: 165px;
+  height: 345px;
   background: #ffffff;
-  border-radius: 22px;
-  border: 5px solid #2a2a2a;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+  border-radius: 20px;
+  border: 4.5px solid #2a2a2a;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.45);
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }.miniPhone img {
@@ -349,7 +335,7 @@
 }
 
 .showcaseWrapperReverse {
-  grid-template-columns: 1fr 1.2fr;
+  grid-template-columns: 1fr 1.15fr;
 }
 
 .showcaseWrapperReverse .showcaseLeft {
@@ -361,231 +347,9 @@
 }
 
 /* Bottom Device Row (iPad on Left, Laptop on Right - Centered) */
-.bottomDeviceRow {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  gap: 48px;
-  margin-top: 50px;
-  padding: 0 20px;
-  box-sizing: border-box;
-}
-
-.bottomDeviceRow .ipadMockup {
-  position: relative;
-  width: 320px;
-  aspect-ratio: 4/3; /* landscape tablet mode */
-  background: #111;
-  border: 8px solid #222;
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.bottomDeviceRow .ipadScreen {
-  width: 100%;
-  height: 100%;
-  background: #fff;
-  overflow-y: auto;
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-  transform: translate3d(0, 0, 0);
-  -webkit-transform: translate3d(0, 0, 0);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
-.bottomDeviceRow .ipadScreen::-webkit-scrollbar {
-  display: none;
-}
-
-.bottomDeviceRow .ipadScreen img {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
-
-.bottomDeviceRow .laptopMockup {
-  position: relative;
-  width: 600px;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.bottomDeviceRow .laptopScreen {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16/10;
-  background: #fff;
-  border: 10px solid #222;
-  border-radius: 18px;
-  overflow-y: auto;
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-  box-shadow: 0 15px 35px rgba(0,0,0,0.35);
-  transform: translate3d(0, 0, 0);
-  -webkit-transform: translate3d(0, 0, 0);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
-.bottomDeviceRow .laptopScreen::-webkit-scrollbar {
-  display: none;
-}
-
-.bottomDeviceRow .laptopScreen img {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
-
-/* Hover effects */
-.bottomDeviceRow:hover .ipadMockup {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.45);
-}
-
-.bottomDeviceRow:hover .laptopMockup {
-  transform: translateY(-8px) scale(1.02);
-}
 
 
 
-/* Bottom Comparison Row (2D vs 3D) */
-.bottomComparisonRow {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: stretch;
-  gap: 48px;
-  margin-top: 60px;
-  padding: 0 20px;
-  box-sizing: border-box;
-}
-
-.comparisonCardLarge {
-  width: 380px;
-  position: relative;
-  background: var(--surface);
-  border: 1.5px solid var(--border);
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.12);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.cardImageContainerLarge {
-  width: 100%;
-  aspect-ratio: 4/3; /* landscape view */
-  overflow: hidden;
-  position: relative;
-}
-
-.cardImageContainerLarge img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: contain;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  filter: contrast(1.08) brightness(1.01); /* sharpens text/lines */
-}
-
-.comparisonCardLarge:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.18);
-  border-color: var(--accent);
-}
-
-.cardBadge {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(4px);
-  color: #fff;
-  padding: 4px 10px;
-  border-radius: 6px;
-  font-size: 10px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  z-index: 3;
-  border: 1px solid rgba(255,255,255,0.1);
-}
-
-/* ── Responsive ── */
-@media (max-width: 1024px) {
-  .servicesGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .servicesGrid {
-    grid-template-columns: 1fr;
-  }
-  .showcaseWrapper {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-  .showcaseWrapperReverse .showcaseLeft {
-    order: 1;
-  }
-  .showcaseWrapperReverse .showcaseRight {
-    order: 2;
-  }
-  .phoneDeck {
-    height: 400px;
-  }
-  .bottomDeviceRow {
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-    margin-top: 30px;
-    padding: 0;
-  }
-  .bottomDeviceRow .laptopMockup {
-    width: 90%;
-    max-width: 320px;
-  }
-  .bottomDeviceRow .ipadMockup {
-    width: 70%;
-    max-width: 220px;
-  }
-  .bottomComparisonRow {
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-    margin-top: 30px;
-    padding: 0;
-  }
-  .comparisonCardLarge {
-    width: 90%;
-    max-width: 380px;
-  }
-}
-
-/* Click-to-Zoom cursor indicators */
-.bottomDeviceRow .ipadMockup,
-.bottomDeviceRow .laptopMockup,
-.comparisonCardLarge {
-  cursor: pointer;
-}
 
 /* Lightbox Modal CSS */
 .lightboxOverlay {
@@ -649,39 +413,730 @@
   to { transform: scale(1); opacity: 1; }
 }
 
-/* Live Links Row */
-.liveLinksRow {
+
+/* ================= RESPONSIVE DEVICE COMPOSITE (DESKTOP + OVERLAPPING MOBILE) ================= */
+.responsiveDeviceDeck {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding-bottom: 24px;
+}
+
+.desktopBrowserMockup {
+  width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #0d121f;
+  border: 1px solid var(--border-gold);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 24px rgba(212, 175, 55, 0.08);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.desktopBrowserMockup:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.5), 0 0 32px rgba(212, 175, 55, 0.16);
+}
+
+.browserHeaderBar {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-top: -16px;
-  margin-bottom: 24px;
+  padding: 10px 14px;
+  background: rgba(15, 23, 42, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.liveLabel {
-  color: var(--text-muted);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+.browserDotsGroup {
+  display: flex;
+  gap: 6px;
+}
+
+.dotRed {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #ef4444;
+}
+
+.dotYellow {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #f59e0b;
+}
+
+.dotGreen {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #10b981;
+}
+
+.browserAddressBar {
+  flex: 1;
+  max-width: 300px;
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  padding: 4px 10px;
   font-size: 11px;
-}
-
-.liveLink {
-  color: var(--accent);
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 13px;
-  transition: all 0.2s ease;
-  display: inline-flex;
+  color: #94a3b8;
+  font-family: monospace;
+  display: flex;
   align-items: center;
+  gap: 6px;
 }
 
-.liveLink:hover {
-  color: var(--text-main);
-  text-decoration: underline;
+.browserAddressBar svg {
+  color: #10b981;
 }
 
-.divider {
-  color: var(--border);
-  font-size: 12px;
+.browserScreenContent {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background: #060911;
+  overflow: hidden;
+}
+
+.browserVideoMedia {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Overlapping Mobile Phone Mockup */
+.overlapMobileMockup {
+  position: absolute;
+  right: -14px;
+  bottom: 0px;
+  width: clamp(130px, 16vw, 165px);
+  aspect-ratio: 9 / 19.5;
+  background: #000;
+  border-radius: 22px;
+  border: 3.5px solid #2d3748;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.65), 0 0 20px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  z-index: 5;
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.overlapMobileMockup:hover {
+  transform: translateY(-8px) scale(1.04);
+  box-shadow: 0 28px 55px rgba(0, 0, 0, 0.75), 0 0 28px rgba(212, 175, 55, 0.25);
+}
+
+.phoneSpeakerBar {
+  position: absolute;
+  top: 7px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 3.5px;
+  background: #4a5568;
+  border-radius: 3px;
+  z-index: 6;
+}
+
+.overlapPhoneImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.phoneHomeBar {
+  position: absolute;
+  bottom: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 44px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 3px;
+  z-index: 6;
+}
+
+
+
+/* ================= DEVICE DUO: LAPTOP + SAMSUNG S25 ULTRA ================= */
+.deviceMockupDuo {
+  position: relative;
+  width: 100%;
+  max-width: 530px;
+  margin: 0 auto;
+  padding: 10px 0 24px 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* 1. LAPTOP MOCKUP FRAME */
+.laptopMockup {
+  position: relative;
+  width: 88%;
+  margin: 0;
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
+  filter: drop-shadow(0 20px 42px rgba(0, 0, 0, 0.5));
+}
+
+.laptopMockup:hover {
+  transform: translateY(-4px);
+  filter: drop-shadow(0 26px 54px rgba(0, 0, 0, 0.65)) drop-shadow(0 0 18px rgba(212, 175, 55, 0.2));
+}
+
+.laptopLid {
+  background: #0f141f;
+  border-radius: 14px 14px 0 0;
+  border: 3.5px solid #232a38;
+  border-bottom: none;
+  padding: 6px 7px 0 7px;
+  position: relative;
+}
+
+.laptopWebcam {
+  width: 5px;
+  height: 5px;
+  background: #334155;
+  border-radius: 50%;
+  margin: 0 auto 5px auto;
+  box-shadow: inset 0 0 1px #000;
+}
+
+.laptopScreen {
+  background: #060911;
+  border-radius: 6px 6px 0 0;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.laptopBrowserBar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  background: rgba(15, 23, 42, 0.96);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.laptopDots {
+  display: flex;
+  gap: 5px;
+}
+
+.dotRed { width: 8px; height: 8px; border-radius: 50%; background: #ef4444; }
+.dotYellow { width: 8px; height: 8px; border-radius: 50%; background: #f59e0b; }
+.dotGreen { width: 8px; height: 8px; border-radius: 50%; background: #10b981; }
+
+.laptopUrlBar {
+  flex: 1;
+  max-width: 240px;
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  padding: 3px 8px;
+  font-size: 10px;
+  color: #94a3b8;
+  font-family: monospace;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.laptopUrlBar svg {
+  color: #10b981;
+}
+
+.laptopScreenImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.laptopBase {
+  position: relative;
+  height: 13px;
+  width: 104%;
+  left: -2%;
+  background: linear-gradient(180deg, #2b3342 0%, #171d27 100%);
+  border-radius: 0 0 14px 14px;
+  border-top: 1px solid #3e4a5e;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6);
+}
+
+.laptopNotch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: #111620;
+  border-radius: 0 0 6px 6px;
+}
+
+/* 2. SAMSUNG S25 ULTRA MOCKUP FRAME */
+.s25UltraMockup {
+  position: absolute;
+  right: -6px;
+  bottom: -6px;
+  width: 165px;
+  height: 330px;
+  cursor: pointer;
+  z-index: 10;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
+  filter: drop-shadow(0 20px 32px rgba(0, 0, 0, 0.75));
+}
+
+.s25UltraMockup:hover {
+  transform: translateY(-8px) scale(1.03);
+  filter: drop-shadow(0 28px 45px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 20px rgba(212, 175, 55, 0.25));
+}
+
+.s25InnerFrame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(170deg, #444 0%, #2b2b2b 40%, #1a1a1a 100%);
+  border: 3.5px solid #383838;
+  border-radius: 18px; /* Authentic sharp boxy S25 Ultra corners */
+  padding: 3px;
+  overflow: hidden;
+  box-shadow: inset 0 0 2px rgba(255, 255, 255, 0.2);
+}
+
+/* S25 Ultra Side Buttons */
+.s25Btn {
+  position: absolute;
+  right: -6px;
+  width: 3px;
+  background: #4a4a4a;
+  border-radius: 2px;
+  z-index: 12;
+}
+
+.s25VolUp { top: 65px; height: 28px; }
+.s25VolDown { top: 100px; height: 28px; }
+.s25Power { top: 145px; height: 22px; }
+
+/* Centered Punch-Hole Camera */
+.s25PunchHole {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  background: #000;
+  border: 1px solid #1a1a1a;
+  border-radius: 50%;
+  z-index: 15;
+  box-shadow: inset 0 0 2px #0a1128;
+}
+
+.s25Screen {
+  width: 100%;
+  height: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #000;
+}
+
+.s25Img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+
+.s25HomeBar {
+  position: absolute;
+  bottom: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 44px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 3px;
+  z-index: 15;
+}
+
+
+
+/* ========================================================
+   WEB DEVELOPMENT CLEAN DUO (LAPTOP + MOBILE IMAGES)
+   ======================================================== */
+.laptopMockupWrapper {
+  width: 88%;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--border-gold);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  cursor: pointer;
+  background: var(--surface);
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.laptopMockupWrapper:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.18), 0 0 20px rgba(212, 175, 55, 0.18);
+}
+
+.laptopImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.mobileMockupWrapper {
+  position: absolute;
+  right: -8px;
+  bottom: -10px;
+  width: clamp(140px, 18vw, 175px);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 20px 42px rgba(0, 0, 0, 0.18), 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 2px solid var(--border-gold);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+  cursor: pointer;
+  z-index: 10;
+  background: var(--surface);
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.mobileMockupWrapper:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 26px 52px rgba(0, 0, 0, 0.24), 0 0 24px rgba(212, 175, 55, 0.2);
+}
+
+.mobileImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* ========================================================
+   SOCIAL MEDIA TRIO: APPLE IPAD PRO + SAMSUNG S25 ULTRA (NO SIDE BUTTONS)
+   ======================================================== */
+.socialTrioContainer {
+  position: relative;
+  width: 100%;
+  max-width: 580px;
+  min-height: 330px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0 10px 0;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+}
+
+/* 1. APPLE IPAD PRO (LANDSCAPE WIDESCREEN) */
+.ipadMockup {
+  position: relative;
+  width: 385px;
+  height: 255px;
+  background: #11141a;
+  border-radius: 20px; /* Authentic iPad Pro curved corners */
+  padding: 6px;
+  border: 2px solid #282e3a;
+  box-shadow: 
+    inset 0 0 0 1px rgba(255, 255, 255, 0.12),
+    0 16px 36px rgba(0, 0, 0, 0.15),
+    0 2px 8px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  z-index: 2;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.ipadMockup:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 
+    inset 0 0 0 1px rgba(255, 255, 255, 0.2),
+    0 24px 50px rgba(0, 0, 0, 0.22),
+    0 0 20px rgba(212, 175, 55, 0.15);
+  z-index: 8;
+}
+
+.ipadCamera {
+  position: absolute;
+  top: 3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 5px;
+  background: #020305;
+  border-radius: 50%;
+  z-index: 20;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.12);
+}
+
+.ipadScreen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #07090e;
+  display: flex;
+  flex-direction: column;
+}
+
+.ipadHeaderBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 12px;
+  background: rgba(15, 20, 28, 0.98);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+}
+
+.proLaptopDots {
+  display: flex;
+  gap: 5px;
+}
+.proDotRed { width: 7px; height: 7px; border-radius: 50%; background: #ef4444; }
+.proDotYellow { width: 7px; height: 7px; border-radius: 50%; background: #f59e0b; }
+.proDotGreen { width: 7px; height: 7px; border-radius: 50%; background: #10b981; }
+
+.ipadUrlBadge {
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  padding: 2.5px 10px;
+  font-size: 10px;
+  color: #94a3b8;
+  font-family: monospace;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.ipadScreenImg {
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  object-fit: cover;
+  display: block;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -webkit-user-drag: none !important;
+}
+
+.ipadHomeBar {
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 65px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.45);
+  border-radius: 3px;
+  z-index: 25;
+}
+
+/* 2. AUTHENTIC SAMSUNG S25 ULTRA (SEAMLESS TITANIUM - NO BUTTONS) */
+.s25UltraDevice {
+  position: absolute;
+  width: 132px;
+  height: 270px;
+  cursor: pointer;
+  z-index: 5;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
+  filter: drop-shadow(0 12px 22px rgba(0, 0, 0, 0.16)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.08));
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
+
+.s25TitaniumBody {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(145deg, #2c3038 0%, #17191e 50%, #0d0f12 100%);
+  border-radius: 7px; /* Authentic sharp boxy S25 Ultra corners */
+  border: 1.5px solid #4a5160;
+  box-shadow: 
+    inset 0 0 0 1px rgba(255, 255, 255, 0.12),
+    0 8px 18px rgba(0, 0, 0, 0.15);
+  padding: 3.5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.s25TopSpeaker {
+  position: absolute;
+  top: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 1.5px;
+  background: #000;
+  border-radius: 2px;
+  z-index: 15;
+}
+
+.s25DisplayScreen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #000;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.8);
+}
+
+.s25PunchHoleCam {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 7.5px;
+  height: 7.5px;
+  background: #040608;
+  border-radius: 50%;
+  z-index: 20;
+  box-shadow: 
+    0 0 0 1px rgba(255, 255, 255, 0.15),
+    inset 0 0 2px #0a1020;
+}
+
+.s25ScreenImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -webkit-user-drag: none !important;
+}
+
+.s25GestureBar {
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 42px;
+  height: 3px;
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 3px;
+  z-index: 20;
+}
+
+/* TRIO POSITIONS & SOFT ELEGANT HOVER */
+.trioPhoneLeft {
+  left: -8px;
+  bottom: -4px;
+  transform: rotate(-4deg);
+}
+
+.trioPhoneLeft:hover {
+  transform: translateY(-8px) scale(1.04);
+  filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.22)) drop-shadow(0 0 14px rgba(212, 175, 55, 0.2));
+  z-index: 12;
+}
+
+.trioPhoneRight {
+  right: -8px;
+  bottom: -4px;
+  transform: rotate(4deg);
+}
+
+.trioPhoneRight:hover {
+  transform: translateY(-8px) scale(1.04);
+  filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.22)) drop-shadow(0 0 14px rgba(212, 175, 55, 0.2));
+  z-index: 12;
+}
+
+/* PREVENT UNWANTED BLUE SELECTION / DRAG SMUDGES */
+.demoShowcaseSection,
+.showcaseRight,
+.socialTrioContainer,
+.deviceMockupDuo,
+.phoneDeck,
+.s25UltraDevice,
+.ipadMockup,
+.laptopMockupWrapper,
+.mobileMockupWrapper {
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+}
+
+.socialTrioContainer ::selection,
+.showcaseRight ::selection {
+  background: transparent !important;
+}
+
+/* RESPONSIVE SCALING */
+@media (max-width: 992px) {
+  .socialTrioContainer {
+    max-width: 460px;
+    min-height: 290px;
+  }
+  .ipadMockup {
+    width: 310px;
+    height: 205px;
+  }
+  .s25UltraDevice {
+    width: 112px;
+    height: 230px;
+  }
+  .trioPhoneLeft {
+    left: -4px;
+  }
+  .trioPhoneRight {
+    right: -4px;
+  }
+}
+
+@media (max-width: 576px) {
+  .socialTrioContainer {
+    max-width: 340px;
+    min-height: 230px;
+  }
+  .ipadMockup {
+    width: 230px;
+    height: 155px;
+  }
+  .s25UltraDevice {
+    width: 86px;
+    height: 175px;
+  }
+  .trioPhoneLeft {
+    left: -6px;
+    bottom: 0;
+  }
+  .trioPhoneRight {
+    right: -6px;
+    bottom: 0;
+  }
 }

@@ -1,19 +1,79 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import api from '../../api/api.js'
-import { toast } from 'sonner'
 import { FaEnvelope, FaWhatsapp, FaCheck, FaMapMarkerAlt } from 'react-icons/fa'
 import styles from './Contact.module.css'
-const INIT = { fullName: '', businessName: '', phoneNumber: '', email: '', whatToAutomate: '', message: '' }
+
+// Contact details already used elsewhere in the project
+// (WhatsApp number: Services pages; email: Privacy Policy "Your Rights" section).
+const CONTACT_EMAIL = 'support@veltalabs.net'
+const WHATSAPP_URL = 'https://wa.me/919960240648'
+
+// Keep these lists in sync with backend/src/models/Contact.model.js
+const PROJECT_TYPES = ['Website', 'Application', 'Automation', 'Marketing / Content', 'SEO', 'Other']
+const BUDGET_RANGES = ['Under $500', '$500 – $2,000', '$2,000 – $5,000', '$5,000 – $10,000', '$10,000+', 'Not sure yet']
+const TIMELINES = ['As soon as possible', 'Within 1 month', '1–3 months', '3+ months', 'Flexible']
+
+const SUCCESS_MESSAGE =
+  "Thanks for reaching out to VeltaZ! Your enquiry has been submitted successfully. We'll review your details and follow up using your provided contact information."
+
+const INIT = {
+  fullName: '',
+  businessName: '',
+  email: '',
+  country: '',
+  projectType: '',
+  message: '',
+  budgetRange: '',
+  timeline: '',
+}
+
+// Order used to focus the first invalid field
+const FIELD_ORDER = ['fullName', 'businessName', 'email', 'country', 'projectType', 'message', 'budgetRange', 'timeline']
+
+const EMAIL_RE = /^[^\s@<>"']+@[^\s@<>"']+\.[^\s@<>"']+$/
 
 function validate(form) {
   const e = {}
-  if (!form.fullName.trim()) e.fullName = 'Name is required'
-  if (!form.businessName.trim()) e.businessName = 'Company name is required'
-  if (!form.phoneNumber.trim()) e.phoneNumber = 'Phone number is required'
-  else if (!/^[0-9+\s\-]{7,15}$/.test(form.phoneNumber)) e.phoneNumber = 'Enter a valid phone number'
-  if (!form.email.trim()) e.email = 'Email address is required'
-  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = 'Enter a valid email address'
+  const name = form.fullName.trim()
+  const business = form.businessName.trim()
+  const email = form.email.trim()
+  const country = form.country.trim()
+  const message = form.message.trim()
+
+  if (!name) e.fullName = 'Please enter your name'
+  else if (name.length > 100) e.fullName = 'Name must be 100 characters or fewer'
+
+  if (business.length > 150) e.businessName = 'Business name must be 150 characters or fewer'
+
+  if (!email) e.email = 'Please enter your email address'
+  else if (email.length > 254 || !EMAIL_RE.test(email)) e.email = 'Enter a valid email address, e.g. you@company.com'
+
+  if (!country) e.country = 'Please enter your country'
+  else if (country.length > 100) e.country = 'Country must be 100 characters or fewer'
+
+  if (!form.projectType) e.projectType = 'Please select a project type'
+
+  if (!message) e.message = 'Please briefly describe your project'
+  else if (message.length < 10) e.message = 'Please add a little more detail (at least 10 characters)'
+  else if (message.length > 2000) e.message = 'Description must be 2000 characters or fewer'
+
   return e
+}
+
+function Field({ id, label, required, error, children }) {
+  return (
+    <div className={styles.field}>
+      <label htmlFor={id}>
+        {label}
+        {required
+          ? <span className={styles.req} aria-hidden="true"> *</span>
+          : <span className={styles.opt}> (optional)</span>}
+      </label>
+      {children}
+      {error && <span id={`${id}-err`} className={styles.error} role="alert">{error}</span>}
+    </div>
+  )
 }
 
 export default function Contact() {
@@ -21,40 +81,90 @@ export default function Contact() {
   const [errors, setErrors] = useState({})
   const [loading, setLoading] = useState(false)
   const [sent, setSent] = useState(false)
+  const [submitError, setSubmitError] = useState('')
+
+  const inFlight = useRef(false)   // blocks double-submits even before React re-renders
+  const formRef = useRef(null)
+  const successRef = useRef(null)
+
+  useEffect(() => {
+    if (sent) successRef.current?.focus()
+  }, [sent])
 
   const set = (k) => (e) => {
     setForm(f => ({ ...f, [k]: e.target.value }))
     if (errors[k]) setErrors(er => ({ ...er, [k]: '' }))
   }
 
+  const focusFirstError = (errs) => {
+    const first = FIELD_ORDER.find(k => errs[k])
+    if (first) formRef.current?.querySelector(`#contact-${first}`)?.focus()
+  }
+
+  // Shared props for every control
+  const fieldProps = (k, required = false) => ({
+    id: `contact-${k}`,
+    name: k,
+    value: form[k],
+    onChange: set(k),
+    'aria-required': required || undefined,
+    'aria-invalid': !!errors[k],
+    'aria-describedby': errors[k] ? `contact-${k}-err` : undefined,
+    className: `${styles.inp} ${errors[k] ? styles.inpErr : ''}`,
+  })
+
   const submit = async (e) => {
     e.preventDefault()
-    const errs = validate(form)
-    if (Object.keys(errs).length) { setErrors(errs); return }
+    if (inFlight.current) return
 
+    setSubmitError('')
+    const errs = validate(form)
+    if (Object.keys(errs).length) {
+      setErrors(errs)
+      focusFirstError(errs)
+      return
+    }
+
+    inFlight.current = true
     setLoading(true)
     try {
-      const combinedMessage = `What to automate:\n${form.whatToAutomate}\n\nAdditional Details:\n${form.message}`
-      
-      await api.post('/contact', {
-        fullName: form.fullName,
-        businessName: form.businessName,
-        phoneNumber: form.phoneNumber,
-        email: form.email,
-        message: combinedMessage
+      const { data } = await api.post('/contact', {
+        fullName: form.fullName.trim(),
+        businessName: form.businessName.trim(),
+        email: form.email.trim(),
+        country: form.country.trim(),
+        projectType: form.projectType,
+        message: form.message.trim(),
+        budgetRange: form.budgetRange,
+        timeline: form.timeline,
       })
+
+      // Only treat the enquiry as submitted when the backend explicitly confirms it.
+      if (data?.success !== true) throw new Error('Unexpected response from server')
+
+      setErrors({})
+      setForm(INIT)
       setSent(true)
-      toast.success('Message sent! We\'ll be in touch shortly.')
     } catch (err) {
-      toast.error(err.userMessage || 'Failed to submit form. Please check your network.')
+      const serverErrors = err.response?.data?.errors
+      if (err.response?.status === 400 && serverErrors && typeof serverErrors === 'object') {
+        setErrors(serverErrors)
+        focusFirstError(serverErrors)
+        setSubmitError('Some details need attention. Please check the highlighted fields and try again.')
+      } else {
+        setSubmitError(
+          `${err.userMessage || 'We could not submit your enquiry.'} Your details are still in the form — please try again.`
+        )
+      }
     } finally {
+      inFlight.current = false
       setLoading(false)
     }
   }
 
   return (
     <div className={styles.page}>
-      
+
       {/* HERO */}
       <section className={styles.hero}>
         <div className={styles.bg}>
@@ -64,11 +174,11 @@ export default function Contact() {
           <div className={styles.heroContent}>
             <span className="tag">Contact Us</span>
             <h1 className={styles.title}>
-              Let's Build<br />
-              <span className="gradient-text">Something Smarter.</span>
+              Tell Us What{' '}<br />
+              <span className="gradient-text">You're Building.</span>
             </h1>
             <p className={styles.sub}>
-              Tell us about your business operations, and let's design an intelligent system that eliminates manual work.
+              Share your business challenge, project idea or current requirements. We'll review the details and discuss a practical next step.
             </p>
           </div>
         </div>
@@ -80,42 +190,40 @@ export default function Contact() {
           <div className={styles.layout}>
             {/* Info panel */}
             <div className={styles.infoCol}>
-              <h2>Operational Audit</h2>
+              <h2>Contact Details</h2>
               <p className={styles.infoText}>
-                Connect directly with a VeltaZ systems engineer. We will audit your current process pipeline and construct a custom automation flow blueprint.
+                Prefer to reach us directly? You can use any of the channels below.
               </p>
               <div className={styles.detailsList}>
                 <div className={styles.detailItem}>
                   <span className={styles.detailIcon}><FaEnvelope /></span>
                   <div>
-                    <span className={styles.detailLabel}>Direct Email</span>
-                    <a href="mailto:support@veltalabs.net" className={styles.detailVal}>support@veltalabs.net</a>
+                    <span className={styles.detailLabel}>Business Email</span>
+                    <a href={`mailto:${CONTACT_EMAIL}`} className={styles.detailVal}>{CONTACT_EMAIL}</a>
                   </div>
                 </div>
                 <div className={styles.detailItem}>
                   <span className={styles.detailIcon}><FaWhatsapp /></span>
                   <div>
-                    <span className={styles.detailLabel}>WhatsApp Broadcast</span>
-                    <a href="https://wa.me/919960240648" target="_blank" rel="noopener noreferrer" className={styles.detailVal}>Chat with an Architect</a>
+                    <span className={styles.detailLabel}>WhatsApp</span>
+                    <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className={styles.detailVal}>Chat with us on WhatsApp</a>
                   </div>
                 </div>
                 <div className={styles.detailItem}>
                   <span className={styles.detailIcon}><FaMapMarkerAlt /></span>
                   <div>
-                    <span className={styles.detailLabel}>Headquarters</span>
-                    <span className={styles.detailVal} style={{ color: 'var(--text2)', fontSize: '0.95rem' }}>
-                      Office 405, G Wing, Mega Center,<br />Hadapsar, Pune, India
-                    </span>
+                    <span className={styles.detailLabel}>Location</span>
+                    <span className={styles.detailVal}>Pune, India</span>
                   </div>
                 </div>
               </div>
 
               <div className={styles.promises}>
-                <h4>Our Guarantee</h4>
+                <h4>What Happens Next</h4>
                 <ul>
-                  <li><FaCheck className={styles.checkIcon} /> Complete operational architecture blueprint.</li>
-                  <li><FaCheck className={styles.checkIcon} /> Direct integration audit with your existing tech stack.</li>
-                  <li><FaCheck className={styles.checkIcon} /> Zero commitment required.</li>
+                  <li><FaCheck className={styles.checkIcon} /> You share your project details.</li>
+                  <li><FaCheck className={styles.checkIcon} /> We review them and consider a practical next step.</li>
+                  <li><FaCheck className={styles.checkIcon} /> We follow up using the contact details you provide.</li>
                 </ul>
               </div>
             </div>
@@ -123,97 +231,93 @@ export default function Contact() {
             {/* Form panel */}
             <div className={styles.formCol}>
               {sent ? (
-                <div className={styles.success}>
+                <div className={styles.success} ref={successRef} tabIndex={-1} role="status">
                   <span className={styles.successIcon}><FaCheck /></span>
-                  <h3>Audit Requested</h3>
-                  <p>Our automation engineering team will review your scope and follow up within 2 hours.</p>
-                  <button className="btn btn-outline" onClick={() => { setSent(false); setForm(INIT) }}>
-                    Send Another Inquiry
+                  <h3>Enquiry Submitted</h3>
+                  <p>{SUCCESS_MESSAGE}</p>
+                  <button type="button" className="btn btn-outline" onClick={() => { setSent(false); setSubmitError('') }}>
+                    Send Another Enquiry
                   </button>
                 </div>
               ) : (
-                <form className={styles.form} onSubmit={submit} noValidate>
-                  <div className={styles.row}>
-                    <div className={styles.field}>
-                      <label>Full Name</label>
-                      <input
-                        className={`${styles.inp} ${errors.fullName ? styles.inpErr : ''}`}
-                        type="text"
-                        placeholder="John Smith"
-                        value={form.fullName}
-                        onChange={set('fullName')}
-                        aria-invalid={!!errors.fullName}
-                      />
-                      {errors.fullName && <span className={styles.error} role="alert">{errors.fullName}</span>}
-                    </div>
+                <form className={styles.form} onSubmit={submit} noValidate ref={formRef} aria-busy={loading}>
+                  <p className={styles.legend}>Fields marked <span className={styles.req}>*</span> are required.</p>
 
-                    <div className={styles.field}>
-                      <label>Company Name</label>
-                      <input
-                        className={`${styles.inp} ${errors.businessName ? styles.inpErr : ''}`}
-                        type="text"
-                        placeholder="Acme Corp"
-                        value={form.businessName}
-                        onChange={set('businessName')}
-                        aria-invalid={!!errors.businessName}
-                      />
-                      {errors.businessName && <span className={styles.error} role="alert">{errors.businessName}</span>}
-                    </div>
+                  <div className={styles.row}>
+                    <Field id="contact-fullName" label="Name" required error={errors.fullName}>
+                      <input {...fieldProps('fullName', true)} type="text" placeholder="John Smith" autoComplete="name" maxLength={100} />
+                    </Field>
+
+                    <Field id="contact-businessName" label="Business Name" error={errors.businessName}>
+                      <input {...fieldProps('businessName')} type="text" placeholder="Acme Corp" autoComplete="organization" maxLength={150} />
+                    </Field>
                   </div>
 
                   <div className={styles.row}>
-                    <div className={styles.field}>
-                      <label>Email Address</label>
-                      <input
-                        className={`${styles.inp} ${errors.email ? styles.inpErr : ''}`}
-                        type="email"
-                        placeholder="you@company.com"
-                        value={form.email}
-                        onChange={set('email')}
-                        aria-invalid={!!errors.email}
-                      />
-                      {errors.email && <span className={styles.error} role="alert">{errors.email}</span>}
-                    </div>
+                    <Field id="contact-email" label="Email Address" required error={errors.email}>
+                      <input {...fieldProps('email', true)} type="email" placeholder="you@company.com" autoComplete="email" inputMode="email" maxLength={254} />
+                    </Field>
 
-                    <div className={styles.field}>
-                      <label>Phone Number</label>
-                      <input
-                        className={`${styles.inp} ${errors.phoneNumber ? styles.inpErr : ''}`}
-                        type="tel"
-                        placeholder="+91 99999 88888"
-                        value={form.phoneNumber}
-                        onChange={set('phoneNumber')}
-                        aria-invalid={!!errors.phoneNumber}
-                      />
-                      {errors.phoneNumber && <span className={styles.error} role="alert">{errors.phoneNumber}</span>}
-                    </div>
+                    <Field id="contact-country" label="Country" required error={errors.country}>
+                      <input {...fieldProps('country', true)} type="text" placeholder="e.g. United States" autoComplete="country-name" maxLength={100} />
+                    </Field>
                   </div>
 
-                  <div className={styles.field}>
-                    <label>What can VeltaZ help you automate?</label>
+                  <Field id="contact-projectType" label="Project Type" required error={errors.projectType}>
+                    <select {...fieldProps('projectType', true)}>
+                      <option value="">Select a project type</option>
+                      {PROJECT_TYPES.map(t => <option key={t} value={t}>{t}</option>)}
+                    </select>
+                  </Field>
+
+                  <Field id="contact-message" label="Short Project Description" required error={errors.message}>
                     <textarea
-                      className={styles.inp}
-                      rows="3"
-                      placeholder="e.g. Capture real estate leads on Facebook and route to CRM"
-                      value={form.whatToAutomate}
-                      onChange={set('whatToAutomate')}
+                      {...fieldProps('message', true)}
+                      rows="5"
+                      maxLength={2000}
+                      placeholder="What are you looking to build or improve? Any goals, challenges or requirements worth knowing?"
                     />
+                    <span className={styles.counter} aria-hidden="true">{form.message.length}/2000</span>
+                  </Field>
+
+                  <div className={styles.row}>
+                    <Field id="contact-budgetRange" label="Budget Range (USD)" error={errors.budgetRange}>
+                      <select {...fieldProps('budgetRange')}>
+                        <option value="">Select a range</option>
+                        {BUDGET_RANGES.map(b => <option key={b} value={b}>{b}</option>)}
+                      </select>
+                    </Field>
+
+                    <Field id="contact-timeline" label="Expected Timeline" error={errors.timeline}>
+                      <select {...fieldProps('timeline')}>
+                        <option value="">Select a timeline</option>
+                        {TIMELINES.map(t => <option key={t} value={t}>{t}</option>)}
+                      </select>
+                    </Field>
                   </div>
 
-                  <div className={styles.field}>
-                    <label>Message / Additional Details</label>
-                    <textarea
-                      className={styles.inp}
-                      rows="4"
-                      placeholder="Tell us more about your target conversions..."
-                      value={form.message}
-                      onChange={set('message')}
-                    />
-                  </div>
+                  {submitError && (
+                    <div className={styles.errorBanner} role="alert">
+                      <p>{submitError}</p>
+                      <p>
+                        Still stuck? Email <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> or{' '}
+                        <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">message us on WhatsApp</a>.
+                      </p>
+                    </div>
+                  )}
 
-                  <button type="submit" className="btn btn-primary" style={{ width: '100%', padding: '14px 0' }} disabled={loading}>
-                    {loading ? 'Submitting...' : 'Talk to VeltaZ'}
+                  <button
+                    type="submit"
+                    className={`btn btn-primary ${styles.submitBtn}`}
+                    disabled={loading}
+                  >
+                    {loading ? 'Sending…' : 'Discuss My Project'}
                   </button>
+
+                  <p className={styles.privacy}>
+                    We'll use the details you share to review and respond to your enquiry.
+                    See our <Link to="/privacy">Privacy Policy</Link> for how information is handled.
+                  </p>
                 </form>
               )}
             </div>

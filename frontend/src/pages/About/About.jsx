@@ -52,7 +52,7 @@ export default function About() {
           <div className={styles.aboutGridHeader}>
             <h2>Who We Are? <br /> Why We Exist?</h2>
             <p>
-              VeltaZ is a bespoke technology agency. We engineer custom private software applications and proprietary systems that run your business operations securely and efficiently.
+              VeltaZ is a modern technology agency. We engineer custom private software applications and proprietary systems that run your business operations securely and efficiently.
             </p>
           </div>
           {/* Grid Showcase */}

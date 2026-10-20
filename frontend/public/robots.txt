@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /signin
+Disallow: /login
+Disallow: /signup
+
+Sitemap: https://www.veltalabs.net/sitemap.xml

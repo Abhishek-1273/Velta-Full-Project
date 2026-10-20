@@ -107,62 +107,11 @@ const veltaProducts = [
     ]
   },
   {
-    id: 'realestate',
-    badge: 'ACTIVE PRODUCT',
-    name: 'Kin Property Management',
-    tagline: 'Property Management & Marketplace',
-    desc: 'A comprehensive portal designed to buy, sell, rent, and manage properties. Streamlines lead matching, listing verifications, and property management workflows.',
-    color: '#b8973b',
-    features: [
-      'Buy/Sell/Rent listing engines',
-      'Property location map widgets',
-      'Agent lead-matching algorithms',
-      'Tenant agreement storage',
-      'Maintenance ticket tracker'
-    ],
-    status: 'active',
-    architecture: [
-      { 
-        num: '01', 
-        label: 'Listing Verification', 
-        desc: 'Geo-tagging audit & verified title check.',
-        status: 'Verified',
-        icon: (
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
-          </svg>
-        )
-      },
-      { 
-        num: '02', 
-        label: 'Broker Match System', 
-        desc: 'Lead-scoring maps customer requests to agents.',
-        status: 'Active',
-        icon: (
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <circle cx="12" cy="12" r="10"/><path d="M16 12l-4-4-4 4M12 16V8"/>
-          </svg>
-        )
-      },
-      { 
-        num: '03', 
-        label: 'Tenant Portal Sync', 
-        desc: 'Executes rental agreement logs & support ticks.',
-        status: 'Completed',
-        icon: (
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
-          </svg>
-        )
-      }
-    ]
-  },
-  {
     id: 'dating',
-    badge: 'UNDER DEVELOPMENT',
+    badge: 'INTERACTIVE PROTOTYPE',
     name: 'Me & Mine',
-    tagline: 'Location-Based Matchmaking & Chat',
-    desc: 'An interactive mobile matchmaking engine featuring secure chats and real-time user discovery widgets. Designed to manage conversational traffic and connections.',
+    tagline: 'Social & Matchmaking App Prototype',
+    desc: 'An interactive mobile matchmaking prototype engineered by VeltaZ featuring fluid UI flows, real-time user discovery widgets, and dynamic questionnaire logic.',
     color: '#ff6b9d',
     features: [
       'Real-time chat channels',
@@ -287,10 +236,6 @@ export default function Product() {
                   ) : p.id === 'docket14' ? (
                     <Link to="/products/docket14" className={`btn btn-primary ${styles.docketBtn}`} style={{ marginTop: '24px' }}>
                       Explore Docket14
-                    </Link>
-                  ) : p.id === 'realestate' ? (
-                    <Link to="/products/kin-property" className={`btn btn-primary ${styles.kinBtn}`} style={{ marginTop: '24px' }}>
-                      Explore Kin Property
                     </Link>
                   ) : p.status === 'active' ? (
                     <Link to="/contact" className="btn btn-outline" style={{ marginTop: '24px' }}>

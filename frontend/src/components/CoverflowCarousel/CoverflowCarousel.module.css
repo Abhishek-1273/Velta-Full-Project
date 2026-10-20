@@ -34,7 +34,7 @@
   position: absolute;
   left: 50%;
   top: 0;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
   border-radius: 20px;
   background-color: var(--bg2);

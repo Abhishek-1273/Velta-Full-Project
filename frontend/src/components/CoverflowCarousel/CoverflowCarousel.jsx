@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react'
+import { Link } from 'react-router-dom'
 import styles from './CoverflowCarousel.module.css'
 
 const useIsoLayoutEffect =
@@ -40,9 +41,21 @@ export function CoverflowCarousel({
   const widthRef = useRef(0)
   const rafRef = useRef(null)
   const dragRef = useRef(null)
+  const resumeTimerRef = useRef(null)
 
   const [selected, setSelected] = useState(0)
-  const [resetKey, setResetKey] = useState(0)
+  const [isPaused, setIsPaused] = useState(false)
+
+  // Pause autoplay for 1 minute (60,000 ms) whenever user interacts
+  const pauseAutoPlay = useCallback((durationMs = 60000) => {
+    setIsPaused(true)
+    if (resumeTimerRef.current) {
+      clearTimeout(resumeTimerRef.current)
+    }
+    resumeTimerRef.current = setTimeout(() => {
+      setIsPaused(false)
+    }, durationMs)
+  }, [])
 
   const indexAt = useCallback(
     (pos) => ((Math.round(pos) % count) + count) % count,
@@ -107,26 +120,30 @@ export function CoverflowCarousel({
   )
 
   const goTo = useCallback(
-    (index) => {
-      setResetKey(prev => prev + 1)
+    (index, pauseDuration = 60000) => {
+      if (pauseDuration > 0) {
+        pauseAutoPlay(pauseDuration)
+      }
       const target = loop
         ? index + Math.round((targetRef.current - index) / count) * count
         : index
       settle(clamp(target))
     },
-    [clamp, count, loop, settle]
+    [clamp, count, loop, pauseAutoPlay, settle]
   )
 
   const nudge = useCallback(
-    (by) => {
-      setResetKey(prev => prev + 1)
+    (by, pauseDuration = 0) => {
+      if (pauseDuration > 0) {
+        pauseAutoPlay(pauseDuration)
+      }
       settle(clamp(Math.round(targetRef.current) + by))
     },
-    [clamp, settle]
+    [clamp, pauseAutoPlay, settle]
   )
 
   const onPointerDown = (event) => {
-    setResetKey(prev => prev + 1)
+    pauseAutoPlay(60000)
     if (rafRef.current !== null) {
       cancelAnimationFrame(rafRef.current)
       rafRef.current = null
@@ -177,7 +194,7 @@ export function CoverflowCarousel({
       if (cardEl) {
         const clickedIndex = parseInt(cardEl.getAttribute('data-index'), 10)
         if (!isNaN(clickedIndex)) {
-          goTo(clickedIndex)
+          goTo(clickedIndex, 60000)
           return
         }
       }
@@ -204,20 +221,23 @@ export function CoverflowCarousel({
     return () => observer.disconnect()
   }, [paint])
 
-  useEffect(
-    () => () => {
-      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current)
-    },
-    []
-  )
-
-  // Auto-play interval
   useEffect(() => {
+    return () => {
+      if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current)
+      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current)
+    }
+  }, [])
+
+  // Auto-play interval: 3.5s per slide, paused for 1 minute (60s) whenever user clicks or interacts
+  useEffect(() => {
+    if (isPaused) return
+
     const interval = setInterval(() => {
-      nudge(1)
-    }, 3200)
+      nudge(1, 0)
+    }, 3500)
+
     return () => clearInterval(interval)
-  }, [nudge, resetKey])
+  }, [isPaused, nudge])
 
   const active = slides[selected]
 
@@ -241,10 +261,10 @@ export function CoverflowCarousel({
           onKeyDown={(event) => {
             if (event.key === 'ArrowLeft') {
               event.preventDefault()
-              nudge(-1)
+              nudge(-1, 60000)
             } else if (event.key === 'ArrowRight') {
               event.preventDefault()
-              nudge(1)
+              nudge(1, 60000)
             }
           }}
           className={styles.grabFrame}
@@ -255,7 +275,7 @@ export function CoverflowCarousel({
           <div
             className={styles.cardContainer}
             style={{
-              height: 'calc(var(--cf-card) * 4 / 3)',
+              height: 'var(--cf-card)',
               transformStyle: 'preserve-3d',
             }}
           >
@@ -271,6 +291,7 @@ export function CoverflowCarousel({
                 aria-label={`${index + 1} of ${count}`}
                 className={`${styles.card} ${index === selected ? styles.cardActive : ''}`}
                 style={{ width: 'var(--cf-card)', cursor: 'pointer' }}
+                onClick={() => goTo(index, 60000)}
               >
                 <img
                   src={slide.src}
@@ -288,7 +309,7 @@ export function CoverflowCarousel({
             <button
               type="button"
               aria-label="Previous slide"
-              onClick={() => nudge(-1)}
+              onClick={() => nudge(-1, 60000)}
               className={`${styles.arrowBtn} ${styles.prevBtn}`}
             >
               <ChevronLeft />
@@ -296,7 +317,7 @@ export function CoverflowCarousel({
             <button
               type="button"
               aria-label="Next slide"
-              onClick={() => nudge(1)}
+              onClick={() => nudge(1, 60000)}
               className={`${styles.arrowBtn} ${styles.nextBtn}`}
             >
               <ChevronRight />
@@ -306,7 +327,11 @@ export function CoverflowCarousel({
       </div>
 
       {(showCaption || showPagination) && (
-        <div className={styles.infoWrapper}>
+        <div
+          className={styles.infoWrapper}
+          onClick={() => pauseAutoPlay(60000)}
+          onMouseEnter={() => pauseAutoPlay(60000)}
+        >
           
           <div className={styles.detailsRow}>
             {/* LEFT: DEFINITION TEXT */}
@@ -357,7 +382,7 @@ export function CoverflowCarousel({
                   type="button"
                   aria-label={`Go to slide ${index + 1}`}
                   aria-current={index === selected}
-                  onClick={() => goTo(index)}
+                  onClick={() => goTo(index, 60000)}
                   className={`${styles.dot} ${index === selected ? styles.activeDot : ''}`}
                 />
               ))}

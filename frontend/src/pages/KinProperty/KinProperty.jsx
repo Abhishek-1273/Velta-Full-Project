@@ -122,7 +122,7 @@ export default function KinProperty() {
                 <div className={styles.browserViewport}>
                   <video 
                     ref={websiteVideoRef}
-                    src="https://res.cloudinary.com/dqc1awrnc/video/upload/v1786559690/website_1_gell7s.mp4" 
+                    src="https://pub-e1d70b5018194b73862065bede05370e.r2.dev/lv_0_20261019161435.mp4" 
                     autoPlay 
                     loop 
                     muted 
@@ -167,7 +167,7 @@ export default function KinProperty() {
                 <div className={styles.browserViewport}>
                   <video 
                     ref={adminVideoRef}
-                    src="https://res.cloudinary.com/dqc1awrnc/video/upload/v1786558468/admin_an7wy5.mp4" 
+                    src="https://pub-e1d70b5018194b73862065bede05370e.r2.dev/lv_0_20261019162600.mp4" 
                     autoPlay 
                     loop 
                     muted 
