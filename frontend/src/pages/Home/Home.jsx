@@ -474,7 +474,7 @@ export default function Home() {
             transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
           >
             <span className="tag">Our Methodology</span>
-            <h2>Think Clearly.<br />Build Practically. Scale Continuously.</h2>
+            <h2>Think Clearly.<br />Build Practically.<br />Scale Continuously.</h2>
             <p>A structured 4-stage engineering lifecycle designed for speed, transparency and long-term business impact.</p>
           </motion.div>
 
