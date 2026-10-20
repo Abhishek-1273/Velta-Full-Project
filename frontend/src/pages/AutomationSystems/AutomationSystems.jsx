@@ -419,7 +419,7 @@ export default function AutomationSystems() {
               <div className={styles.cardTop}>
                 <div className={styles.cardTagRow}>
                   <span className={`${styles.cardTag} ${styles.popularBadge}`}>Option B · Recommended</span>
-                  <span style={{ fontSize: 12, color: '#06b6d4', fontWeight: 700 }}>All 6 Automations</span>
+                  <span className={styles.tagHighlight}>All 6 Automations</span>
                 </div>
                 <h3 className={styles.cardTitle}>Full Pipeline Automation</h3>
                 <div className={styles.cardSubtitle}>Complete enterprise automation covering all 6 operational engines</div>

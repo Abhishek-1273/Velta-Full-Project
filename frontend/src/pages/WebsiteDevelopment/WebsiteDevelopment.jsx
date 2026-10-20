@@ -176,9 +176,10 @@ export default function WebsiteDevelopment() {
                   />
                   <div className={styles.browserOverlayInfo}>
                     <div className={styles.browserBadge}>
-                      <span style={{ color: '#10b981' }}>●</span>
-                      <span>Live Production · KIN Property Management</span>
-                    </div>
+                        <span className={styles.liveGreenDot}>●</span>
+                        <span className={styles.badgeFullText}>Live Production · KIN Property Management</span>
+                        <span className={styles.badgeShortText}>Live: KIN Property</span>
+                      </div>
                     <button 
                       className={styles.browserPlayControl} 
                       onClick={(e) => { e.stopPropagation(); toggleHeroVideo(); }}

@@ -1199,3 +1199,74 @@
   color: #3b82f6 !important;
   background: rgba(37, 99, 235, 0.1) !important;
 }
+
+/* Responsive helper classes for mobile hero badge and duration toggles */
+.badgeShortText {
+  display: none;
+}
+.mobileDurationText {
+  display: none;
+}
+.liveGreenDot {
+  color: #10b981;
+  font-size: 10px;
+}
+
+@media (max-width: 640px) {
+  .browserOverlayInfo {
+    bottom: 8px !important;
+    left: 8px !important;
+    right: 8px !important;
+    gap: 8px !important;
+  }
+  .browserBadge {
+    font-size: 11px !important;
+    padding: 3px 9px !important;
+    max-width: calc(100% - 44px) !important;
+  }
+  .browserPlayControl {
+    width: 28px !important;
+    height: 28px !important;
+  }
+  .badgeFullText {
+    display: none !important;
+  }
+  .badgeShortText {
+    display: inline !important;
+    white-space: nowrap !important;
+  }
+
+  .durationToggleWrapper {
+    width: 100% !important;
+    padding: 0 4px !important;
+    margin: 16px auto 26px !important;
+  }
+  .durationToggle {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: space-between !important;
+  }
+  .durationBtn {
+    padding: 7px 6px !important;
+    font-size: 11.5px !important;
+    gap: 4px !important;
+    flex: 1 !important;
+    justify-content: center !important;
+    white-space: nowrap !important;
+  }
+  .desktopDurationText {
+    display: none !important;
+  }
+  .mobileDurationText {
+    display: inline !important;
+    white-space: nowrap !important;
+  }
+  .discountBadge {
+    font-size: 9px !important;
+    padding: 1px 4px !important;
+  }
+  .cardTagRow {
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+  }
+}
