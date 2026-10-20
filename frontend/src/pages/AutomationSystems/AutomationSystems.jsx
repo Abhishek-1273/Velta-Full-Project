@@ -47,8 +47,8 @@ const faqItems = [
     a: "Our follow-up sequences have active condition listeners. As soon as a customer responds, replies to an email, or books a meeting, all automated follow-up sequences are instantly halted to ensure your human conversations remain natural."
   },
   {
-    q: "Do we have to pay monthly subscription fees for Zapier or Make?",
-    a: "Whenever possible, we build on cost-effective or self-hosted platforms (like n8n or direct webhook scripts) to keep recurring costs near zero. If you prefer cloud platforms like Zapier or Make, you maintain 100% ownership of your own accounts."
+    q: "Can you connect automations with our existing tools and CRM?",
+    a: "Yes. We integrate directly with your existing setup — including website lead forms, Meta ad campaigns, Google Sheets, Gmail, WhatsApp Business, and standard CRMs — using secure webhooks and official APIs without disrupting your current operations."
   }
 ]
 
