@@ -33,8 +33,8 @@ const faqItems = [
     a: "Yes. We specialize in cross-platform development with React Native, producing high-performance native applications for both Google Play Store and Apple App Store from a unified codebase, reducing cost and maintenance by 50%."
   },
   {
-    q: "How does offline synchronization work?",
-    a: "We implement offline-first local data storage with queued operational actions. When a user creates a lead or logs a task without internet, the app caches it locally and automatically synchronizes with your central MongoDB database the moment network connectivity restores."
+    q: "Can the app work smoothly when the internet is weak or drops?",
+    a: "Yes. We implement smart local caching so the app remains responsive without freezing or crashing during network drops, and smoothly synchronizes data with your cloud backend as soon as connectivity is restored."
   },
   {
     q: "Can the mobile app connect to our existing web dashboard or database?",
@@ -169,7 +169,7 @@ export default function MobileAppDevelopment() {
               </p>
               
               <p className={styles.heroNote}>
-                From guaranteed offline synchronization to real-time push alerts, we engineer apps that your workforce and customers can rely on even in zero-connectivity zones.
+                From fast React Native performance to real-time push alerts, we engineer reliable mobile apps that your workforce and customers can depend on every day.
               </p>
 
               <div className={styles.heroBtnRow}>
@@ -195,10 +195,10 @@ export default function MobileAppDevelopment() {
               </div>
 
               <div className={styles.platformBadges}>
-                <div className={styles.platformItem}><FaApple size={18} /><span>iOS 16+</span></div>
-                <div className={styles.platformItem}><FaAndroid size={18} /><span>Android 9+</span></div>
-                <div className={styles.platformItem}><FaSyncAlt size={16} /><span>Offline-First Sync</span></div>
-                <div className={styles.platformItem}><FaRocket size={16} /><span>60 FPS Fluidity</span></div>
+                <div className={styles.platformItem}><FaApple size={18} /><span>iOS & Android</span></div>
+                <div className={styles.platformItem}><FaSyncAlt size={16} /><span>Real-Time Cloud Sync</span></div>
+                <div className={styles.platformItem}><FaRocket size={16} /><span>Fast & Fluid UX</span></div>
+                <div className={styles.platformItem}><FaBell size={16} /><span>Instant Push Alerts</span></div>
               </div>
             </div>
 
@@ -220,40 +220,40 @@ export default function MobileAppDevelopment() {
         </div>
       </section>
 
-      {/* ── 2. ENGINEERING HIGHLIGHTS ── */}
+      {/* ── 2. CORE MOBILE CAPABILITIES ── */}
       <section className={styles.featuresSection}>
         <div className="container">
           <div className={styles.sectionHeader}>
-            <span className="tag">Mobile Architecture</span>
-            <h2>Engineered for Harsh Real-World Conditions</h2>
+            <span className="tag">Core Capabilities</span>
+            <h2>Built for Performance, Speed & Scale</h2>
             <p>
-              A mobile app should never crash or freeze when network reception drops. We architect apps with resilience at the core.
+              We engineer production-ready mobile applications designed to deliver a smooth user experience across both iOS and Android.
             </p>
           </div>
 
           <div className={styles.featureGrid}>
             <div className={styles.featureCard}>
-              <div className={styles.iconCircle}><FaWifi size={20} /></div>
-              <h3>Guaranteed Offline Sync</h3>
-              <p>Smart local caching queues actions and seamlessly synchronizes with your MongoDB cloud database once connectivity resumes.</p>
+              <div className={styles.iconCircle}><FaMobileAlt size={20} /></div>
+              <h3>Cross-Platform Android & iOS</h3>
+              <p>Unified codebase with React Native delivering true native performance on both Google Play Store and Apple App Store.</p>
             </div>
 
             <div className={styles.featureCard}>
-              <div className={styles.iconCircle}><FaMobileAlt size={20} /></div>
-              <h3>Budget Smartphone Optimization</h3>
-              <p>Minimized memory footprints and GPU-accelerated list rendering ensure 60fps scrolling on budget Android handsets.</p>
+              <div className={styles.iconCircle}><FaRocket size={20} /></div>
+              <h3>Clean UI & Smooth Performance</h3>
+              <p>Modern responsive user interfaces optimized for instant loading, fluid gesture navigation, and zero lag on any smartphone.</p>
             </div>
 
             <div className={styles.featureCard}>
               <div className={styles.iconCircle}><FaBell size={20} /></div>
-              <h3>Intelligent Push Notifications</h3>
-              <p>Targeted APNs and Firebase Cloud Messaging hooks for automated lead alerts, status updates, and task triggers.</p>
+              <h3>Instant Push Notifications</h3>
+              <p>Integrated Firebase Cloud Messaging (FCM) for real-time lead alerts, transaction updates, and targeted user engagement.</p>
             </div>
 
             <div className={styles.featureCard}>
               <div className={styles.iconCircle}><FaShieldAlt size={20} /></div>
-              <h3>Role-Based Security</h3>
-              <p>JWT token authentication, biometric login (FaceID/Fingerprint), and encrypted local storage protect corporate data.</p>
+              <h3>Secure Login & Admin Controls</h3>
+              <p>Role-based access management, OTP verification, biometric authentication (FaceID/Fingerprint), and encrypted data protection.</p>
             </div>
           </div>
         </div>
