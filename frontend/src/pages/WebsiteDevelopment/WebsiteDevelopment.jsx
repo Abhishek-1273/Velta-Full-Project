@@ -49,10 +49,6 @@ const faqItems = [
     a: "Basic technical and on-page SEO are included within the agreed scope (clean semantic tags, meta descriptions, sitemap configuration, mobile responsiveness, and speed optimization). Ongoing SEO campaigns, monthly blog creation, and backlink outreach are separate ongoing services."
   },
   {
-    q: "How long does it take?",
-    a: "A standard Business Website typically takes 7 to 14 business days, while a Dynamic Website takes 2 to 4 weeks depending on the agreed content models and review rounds. A detailed timeline is agreed upon before development begins."
-  },
-  {
     q: "Can you redesign an existing website?",
     a: "Yes. We can audit your current website, restructure the layout and customer journey, and rebuild it using modern, high-speed technologies under an agreed redesign scope."
   }
