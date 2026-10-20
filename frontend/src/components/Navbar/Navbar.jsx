@@ -204,7 +204,20 @@ export default function Navbar() {
 
                 {/* MOBILE ACCORDION SUBMENU */}
                 <ul className={`${styles.mobileSubmenu} ${mobileServicesOpen ? styles.mobileSubmenuOpen : ''}`}>
-                  {veltaServices.map((s, idx) => (
+                  <li className={styles.mobileOverviewItem}>
+                      <Link
+                        to="/services"
+                        onClick={() => {
+                          setMobileServicesOpen(false)
+                          setOpen(false)
+                        }}
+                        className={styles.mobileOverviewLink}
+                      >
+                        <span>All Services Overview</span>
+                        <span className={styles.mobileOverviewArrow}>→</span>
+                      </Link>
+                    </li>
+                    {veltaServices.map((s, idx) => (
                     <li key={idx}>
                       <Link
                         to={s.to}
