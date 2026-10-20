@@ -322,8 +322,7 @@ export default function Contact() {
                   </button>
 
                   <p className={styles.privacy}>
-                    We'll use the details you share to review and respond to your enquiry.
-                    See our <Link to="/privacy">Privacy Policy</Link> for how information is handled.
+                    We'll use the details you share to review and respond to your enquiry. All shared business information is kept strictly confidential.
                   </p>
                 </form>
               )}

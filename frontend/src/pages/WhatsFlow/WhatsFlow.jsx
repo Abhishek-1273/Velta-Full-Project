@@ -373,9 +373,9 @@ export default function WhatsFlow() {
           <div className={styles.ctaBox}>
             <h2>Ready to Deploy WhatsFlow?</h2>
             <p>Automate your WhatsApp lead flow and upgrade your customer operations today.</p>
-            <div style={{ display: 'flex', gap: 14, justifyContent: 'center' }}>
+            <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
               <a href="/contact" className="btn btn-primary">Schedule Deployment</a>
-              <a href="/plan" className="btn btn-outline">Explore Custom Setup</a>
+              <a href="https://wa.me/919960240648" target="_blank" rel="noopener noreferrer" className="btn btn-outline">Chat on WhatsApp</a>
             </div>
           </div>
         </div>

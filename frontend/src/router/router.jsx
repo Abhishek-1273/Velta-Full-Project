@@ -50,8 +50,8 @@ export const router = createBrowserRouter([
 
       { path: 'content', element: <ContentStudio /> },
       { path: 'contact', element: <Contact /> },
-      { path: 'terms', element: <TermsOfService /> },
-      { path: 'privacy', element: <TermsOfService /> },
+      { path: 'terms', loader: () => redirect('/') },
+      { path: 'privacy', loader: () => redirect('/') },
 
       // ── Products & Demos (Public)
       { path: 'products', loader: () => redirect('/services/mobile-app-development#apps-showcase') },
@@ -59,7 +59,7 @@ export const router = createBrowserRouter([
       { path: 'products/docket14', element: <Docket14 /> },
       { path: 'products/kin-property', element: <KinProperty /> },
       { path: 'demo', element: <Demo /> },
-      { path: 'plan', element: <Plan /> },
+      { path: 'plan', loader: () => redirect('/') },
 
       // ── Auth redirects (safe redirects to home)
       { path: 'signin', loader: () => redirect('/') },

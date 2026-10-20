@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import Plan from '../Plan/Plan.jsx'
 import styles from './Demo.module.css'
 
 // ─── Lock body scroll when any modal is open ───────────────────────

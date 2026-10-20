@@ -93,10 +93,6 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className={styles.bottom}>
           <p className={styles.copy}>© {new Date().getFullYear()} VeltaZ | All rights reserved.</p>
-          <div className={styles.bottomLinks}>
-            <Link to="/privacy" className={styles.bottomLink}>Privacy Policy</Link>
-            <Link to="/terms" className={styles.bottomLink}>Terms of Service</Link>
-          </div>
         </div>
       </div>
     </footer>

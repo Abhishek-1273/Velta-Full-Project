@@ -184,26 +184,12 @@
 
 .bottom {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 32px 0 0;
   font-size: 13px;
   color: var(--text3);
-}
-
-.bottomLinks {
-  display: flex;
-  gap: 24px;
-}
-
-.bottomLink {
-  color: var(--text3);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.bottomLink:hover {
-  color: var(--text2);
+  text-align: center;
 }
 
 @media (max-width: 900px) {
