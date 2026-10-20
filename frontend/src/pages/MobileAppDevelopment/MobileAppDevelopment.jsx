@@ -45,13 +45,12 @@ const faqItems = [
     a: "Yes. We handle end-to-end store compliance, bundle generation, screenshot packaging, privacy policy drafting, and review submissions under your own developer accounts."
   },
   {
-    q: "What is the typical delivery timeframe for a mobile MVP?",
-    a: "A focused cross-platform MVP (such as an internal field agent app or lead-tracking mobile suite) typically takes 3 to 6 weeks from architecture sign-off to test build."
+    q: "Who owns the source code and app assets after launch?",
+    a: "You retain 100% complete ownership of the source code, design assets, and intellectual property. Once development is completed, we hand over the full Git repository, build files, and credentials with zero vendor lock-in."
   }
 ]
 
 export default function MobileAppDevelopment() {
-  const [currency, setCurrency] = useState('INR')
   const [activeFaq, setActiveFaq] = useState(null)
   const [activeAppTab, setActiveAppTab] = useState('whatsflow') // 'whatsflow' | 'docket14' | 'memine'
 
