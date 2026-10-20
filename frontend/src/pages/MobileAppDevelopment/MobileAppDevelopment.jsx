@@ -364,47 +364,28 @@ export default function MobileAppDevelopment() {
         </div>
       </section>
 
-      {/* ── 4. PRICING & SCOPE ── */}
-      <section className={styles.pricingSection}>
+      {/* ── 4. DISCUSS YOUR MOBILE APP (CTA) ── */}
+      <section className={styles.finalCtaSection} style={{ borderTop: '1px solid var(--border)' }}>
         <div className="container">
-          <div className={styles.sectionHeader}>
-            <span className="tag">App Development Scope</span>
-            <h2>Transparent Cross-Platform Pricing</h2>
-            <p>From initial design proto to App Store submission, we build with clear scope and zero hidden bloat.</p>
+          <div className={styles.ctaBox}>
+            <span className="tag" style={{ background: 'rgba(255,255,255,0.1)', color: '#fff', border: '1px solid rgba(255,255,255,0.2)' }}>
+              Let's Build
+            </span>
+            <h2>Ready to Deploy Your Mobile Application?</h2>
+            <p>
+              Share your concept, workflow requirements, or target release timeline. We'll outline a clean technical architecture and deliver a fixed-scope milestone proposal.
+            </p>
 
-
-          </div>
-
-          <div className={styles.pricingCardsGrid}>
-            {/* MVP Tier */}
-            <div className={styles.priceCard}>
-              <span className="tag">Rapid Launch</span>
-              <h3>Cross-Platform MVP</h3>
-              <p>Ideal for startups, internal field logs, or validating an app concept with real users.</p>
-              
-              <div className={styles.priceValue}>
-                <span className={styles.pricePrefix}>From</span>
-                <span className={styles.priceNumber}>₹49,999</span>
-                <span className={styles.pricePeriod}>/ project</span>
-              </div>
-
-              <ul className={styles.cardFeatures}>
-                <li><FaCheck color="#10b981" /> Complete custom UI/UX design system</li>
-                <li><FaCheck color="#10b981" /> Offline-first data caching & MongoDB cloud sync</li>
-                <li><FaCheck color="#10b981" /> Role-based permissions & admin sync</li>
-                <li><FaCheck color="#10b981" /> WebSockets / Real-time messaging</li>
-                <li><FaCheck color="#10b981" /> Google Play & App Store publishing support</li>
-                <li><FaCheck color="#10b981" /> 30 days post-launch technical warranty</li>
-              </ul>
-
+            <div style={{ marginTop: '24px' }}>
               <a 
                 href={WHATSAPP_URL} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="btn btn-primary" 
-                style={{ width: '100%', justifyContent: 'center', marginTop: 20 }}
+                className="btn btn-primary"
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '14px 34px', fontSize: '16px', fontWeight: 700 }}
               >
-                Get Custom Estimate
+                <FaWhatsapp size={20} />
+                <span>Discuss Your Mobile App</span>
               </a>
             </div>
           </div>
@@ -443,34 +424,6 @@ export default function MobileAppDevelopment() {
                 )}
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── 6. FINAL CTA ── */}
-      <section className={styles.finalCtaSection}>
-        <div className="container">
-          <div className={styles.ctaBox}>
-            <span className="tag" style={{ background: 'rgba(255,255,255,0.1)', color: '#fff', border: '1px solid rgba(255,255,255,0.2)' }}>
-              Let's Build
-            </span>
-            <h2>Ready to Deploy Your Mobile Application?</h2>
-            <p>
-              Share your concept, workflow requirements, or target release timeline. We'll outline a clean technical architecture and deliver a fixed-scope milestone proposal.
-            </p>
-
-            <div style={{ marginTop: '24px' }}>
-              <a 
-                href={WHATSAPP_URL} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="btn btn-primary"
-                style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '14px 34px', fontSize: '16px', fontWeight: 700 }}
-              >
-                <FaWhatsapp size={20} />
-                <span>Discuss Your Mobile App</span>
-              </a>
-            </div>
           </div>
         </div>
       </section>

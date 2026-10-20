@@ -4,7 +4,7 @@ import { createPortal } from 'react-dom'
 import styles from './ContentStudio.module.css'
 
 const WHATSAPP_NUMBER = '919960240648'
-const WHATSAPP_STARTER_MSG = encodeURIComponent("Hi VeltaZ! I'm interested in your ₹1,499 Reel Starter Pack. I'd like to discuss my business requirements.")
+const WHATSAPP_STARTER_MSG = encodeURIComponent("Hi VeltaZ! I'm interested in your Reel Starter Pack. I'd like to discuss my business requirements.")
 const WHATSAPP_MULTI_MSG = encodeURIComponent("Hi VeltaZ! I want to manage my Instagram, Facebook and LinkedIn business profiles in one package. Can we connect and discuss?")
 const WHATSAPP_GENERAL_MSG = encodeURIComponent("Hi VeltaZ! I want to discuss Instagram content and video editing for my business.")
 
@@ -266,7 +266,7 @@ export default function ContentStudio() {
                   }}
                   className={styles.primaryBtn}
                 >
-                  Start with ₹1,499 Trial →
+                  Get Started with Trial →
                 </a>
                 <a
                   href="#work"
@@ -711,12 +711,12 @@ export default function ContentStudio() {
             </div>
 
             <div className={styles.offerMainRow}>
-              {/* Left Column: Pricing + Tagline + High-Conversion CTA */}
+              {/* Left Column: Offer + Tagline + High-Conversion CTA */}
               <div className={styles.offerLeftCol}>
-                <div className={styles.offerPriceTag}>
-                  ₹1,499
+                <div className={styles.offerPriceTag} style={{ fontSize: 28, letterSpacing: -0.5 }}>
+                  Starter Trial
                 </div>
-                <div className={styles.offerPricePeriod}>One-time payment</div>
+                <div className={styles.offerPricePeriod}>Fixed Trial Scope</div>
                 <p className={styles.offerPriceSub}>
                   Your first step towards better social media content. Experience our editing speed and storytelling quality before committing to any monthly package.
                 </p>
@@ -728,8 +728,8 @@ export default function ContentStudio() {
                     rel="noopener noreferrer"
                     className={styles.offerBtn}
                   >
-                    <span className={styles.offerBtnDesktopText}>Start with ₹1,499 Trial on WhatsApp</span>
-                    <span className={styles.offerBtnMobileText}>Start with ₹1,499 Trial</span>
+                    <span className={styles.offerBtnDesktopText}>Start Trial on WhatsApp</span>
+                    <span className={styles.offerBtnMobileText}>Start Trial</span>
                     <span className={styles.btnArrow}>→</span>
                   </a>
                   <div className={styles.offerSubNote} style={{ marginTop: 10 }}>
@@ -848,7 +848,7 @@ export default function ContentStudio() {
                 Take Your Business's Instagram to the Next Level
               </h2>
               <p className={styles.finalCtaSub}>
-                Start with our ₹1,499 Reel Starter Pack. No contracts, zero long-term commitments. Just high-impact edits that help your business get noticed and generate enquiries.
+                Start with our Reel Starter Pack. No contracts, zero long-term commitments. Just high-impact edits that help your business get noticed and generate enquiries.
               </p>
 
               <div className={styles.finalCtaBtnGroup}>
@@ -911,7 +911,7 @@ export default function ContentStudio() {
                   <div className={styles.chatBubbleAgency}>
                     <span className={styles.chatSenderLabelAgency}>VeltaZ Studio</span>
                     <p className={styles.chatBubbleText}>
-                      Hello! You can start directly with our ₹1,499 Starter Pack. Just share your raw phone clips and we'll handle the hook, subtitles, and pacing.
+                      Hello! You can start directly with our Starter Pack. Just share your raw phone clips and we'll handle the hook, subtitles, and pacing.
                     </p>
                     <div className={styles.chatTimeRow}>
                       <span className={styles.chatTime}>11:43 AM</span>

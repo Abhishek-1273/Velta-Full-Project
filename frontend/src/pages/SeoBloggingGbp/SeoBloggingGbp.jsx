@@ -58,7 +58,7 @@ const faqItems = [
   },
   {
     q: "Can you guarantee more leads?",
-    a: "No. We improve search visibility, indexing health, and content quality, and report observed performance transparently. Actual customer inquiries and sales depend on pricing, product market fit, customer reviews, sales responsiveness, and seasonal demand."
+    a: "No. We improve search visibility, indexing health, and content quality, and report observed performance transparently. Actual customer inquiries and sales depend on your offer, product-market fit, customer reviews, sales responsiveness, and seasonal demand."
   }
 ]
 
@@ -439,102 +439,33 @@ export default function SeoBloggingGbp() {
         </div>
       </section>
 
-      {/* ── 4. MAIN STARTER PACKAGE ── */}
-      <section id="pricing" className={styles.pricingSection}>
+      {/* ── 4. DISCUSS YOUR SEO REQUIREMENTS (CTA) ── */}
+      <section className={styles.finalCtaSection} style={{ borderTop: '1px solid var(--border)' }}>
         <div className="container">
-          <div className={styles.sectionHeader}>
-            <span className="tag">Transparent Pricing</span>
-            <h2>One Focused Starter Package.<br />No Confusing Tiers.</h2>
+          <div className={styles.ctaBox}>
+            <span className="tag" style={{ background: 'rgba(255,255,255,0.1)', color: '#fff', border: '1px solid rgba(255,255,255,0.2)' }}>
+              Get Started
+            </span>
+            <h2>Let's Make Your Business Easier to Find.</h2>
             <p>
-              We avoid convoluted plans with hidden add-ons. Here is our complete monthly scope for businesses ready to build sustainable Google visibility.
+              Tell us about your website, your target customers and the search challenges you want to address. We'll help define a practical starting point and confirm the custom scope before work begins.
             </p>
 
+            <div style={{ marginTop: '24px' }}>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-primary"
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '14px 34px', fontSize: '16px', fontWeight: 700 }}
+              >
+                <FaWhatsapp size={20} />
+                <span>Discuss My SEO Requirements</span>
+              </a>
+            </div>
 
-          </div>
-
-          <div className={styles.singlePackageWrapper}>
-            <div className={styles.packageCard}>
-              <div className={styles.packageHeader}>
-                <div className={styles.packageBadgeRow}>
-                  <span className="tag">All-In-One Scope</span>
-                  <span className={styles.introTag}>Introductory Pricing</span>
-                </div>
-
-                <h3 className={styles.packageName}>Google Visibility Starter</h3>
-                <p className={styles.packageDesc}>
-                  Designed for small businesses, consulting firms, and local service providers seeking systematic on-page optimization, original blogging, and Google Business Profile management.
-                </p>
-
-                <div className={styles.priceRow}>
-                  <span className={styles.priceAmount}>
-                    ₹5,999
-                  </span>
-                  <span className={styles.pricePeriod}>/ month</span>
-                </div>
-                <div className={styles.priceNotice}>
-                  Billed monthly · Recommended initial evaluation period: 3 months under agreed terms.
-                </div>
-              </div>
-
-              <div className={styles.packageBodyGrid}>
-                {/* WHAT'S INCLUDED */}
-                <div className={styles.includedCol}>
-                  <h4>
-                    <FaCheckCircle color="#10b981" />
-                    <span>What's Included Every Month</span>
-                  </h4>
-                  <ul className={styles.featureList}>
-                    <li>Initial SEO assessment for one website.</li>
-                    <li>Basic keyword and content-opportunity research.</li>
-                    <li>Optimization of up to 2 priority pages during onboarding.</li>
-                    <li><strong>One researched blog article per month</strong> (approx. 600–800 words).</li>
-                    <li>Article title, heading structure, metadata and internal-link suggestions.</li>
-                    <li>Publishing to client's existing CMS (where access is provided).</li>
-                    <li><strong>Google Business Profile management</strong> for one eligible business location.</li>
-                    <li>Two Google Business Profile posts per month.</li>
-                    <li>Routine business information, hours, and photo checks.</li>
-                    <li>One concise monthly report of available website and profile performance data.</li>
-                    <li>Clear list of completed work and next recommended actions.</li>
-                  </ul>
-                </div>
-
-                {/* SCOPE & EXCLUSIONS */}
-                <div className={styles.excludedCol}>
-                  <h4>
-                    <FaInfoCircle color="var(--text3)" />
-                    <span>Scope & Exclusions (Clear Boundaries)</span>
-                  </h4>
-                  <ul className={styles.exclusionList}>
-                    <li>Applies to one website and one eligible business location.</li>
-                    <li>Major website development or code rewrites are quoted separately.</li>
-                    <li>Additional blog articles or multiple locations require a revised scope.</li>
-                    <li>Paid SEO tools, hosting, and third-party domain costs are not included.</li>
-                    <li>Spammy backlink buying, PR blasts, and suspension appeals are not included.</li>
-                    <li>Paid Google Ads budgets are not included.</li>
-                    <li><strong>No ranking or lead volume guarantees:</strong> Results depend on industry competition, market demand, and website domain authority.</li>
-                  </ul>
-
-                  <div className={styles.packageIneligibleNote}>
-                    <strong>For Non-Eligible Businesses:</strong> If your business is online-only and not eligible for a Google Business Profile under Google's policies, the scope automatically redirects to expanded on-page SEO analysis and an additional content deliverable agreed upon before payment.
-                  </div>
-                </div>
-              </div>
-
-              <div className={styles.packageCtaRow}>
-                <a
-                  href={WHATSAPP_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-primary"
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '14px 32px', fontSize: '15.5px', fontWeight: 700 }}
-                >
-                  <FaWhatsapp size={20} />
-                  <span>Discuss My SEO Requirements</span>
-                </a>
-                <span className={styles.prefillNotice}>
-                  Prefills: "Hi VeltaZ, I'm interested in SEO and blogging services. I'd like to discuss my website and Google visibility goals."
-                </span>
-              </div>
+            <div className={styles.ctaNote}>
+              Customized monthly visibility scopes · Transparent reporting · Clear deliverables
             </div>
           </div>
         </div>
@@ -725,38 +656,6 @@ export default function SeoBloggingGbp() {
                 )}
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── 9. FINAL CTA ── */}
-      <section className={styles.finalCtaSection}>
-        <div className="container">
-          <div className={styles.ctaBox}>
-            <span className="tag" style={{ background: 'rgba(255,255,255,0.1)', color: '#fff', border: '1px solid rgba(255,255,255,0.2)' }}>
-              Get Started
-            </span>
-            <h2>Let's Make Your Business Easier to Find.</h2>
-            <p>
-              Tell us about your website, your target customers and the search challenges you want to address. We'll help define a practical starting point and confirm the scope before work begins.
-            </p>
-
-            <div style={{ marginTop: '24px' }}>
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-primary"
-                style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '14px 34px', fontSize: '16px', fontWeight: 700 }}
-              >
-                <FaWhatsapp size={20} />
-                <span>Discuss My SEO Requirements</span>
-              </a>
-            </div>
-
-            <div className={styles.ctaNote}>
-              Introductory pricing from ₹5,999 per month · No lock-in contracts · Clear deliverables
-            </div>
           </div>
         </div>
       </section>

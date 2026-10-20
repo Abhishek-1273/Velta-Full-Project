@@ -21,8 +21,8 @@ import styles from './AutomationSystems.module.css'
 
 const WHATSAPP_NUMBER = '919960240648'
 const WHATSAPP_MSG = encodeURIComponent("Hi VeltaZ, I'm interested in business automation systems. I'd like to discuss our workflows and get an estimate.")
-const WHATSAPP_STARTER_MSG = encodeURIComponent("Hi VeltaZ, I'm interested in the Workflow Starter Automation package (₹14,999). I'd like to discuss onboarding.")
-const WHATSAPP_FULL_MSG = encodeURIComponent("Hi VeltaZ, I'm interested in the Full Pipeline Automation package (₹29,999). I'd like to discuss our operational architecture.")
+const WHATSAPP_STARTER_MSG = encodeURIComponent("Hi VeltaZ, I'm interested in Workflow Starter Automation. I'd like to discuss onboarding.")
+const WHATSAPP_FULL_MSG = encodeURIComponent("Hi VeltaZ, I'm interested in Full Pipeline Automation. I'd like to discuss our operational architecture.")
 
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MSG}`
 const WHATSAPP_STARTER_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_STARTER_MSG}`
@@ -352,167 +352,8 @@ export default function AutomationSystems() {
         </div>
       </section>
 
-      {/* 4. TRANSPARENT PRICING */}
-      <section id="pricing" className="section" style={{ borderTop: '1px solid var(--border)' }}>
-        <div className="container">
-          <div className={styles.sectionHeader} style={{ marginBottom: '26px' }}>
-            <span className="tag">Transparent Pricing</span>
-            <h2>Two Clear Automation Packages</h2>
-            <p>
-              Fixed one-time investment for full engineering, deployment, and testing. No hidden per-lead commissions.
-            </p>
-          </div>
-
-          <div className={styles.pricingGrid}>
-            
-            {/* OPTION A: Workflow Starter */}
-            <div className={styles.pricingCard}>
-              <div className={styles.cardTop}>
-                <div className={styles.cardTagRow}>
-                  <span className={styles.cardTag}>Option A</span>
-                  <span style={{ fontSize: 12, color: 'var(--text2)', fontWeight: 600 }}>Focused Workflows</span>
-                </div>
-                <h3 className={styles.cardTitle}>Workflow Starter</h3>
-                <div className={styles.cardSubtitle}>Best for businesses needing lead capture, Sheets sync & WhatsApp alerts</div>
-
-                <div className={styles.priceWrapper}>
-                  <div className={styles.priceHeader}>
-                    <span className={styles.priceAmount}>₹14,999</span>
-                  </div>
-                  <span className={styles.priceCurrency}>All-Inclusive One-Time Setup</span>
-                </div>
-
-                <div className={styles.cardObjective}>
-                  Automates your primary lead intake channel to Google Sheets/Excel, triggers instant WhatsApp alerts to your team, and sends an automated welcome greeting to the lead.
-                </div>
-              </div>
-
-              <ul className={styles.deliverablesList}>
-                {[
-                  "Lead Automation: 1 Inbound lead source (Meta Ads, Website Form, or WhatsApp).",
-                  "Excel / Sheets Automation: Real-time clean logging with duplicate elimination.",
-                  "WhatsApp Query Automation: Instant automated welcome & brochure reply to the lead.",
-                  "Team Notification: Instant WhatsApp ping to up to 3 team members.",
-                  "Basic error-handling and auto-retry logic.",
-                  "2 revision rounds.",
-                  "14-day post-launch QA bug-fix support."
-                ].map((item, idx) => (
-                  <li key={idx} className={styles.deliverableItem}>
-                    <FaCheck className={styles.checkIcon} />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <a 
-                href={WHATSAPP_STARTER_URL} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className={`${styles.cardCtaBtn} ${styles.btnOutline}`}
-              >
-                <span>Select Workflow Starter</span>
-                <FaArrowRight size={13} />
-              </a>
-            </div>
-
-            {/* OPTION B: Full Business Pipeline */}
-            <div className={`${styles.pricingCard} ${styles.featuredCard}`}>
-              <div className={styles.cardTop}>
-                <div className={styles.cardTagRow}>
-                  <span className={`${styles.cardTag} ${styles.popularBadge}`}>Option B · Recommended</span>
-                  <span className={styles.tagHighlight}>All 6 Automations</span>
-                </div>
-                <h3 className={styles.cardTitle}>Full Pipeline Automation</h3>
-                <div className={styles.cardSubtitle}>Complete enterprise automation covering all 6 operational engines</div>
-
-                <div className={styles.priceWrapper}>
-                  <div className={styles.priceHeader}>
-                    <span className={styles.priceAmount}>₹29,999</span>
-                  </div>
-                  <span className={styles.priceCurrency}>Complete Enterprise Architecture</span>
-                </div>
-
-                <div className={styles.cardObjective}>
-                  Connects WhatsApp Query Chatbots, Excel/Sheets 2-way sync, Lead Intake, Appointment Booking, Email Drips with PDF Invoices, and Smart Multi-Touch Follow-Ups.
-                </div>
-              </div>
-
-              <ul className={styles.deliverablesList}>
-                {[
-                  "WhatsApp Query Automation: 24/7 intelligent FAQ & brochure auto-responder.",
-                  "Excel & Google Sheets: 2-way sync, dynamic calculations & auto end-of-day reports.",
-                  "Appointment Automation: Calendar self-booking, Meet links & 2h WhatsApp reminders.",
-                  "Email Automation: Multi-step nurture drip + automated PDF quote/invoice generation.",
-                  "Lead Intake Automation: Multi-channel intake with round-robin sales assignment.",
-                  "Smart Follow-Up Automation: Automated 24h & 48h check-ins (pauses on reply).",
-                  "Comprehensive team walkthrough & admin training.",
-                  "30-day dedicated post-launch support & pipeline tuning."
-                ].map((item, idx) => (
-                  <li key={idx} className={styles.deliverableItem}>
-                    <FaCheck className={styles.checkIcon} />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <a 
-                href={WHATSAPP_FULL_URL} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className={`${styles.cardCtaBtn} ${styles.btnPrimary}`}
-              >
-                <span>Select Full Pipeline</span>
-                <FaArrowRight size={13} />
-              </a>
-            </div>
-
-          </div>
-
-          <div className={styles.pricingDisclaimer}>
-            <strong>Transparent Terms:</strong> Official API costs (such as Meta WhatsApp Cloud API conversations or Google Workspace subscriptions) are billed directly to your official business accounts. VeltaZ charges solely for technical architecture, engineering, and deployment.
-          </div>
-        </div>
-      </section>
-
-      {/* 5. FREQUENTLY ASKED QUESTIONS */}
-      <section className="section" style={{ borderTop: '1px solid var(--border)' }}>
-        <div className="container">
-          <div className={styles.sectionHeader}>
-            <span className="tag">Questions & Answers</span>
-            <h2>Frequently Asked Questions</h2>
-            <p>Clear, direct answers regarding automation architecture, software compatibility, and maintenance.</p>
-          </div>
-
-          <div className={styles.faqWrapper}>
-            {faqItems.map((item, idx) => {
-              const isOpen = activeFaq === idx
-              return (
-                <div key={idx} className={styles.faqItem}>
-                  <button 
-                    type="button" 
-                    className={styles.faqQuestion}
-                    onClick={() => setActiveFaq(isOpen ? null : idx)}
-                    aria-expanded={isOpen}
-                  >
-                    <span>{item.q}</span>
-                    <span className={`${styles.faqIcon} ${isOpen ? styles.faqIconOpen : ''}`}>
-                      {isOpen ? <FaMinus size={14} /> : <FaPlus size={14} />}
-                    </span>
-                  </button>
-                  {isOpen && (
-                    <div className={styles.faqAnswer}>
-                      {item.a}
-                    </div>
-                  )}
-                </div>
-              )
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* 6. FINAL CALL TO ACTION */}
-      <section className={styles.finalCtaSection}>
+      {/* 4. DISCUSS YOUR WORKFLOW (CTA) */}
+      <section className={styles.finalCtaSection} style={{ borderTop: '1px solid var(--border)' }}>
         <div className="container">
           <div className={styles.finalCtaBox}>
             <span className="tag" style={{ marginBottom: 14 }}>Eliminate Manual Operations</span>
@@ -553,6 +394,43 @@ export default function AutomationSystems() {
                 <FaCheck /> Direct Technical Architect Consultation
               </span>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. FREQUENTLY ASKED QUESTIONS */}
+      <section className="section" style={{ borderTop: '1px solid var(--border)' }}>
+        <div className="container">
+          <div className={styles.sectionHeader}>
+            <span className="tag">Questions & Answers</span>
+            <h2>Frequently Asked Questions</h2>
+            <p>Clear, direct answers regarding automation architecture, software compatibility, and maintenance.</p>
+          </div>
+
+          <div className={styles.faqWrapper}>
+            {faqItems.map((item, idx) => {
+              const isOpen = activeFaq === idx
+              return (
+                <div key={idx} className={styles.faqItem}>
+                  <button 
+                    type="button" 
+                    className={styles.faqQuestion}
+                    onClick={() => setActiveFaq(isOpen ? null : idx)}
+                    aria-expanded={isOpen}
+                  >
+                    <span>{item.q}</span>
+                    <span className={`${styles.faqIcon} ${isOpen ? styles.faqIconOpen : ''}`}>
+                      {isOpen ? <FaMinus size={14} /> : <FaPlus size={14} />}
+                    </span>
+                  </button>
+                  {isOpen && (
+                    <div className={styles.faqAnswer}>
+                      {item.a}
+                    </div>
+                  )}
+                </div>
+              )
+            })}
           </div>
         </div>
       </section>

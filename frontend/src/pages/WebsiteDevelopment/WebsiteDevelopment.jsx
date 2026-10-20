@@ -23,8 +23,8 @@ import styles from './WebsiteDevelopment.module.css'
 
 const WHATSAPP_NUMBER = '919960240648'
 const WHATSAPP_MSG = encodeURIComponent("Hi VeltaZ, I'm interested in website development. I'd like to discuss my requirements and get a project estimate.")
-const WHATSAPP_BUSINESS_MSG = encodeURIComponent("Hi VeltaZ, I'm interested in the Business Website package (₹19,999). I'd like to discuss my requirements.")
-const WHATSAPP_DYNAMIC_MSG = encodeURIComponent("Hi VeltaZ, I'm interested in the Dynamic Website package (₹24,999). I'd like to discuss my requirements.")
+const WHATSAPP_BUSINESS_MSG = encodeURIComponent("Hi VeltaZ, I'm interested in Business Website development. I'd like to discuss my requirements.")
+const WHATSAPP_DYNAMIC_MSG = encodeURIComponent("Hi VeltaZ, I'm interested in Dynamic Website development. I'd like to discuss my requirements.")
 
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MSG}`
 const WHATSAPP_BUSINESS_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_BUSINESS_MSG}`
@@ -59,8 +59,6 @@ const faqItems = [
 ]
 
 export default function WebsiteDevelopment() {
-  const [currency, setCurrency] = useState('INR')
-  const [maintenanceDuration, setMaintenanceDuration] = useState('monthly') // 'monthly' | '3months' | '6months' // 'INR' | 'USD'
   const [projectTab, setProjectTab] = useState('website') // 'website' | 'admin'
   const [openFaq, setOpenFaq] = useState(0) // first FAQ open by default
   const [heroVideoPlaying, setHeroVideoPlaying] = useState(true)
@@ -197,144 +195,48 @@ export default function WebsiteDevelopment() {
         </div>
       </section>
 
-      {/* ── 2 & 3. WHAT WE BUILD & PRICING PRESENTATION ── */}
-      <section className="section" style={{ borderTop: '1px solid var(--border)' }}>
+      {/* ── 2. START THE CONVERSATION (DISCUSS YOUR PROJECT) ── */}
+      <section className={styles.finalCtaSection} style={{ borderTop: '1px solid var(--border)' }}>
         <div className="container">
-          <div className={styles.sectionHeader} style={{ marginBottom: '26px' }}>
-            <span className="tag">Transparent Pricing</span>
-            <h2>Two Clear Development Options</h2>
+          <div className={styles.finalCtaBox}>
+            <span className="tag" style={{ marginBottom: 14 }}>Start The Conversation</span>
+            <h2>Let's Build the Right Website for Your Business.</h2>
             <p>
-              Both static and dynamic solutions priced openly. No artificial discounts, no surprise invoices.
+              Tell us what your business needs to achieve. We'll help define the right website type, functionality and custom scope before development begins.
             </p>
 
-            
-          </div>
-
-          <div className={styles.pricingGrid}>
-            
-            {/* OPTION A: Business Website */}
-            <div className={styles.pricingCard}>
-              <div className={styles.cardTop}>
-                <div className={styles.cardTagRow}>
-                  <span className={styles.cardTag}>Option A</span>
-                  <span style={{ fontSize: 12, color: 'var(--text2)', fontWeight: 600 }}>Fixed Scope</span>
-                </div>
-                <h3 className={styles.cardTitle}>Business Website</h3>
-                <div className={styles.cardSubtitle}>Best for a professional online presence</div>
-
-                <div className={styles.priceWrapper}>
-                  <div className={styles.priceHeader}>
-                    <span className={styles.priceAmount}>₹19,999</span>
-                  </div>
-                  <span className={styles.priceCurrency}>All-Inclusive Fixed Investment</span>
-                </div>
-
-                <div className={styles.cardObjective}>
-                  This option is for websites whose content is primarily fixed and does not require a custom database or admin dashboard.
-                </div>
-              </div>
-
-              <ul className={styles.deliverablesList}>
-                {[
-                  "Up to 5 pages: Home, About, Services, Portfolio and Contact.",
-                  "Responsive desktop, tablet and mobile design.",
-                  "Professional template-based or lightly customised design.",
-                  "Basic content structuring using client-provided information.",
-                  "Contact form and WhatsApp CTA using an agreed, workable setup.",
-                  "Basic technical and on-page SEO.",
-                  "Page titles, meta descriptions and logical headings.",
-                  "Sitemap configuration and launch-readiness checks.",
-                  "Basic testing of links, layouts and contact functionality.",
-                  "2 revision rounds.",
-                  "14-day post-launch bug-fix support for the agreed scope."
-                ].map((item, idx) => (
-                  <li key={idx} className={styles.deliverableItem}>
-                    <FaCheck className={styles.checkIcon} />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <a 
-                href={WHATSAPP_BUSINESS_URL} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className={`${styles.cardCtaBtn} ${styles.btnOutline}`}
+            <div className={styles.finalBtnRow}>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.heroWhatsappBtn}
+                style={{ padding: '15px 32px', fontSize: '15.5px' }}
               >
-                <span>Discuss Business Website</span>
-                <FaArrowRight size={13} />
+                <FaWhatsapp size={20} />
+                <span>Discuss Your Project</span>
               </a>
+              <Link 
+                to="/contact" 
+                className={styles.heroSecondaryBtn}
+                style={{ padding: '15px 28px', fontSize: '15px' }}
+              >
+                <span>Send An Enquiry</span>
+                <FaArrowRight size={13} />
+              </Link>
             </div>
 
-            {/* OPTION B: Dynamic Website */}
-            <div className={`${styles.pricingCard} ${styles.featuredCard}`}>
-              <div className={styles.cardTop}>
-                <div className={styles.cardTagRow}>
-                  <span className={`${styles.cardTag} ${styles.popularBadge}`}>Option B · Manageable</span>
-                  <span className={styles.cmsBadge}>Database / CMS</span>
-                </div>
-                <h3 className={styles.cardTitle}>Dynamic Website</h3>
-                <div className={styles.cardSubtitle}>Best for businesses that need manageable, changing content</div>
-
-                <div className={styles.priceWrapper}>
-                  <div className={styles.priceHeader}>
-                    <span className={styles.priceAmount}>₹24,999</span>
-                  </div>
-                  <span className={styles.priceCurrency}>Custom Database & CMS Scope</span>
-                </div>
-
-                <div className={styles.cardObjective}>
-                  The starting price applies only to a simple dynamic website with one content type (e.g. property listings or blog articles) and limited functionality.
-                </div>
-              </div>
-
-              <ul className={styles.deliverablesList}>
-                {[
-                  "Up to 5 core website pages.",
-                  "One agreed dynamic content module, such as property listings or blog content.",
-                  "Responsive design across all devices.",
-                  "Database or CMS integration appropriate to the agreed implementation.",
-                  "A simple administrative interface for managing the agreed content, where included in final scope.",
-                  "Ability to add, edit and delete the agreed content.",
-                  "Listing or content-detail pages.",
-                  "Basic technical and on-page SEO.",
-                  "Sitemap configuration and launch-readiness checks.",
-                  "Testing of the agreed dynamic functionality.",
-                  "2 revision rounds.",
-                  "14-day post-launch bug-fix support for the agreed scope."
-                ].map((item, idx) => (
-                  <li key={idx} className={styles.deliverableItem}>
-                    <FaCheck className={styles.checkIcon} style={{ color: '#3b82f6' }} />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-
-              {/* EXPLICIT EXCLUSIONS NOTICE */}
-              <div className={styles.exclusionsBox}>
-                <div className={styles.exclusionsTitle}>
-                  <FaShieldAlt size={12} />
-                  <span>Important Scope Boundary</span>
-                </div>
-                Advanced user roles, complex search and filters, payments, e-commerce, booking engines, multiple integrations and complex custom workflows are excluded from the starting package and quoted separately.
-              </div>
-
-              <a 
-                href={WHATSAPP_DYNAMIC_URL} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className={`${styles.cardCtaBtn} ${styles.btnPrimary}`}
-              >
-                <span>Discuss Dynamic Website</span>
-                <FaArrowRight size={13} />
-              </a>
+            <div className={styles.ctaReassurance}>
+              <span className={styles.reassuranceItem}>
+                <FaCheck /> 100% Transparent Scoping
+              </span>
+              <span className={styles.reassuranceItem}>
+                <FaCheck /> Direct Technical Consultation
+              </span>
+              <span className={styles.reassuranceItem}>
+                <FaCheck /> No Unnecessary Vendor Lock-in
+              </span>
             </div>
-
-          </div>
-
-          {/* PRICING DISCLAIMER */}
-          <div className={styles.pricingDisclaimer}>
-            <strong>Transparent Terms:</strong> Domain registration, hosting, paid tools, premium plugins and third-party charges are excluded unless explicitly stated in the quotation. Taxes are charged where applicable. These prices serve as introductory rates for the defined scope. Requirements beyond the package must be scoped and quoted separately.
           </div>
         </div>
       </section>
@@ -595,35 +497,6 @@ export default function WebsiteDevelopment() {
             <p>
               Keep your website maintained after launch with ongoing checks, backups and small updates.
             </p>
-
-            {/* DURATION / PREPAID DISCOUNT TOGGLE */}
-            <div className={styles.durationToggleWrapper}>
-              <div className={styles.durationToggle}>
-                <button
-                  type="button"
-                  onClick={() => setMaintenanceDuration('monthly')}
-                  className={`${styles.durationBtn} ${maintenanceDuration === 'monthly' ? styles.durationActive : ''}`}
-                >
-                  Monthly
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setMaintenanceDuration('3months')}
-                  className={`${styles.durationBtn} ${maintenanceDuration === '3months' ? styles.durationActive : ''}`}
-                >
-                  <span>3 Months</span>
-                  <span className={styles.discountBadge}>10% OFF</span>
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setMaintenanceDuration('6months')}
-                  className={`${styles.durationBtn} ${maintenanceDuration === '6months' ? styles.durationActive : ''}`}
-                >
-                  <span>6 Months</span>
-                  <span className={styles.discountBadge}>20% OFF</span>
-                </button>
-              </div>
-            </div>
           </div>
 
           <div className={styles.careGrid}>
@@ -634,19 +507,12 @@ export default function WebsiteDevelopment() {
               <div className={styles.careSub}>For standard business & portfolio sites</div>
 
               <div className={styles.carePriceRow}>
-                <span className={styles.carePriceNum}>
-                  {maintenanceDuration === 'monthly' ? '₹2,499' : maintenanceDuration === '3months' ? '₹6,747' : '₹11,995'}
-                </span>
-                <span className={styles.carePricePeriod}>
-                  {maintenanceDuration === 'monthly' ? '/ month' :
-                   maintenanceDuration === '3months' ? 'total for 3 mos' : 'total for 6 mos'}
-                </span>
+                <span className={styles.carePriceNum} style={{ fontSize: 24 }}>Custom Care Retainer</span>
+                <span className={styles.carePricePeriod}>Monthly Retainer</span>
               </div>
 
               <div className={styles.careBillingNote}>
-                {maintenanceDuration === 'monthly' && 'Billed monthly • Cancel anytime'}
-                {maintenanceDuration === '3months' && '10% Prepaid Savings applied'}
-                {maintenanceDuration === '6months' && '20% Prepaid Savings applied'}
+                Tailored to your website scope • Ongoing technical support
               </div>
 
               <ul className={styles.careList}>
@@ -673,12 +539,12 @@ export default function WebsiteDevelopment() {
               </ul>
 
               <a
-                href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi VeltaZ! I'm interested in the Static Website Care plan (₹1,999/mo). I'd like to discuss onboarding.")}`}
+                href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi VeltaZ! I'm interested in the Static Website Care plan. I'd like to discuss onboarding.")}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`${styles.cardCtaBtn} ${styles.btnOutline}`}
               >
-                <span>Select Static Care</span>
+                <span>Discuss Static Care</span>
                 <FaArrowRight size={12} />
               </a>
             </div>
@@ -689,20 +555,12 @@ export default function WebsiteDevelopment() {
               <div className={styles.careSub}>For database-driven portals & CMS platforms</div>
 
               <div className={styles.carePriceRow}>
-                <span className={styles.carePriceNum}>
-                  {maintenanceDuration === 'monthly' ? '₹2,499' :
-                   maintenanceDuration === '3months' ? '₹6,747' : '₹11,995'}
-                </span>
-                <span className={styles.carePricePeriod}>
-                  {maintenanceDuration === 'monthly' ? '/ month' :
-                   maintenanceDuration === '3months' ? 'total for 3 mos' : 'total for 6 mos'}
-                </span>
+                <span className={styles.carePriceNum} style={{ fontSize: 24 }}>Dedicated Systems Care</span>
+                <span className={styles.carePricePeriod}>Monthly Retainer</span>
               </div>
 
               <div className={styles.careBillingNote}>
-                {maintenanceDuration === 'monthly' && 'Billed monthly • Cancel anytime'}
-                {maintenanceDuration === '3months' && '10% Prepaid Savings applied'}
-                {maintenanceDuration === '6months' && '20% Prepaid Savings applied'}
+                Database & CMS patching • Priority technical support
               </div>
 
               <ul className={styles.careList}>
@@ -729,12 +587,12 @@ export default function WebsiteDevelopment() {
               </ul>
 
               <a
-                href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi VeltaZ! I'm interested in the Dynamic Website Care plan (₹2,499/mo). I'd like to discuss onboarding.")}`}
+                href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi VeltaZ! I'm interested in the Dynamic Website Care plan. I'd like to discuss onboarding.")}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`${styles.cardCtaBtn} ${styles.btnPrimary}`}
               >
-                <span>Select Dynamic Care</span>
+                <span>Discuss Dynamic Care</span>
                 <FaArrowRight size={12} />
               </a>
             </div>
@@ -743,7 +601,7 @@ export default function WebsiteDevelopment() {
 
           {/* ESSENTIAL TECHNICAL RULE NOTICE */}
           <div className={styles.careNoticeBox}>
-            <strong>Technical Review Requirement:</strong> Dynamic web apps, e-commerce stores, and complex custom systems require a brief technical assessment before onboarding onto a maintenance plan. Care plans cover regular maintenance, backups, and small updates — unlimited custom feature development is not included and is quoted separately. Prepaid discounts apply to maintenance fees only.
+            <strong>Technical Review Requirement:</strong> Dynamic web apps, e-commerce stores, and complex custom systems require a brief technical assessment before onboarding onto a maintenance plan. Care plans cover regular maintenance, backups, and small updates — unlimited custom feature development is not included and is quoted separately.
           </div>
         </div>
       </section>
@@ -781,52 +639,6 @@ export default function WebsiteDevelopment() {
                 </div>
               )
             })}
-          </div>
-        </div>
-      </section>
-
-      {/* ── 8. FINAL CALL TO ACTION ── */}
-      <section className={styles.finalCtaSection}>
-        <div className="container">
-          <div className={styles.finalCtaBox}>
-            <span className="tag" style={{ marginBottom: 14 }}>Start The Conversation</span>
-            <h2>Let's Build the Right Website for Your Business.</h2>
-            <p>
-              Tell us what your business needs to achieve. We'll help define the right website type, functionality and budget before development begins.
-            </p>
-
-            <div className={styles.finalBtnRow}>
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.heroWhatsappBtn}
-                style={{ padding: '15px 32px', fontSize: '15.5px' }}
-              >
-                <FaWhatsapp size={20} />
-                <span>Discuss Your Project</span>
-              </a>
-              <Link 
-                to="/contact" 
-                className={styles.heroSecondaryBtn}
-                style={{ padding: '15px 28px', fontSize: '15px' }}
-              >
-                <span>Send An Enquiry</span>
-                <FaArrowRight size={13} />
-              </Link>
-            </div>
-
-            <div className={styles.ctaReassurance}>
-              <span className={styles.reassuranceItem}>
-                <FaCheck /> 100% Transparent Scoping
-              </span>
-              <span className={styles.reassuranceItem}>
-                <FaCheck /> Direct Technical Consultation
-              </span>
-              <span className={styles.reassuranceItem}>
-                <FaCheck /> No Unnecessary Vendor Lock-in
-              </span>
-            </div>
           </div>
         </div>
       </section>

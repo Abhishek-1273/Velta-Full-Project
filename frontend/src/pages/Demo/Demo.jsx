@@ -112,16 +112,16 @@ const plans = [
   {
     id: 'Starter',
     name: 'Starter',
-    price: '₹999',
-    sub: 'per month',
+    price: 'Custom',
+    sub: 'tailored scope',
     employees: 'Up to 5 members',
     perks: ['WhatsApp integration', 'Basic AI assistant', 'Email support'],
   },
   {
     id: 'Pro',
     name: 'Pro',
-    price: '₹2,999',
-    sub: 'per month',
+    price: 'Custom',
+    sub: 'tailored scope',
     employees: 'Up to 20 members',
     perks: ['Everything in Starter', 'RAG knowledge base', 'Priority support'],
     popular: true,
@@ -216,7 +216,7 @@ export default function Demo() {
             <div className={styles.heroContent}>
               <div className="tag">Our Product</div>
               <h1 className={styles.title}>Choose Your <br /><span className="gradient-text">Plan</span></h1>
-              <p className={styles.sub}>Simple, transparent pricing. Fill in your details and pick a plan to get started.</p>
+              <p className={styles.sub}>Tailored deployment plans. Fill in your details and pick a plan to get started.</p>
             </div>
           </div>
         </section>

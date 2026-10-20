@@ -133,7 +133,7 @@ const faqItems = [
   },
   {
     q: "What is the recommended minimum ad spend to get meaningful results?",
-    a: "For single-channel testing (e.g. Meta or Google Ads), we recommend an initial ad spend of ₹25,000 to ₹40,000 per month so the ad algorithms have enough conversion data to optimize. For omnichannel scaling across multiple platforms, ₹50,000+ per month is ideal."
+    a: "For single-channel testing (e.g. Meta or Google Ads), we recommend an initial test ad spend so the ad algorithms have enough conversion data to optimize. For omnichannel scaling across multiple platforms, budget is allocated strategically across high-intent search and high-volume social channels based on your growth targets."
   },
   {
     q: "How soon do we start receiving qualified leads?",
@@ -449,86 +449,29 @@ export default function PerformanceMarketing() {
         </div>
       </section>
 
-      {/* ── 4. TRANSPARENT PRICING & SCOPE (PURE INR) ── */}
-      <section className={styles.pricingSection}>
+      {/* ── 4. CAMPAIGN AUDIT & CONSULTATION CTA ── */}
+      <section className={styles.ctaSection} style={{ borderTop: '1px solid var(--border)' }}>
         <div className="container">
-          <div className={styles.sectionHeader}>
-            <span className="tag">Campaign Management Scope</span>
-            <h2>Transparent Retainer Pricing</h2>
-            <p>Predictable monthly management retainers. Ad spends are billed directly to your platforms with zero hidden markups.</p>
-          </div>
-
-          <div className={styles.pricingCardsGrid}>
-            {/* Starter Plan */}
-            <div className={styles.priceCard}>
-              <div className={styles.cardTop}>
-                <span className={styles.planName}>Single / Dual Network Starter</span>
-                <p className={styles.planDesc}>Ideal for businesses focused on dominating Meta (Facebook + Insta) OR Google Search leads.</p>
-                <div className={styles.priceRow}>
-                  <span className={styles.currencySymbol}>₹</span>
-                  <span className={styles.priceNumber}>18,000</span>
-                  <span className={styles.pricePeriod}>/ month</span>
-                </div>
-                <span className={styles.adSpendLimit}>Ad budget up to ₹1,00,000/mo</span>
-              </div>
-
-              <ul className={styles.planFeatures}>
-                <li><FaCheck className={styles.checkIcon} /> Up to 2 Ad Networks (Meta / Google)</li>
-                <li><FaCheck className={styles.checkIcon} /> Full Pixel & Conversions API setup</li>
-                <li><FaCheck className={styles.checkIcon} /> 4 Creative variations & copy hooks</li>
-                <li><FaCheck className={styles.checkIcon} /> Direct WhatsApp / CRM lead webhook</li>
-                <li><FaCheck className={styles.checkIcon} /> Weekly bid & negative keyword weeds</li>
-                <li><FaCheck className={styles.checkIcon} /> Bi-weekly performance overview</li>
-              </ul>
-
-              <div style={{ marginTop: 'auto', paddingTop: '24px' }}>
-                <a 
-                  href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi VeltaZ, I'm interested in the Starter Performance Marketing package (₹18,000/mo). Let's discuss.")}`} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="btn btn-outline" 
-                  style={{ width: '100%', justifyContent: 'center' }}
-                >
-                  Choose Starter Retainer
-                </a>
-              </div>
-            </div>
-
-            {/* Omnichannel Scaling Plan (Featured) */}
-            <div className={`${styles.priceCard} ${styles.priceCardFeatured}`}>
-              <div className={styles.featuredTag}>Most Popular Choice</div>
-              <div className={styles.cardTop}>
-                <span className={styles.planName}>Omnichannel Scaling Suite</span>
-                <p className={styles.planDesc}>Comprehensive multi-channel ad architecture across Meta, Google, LinkedIn & AI search.</p>
-                <div className={styles.priceRow}>
-                  <span className={styles.currencySymbol}>₹</span>
-                  <span className={styles.priceNumber}>32,000</span>
-                  <span className={styles.pricePeriod}>/ month</span>
-                </div>
-                <span className={styles.adSpendLimit}>Ad budget up to ₹3,50,000/mo</span>
-              </div>
-
-              <ul className={styles.planFeatures}>
-                <li><FaCheck className={styles.checkIcon} /> <strong>All 5 Ad Channels eligible</strong></li>
-                <li><FaCheck className={styles.checkIcon} /> Meta Campaign Ads & Insta Boost</li>
-                <li><FaCheck className={styles.checkIcon} /> Google PPC & Local Service Ads</li>
-                <li><FaCheck className={styles.checkIcon} /> ChatGPT AI Search & LinkedIn ABM</li>
-                <li><FaCheck className={styles.checkIcon} /> 10+ Creative A/B tests & dynamic formats</li>
-                <li><FaCheck className={styles.checkIcon} /> Live Looker Studio Analytics Dashboard</li>
-                <li><FaCheck className={styles.checkIcon} /> Dedicated Media Buyer & Priority Slack/WA</li>
-              </ul>
-
-              <div style={{ marginTop: 'auto', paddingTop: '24px' }}>
-                <a 
-                  href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi VeltaZ, I'm interested in the Omnichannel Performance Scaling package (₹32,000/mo). Let's discuss.")}`} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="btn btn-primary" 
-                  style={{ width: '100%', justifyContent: 'center' }}
-                >
-                  Start Omnichannel Scaling
-                </a>
-              </div>
+          <div className={styles.ctaBox}>
+            <span className="tag" style={{ marginBottom: 14 }}>Scale With Confidence</span>
+            <h2>Ready to Scale Your Inbound Pipeline?</h2>
+            <p>
+              Schedule a 15-minute ad audit with our performance marketing engineers to diagnose current bottlenecks and project realistic acquisition numbers for your business.
+            </p>
+            <div style={{ marginTop: '28px', display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <a 
+                href={WHATSAPP_URL} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="btn btn-primary"
+                style={{ padding: '13px 28px', fontSize: '15px' }}
+              >
+                <FaWhatsapp size={19} style={{ marginRight: 8 }} />
+                <span>Book Free Campaign Audit</span>
+              </a>
+              <Link to="/contact" className="btn btn-outline" style={{ padding: '13px 28px', fontSize: '15px' }}>
+                <span>Send Brief via Form</span>
+              </Link>
             </div>
           </div>
         </div>
@@ -563,33 +506,6 @@ export default function PerformanceMarketing() {
                 )}
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── 6. BOTTOM CTA ── */}
-      <section className={styles.ctaSection}>
-        <div className="container">
-          <div className={styles.ctaBox}>
-            <h2>Ready to Scale Your Inbound Pipeline?</h2>
-            <p>
-              Schedule a 15-minute ad audit with our performance marketing engineers to diagnose current bottlenecks and project realistic acquisition numbers.
-            </p>
-            <div style={{ marginTop: '28px', display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <a 
-                href={WHATSAPP_URL} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="btn btn-primary"
-                style={{ padding: '13px 28px', fontSize: '15px' }}
-              >
-                <FaWhatsapp size={19} style={{ marginRight: 8 }} />
-                <span>Book Free Campaign Audit</span>
-              </a>
-              <Link to="/contact" className="btn btn-outline" style={{ padding: '13px 28px', fontSize: '15px' }}>
-                <span>Send Brief via Form</span>
-              </Link>
-            </div>
           </div>
         </div>
       </section>
