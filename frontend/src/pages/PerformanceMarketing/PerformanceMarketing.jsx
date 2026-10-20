@@ -383,7 +383,8 @@ export default function PerformanceMarketing() {
                     className="btn btn-primary"
                     style={{ padding: '10px 22px', fontSize: '13.5px' }}
                   >
-                    <span>Request Campaign Audit for {currentChannel.title}</span>
+                    <span className={styles.ctaDesktopText}>Request Campaign Audit for {currentChannel.title}</span>
+                      <span className={styles.ctaMobileText}>Request Campaign Audit</span>
                   </a>
                 </div>
               </div>

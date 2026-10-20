@@ -160,7 +160,10 @@ export default function SeoBloggingGbp() {
                     <span className={styles.dotY} />
                     <span className={styles.dotG} />
                   </div>
-                  <div className={styles.chromeAddress}>search.google.com/search-console/performance</div>
+                  <div className={styles.chromeAddress}>
+                    <span className={styles.urlDesktopText}>search.google.com/search-console/performance</span>
+                    <span className={styles.urlMobileText}>google.com/search-console</span>
+                  </div>
                 </div>
 
                 <div className={styles.heroMetricBanner}>

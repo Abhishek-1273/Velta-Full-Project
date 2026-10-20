@@ -2430,3 +2430,22 @@
   color: #f472b6 !important;
   background: rgba(236, 72, 153, 0.1) !important;
 }
+
+.mobileBadgeText {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .metricsClientBadge {
+    font-size: 11.5px !important;
+    padding: 5px 12px !important;
+    white-space: nowrap !important;
+  }
+  .desktopBadgeText {
+    display: none !important;
+  }
+  .mobileBadgeText {
+    display: inline !important;
+    white-space: nowrap !important;
+  }
+}

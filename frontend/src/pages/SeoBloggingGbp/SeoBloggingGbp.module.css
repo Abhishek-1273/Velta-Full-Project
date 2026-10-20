@@ -120,6 +120,7 @@
   border-radius: 18px;
   overflow: hidden;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  box-sizing: border-box;
 }
 
 .windowChrome {
@@ -1138,4 +1139,51 @@
   border-color: rgba(16, 185, 129, 0.35) !important;
   color: #34d399 !important;
   background: rgba(16, 185, 129, 0.1) !important;
+}
+
+.eyebrowMobile {
+  display: none;
+}
+.urlMobileText {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .eyebrowDesktop {
+    display: none !important;
+  }
+  .eyebrowMobile {
+    display: inline !important;
+    font-size: 11px !important;
+    white-space: nowrap !important;
+  }
+  .urlDesktopText {
+    display: none !important;
+  }
+  .urlMobileText {
+    display: inline !important;
+    font-size: 9.5px !important;
+  }
+  .chromeAddress {
+    font-size: 9.5px !important;
+    padding: 3px 6px !important;
+    max-width: calc(100% - 46px) !important;
+  }
+  .heroMetricBanner {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px 8px !important;
+    padding: 10px 8px !important;
+  }
+  .metricVal {
+    font-size: 16px !important;
+  }
+  .metricLbl {
+    font-size: 10px !important;
+    text-align: center !important;
+  }
+  .heroCardDeck {
+    width: 100% !important;
+    max-width: 100% !important;
+    border-radius: 14px !important;
+  }
 }

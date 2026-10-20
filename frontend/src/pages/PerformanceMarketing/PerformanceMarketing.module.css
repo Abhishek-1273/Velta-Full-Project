@@ -338,12 +338,15 @@
 
 .channelDetailCard {
   max-width: 960px;
+  width: 100%;
   margin: 0 auto;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 20px;
   padding: 38px;
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .channelDetailGrid {
@@ -412,6 +415,9 @@
   font-size: 12.5px;
   line-height: 1.5;
   color: var(--text2);
+  width: 100%;
+  box-sizing: border-box;
+  word-break: break-word;
 }
 
 .bestForBox strong {
@@ -874,4 +880,38 @@
   border-color: rgba(244, 63, 94, 0.35) !important;
   color: #fb7185 !important;
   background: rgba(244, 63, 94, 0.1) !important;
+}
+
+.ctaMobileText {
+  display: none;
+}
+
+.channelDetailLeft {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+@media (max-width: 640px) {
+  .ctaDesktopText {
+    display: none !important;
+  }
+  .ctaMobileText {
+    display: inline !important;
+  }
+  .channelDetailLeft :global(.btn) {
+    width: 100% !important;
+    white-space: normal !important;
+    text-align: center !important;
+    justify-content: center !important;
+    padding: 11px 16px !important;
+    box-sizing: border-box !important;
+  }
+  .channelDetailCard {
+    padding: 22px 14px !important;
+  }
+  .bestForBox {
+    padding: 10px 12px !important;
+    font-size: 12px !important;
+  }
 }

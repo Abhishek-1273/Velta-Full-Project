@@ -396,8 +396,9 @@ export default function ContentStudio() {
           <div className={styles.metricsHeader}>
             <div className={styles.sectionTag}>PROVEN TRACK RECORD</div>
             <div className={styles.metricsClientBadge}>
-              Featured Case Study: KIN Property Management
-            </div>
+                <span className={styles.desktopBadgeText}>Featured Case Study: KIN Property Management</span>
+                <span className={styles.mobileBadgeText}>Case Study · KIN Property</span>
+              </div>
           </div>
 
           <div className={styles.metricsGrid}>
