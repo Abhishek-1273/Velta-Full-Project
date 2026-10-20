@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import api from '../../api/api.js'
 import { FaEnvelope, FaWhatsapp, FaCheck, FaMapMarkerAlt } from 'react-icons/fa'
+import CustomSelect from '../../components/CustomSelect/CustomSelect.jsx'
 import styles from './Contact.module.css'
 
 // Contact details already used elsewhere in the project
@@ -264,10 +265,12 @@ export default function Contact() {
                   </div>
 
                   <Field id="contact-projectType" label="Project Type" required error={errors.projectType}>
-                    <select {...fieldProps('projectType', true)}>
-                      <option value="">Select a project type</option>
-                      {PROJECT_TYPES.map(t => <option key={t} value={t}>{t}</option>)}
-                    </select>
+                    <CustomSelect
+                      {...fieldProps('projectType', true)}
+                      placeholder="Select a project type"
+                      options={PROJECT_TYPES}
+                      error={!!errors.projectType}
+                    />
                   </Field>
 
                   <Field id="contact-message" label="Short Project Description" required error={errors.message}>
@@ -282,17 +285,21 @@ export default function Contact() {
 
                   <div className={styles.row}>
                     <Field id="contact-budgetRange" label="Budget Range (USD)" error={errors.budgetRange}>
-                      <select {...fieldProps('budgetRange')}>
-                        <option value="">Select a range</option>
-                        {BUDGET_RANGES.map(b => <option key={b} value={b}>{b}</option>)}
-                      </select>
+                      <CustomSelect
+                        {...fieldProps('budgetRange')}
+                        placeholder="Select a range"
+                        options={BUDGET_RANGES}
+                        error={!!errors.budgetRange}
+                      />
                     </Field>
 
                     <Field id="contact-timeline" label="Expected Timeline" error={errors.timeline}>
-                      <select {...fieldProps('timeline')}>
-                        <option value="">Select a timeline</option>
-                        {TIMELINES.map(t => <option key={t} value={t}>{t}</option>)}
-                      </select>
+                      <CustomSelect
+                        {...fieldProps('timeline')}
+                        placeholder="Select a timeline"
+                        options={TIMELINES}
+                        error={!!errors.timeline}
+                      />
                     </Field>
                   </div>
 
