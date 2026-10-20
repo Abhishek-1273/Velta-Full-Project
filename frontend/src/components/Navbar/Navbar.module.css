@@ -378,7 +378,7 @@
     background: var(--bg);
     flex-direction: column;
     align-items: flex-start;
-    padding: 28px 20px 40px;
+    padding: 20px 20px 40px;
     gap: 4px;
     border-left: 1px solid var(--border);
     transform: translateX(100%);
@@ -390,7 +390,7 @@
   .mobileLogoItem {
     display: block;
     width: 100%;
-    margin-bottom: 34px;
+    margin-bottom: 48px;
     padding-left: 10px;
   }
 
