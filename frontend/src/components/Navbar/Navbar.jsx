@@ -13,60 +13,36 @@ const veltaServices = [
     title: 'Website Development',
     desc: 'Modern SPAs, business websites & custom admin portals',
     icon: <FaLaptopCode />,
-    color: '#2563eb',
-    bgHover: 'rgba(37, 99, 235, 0.08)',
-    borderHover: 'rgba(37, 99, 235, 0.35)',
-    glowHover: 'rgba(37, 99, 235, 0.2)',
   },
   {
     to: '/services/mobile-app-development',
     title: 'Mobile Applications',
     desc: 'Hybrid iOS & Android apps with offline sync & 60fps',
     icon: <FaMobileAlt />,
-    color: '#8b5cf6',
-    bgHover: 'rgba(139, 92, 246, 0.08)',
-    borderHover: 'rgba(139, 92, 246, 0.35)',
-    glowHover: 'rgba(139, 92, 246, 0.2)',
   },
   {
     to: '/services/seo-blogging-google-business-profile',
     title: 'SEO & Google Profile',
     desc: 'Technical search ranking, blogging & verified GBP setup',
     icon: <FaSearch />,
-    color: '#10b981',
-    bgHover: 'rgba(16, 185, 129, 0.08)',
-    borderHover: 'rgba(16, 185, 129, 0.35)',
-    glowHover: 'rgba(16, 185, 129, 0.2)',
   },
   {
     to: '/content',
     title: 'Content Studio & Social Media',
     desc: 'Reels, video creation & LinkedIn / Instagram branding',
     icon: <FaVideo />,
-    color: '#ec4899',
-    bgHover: 'rgba(236, 72, 153, 0.08)',
-    borderHover: 'rgba(236, 72, 153, 0.35)',
-    glowHover: 'rgba(236, 72, 153, 0.2)',
   },
   {
     to: '/services/automation-systems',
     title: 'Automation Systems',
     desc: 'Lead routing, CRM pipeline automation & message triggers',
     icon: <FaCogs />,
-    color: '#06b6d4',
-    bgHover: 'rgba(6, 182, 212, 0.08)',
-    borderHover: 'rgba(6, 182, 212, 0.35)',
-    glowHover: 'rgba(6, 182, 212, 0.2)',
   },
   {
     to: '/services/performance-marketing',
     title: 'Performance Marketing',
     desc: 'Meta Campaign Ads, Insta Boost, Google Ads, ChatGPT & LinkedIn Ads',
     icon: <FaBullhorn />,
-    color: '#f43f5e',
-    bgHover: 'rgba(244, 63, 94, 0.08)',
-    borderHover: 'rgba(244, 63, 94, 0.35)',
-    glowHover: 'rgba(244, 63, 94, 0.2)',
   },
 ]
 
@@ -211,22 +187,13 @@ export default function Navbar() {
                             setServicesOpen(false)
                             setOpen(false)
                           }}
-                          style={{
-                            '--srv-color': s.color,
-                            '--srv-bg': s.bgHover,
-                            '--srv-border': s.borderHover,
-                            '--srv-glow': s.glowHover,
-                          }}
-                          className={`${styles.serviceCard} ${location.pathname === s.to ? styles.serviceCardActive : ''}`}
+                          className={styles.serviceCard}
                         >
                           <div className={styles.serviceIconWrap}>
                             {s.icon}
                           </div>
                           <div className={styles.serviceText}>
-                            <div className={styles.serviceTitleRow}>
-                              <span className={styles.serviceTitle}>{s.title}</span>
-                              <span className={styles.serviceArrow}>→</span>
-                            </div>
+                            <span className={styles.serviceTitle}>{s.title}</span>
                             <span className={styles.serviceDesc}>{s.desc}</span>
                           </div>
                         </Link>
