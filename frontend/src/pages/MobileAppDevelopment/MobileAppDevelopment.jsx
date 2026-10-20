@@ -383,40 +383,9 @@ export default function MobileAppDevelopment() {
               <p>Ideal for startups, internal field logs, or validating an app concept with real users.</p>
               
               <div className={styles.priceValue}>
-                ₹24,999
-                <span>/ project</span>
-              </div>
-
-              <ul className={styles.cardFeatures}>
-                <li><FaCheck color="#10b981" /> Unified codebase (iOS & Android)</li>
-                <li><FaCheck color="#10b981" /> Up to 5 core functional screens</li>
-                <li><FaCheck color="#10b981" /> User authentication (OTP / Email)</li>
-                <li><FaCheck color="#10b981" /> REST API backend integration</li>
-                <li><FaCheck color="#10b981" /> Push notifications setup</li>
-                <li><FaCheck color="#10b981" /> APK & TestFlight build delivery</li>
-              </ul>
-
-              <a 
-                href={WHATSAPP_URL} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="btn btn-outline" 
-                style={{ width: '100%', justifyContent: 'center', marginTop: 20 }}
-              >
-                Discuss MVP Scope
-              </a>
-            </div>
-
-            {/* Custom Enterprise Tier */}
-            <div className={`${styles.priceCard} ${styles.priceCardFeatured}`}>
-              <div className={styles.featuredTag}>Full Operational Suite</div>
-              <span className="tag">Custom Scaled</span>
-              <h3>Enterprise Mobile Solution</h3>
-              <p>Complete multi-role mobile suite with real-time sync, offline databases, and custom backend API.</p>
-              
-              <div className={styles.priceValue}>
-                From ₹49,999
-                <span>/ project</span>
+                <span className={styles.pricePrefix}>From</span>
+                <span className={styles.priceNumber}>₹49,999</span>
+                <span className={styles.pricePeriod}>/ project</span>
               </div>
 
               <ul className={styles.cardFeatures}>
