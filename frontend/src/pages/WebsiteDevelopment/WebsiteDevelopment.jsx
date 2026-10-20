@@ -155,9 +155,10 @@ export default function WebsiteDevelopment() {
                     <span className={`${styles.browserDot} ${styles.browserDotMax}`} />
                   </div>
                   <div className={styles.browserUrlBar}>
-                    <FaLock className={styles.browserUrlLock} />
-                    <span>https://kinpropertymanagement.com</span>
-                  </div>
+                      <FaLock className={styles.browserUrlLock} />
+                      <span className={styles.urlDesktopText}>https://kinpropertymanagement.com</span>
+                      <span className={styles.urlMobileText}>kinpropertymanagement.com</span>
+                    </div>
                 </div>
 
                 <div 
