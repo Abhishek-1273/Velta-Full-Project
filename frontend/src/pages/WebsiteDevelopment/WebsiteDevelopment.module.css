@@ -880,7 +880,7 @@
 }
 
 .faqIconOpen {
-  transform: rotate(45deg);
+  /* No diagonal rotation - clean horizontal minus */
 }
 
 .faqAnswer {
