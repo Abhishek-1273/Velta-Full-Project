@@ -26,7 +26,7 @@ const servicesSlides = [
     features: ['Hybrid iOS & Android', 'Offline Synchronization', '60 FPS Transitions', 'Push Notification APIs', 'Native Hardware Access', 'WhatsFlow Suite Ready'],
     meta: [
       { label: 'Suites Built', value: 'WhatsFlow, Docket14, Me & Mine' },
-      { label: 'Framework', value: 'React Native / Flutter' },
+      { label: 'Framework', value: 'React Native' },
       { label: 'Native Features', value: 'Push Notification Sync' },
       { label: 'Target OS', value: 'iOS, Android & Tablets' }
     ]

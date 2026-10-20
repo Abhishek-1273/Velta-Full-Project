@@ -30,7 +30,7 @@ const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MSG}`
 const faqItems = [
   {
     q: "Do you build for both Android and iOS?",
-    a: "Yes. We specialize in cross-platform frameworks (React Native and Flutter) that produce native 60fps applications for both Google Play Store and Apple App Store from a unified codebase, reducing cost and maintenance by 50%."
+    a: "Yes. We specialize in cross-platform development with React Native, producing high-performance native applications for both Google Play Store and Apple App Store from a unified codebase, reducing cost and maintenance by 50%."
   },
   {
     q: "How does offline synchronization work?",
