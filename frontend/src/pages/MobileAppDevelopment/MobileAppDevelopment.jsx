@@ -195,10 +195,10 @@ export default function MobileAppDevelopment() {
               </div>
 
               <div className={styles.platformBadges}>
-                <div className={styles.platformItem}><FaApple size={18} /><span>iOS & Android</span></div>
-                <div className={styles.platformItem}><FaSyncAlt size={16} /><span>Real-Time Cloud Sync</span></div>
-                <div className={styles.platformItem}><FaRocket size={16} /><span>Fast & Fluid UX</span></div>
-                <div className={styles.platformItem}><FaBell size={16} /><span>Instant Push Alerts</span></div>
+                <div className={styles.platformItem}><FaApple size={16} /><span>iOS & Android</span></div>
+                <div className={styles.platformItem}><FaSyncAlt size={14} /><span>Real-Time Sync</span></div>
+                <div className={styles.platformItem}><FaRocket size={14} /><span>Fast & Fluid UI</span></div>
+                <div className={styles.platformItem}><FaBell size={14} /><span>Push Alerts</span></div>
               </div>
             </div>
 
