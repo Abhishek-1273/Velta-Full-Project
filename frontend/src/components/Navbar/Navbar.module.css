@@ -184,17 +184,22 @@
 .dropdownTrigger {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   cursor: pointer;
+  padding-right: 10px;
 }
 
 .chevron {
+  display: inline-block;
+  vertical-align: middle;
+  transform: translateY(1.5px);
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   opacity: 0.75;
+  flex-shrink: 0;
 }
 
 .chevronOpen {
-  transform: rotate(180deg);
+  transform: translateY(1px) rotate(180deg);
   opacity: 1;
   color: var(--accent);
 }
@@ -373,8 +378,8 @@
     background: var(--bg);
     flex-direction: column;
     align-items: flex-start;
-    padding: 30px 20px 40px;
-    gap: 8px;
+    padding: 24px 18px 30px;
+    gap: 3px;
     border-left: 1px solid var(--border);
     transform: translateX(100%);
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -385,8 +390,8 @@
   .mobileLogoItem {
     display: block;
     width: 100%;
-    margin-bottom: 24px;
-    padding-left: 12px;
+    margin-bottom: 16px;
+    padding-left: 8px;
   }
 
   .mobileLogoLink {
@@ -394,7 +399,7 @@
   }
 
   .mobileLogoImg {
-    height: 36px;
+    height: 34px;
     display: block;
   }
 
@@ -413,11 +418,11 @@
   .link {
     display: flex;
     align-items: center;
-    font-size: 14.5px;
+    font-size: 14px;
     font-weight: 500;
     width: 100%;
-    height: 42px;
-    padding: 0 14px;
+    height: 36px;
+    padding: 0 12px;
     border-radius: var(--radius-sm);
     box-sizing: border-box;
     text-decoration: none;
@@ -431,8 +436,8 @@
   .mobileThemeToggle {
     display: block;
     width: 100%;
-    margin-top: 12px;
-    padding-top: 12px;
+    margin-top: 10px;
+    padding-top: 10px;
     border-top: 1px solid var(--border);
   }
 
@@ -441,7 +446,7 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 8px 12px;
+    padding: 6px 12px;
   }
 
   .mobileToggleInner span {
@@ -469,9 +474,17 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    height: 42px;
-    padding: 0 14px;
+    height: 36px;
+    padding: 0 12px;
     box-sizing: border-box;
+  }
+
+  .dropdownTrigger .chevron {
+    transform: translateY(0);
+  }
+
+  .dropdownTrigger .chevronOpen {
+    transform: rotate(180deg);
   }
 
   .dropdownMenu {
