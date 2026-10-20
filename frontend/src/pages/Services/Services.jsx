@@ -177,14 +177,16 @@ export default function Services() {
       <section className={styles.demoShowcaseSection}>
         <div className="container">
           <div className={styles.showcaseWrapper}>
-            <div className={styles.showcaseLeft}>
-              <span className="tag" style={{ marginBottom: 6 }}>Web Engineering</span>
+            <div className={styles.showcaseHead}>
+                <span className="tag" style={{ marginBottom: 6 }}>Web Engineering</span>
               <h2>Modern Websites & Web Portals</h2>
-              <p>
-                We engineer high-speed business websites and dynamic client portals that present your brand with authority, build customer trust, and generate direct enquiries.
-              </p>
-              
-              <div className={styles.showcaseGrid}>
+              </div>
+
+              <div className={styles.showcaseBody}>
+                <p className={styles.showcaseDesc}>
+                  We engineer high-speed business websites and dynamic client portals that present your brand with authority, build customer trust, and generate direct enquiries.
+                </p>
+                <div className={styles.showcaseGrid}>
                 <div className={styles.showcaseItem}>
                   <h5>React & Modern SPAs</h5>
                   <p>Lighthouse 98%+, sub-second loading, and fluid animations.</p>
@@ -262,14 +264,16 @@ export default function Services() {
       <section className={styles.demoShowcaseSection} style={{ borderTop: '1px solid var(--border)' }}>
         <div className="container">
           <div className={`${styles.showcaseWrapper} ${styles.showcaseWrapperReverse}`}>
-            <div className={styles.showcaseLeft}>
-              <span className="tag">Native App Suites</span>
+            <div className={styles.showcaseHead}>
+                <span className="tag">Native App Suites</span>
               <h2>Cross-Platform Mobile Applications</h2>
-              <p>
-                We build dedicated native client/admin panels and employee management systems optimized to run fluidly on low-end as well as flagship smartphones.
-              </p>
-              
-              <div className={styles.showcaseGrid}>
+              </div>
+
+              <div className={styles.showcaseBody}>
+                <p className={styles.showcaseDesc}>
+                  We build dedicated native client/admin panels and employee management systems optimized to run fluidly on low-end as well as flagship smartphones.
+                </p>
+                <div className={styles.showcaseGrid}>
                 <div className={styles.showcaseItem}>
                   <h5>WhatsFlow App</h5>
                   <p>Lead management and customer qualification workflows.</p>
@@ -286,6 +290,7 @@ export default function Services() {
                   <h5>Offline Sync</h5>
                   <p>Guaranteed sync logic for low network coverage zones.</p>
                 </div>
+              </div>
               {/* Direct Link to Mobile App Development Portal */}
               <div style={{ marginTop: "14px" }}>
                 <Link 
@@ -305,7 +310,6 @@ export default function Services() {
                   <span>Explore Mobile App Suites</span>
                   <span style={{ fontSize: '20px', alignContent: "center" }}>→</span>
                 </Link>
-              </div>
               </div>
             </div>
 
@@ -330,14 +334,16 @@ export default function Services() {
       <section className={styles.demoShowcaseSection} style={{ borderTop: '1px solid var(--border)' }}>
         <div className="container">
           <div className={styles.showcaseWrapper}>
-            <div className={styles.showcaseLeft}>
-              <span className="tag">Organic Curation</span>
+            <div className={styles.showcaseHead}>
+                <span className="tag">Organic Curation</span>
               <h2>Social Media & LinkedIn Handling</h2>
-              <p>
-                We curate high-authority brand aesthetics, LinkedIn B2B posts, and creative Reels content calendars that generate organic client traction.
-              </p>
-              
-              <div className={styles.showcaseGrid}>
+              </div>
+
+              <div className={styles.showcaseBody}>
+                <p className={styles.showcaseDesc}>
+                  We curate high-authority brand aesthetics, LinkedIn B2B posts, and creative Reels content calendars that generate organic client traction.
+                </p>
+                <div className={styles.showcaseGrid}>
                 <div className={styles.showcaseItem}>
                   <h5>LinkedIn Scaling</h5>
                   <p>Professional profiles, B2B updates, and lead outreach copies.</p>
@@ -392,7 +398,7 @@ export default function Services() {
               </div>
             </div>
 
-                        <div className={styles.showcaseRight}>
+            <div className={styles.showcaseRight}>
               <div className={styles.socialTrioContainer}>
                 {/* 1. LEFT MOBILE - SAMSUNG GALAXY S25 ULTRA (SEAMLESS TITANIUM - NO BUTTONS) */}
                 <div 
@@ -404,8 +410,7 @@ export default function Services() {
                   <div className={styles.s25TitaniumBody}>
                     <div className={styles.s25TopSpeaker} />
                     <div className={styles.s25DisplayScreen}>
-                      <div className={styles.s25PunchHoleCam} />
-                      <img 
+                                            <img 
                         src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1792053120/Instagram-insights1_gy83b8.jpg" 
                         alt="Instagram Discovery Analytics on Samsung S25 Ultra" 
                         className={styles.s25ScreenImage}
@@ -464,8 +469,7 @@ export default function Services() {
                   <div className={styles.s25TitaniumBody}>
                     <div className={styles.s25TopSpeaker} />
                     <div className={styles.s25DisplayScreen}>
-                      <div className={styles.s25PunchHoleCam} />
-                      <img 
+                                            <img 
                         src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1792053121/Instagram-insights2_ggooey.jpg" 
                         alt="Instagram Growth Analytics on Samsung S25 Ultra" 
                         className={styles.s25ScreenImage}
@@ -484,14 +488,16 @@ export default function Services() {
       <section className={styles.demoShowcaseSection} style={{ borderTop: '1px solid var(--border)' }}>
         <div className="container">
           <div className={`${styles.showcaseWrapper} ${styles.showcaseWrapperReverse}`}>
-            <div className={styles.showcaseLeft}>
-              <span className="tag">Search Dominance</span>
+            <div className={styles.showcaseHead}>
+                <span className="tag">Search Dominance</span>
               <h2>Search Engine Optimization & Google Ranking</h2>
-              <p>
-                We architect end-to-end technical SEO, local Google Map pack domination, and high-velocity keyword strategies that drive high-intent organic leads without paying for every click.
-              </p>
-              
-              <div className={styles.showcaseGrid}>
+              </div>
+
+              <div className={styles.showcaseBody}>
+                <p className={styles.showcaseDesc}>
+                  We architect end-to-end technical SEO, local Google Map pack domination, and high-velocity keyword strategies that drive high-intent organic leads without paying for every click.
+                </p>
+                <div className={styles.showcaseGrid}>
                 <div className={styles.showcaseItem}>
                   <h5>Technical SEO Audits</h5>
                   <p>Zero crawl errors, clean canonicals, XML sitemaps, and Core Web Vitals compliance.</p>

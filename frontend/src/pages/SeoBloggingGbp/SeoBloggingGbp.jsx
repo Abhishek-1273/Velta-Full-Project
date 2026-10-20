@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { 
-  FaWhatsapp, 
-  FaCheck, 
-  FaArrowRight, 
-  FaSearch, 
-  FaPenNib, 
-  FaMapMarkerAlt, 
-  FaChartLine, 
-  FaExclamationTriangle, 
-  FaExternalLinkAlt, 
-  FaFileAlt, 
-  FaCheckCircle, 
-  FaTimesCircle, 
-  FaInfoCircle, 
-  FaSyncAlt, 
-  FaGlobeAmericas, 
-  FaRupeeSign, 
+import {
+  FaWhatsapp,
+  FaCheck,
+  FaArrowRight,
+  FaSearch,
+  FaPenNib,
+  FaMapMarkerAlt,
+  FaChartLine,
+  FaExclamationTriangle,
+  FaExternalLinkAlt,
+  FaFileAlt,
+  FaCheckCircle,
+  FaTimesCircle,
+  FaInfoCircle,
+  FaSyncAlt,
+  FaGlobeAmericas,
+  FaRupeeSign,
   FaDollarSign,
   FaPlus,
   FaMinus,
@@ -70,7 +70,7 @@ export default function SeoBloggingGbp() {
 
   useEffect(() => {
     document.title = "SEO, Blogging & Google Business Profile Management | VeltaZ"
-    
+
     let metaDesc = document.querySelector('meta[name="description"]')
     if (!metaDesc) {
       metaDesc = document.createElement('meta')
@@ -88,7 +88,7 @@ export default function SeoBloggingGbp() {
 
   return (
     <div className={styles.pageContainer}>
-      
+
       {/* ── 1. HERO SECTION ── */}
       <section className={styles.heroSection}>
         <div className="container">
@@ -98,35 +98,35 @@ export default function SeoBloggingGbp() {
                 <span className={styles.eyebrowDot} />
                 <span>SEO · BLOGGING · GOOGLE BUSINESS PROFILE</span>
               </div>
-              
+
               <h1 className={styles.heroTitle}>
                 Get Found on Google. <br />
                 <span className={styles.heroTitleHighlight}>Build Visibility.</span> <br />
                 Reach the Right Customers.
               </h1>
-              
+
               <p className={styles.heroSubtitle}>
                 We help businesses strengthen their Google Search presence through practical website SEO, useful blog content and Google Business Profile management for eligible local businesses.
               </p>
-              
+
               <p className={styles.heroNote}>
                 From improving important website pages to publishing helpful content, we focus on building a stronger search foundation for your business.
               </p>
 
               <div className={styles.heroBtnRow}>
-                <a 
-                  href={WHATSAPP_URL} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className={`btn btn-primary ${styles.heroWhatsappBtn}`}
                   style={{ display: 'inline-flex', alignItems: 'center', gap: '9px', padding: '13px 26px', fontSize: '15px' }}
                 >
                   <FaWhatsapp size={19} />
                   <span>Improve My Google Visibility</span>
                 </a>
-                
-                <a 
-                  href="#featured-work" 
+
+                <a
+                  href="#featured-work"
                   className="btn btn-outline"
                   style={{ padding: '13px 22px', fontSize: '14.5px' }}
                 >
@@ -186,12 +186,12 @@ export default function SeoBloggingGbp() {
                 </div>
 
                 <div className={styles.heroVisualPreview}>
-                  <img 
-                    src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1792411000/seo-image2_yxbqpd.png" 
-                    alt="Google Search Console Organic Traffic Growth" 
+                  <img
+                    src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1792411000/seo-image2_yxbqpd.png"
+                    alt="Google Search Console Organic Traffic Growth"
                     className={styles.heroImg}
                   />
-                  
+
                 </div>
               </div>
             </div>
@@ -264,25 +264,25 @@ export default function SeoBloggingGbp() {
 
           {/* Capabilities Nav Switcher */}
           <div className={styles.tabNavRow}>
-            <button 
-              type="button" 
-              onClick={() => setActiveTab('seo')} 
+            <button
+              type="button"
+              onClick={() => setActiveTab('seo')}
               className={`${styles.tabBtn} ${activeTab === 'seo' ? styles.tabBtnActive : ''}`}
             >
               <FaSearch />
               <span>A. Google Search SEO</span>
             </button>
-            <button 
-              type="button" 
-              onClick={() => setActiveTab('blog')} 
+            <button
+              type="button"
+              onClick={() => setActiveTab('blog')}
               className={`${styles.tabBtn} ${activeTab === 'blog' ? styles.tabBtnActive : ''}`}
             >
               <FaPenNib />
               <span>B. Blogging & Content</span>
             </button>
-            <button 
-              type="button" 
-              onClick={() => setActiveTab('gbp')} 
+            <button
+              type="button"
+              onClick={() => setActiveTab('gbp')}
               className={`${styles.tabBtn} ${activeTab === 'gbp' ? styles.tabBtnActive : ''}`}
             >
               <FaMapMarkerAlt />
@@ -300,7 +300,7 @@ export default function SeoBloggingGbp() {
                   <p className={styles.paneLead}>
                     Help search engines understand your website and help visitors find the exact information they are actively searching for.
                   </p>
-                  
+
                   <div className={styles.deliverablesList}>
                     {[
                       "Initial website SEO technical assessment.",
@@ -341,7 +341,7 @@ export default function SeoBloggingGbp() {
                   <p className={styles.paneLead}>
                     Publish useful, original articles relevant to your business and its customers that answer questions and attract high-intent organic visitors.
                   </p>
-                  
+
                   <div className={styles.deliverablesList}>
                     {[
                       "Blog topic research focused on actual customer pain points.",
@@ -390,7 +390,7 @@ export default function SeoBloggingGbp() {
                   <p className={styles.paneLead}>
                     For businesses that meet Google's eligibility requirements, this service maintains an active, professional presence on Google Search and Maps.
                   </p>
-                  
+
                   <div className={styles.deliverablesList}>
                     {[
                       "Profile information review and agreed accurate updates.",
@@ -419,13 +419,13 @@ export default function SeoBloggingGbp() {
                       <span>Google Eligibility Guidance</span>
                     </div>
                     <p>
-                      Google requires eligible businesses to make in-person contact with customers during stated business hours. 
+                      Google requires eligible businesses to make in-person contact with customers during stated business hours.
                       <strong> Online-only businesses, vacant apartments, and residential rental properties are NOT eligible</strong> for standalone Google Business Profiles under Google policies.
                     </p>
-                    <a 
-                      href="https://support.google.com/business/answer/13763036" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
+                    <a
+                      href="https://support.google.com/business/answer/13763036"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className={styles.officialLink}
                     >
                       <span>Official Google Guidelines</span>
@@ -459,7 +459,7 @@ export default function SeoBloggingGbp() {
                   <span className="tag">All-In-One Scope</span>
                   <span className={styles.introTag}>Introductory Pricing</span>
                 </div>
-                
+
                 <h3 className={styles.packageName}>Google Visibility Starter</h3>
                 <p className={styles.packageDesc}>
                   Designed for small businesses, consulting firms, and local service providers seeking systematic on-page optimization, original blogging, and Google Business Profile management.
@@ -521,10 +521,10 @@ export default function SeoBloggingGbp() {
               </div>
 
               <div className={styles.packageCtaRow}>
-                <a 
-                  href={WHATSAPP_URL} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="btn btn-primary"
                   style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '14px 32px', fontSize: '15.5px', fontWeight: 700 }}
                 >
@@ -593,15 +593,15 @@ export default function SeoBloggingGbp() {
           <div className={styles.portfolioWrapper}>
             {/* Nav switcher */}
             <div className={styles.proofSwitcher}>
-              <button 
-                type="button" 
+              <button
+                type="button"
                 onClick={() => setActiveProofImg('https://res.cloudinary.com/dqc1awrnc/image/upload/v1792411000/seo-image2_yxbqpd.png')}
                 className={`${styles.proofBtn} ${activeProofImg === 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1792411000/seo-image2_yxbqpd.png' ? styles.proofBtnActive : ''}`}
               >
                 <span>Google Search Console Data</span>
               </button>
-              <button 
-                type="button" 
+              <button
+                type="button"
                 onClick={() => setActiveProofImg('https://res.cloudinary.com/dqc1awrnc/image/upload/v1792410811/seo-image3_zsbdwa.png')}
                 className={`${styles.proofBtn} ${activeProofImg === 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1792410811/seo-image3_zsbdwa.png' ? styles.proofBtnActive : ''}`}
               >
@@ -611,10 +611,10 @@ export default function SeoBloggingGbp() {
 
             <div className={styles.proofContentRow}>
               <div className={styles.proofImageFrame}>
-                <img 
-                  src={activeProofImg} 
-                  alt="Verified SEO work for KIN Property Management" 
-                  className={styles.proofImg} 
+                <img
+                  src={activeProofImg}
+                  alt="Verified SEO work for KIN Property Management"
+                  className={styles.proofImg}
                 />
               </div>
 
@@ -639,9 +639,9 @@ export default function SeoBloggingGbp() {
 
                 <div style={{ marginTop: '20px' }}>
                   <a href="https://kinpropertymanagement.com" target="_blank" rel="noopener noreferrer" className="btn btn-outline" style={{ padding: '10px 20px', fontSize: '13.5px' }}>
-                      <span>Visit KIN Live Website</span>
-                      <FaArrowRight size={12} style={{ marginLeft: 6 }} />
-                    </a>
+                    <span>Visit KIN Live Website</span>
+                    <FaArrowRight size={12} style={{ marginLeft: 6 }} />
+                  </a>
                 </div>
               </div>
             </div>
@@ -704,13 +704,13 @@ export default function SeoBloggingGbp() {
 
           <div className={styles.faqList}>
             {faqItems.map((item, idx) => (
-              <div 
-                key={idx} 
+              <div
+                key={idx}
                 className={`${styles.faqItem} ${activeFaq === idx ? styles.faqActive : ''}`}
               >
-                <button 
-                  type="button" 
-                  onClick={() => toggleFaq(idx)} 
+                <button
+                  type="button"
+                  onClick={() => toggleFaq(idx)}
                   className={styles.faqQuestion}
                 >
                   <span>{item.q}</span>
@@ -742,10 +742,10 @@ export default function SeoBloggingGbp() {
             </p>
 
             <div style={{ marginTop: '24px' }}>
-              <a 
-                href={WHATSAPP_URL} 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn btn-primary"
                 style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '14px 34px', fontSize: '16px', fontWeight: 700 }}
               >

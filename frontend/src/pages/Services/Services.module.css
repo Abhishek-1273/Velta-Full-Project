@@ -183,17 +183,32 @@
 .showcaseWrapper {
   display: grid;
   grid-template-columns: 1.15fr 1fr;
-  gap: 48px;
+  grid-template-areas:
+    "head mockup"
+    "body mockup";
+  gap: 16px 48px;
   align-items: center;
 }
 
-.showcaseLeft {
+.showcaseWrapperReverse {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  grid-template-areas:
+    "mockup head"
+    "mockup body";
+  gap: 16px 48px;
+  align-items: center;
+}
+
+.showcaseHead {
+  grid-area: head;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  width: 100%;
 }
 
-.showcaseLeft h2 {
+.showcaseHead h2 {
   font-family: var(--font-head);
   font-size: clamp(26px, 3vw, 32px);
   font-weight: 800;
@@ -201,11 +216,23 @@
   color: var(--text);
 }
 
-.showcaseLeft p {
+.showcaseBody {
+  grid-area: body;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.showcaseDesc {
   font-size: 14px;
   color: var(--text2);
   line-height: 1.5;
   margin-bottom: 14px;
+}
+
+.showcaseLeft {
+  display: contents;
 }
 
 .showcaseGrid {
@@ -334,17 +361,7 @@
   margin-bottom: 12px;
 }
 
-.showcaseWrapperReverse {
-  grid-template-columns: 1fr 1.15fr;
-}
-
-.showcaseWrapperReverse .showcaseLeft {
-  order: 2;
-}
-
-.showcaseWrapperReverse .showcaseRight {
-  order: 1;
-}
+/* showcaseWrapperReverse handled by grid-template-areas */
 
 /* Bottom Device Row (iPad on Left, Laptop on Right - Centered) */
 
@@ -358,13 +375,15 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.9);
-  z-index: 1000;
+  background: rgba(0, 0, 0, 0.92);
+  z-index: 99999;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: zoom-out;
   animation: fadeIn 0.25s ease;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .lightboxContent {
@@ -911,32 +930,38 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 5px 12px;
+  padding: 2.5px 10px;
   background: rgba(15, 20, 28, 0.98);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   flex-shrink: 0;
+  height: 18px;
 }
 
 .proLaptopDots {
   display: flex;
-  gap: 5px;
+  gap: 4px;
 }
-.proDotRed { width: 7px; height: 7px; border-radius: 50%; background: #ef4444; }
-.proDotYellow { width: 7px; height: 7px; border-radius: 50%; background: #f59e0b; }
-.proDotGreen { width: 7px; height: 7px; border-radius: 50%; background: #10b981; }
+.proDotRed { width: 5px; height: 5px; border-radius: 50%; background: #ef4444; }
+.proDotYellow { width: 5px; height: 5px; border-radius: 50%; background: #f59e0b; }
+.proDotGreen { width: 5px; height: 5px; border-radius: 50%; background: #10b981; }
 
 .ipadUrlBadge {
   margin: 0 auto;
   background: rgba(0, 0, 0, 0.55);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 5px;
-  padding: 2.5px 10px;
-  font-size: 10px;
+  border-radius: 4px;
+  padding: 1px 7px;
+  font-size: 8.5px;
   color: #94a3b8;
   font-family: monospace;
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 4px;
+  max-width: 170px;
+}
+
+.s25PunchHoleCam {
+  display: none !important;
 }
 
 .ipadScreenImg {
@@ -1127,6 +1152,29 @@
     width: 230px;
     height: 155px;
   }
+  .ipadHeaderBar {
+    padding: 1.5px 6px !important;
+    height: 13px !important;
+  }
+  .proLaptopDots {
+    gap: 3px !important;
+  }
+  .proDotRed,
+  .proDotYellow,
+  .proDotGreen {
+    width: 3px !important;
+    height: 3px !important;
+  }
+  .ipadUrlBadge {
+    padding: 0 4px !important;
+    font-size: 7px !important;
+    height: 10px !important;
+    max-width: 110px !important;
+  }
+  .ipadUrlBadge svg {
+    width: 6px !important;
+    height: 6px !important;
+  }
   .s25UltraDevice {
     width: 86px;
     height: 175px;
@@ -1141,32 +1189,49 @@
   }
 }
 
+
+
+/* Showcase Head & Body Layout */
+.showcaseRight {
+  grid-area: mockup;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* ========================================================
-   RESPONSIVE SHOWCASE WRAPPERS (STACK CLEANLY ON MOBILE)
+   SHOWCASE CLEAN MOBILE STACKING (head → mockup → body)
    ======================================================== */
 @media (max-width: 900px) {
   .showcaseWrapper,
   .showcaseWrapperReverse {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 32px !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    grid-template-areas:
+      "head"
+      "mockup"
+      "body" !important;
+    gap: 0 !important;
   }
 
-  .showcaseWrapper .showcaseLeft,
-  .showcaseWrapperReverse .showcaseLeft {
-    order: 1 !important;
+  .showcaseHead {
+    grid-area: head !important;
     width: 100% !important;
-    margin: 0 !important;
+    margin-bottom: 14px !important;
   }
 
-  .showcaseWrapper .showcaseRight,
-  .showcaseWrapperReverse .showcaseRight {
-    order: 2 !important;
+  .showcaseRight {
+    grid-area: mockup !important;
     width: 100% !important;
-    margin: 16px auto 0 !important;
+    margin: 6px auto 20px !important;
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
+  }
+
+  .showcaseBody {
+    grid-area: body !important;
+    width: 100% !important;
   }
 
   .showcaseGrid {
@@ -1175,56 +1240,66 @@
     width: 100% !important;
   }
 
-  /* Mockups Scaled & Centered Without Overlapping Content */
+  /* CTA buttons full width on mobile */
+  .showcaseBody a.btn,
+  .showcaseBody .btn {
+    width: 100% !important;
+    text-align: center !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 1. Device Mockup Duo (Web) - Perfectly proportioned */
   .deviceMockupDuo {
-    max-width: 330px !important;
-    padding: 0 0 20px 0 !important;
-    margin: 0 auto !important;
+    width: 100% !important;
+    max-width: 350px !important;
+    padding: 0 0 16px 0 !important;
+    margin: 6px auto 18px !important;
   }
-
   .laptopMockupWrapper {
-    width: 86% !important;
+    width: 88% !important;
   }
-
   .mobileMockupWrapper {
     width: 120px !important;
-    right: 0px !important;
+    right: 0 !important;
     bottom: -6px !important;
   }
 
+  /* 2. Phone Deck (3 Mobile Apps) - Authentic, Proportional S24/iPhone Aspect Ratio */
   .phoneDeck {
-    max-width: 320px !important;
-    height: 330px !important;
-    margin: 0 auto !important;
+    width: 100% !important;
+    max-width: 350px !important;
+    height: 340px !important;
+    margin: 8px auto 20px !important;
+    position: relative !important;
   }
-
   .miniPhone {
-    width: 135px !important;
+    position: absolute !important;
+    width: 145px !important;
+    height: 300px !important; /* Authentic 1:2.07 ratio - NOT stretched or squished */
+    border-radius: 18px !important;
+    border: 3.5px solid #2a2a2a !important;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45) !important;
+    overflow: hidden !important;
   }
-
   .phone1 {
-    transform: translateX(-65px) rotate(-8deg) scale(0.9) !important;
-    opacity: 0.9 !important;
+    transform: translateX(-56px) rotate(-7deg) scale(0.92) !important;
+    opacity: 0.92 !important;
   }
   .phone2 {
     transform: translateY(0) scale(1) !important;
     opacity: 1 !important;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55) !important;
   }
   .phone3 {
-    transform: translateX(65px) rotate(8deg) scale(0.9) !important;
-    opacity: 0.9 !important;
+    transform: translateX(56px) rotate(7deg) scale(0.92) !important;
+    opacity: 0.92 !important;
   }
-
   .phoneDeck:hover .phone1 {
-    transform: translateX(-75px) rotate(-10deg) scale(0.92) !important;
+    transform: translateX(-66px) rotate(-9deg) scale(0.93) !important;
   }
   .phoneDeck:hover .phone3 {
-    transform: translateX(75px) rotate(10deg) scale(0.92) !important;
-  }
-
-  .overlapMobileMockup {
-    width: 115px !important;
-    right: 0px !important;
+    transform: translateX(66px) rotate(9deg) scale(0.93) !important;
   }
 }
 
@@ -1234,19 +1309,54 @@
     gap: 10px !important;
   }
 
+  .deviceMockupDuo {
+    max-width: 320px !important;
+    padding: 0 0 12px 0 !important;
+  }
+  .laptopMockupWrapper {
+    width: 88% !important;
+  }
+  .mobileMockupWrapper {
+    width: 108px !important;
+  }
+
   .phoneDeck {
-    max-width: 290px !important;
-    height: 300px !important;
+    max-width: 315px !important;
+    height: 315px !important;
+    margin: 6px auto 16px !important;
   }
-
   .miniPhone {
-    width: 120px !important;
+    width: 132px !important;
+    height: 275px !important; /* Proportional 1:2.08 ratio */
+    border-radius: 16px !important;
+    border: 3px solid #2a2a2a !important;
   }
-
   .phone1 {
-    transform: translateX(-50px) rotate(-6deg) scale(0.9) !important;
+    transform: translateX(-48px) rotate(-6deg) scale(0.92) !important;
+  }
+  .phone2 {
+    transform: translateY(0) scale(1) !important;
   }
   .phone3 {
-    transform: translateX(50px) rotate(6deg) scale(0.9) !important;
+    transform: translateX(48px) rotate(6deg) scale(0.92) !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .phoneDeck {
+    max-width: 285px !important;
+    height: 285px !important;
+  }
+  .miniPhone {
+    width: 120px !important;
+    height: 250px !important; /* Proportional 1:2.08 ratio */
+    border-radius: 14px !important;
+    border: 2.5px solid #2a2a2a !important;
+  }
+  .phone1 {
+    transform: translateX(-42px) rotate(-6deg) scale(0.92) !important;
+  }
+  .phone3 {
+    transform: translateX(42px) rotate(6deg) scale(0.92) !important;
   }
 }
