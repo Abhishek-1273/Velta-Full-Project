@@ -63,7 +63,7 @@ export default function VeltaChat() {
       const data = await res.json()
       const reply =
         data.choices?.[0]?.message?.content ||
-        'Sorry, kuch problem ho gayi. Please try again!'
+        'Sorry, something went wrong. Please try again!'
 
       setMessages((prev) => [...prev, { role: 'assistant', content: reply }])
       if (!open) setUnread((prev) => prev + 1)
@@ -73,7 +73,7 @@ export default function VeltaChat() {
         {
           role: 'assistant',
           content:
-            'Sorry, abhi connect nahi ho paa raha. Please thodi der baad try karein ya veltalabs.net/contact pe jaayein.',
+            'Sorry, unable to connect right now. Please try again shortly or visit veltalabs.net/contact.',
         },
       ])
     } finally {
