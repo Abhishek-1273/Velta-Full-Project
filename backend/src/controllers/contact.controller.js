@@ -23,7 +23,7 @@ const escapeHtml = (v = '') =>
 
 const oneLine = (v = '') => String(v).replace(/[\r\n]+/g, ' ').trim();
 
-// ── Send notification email to owner ─────────────────────────────
+// Send notification email to owner
 const sendNotificationEmail = async ({ fullName, businessName, email, country, projectType, budgetRange, timeline, message }) => {
     const row = (label, value, first = false) => `
                         <tr${first ? '' : ' style="border-top: 1px solid #f0f0f0;"'}>
@@ -72,7 +72,7 @@ const sendNotificationEmail = async ({ fullName, businessName, email, country, p
     if (error) throw new Error(error.message || 'Resend rejected the email');
 };
 
-// ── POST /api/contact ────────────────────────────────────────────
+// POST /api/contact
 const createContact = async (req, res) => {
     const body = req.body && typeof req.body === 'object' ? req.body : {};
     const str = (v) => (typeof v === 'string' ? v.trim() : '');

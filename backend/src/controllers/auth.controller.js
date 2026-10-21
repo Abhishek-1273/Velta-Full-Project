@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import User from '../models/User.model.js';
 
-// ── Helper: sign JWT and set httpOnly cookie ─────────────────────
+// Helper: Sign JWT and set cookie
 const sendTokenCookie = (res, user) => {
     const token = jwt.sign(
         { id: user._id },
@@ -13,15 +13,15 @@ const sendTokenCookie = (res, user) => {
 
     res.cookie('token', token, {
         httpOnly: true,
-        secure: isProd,                       // HTTPS-only in prod
-        sameSite: isProd ? 'none' : 'lax',    // 'none' needed for cross-site prod cookies
+        secure: isProd,
+        sameSite: isProd ? 'none' : 'lax',
         maxAge: 24 * 60 * 60 * 1000,
     });
 
     return token;
 };
 
-// ── Helper: strip sensitive fields before sending to client ───────
+// Helper: Strip sensitive fields
 const safeUser = (user) => ({
     id: user._id,
     name: user.name,
@@ -31,12 +31,12 @@ const safeUser = (user) => ({
     createdAt: user.createdAt,
 });
 
-// ── POST /api/auth/signup ────────────────────────────────────────
+// Signup
 export const signup = async (req, res) => {
     try {
         const { name, email, phone, business, password } = req.body;
 
-        // ── Validate required fields ──────────────────────────────
+        // Validate required fields
         const missing = [];
         if (!name?.trim()) missing.push('name');
         if (!email?.trim()) missing.push('email');
@@ -49,17 +49,17 @@ export const signup = async (req, res) => {
             });
         }
 
-        // ── Email format ──────────────────────────────────────────
+        // Email format validation
         if (!/^\S+@\S+\.\S+$/.test(email)) {
             return res.status(400).json({ success: false, message: 'Enter a valid email address.' });
         }
 
-        // ── Password strength (mirrors frontend rules) ────────────
+        // Password strength validation
         if (password.length < 8) {
             return res.status(400).json({ success: false, message: 'Password must be at least 8 characters.' });
         }
 
-        // ── Duplicate check ───────────────────────────────────────
+        // Duplicate check
         const existing = await User.findOne({ email: email.toLowerCase().trim() });
         if (existing) {
             return res.status(409).json({
@@ -83,12 +83,12 @@ export const signup = async (req, res) => {
                 message: 'An account with this email already exists.',
             });
         }
-        console.error('❌ signup error:', err.message);
+        console.error('Signup error:', err.message);
         return res.status(500).json({ success: false, message: 'Server error. Please try again.' });
     }
 };
 
-// ── POST /api/auth/signin ────────────────────────────────────────
+// Signin
 export const signin = async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -97,11 +97,8 @@ export const signin = async (req, res) => {
             return res.status(400).json({ success: false, message: 'Email and password are required.' });
         }
 
-        // select('+password') because the field is select:false by default
         const user = await User.findOne({ email: email.toLowerCase().trim() }).select('+password');
 
-        // Use identical message for wrong email OR wrong password to prevent
-        // user enumeration attacks
         const invalid = () =>
             res.status(401).json({ success: false, message: 'Invalid email or password.' });
 
@@ -118,12 +115,12 @@ export const signin = async (req, res) => {
             user: safeUser(user),
         });
     } catch (err) {
-        console.error('❌ signin error:', err.message);
+        console.error('Signin error:', err.message);
         return res.status(500).json({ success: false, message: 'Server error. Please try again.' });
     }
 };
 
-// ── POST /api/auth/signout ───────────────────────────────────────
+// Signout
 export const signout = (req, res) => {
     const isProd = process.env.NODE_ENV === 'production';
     res.clearCookie('token', {
@@ -134,8 +131,7 @@ export const signout = (req, res) => {
     return res.json({ success: true, message: 'Signed out successfully.' });
 };
 
-// ── GET /api/auth/me ─────────────────────────────────────────────
-// Called by the Data Router root loader on every navigation to restore session.
+// Get Current User
 export const getMe = (req, res) => {
     return res.json({ success: true, user: safeUser(req.user) });
 };
