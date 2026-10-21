@@ -169,6 +169,32 @@
   font-weight: 500;
 }
 
+.msgBubble a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 600;
+  transition: opacity 0.2s ease;
+}
+
+.msgBubble a:hover {
+  opacity: 0.8;
+}
+
+.msgUser .msgBubble a {
+  color: #000;
+  font-weight: 700;
+}
+
+.msgBubble strong {
+  font-weight: 700;
+  color: var(--text);
+}
+
+.msgUser .msgBubble strong {
+  color: #000;
+}
+
 /* Typing indicator */
 .typing { display: flex; gap: 4px; padding: 2px 0; }
 .typing span {

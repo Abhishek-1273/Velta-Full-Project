@@ -23,33 +23,11 @@ import {
   FaBuilding,
   FaBriefcase
 } from 'react-icons/fa'
-import { CircularTeam } from '../../components/CircularTeam/CircularTeam'
 import styles from './About.module.css'
 
 const WHATSAPP_NUMBER = '919960240648'
 const WHATSAPP_MSG = encodeURIComponent("Hi VeltaZ, I'd like to discuss my business and explore practical digital solutions.")
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MSG}`
-
-const teamMembers = [
-  {
-    name: 'Dhruv',
-    designation: 'Co-Founder & CEO',
-    quote: 'VeltaZ was born to make operations seamless. I lead our business growth, marketing, and client communications, ensuring that the custom software ecosystems we build align perfectly with our clients\' real-world scaling goals.',
-    src: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1786874509/Dhruv_wcdpti.png'
-  },
-  {
-    name: 'Arman',
-    designation: 'Co-Founder & CTO',
-    quote: 'We architect bulletproof technology. My focus is engineering ultra-secure backend infrastructures, custom APIs, and high-performance databases that handle heavy operational loads silently and reliably.',
-    src: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1786874508/Arman_b46q6r.png'
-  },
-  {
-    name: 'Abhishek',
-    designation: 'Co-Founder & CPO',
-    quote: 'I am obsessed with product perfection. From high-fidelity user flows to custom product design, I bridge backend functionality with premium UX, ensuring every system we build looks stunning and works flawlessly.',
-    src: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1786874508/Abhishek_rpscb3.png'
-  }
-]
 
 export default function About() {
   const kinVideoRef = useRef(null)
@@ -524,7 +502,7 @@ export default function About() {
                 <span>Google Search SEO</span>
                 <span>Content Strategy</span>
               </div>
-              <Link to="/services/seo-blogging-gbp" className={styles.capLink}>
+              <Link to="/services/seo-blogging-google-business-profile" className={styles.capLink}>
                 <span>Explore SEO & Content</span>
                 <FaArrowRight size={11} />
               </Link>

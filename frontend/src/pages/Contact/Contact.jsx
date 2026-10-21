@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import api from '../../api/api.js'
 import { FaEnvelope, FaWhatsapp, FaCheck, FaMapMarkerAlt } from 'react-icons/fa'
 import CustomSelect from '../../components/CustomSelect/CustomSelect.jsx'

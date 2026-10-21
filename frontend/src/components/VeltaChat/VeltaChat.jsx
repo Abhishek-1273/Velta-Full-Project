@@ -1,24 +1,69 @@
 import { useState, useRef, useEffect, useCallback } from 'react'
+import { Link } from 'react-router-dom'
+import { getVeltaResponse } from './veltaKnowledge'
 import styles from './VeltaChat.module.css'
 
-// Note: SYSTEM_PROMPT and model selection are secured on the backend
-
-// Backend proxy — keeps the Groq API key off the browser
-const CHAT_API_URL = `${import.meta.env.VITE_API_URL || 'http://localhost:5000/api'}/chat`
-
 const quickQuestions = [
-  "What are VeltaZ's products?",
-  "WhatsFlow pricing details",
-  "How does WhatsFlow work?",
-  "Request a free demo",
+  "What is WhatsFlow?",
+  "Custom software & CRMs",
+  "Automation & n8n systems",
+  "Request a live demo",
+  "How to get started?",
 ]
+
+function renderFormattedContent(text) {
+  if (!text) return null
+  const lines = text.split('\n')
+  return lines.map((line, lineIdx) => {
+    const parts = []
+    let lastIndex = 0
+    const regex = /\[([^\]]+)\]\(([^)]+)\)|\*\*([^*]+)\*\*/g
+    let match
+
+    while ((match = regex.exec(line)) !== null) {
+      if (match.index > lastIndex) {
+        parts.push(line.substring(lastIndex, match.index))
+      }
+      if (match[1] && match[2]) {
+        const label = match[1]
+        const url = match[2]
+        const isExternal = url.startsWith('http') || url.startsWith('//')
+        parts.push(
+          isExternal ? (
+            <a key={`${lineIdx}-${match.index}`} href={url} target="_blank" rel="noopener noreferrer">
+              {label}
+            </a>
+          ) : (
+            <Link key={`${lineIdx}-${match.index}`} to={url}>
+              {label}
+            </Link>
+          )
+        )
+      } else if (match[3]) {
+        parts.push(<strong key={`${lineIdx}-${match.index}`}>{match[3]}</strong>)
+      }
+      lastIndex = regex.lastIndex
+    }
+
+    if (lastIndex < line.length) {
+      parts.push(line.substring(lastIndex))
+    }
+
+    return (
+      <span key={lineIdx}>
+        {parts.length > 0 ? parts : line}
+        {lineIdx < lines.length - 1 && <br />}
+      </span>
+    )
+  })
+}
 
 export default function VeltaChat() {
   const [open, setOpen] = useState(false)
   const [messages, setMessages] = useState([
     {
       role: 'assistant',
-      content: "Hi! I'm VeltaZ AI 👋\n\nAsk me anything about VeltaZ — I'm here to help!",
+      content: "Hi! I'm VeltaZ AI 👋\n\nAsk me anything about VeltaZ products, custom software, or automations — I'm here to help!",
     },
   ])
   const [input, setInput] = useState('')
@@ -36,9 +81,9 @@ export default function VeltaChat() {
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
-  }, [messages])
+  }, [messages, loading])
 
-  const sendMessage = useCallback(async (text, currentMessages) => {
+  const sendMessage = useCallback((text, currentMessages) => {
     if (!text || loading) return
 
     const userMsg = { role: 'user', content: text }
@@ -48,37 +93,13 @@ export default function VeltaChat() {
     setInput('')
     setLoading(true)
 
-    try {
-      const res = await fetch(CHAT_API_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
-        body: JSON.stringify({
-          messages: updatedMessages.filter((m) => m.role !== 'system'),
-        }),
-      })
-
-      if (!res.ok) throw new Error(`Server error: ${res.status}`)
-
-      const data = await res.json()
-      const reply =
-        data.choices?.[0]?.message?.content ||
-        'Sorry, something went wrong. Please try again!'
-
+    // Role-based instant intelligence with a natural micro-delay for realistic conversational UX
+    setTimeout(() => {
+      const reply = getVeltaResponse(text)
       setMessages((prev) => [...prev, { role: 'assistant', content: reply }])
-      if (!open) setUnread((prev) => prev + 1)
-    } catch {
-      setMessages((prev) => [
-        ...prev,
-        {
-          role: 'assistant',
-          content:
-            'Sorry, unable to connect right now. Please try again shortly or visit veltalabs.net/contact.',
-        },
-      ])
-    } finally {
       setLoading(false)
-    }
+      if (!open) setUnread((prev) => prev + 1)
+    }, 400)
   }, [loading, open])
 
   const handleSend = () => {
@@ -116,7 +137,7 @@ export default function VeltaChat() {
                 </div>
               </div>
             </div>
-            <button className={styles.closeBtn} onClick={() => setOpen(false)}>✕</button>
+            <button className={styles.closeBtn} onClick={() => setOpen(false)} aria-label="Close chat">✕</button>
           </div>
 
           <div className={styles.messages}>
@@ -127,7 +148,9 @@ export default function VeltaChat() {
                     <img src="/logo/logo-white.png" alt="VeltaZ AI Logo" className={styles.avatarImg} />
                   </div>
                 )}
-                <div className={styles.msgBubble}>{m.content}</div>
+                <div className={styles.msgBubble}>
+                  {renderFormattedContent(m.content)}
+                </div>
               </div>
             ))}
 
@@ -173,17 +196,18 @@ export default function VeltaChat() {
               className={`${styles.sendBtn} ${!input.trim() || loading ? styles.sendDisabled : ''}`}
               onClick={handleSend}
               disabled={!input.trim() || loading}
+              aria-label="Send message"
             >
               <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                 <path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z" />
               </svg>
             </button>
           </div>
-          <div className={styles.footer}>Powered by VeltaZ AI</div>
+          <div className={styles.footer}>Powered by VeltaZ Knowledge Engine</div>
         </div>
       )}
 
-      <button className={styles.fab} onClick={() => setOpen((o) => !o)}>
+      <button className={styles.fab} onClick={() => setOpen((o) => !o)} aria-label="Open VeltaZ Assistant">
         {open ? (
           <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
             <path d="M18 6L6 18M6 6l12 12" />

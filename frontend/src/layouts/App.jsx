@@ -10,13 +10,20 @@ export default function RootLayout() {
   useEffect(() => {
     const preloader = document.getElementById('preloader-overlay')
     if (preloader) {
+      let removeTimer
       // Allow entrance animation to show, then add fade-out and slide-up curtain
       const triggerTimer = setTimeout(() => {
         preloader.classList.add('fade-out')
-        const removeTimer = setTimeout(() => preloader.remove(), 650)
-        return () => clearTimeout(removeTimer)
+        removeTimer = setTimeout(() => {
+          if (preloader.parentNode) {
+            preloader.remove()
+          }
+        }, 650)
       }, 500)
-      return () => clearTimeout(triggerTimer)
+      return () => {
+        clearTimeout(triggerTimer)
+        if (removeTimer) clearTimeout(removeTimer)
+      }
     }
   }, [])
 
