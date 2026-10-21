@@ -22,17 +22,29 @@ app.set('trust proxy', 1);
 // Connect Database
 connectDB();
 
-// CORS Configuration
-const allowedOrigins = (process.env.CLIENT_URL || 'http://localhost:5173')
+// CORS Configuration - automatically allow Vercel domains, localhost, and CLIENT_URL
+const configuredOrigins = (process.env.CLIENT_URL || '')
     .split(',')
-    .map(o => o.trim().replace(/\/$/, ''));
+    .map(o => o.trim().replace(/\/$/, ''))
+    .filter(Boolean);
+
+const isOriginAllowed = (origin) => {
+    if (!origin) return true; // Server-to-server or tools
+    const clean = origin.replace(/\/$/, '');
+    if (configuredOrigins.includes(clean)) return true;
+    if (/^https?:\/\/localhost(:\d+)?$/.test(clean)) return true;
+    if (/^https?:\/\/127\.0\.0\.1(:\d+)?$/.test(clean)) return true;
+    if (/\.vercel\.app$/.test(clean) || clean === 'https://veltaai.vercel.app') return true;
+    return false;
+};
 
 app.use(cors({
     origin: (origin, cb) => {
-        if (!origin || allowedOrigins.includes(origin.replace(/\/$/, ''))) {
+        if (isOriginAllowed(origin)) {
             return cb(null, true);
         }
-        return cb(new Error(`CORS blocked: ${origin}`));
+        // Don't throw unhandled Error, just disallow origin
+        return cb(null, false);
     },
     credentials: true,
 }));
