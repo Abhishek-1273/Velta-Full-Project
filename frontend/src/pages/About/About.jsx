@@ -13,9 +13,7 @@ import {
   FaPlay,
   FaPause,
   FaMapMarkerAlt,
-  FaGlobe,
   FaDatabase,
-  FaLayerGroup,
   FaPenNib,
   FaSearch,
   FaBolt,
@@ -33,7 +31,6 @@ export default function About() {
   const kinVideoRef = useRef(null)
   const [isVideoPlaying, setIsVideoPlaying] = useState(true)
   const [kinTab, setKinTab] = useState('portal') // 'portal' | 'crm'
-  const [activeConsoleTab, setActiveConsoleTab] = useState('web') // 'web' | 'auto' | 'seo'
 
   useEffect(() => {
     document.title = "About VeltaZ | Business Growth & Digital Systems"
@@ -119,7 +116,7 @@ export default function About() {
                 </div>
                 <div className={`${styles.highlightChip} ${styles.mobileOnlyChip}`}>
                   <FaChartLine className={styles.chipIcon} />
-                  <span>Measurable Growth</span>
+                  <span>Reliable Delivery</span>
                 </div>
               </div>
 
@@ -144,252 +141,93 @@ export default function About() {
               </div>
             </div>
 
-            {/* Interactive Live Architecture Console */}
+            {/* Premium Live Work Showcase Composition (Replaced fake metric dashboard) */}
             <div className={styles.heroVisual}>
-              <div className={styles.consoleCard}>
-                <div className={styles.consoleHeader}>
-                  <div className={styles.consoleDots}>
-                    <span className={styles.dotRed} />
-                    <span className={styles.dotYellow} />
-                    <span className={styles.dotGreen} />
+              <div className={styles.showcaseComposition}>
+                
+                {/* Main Desktop Window: KIN Property Web Platform */}
+                <div className={styles.primaryMockupCard}>
+                  <div className={styles.mockupHeader}>
+                    <div className={styles.mockupDots}>
+                      <span className={styles.dotRed} />
+                      <span className={styles.dotYellow} />
+                      <span className={styles.dotGreen} />
+                    </div>
+                    <div className={styles.mockupAddress}>
+                      <span className={styles.lockIcon}>🔒</span>
+                      <span>kinpropertymanagement.com</span>
+                    </div>
+                    <span className={styles.mockupTag}>Web Platform</span>
                   </div>
-                  <div className={styles.consoleStatusBadge}>
-                    <span className={styles.consolePulseDot} />
-                    <span>Live Systems Console</span>
+                  <div className={styles.mockupBody}>
+                    <img
+                      src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1792408084/website-mockup_qnmqqk.png"
+                      alt="KIN Property Portal Live Implementation"
+                      className={styles.mockupImg}
+                    />
                   </div>
                 </div>
 
-                {/* Console Navigation Switcher */}
-                <div className={styles.consoleNav}>
-                  <button
-                    onClick={() => setActiveConsoleTab('web')}
-                    className={`${styles.consoleTabBtn} ${activeConsoleTab === 'web' ? styles.consoleTabBtnActive : ''}`}
-                  >
-                    <FaLaptopCode size={12} />
-                    <span>Web Engine</span>
-                  </button>
-                  <button
-                    onClick={() => setActiveConsoleTab('auto')}
-                    className={`${styles.consoleTabBtn} ${activeConsoleTab === 'auto' ? styles.consoleTabBtnActive : ''}`}
-                  >
-                    <FaWhatsapp size={12} />
-                    <span>WhatsFlow AI</span>
-                  </button>
-                  <button
-                    onClick={() => setActiveConsoleTab('seo')}
-                    className={`${styles.consoleTabBtn} ${activeConsoleTab === 'seo' ? styles.consoleTabBtnActive : ''}`}
-                  >
-                    <FaSearch size={11} />
-                    <span>Search Engine</span>
-                  </button>
-                </div>
-
-                {/* Console Screen View */}
-                <div className={styles.consoleScreen}>
-                  {activeConsoleTab === 'web' && (
-                    <div className={styles.consoleViewPane}>
-                      <div className={styles.codeSnippetBar}>
-                        <span className={styles.codeMethod}>GET</span>
-                        <span className={styles.codeRoute}>/api/v1/properties/search</span>
-                        <span className={styles.codeStatus}>200 OK (18ms)</span>
-                      </div>
-
-                      <div className={styles.metricsBoxRow}>
-                        <div className={styles.metricMiniBox}>
-                          <span className={styles.metricMiniLabel}>Core Web Vitals</span>
-                          <strong className={styles.metricMiniVal}>99 / 100</strong>
-                        </div>
-                        <div className={styles.metricMiniBox}>
-                          <span className={styles.metricMiniLabel}>Architecture</span>
-                          <strong className={styles.metricMiniVal}>Custom React</strong>
-                        </div>
-                        <div className={styles.metricMiniBox}>
-                          <span className={styles.metricMiniLabel}>Deployment</span>
-                          <strong className={styles.metricMiniVal}>Edge Cloud</strong>
-                        </div>
-                      </div>
-
-                      <div className={styles.consoleStackChips}>
-                        <span>Zero Template Bloat</span>
-                        <span>Responsive UX</span>
-                        <span>API-First</span>
+                {/* Floating Proof Cards */}
+                <div className={styles.floatingCardsRow}>
+                  {/* Floating Proof 1: WhatsFlow Lead Automation */}
+                  <div className={styles.floatingBadgeCard}>
+                    <div className={styles.floatingCardHead}>
+                      <div className={styles.badgeIconWa}><FaWhatsapp size={14} /></div>
+                      <div>
+                        <strong>WhatsFlow CRM</strong>
+                        <p>Lead Routing & WhatsApp Sync</p>
                       </div>
                     </div>
-                  )}
+                    <div className={styles.floatingPreviewImgWrap}>
+                      <img
+                        src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1792475226/whatsflow_cbybon.jpg"
+                        alt="WhatsFlow Mobile App Interface"
+                        className={styles.floatingAppThumb}
+                      />
+                    </div>
+                  </div>
 
-                  {activeConsoleTab === 'auto' && (
-                    <div className={styles.consoleViewPane}>
-                      <div className={styles.flowTraceBox}>
-                        <div className={styles.traceStep}>
-                          <span className={styles.traceNum}>01</span>
-                          <span>Inbound Lead Captured on Website Form</span>
-                        </div>
-                        <div className={styles.traceArrow}>↓ 0.2s</div>
-                        <div className={styles.traceStep}>
-                          <span className={styles.traceNum}>02</span>
-                          <span>Intent Tagged: High Budget Pune Real Estate</span>
-                        </div>
-                        <div className={styles.traceArrow}>↓ 0.2s</div>
-                        <div className={styles.traceStep}>
-                          <span className={styles.traceNum}>03</span>
-                          <span>Routed to Agent WhatsApp & Synced with CRM</span>
-                        </div>
-                      </div>
-
-                      <div className={styles.consoleStackChips}>
-                        <span>Zero Manual Entry</span>
-                        <span>Instant Follow-ups</span>
-                        <span>n8n Routing</span>
+                  {/* Floating Proof 2: Content Creation & Viral Media */}
+                  <div className={styles.floatingBadgeCard}>
+                    <div className={styles.floatingCardHead}>
+                      <div className={styles.badgeIconMedia}><FaPenNib size={13} /></div>
+                      <div>
+                        <strong>Content Studio</strong>
+                        <p>High-Engagement Video Assets</p>
                       </div>
                     </div>
-                  )}
-
-                  {activeConsoleTab === 'seo' && (
-                    <div className={styles.consoleViewPane}>
-                      <div className={styles.serpMockCard}>
-                        <div className={styles.serpHeader}>
-                          <span className={styles.serpUrl}>https://kinpropertymanagement.com</span>
-                          <span className={styles.serpBadge}>Google Search #1</span>
-                        </div>
-                        <h4 className={styles.serpTitle}>Luxury Property Management in Pune | KIN</h4>
-                        <p className={styles.serpSnippet}>
-                          Verified listings, leasing agreements, and tenant onboarding in prime Pune neighborhoods.
-                        </p>
-                      </div>
-
-                      <div className={styles.metricsBoxRow}>
-                        <div className={styles.metricMiniBox}>
-                          <span className={styles.metricMiniLabel}>Google Profile</span>
-                          <strong className={styles.metricMiniVal}>Verified 5.0 ★</strong>
-                        </div>
-                        <div className={styles.metricMiniBox}>
-                          <span className={styles.metricMiniLabel}>Search Intent</span>
-                          <strong className={styles.metricMiniVal}>Commercial</strong>
-                        </div>
-                        <div className={styles.metricMiniBox}>
-                          <span className={styles.metricMiniLabel}>Local Rank</span>
-                          <strong className={styles.metricMiniVal}>Top 1% Pune</strong>
-                        </div>
-                      </div>
+                    <div className={styles.floatingPreviewImgWrap}>
+                      <img
+                        src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1792053111/reel-193k_zbtf8g.png"
+                        alt="Content Creation Proof 193K Views"
+                        className={styles.floatingReelThumb}
+                      />
                     </div>
-                  )}
+                  </div>
                 </div>
 
-                <div className={styles.consoleFooter}>
-                  <span>Architecture: Built with Purpose</span>
-                  <span className={styles.consoleUptime}>● 99.9% Monitored Uptime</span>
+                {/* Bottom Authenticity Subtitle */}
+                <div className={styles.compositionFoot}>
+                  <span>Actual client deployments across web, automation & content</span>
                 </div>
+
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── 2. WHY WE EXIST: BENTO ECOSYSTEM ── */}
-      <section className={styles.whySection}>
-        <div className="container">
-          <div className={styles.sectionHeaderCentered}>
-            <span className="tag">WHY WE EXIST</span>
-            <h2 className={styles.sectionTitle}>
-              Business Growth Is More Than a Single Deliverable.
-            </h2>
-            <p className={styles.sectionSub}>
-              A website alone isn’t enough. Neither is isolated marketing or disconnected software. 
-              Real momentum happens when every piece of your digital footprint connects seamlessly.
-            </p>
-          </div>
-
-          {/* Symmetrical 2x2 Ecosystem Grid */}
-          <div className={styles.ecosystemGrid}>
-            {/* Card 1 */}
-            <div className={styles.ecoCard}>
-              <div className={styles.ecoTop}>
-                <span className={styles.ecoPill}>The Digital Front</span>
-                <span className={styles.ecoNumber}>01</span>
-              </div>
-              <h3>Web & Brand Architecture</h3>
-              <p>
-                We engineer fast, responsive web platforms and brand identities designed to convert visitors into inquiries.
-              </p>
-              <div className={styles.ecoChipsRow}>
-                <span>Custom React Code</span>
-                <span>Responsive UI</span>
-                <span>High Speed</span>
-              </div>
-            </div>
-
-            {/* Card 2 */}
-            <div className={styles.ecoCard}>
-              <div className={styles.ecoTop}>
-                <span className={styles.ecoPill}>Market Discovery</span>
-                <span className={styles.ecoNumber}>02</span>
-              </div>
-              <h3>Market Search & Content</h3>
-              <p>
-                We structure targeted Google SEO, Business Profiles, and editorial content so high-intent customers discover you first.
-              </p>
-              <div className={styles.ecoChipsRow}>
-                <span>Google 1st Page</span>
-                <span>GBP Management</span>
-                <span>Content Strategy</span>
-              </div>
-            </div>
-
-            {/* Card 3 */}
-            <div className={styles.ecoCard}>
-              <div className={styles.ecoTop}>
-                <span className={styles.ecoPill}>Connected Software</span>
-                <span className={styles.ecoNumber}>03</span>
-              </div>
-              <h3>Custom Business Software</h3>
-              <p>
-                We build private portals, internal staff dashboards, and operational software that organize your daily business data.
-              </p>
-              <div className={styles.ecoChipsRow}>
-                <span>Client Portals</span>
-                <span>Agency CRMs</span>
-                <span>Case Dockets</span>
-              </div>
-            </div>
-
-            {/* Card 4 */}
-            <div className={styles.ecoCard}>
-              <div className={styles.ecoTop}>
-                <span className={styles.ecoPill}>The Multiplier</span>
-                <span className={styles.ecoNumber}>04</span>
-              </div>
-              <h3>Intelligent Automation</h3>
-              <p>
-                We automate lead capture, route inquiries instantly on WhatsApp, and eliminate repetitive manual data entry.
-              </p>
-              <div className={styles.ecoChipsRow}>
-                <span>WhatsApp Routing</span>
-                <span>n8n Webhooks</span>
-                <span>Zero Drop-off</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Central Highlight Banner */}
-          <div className={styles.philosophyBanner}>
-            <div className={styles.bannerIcon}><FaShieldAlt size={20} /></div>
-            <div className={styles.bannerText}>
-              <h4>The VeltaZ Principle</h4>
-              <p>
-                We never force a predetermined template or sell unneeded services. We diagnose your bottleneck first and build only what delivers genuine, measurable value.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 3. HOW WE THINK ── */}
+      {/* ── 2. BRAND PHILOSOPHY (CONSOLIDATED) ── */}
       <section className={styles.philosophySection}>
         <div className="container">
           <div className={styles.sectionHeaderCentered}>
             <span className="tag">OUR PHILOSOPHY</span>
             <h2 className={styles.sectionTitle}>Understand First. Build with Purpose.</h2>
-            <p className={styles.sectionSub}>Four clear rules that govern how we design, code, and deliver.</p>
+            <p className={styles.sectionSub}>
+              A website alone isn’t enough. Neither is isolated marketing or disconnected software. 
+              Real momentum happens when your digital footprint connects directly with real-world business operations.
+            </p>
           </div>
 
           <div className={styles.thinkingGrid}>
@@ -398,9 +236,9 @@ export default function About() {
                 <span className={styles.thinkingNum}>01</span>
                 <div className={styles.thinkingLine} />
               </div>
-              <h4>Understand the Business</h4>
+              <h4>Diagnose the Problem First</h4>
               <p>
-                We study your problem, unit economics, and customers first. Deep research helps us ask the right questions before proposing any technology.
+                We study your business bottlenecks, customer touchpoints, and operational workflow first. Deep diagnosis ensures we solve the right challenge before proposing any code.
               </p>
             </div>
 
@@ -409,9 +247,9 @@ export default function About() {
                 <span className={styles.thinkingNum}>02</span>
                 <div className={styles.thinkingLine} />
               </div>
-              <h4>Build What Is Needed</h4>
+              <h4>Build What Is Actually Needed</h4>
               <p>
-                Every business is distinct. We craft the exact web application, operational dashboard, or campaign required—with zero feature bloat.
+                Every business is distinct. We craft the exact web application, operational dashboard, or campaign required—with zero template bloat and zero unnecessary features.
               </p>
             </div>
 
@@ -420,9 +258,9 @@ export default function About() {
                 <span className={styles.thinkingNum}>03</span>
                 <div className={styles.thinkingLine} />
               </div>
-              <h4>Connect the Pieces</h4>
+              <h4>Connect the Operations</h4>
               <p>
-                A digital experience must fit your real-world workflow—from initial lead capture to CRM updates and customer management.
+                A digital presence must fit your daily workflow—from initial visitor discovery on search and social to WhatsApp lead qualification and CRM synchronization.
               </p>
             </div>
 
@@ -431,25 +269,25 @@ export default function About() {
                 <span className={styles.thinkingNum}>04</span>
                 <div className={styles.thinkingLine} />
               </div>
-              <h4>Improve with Evidence</h4>
+              <h4>Ground Decisions in Evidence</h4>
               <p>
-                We use hard analytics, real-world customer usage, and stress testing to validate performance and deploy ongoing enhancements.
+                We use verifiable customer usage, stress testing, and real operational feedback to validate performance and deploy steady, dependable enhancements.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── 4. WHAT WE BRING TOGETHER (CAPABILITIES) ── */}
+      {/* ── 3. FOUR CONNECTED CAPABILITIES ── */}
       <section className={styles.capabilitiesSection}>
         <div className="container">
           <div className={styles.sectionHeaderCentered}>
-            <span className="tag">CONNECTED CAPABILITIES</span>
+            <span className="tag">FOUR CORE CAPABILITIES</span>
             <h2 className={styles.sectionTitle}>
-              Different Capabilities. One Business-Focused Approach.
+              Research. Build. Grow. Automate.
             </h2>
             <p className={styles.sectionSub}>
-              Not every business needs every service. We recommend the exact combination that fits your actual challenge, requirements, and available resources.
+              Not every business needs every discipline. We recommend the exact combination that fits your operational challenges and resources.
             </p>
           </div>
 
@@ -460,14 +298,14 @@ export default function About() {
                 <div className={styles.capIcon}><FaCompass size={18} /></div>
                 <span className={styles.capTag}>Discipline 01</span>
               </div>
-              <h3>Strategy</h3>
-              <p>Business diagnosis, competitor analysis, customer journey mapping, and technical roadmaps.</p>
+              <h3>Research & Strategy</h3>
+              <p>Business diagnosis, competitive positioning, customer journey mapping, and realistic technical roadmaps.</p>
               <div className={styles.capChips}>
-                <span>Market Audit</span>
+                <span>Market Diagnosis</span>
                 <span>Scope Planning</span>
               </div>
               <Link to="/contact" className={styles.capLink}>
-                <span>Request Strategic Audit</span>
+                <span>Discuss Project Scope</span>
                 <FaArrowRight size={11} />
               </Link>
             </div>
@@ -479,9 +317,9 @@ export default function About() {
                 <span className={styles.capTag}>Discipline 02</span>
               </div>
               <h3>Build</h3>
-              <p>High-speed custom websites, web applications, client portals, and internal agency tools.</p>
+              <p>Modern responsive business websites, web applications, client portals, and custom operational software.</p>
               <div className={styles.capChips}>
-                <span>Modern Websites</span>
+                <span>Web Platforms</span>
                 <span>Custom Software</span>
               </div>
               <Link to="/services/website-development" className={styles.capLink}>
@@ -497,7 +335,7 @@ export default function About() {
                 <span className={styles.capTag}>Discipline 03</span>
               </div>
               <h3>Grow</h3>
-              <p>Targeted Google SEO, Google Business Profiles, editorial content, and performance acquisition.</p>
+              <p>Targeted Google SEO, Google Business Profiles, editorial content planning, and qualified customer acquisition.</p>
               <div className={styles.capChips}>
                 <span>Google Search SEO</span>
                 <span>Content Strategy</span>
@@ -515,10 +353,10 @@ export default function About() {
                 <span className={styles.capTag}>Discipline 04</span>
               </div>
               <h3>Automate</h3>
-              <p>AI-assisted workflows, lead-management setups, n8n automations, and WhatsApp notifications.</p>
+              <p>Practical lead-management setups, n8n webhook automations, WhatsApp notifications, and zero manual data re-entry.</p>
               <div className={styles.capChips}>
                 <span>WhatsApp Workflows</span>
-                <span>n8n Routing</span>
+                <span>Database Sync</span>
               </div>
               <Link to="/services/automation-systems" className={styles.capLink}>
                 <span>Explore Automation</span>
@@ -529,7 +367,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* ── 5. FLAGSHIP CASE STUDY: KIN PROPERTY (REDESIGNED) ── */}
+      {/* ── 4. FLAGSHIP CASE STUDY: KIN PROPERTY ── */}
       <section id="case-study" className={styles.caseStudySection}>
         <div className="container">
           <div className={styles.caseStudyContainer}>
@@ -566,7 +404,7 @@ export default function About() {
               <div className={styles.caseStudyInfo}>
                 <h2 className={styles.caseStudyTitle}>KIN Property Management</h2>
                 <p className={styles.caseStudyBio}>
-                  An internally connected flagship deployment demonstrating how VeltaZ unites brand identity, full-stack web engineering, Google search discoverability, and lead-routing automation into a single cohesive ecosystem.
+                  A flagship project showcasing VeltaZ's work across brand identity, website development, SEO, content creation and lead-management systems.
                 </p>
 
                 {/* 2x2 Bento Scope Cards */}
@@ -574,16 +412,16 @@ export default function About() {
                   <div className={styles.scopeCard}>
                     <div className={styles.scopeIconWrap}><FaLaptopCode size={14} /></div>
                     <div>
-                      <strong>Full-Stack Portal</strong>
-                      <p>Custom search engine, map geolocation & filterable property listings.</p>
+                      <strong>Property Search Portal</strong>
+                      <p>Custom search filters, property listings, and responsive mobile layout.</p>
                     </div>
                   </div>
 
                   <div className={styles.scopeCard}>
                     <div className={styles.scopeIconWrap}><FaWhatsapp size={14} /></div>
                     <div>
-                      <strong>WhatsFlow Routing</strong>
-                      <p>Automated lead capture, instant agent assignment & follow-ups.</p>
+                      <strong>WhatsFlow Lead Routing</strong>
+                      <p>Inbound lead capture, team member assignment, and fast WhatsApp follow-ups.</p>
                     </div>
                   </div>
 
@@ -591,15 +429,15 @@ export default function About() {
                     <div className={styles.scopeIconWrap}><FaSearch size={14} /></div>
                     <div>
                       <strong>GBP & Local SEO</strong>
-                      <p>Targeted Pune keywords, listing schema & verified business profile.</p>
+                      <p>Targeted Pune keywords, listing structured data, and verified business profile.</p>
                     </div>
                   </div>
 
                   <div className={styles.scopeCard}>
                     <div className={styles.scopeIconWrap}><FaPenNib size={14} /></div>
                     <div>
-                      <strong>Brand & Media Production</strong>
-                      <p>Complete logo identity, property photography & social growth.</p>
+                      <strong>Brand & Content Studio</strong>
+                      <p>Clean visual identity, property photography, and social media reels.</p>
                     </div>
                   </div>
                 </div>
@@ -660,7 +498,6 @@ export default function About() {
                       playsInline
                       className={styles.screenVideo}
                     />
-
                   </div>
                 </div>
 
@@ -676,7 +513,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* ── 6. REAL PRODUCTS & SYSTEMS ── */}
+      {/* ── 5. REAL PRODUCTS & SYSTEMS ── */}
       <section className={styles.productsSection}>
         <div className="container">
           <div className={styles.sectionHeaderCentered}>
@@ -696,7 +533,7 @@ export default function About() {
               <p>A specialized lead-management tool supporting customer enquiries, agent status tracking, and automated follow-ups.</p>
               <div className={styles.productSpecs}>
                 <div><span>Interface</span><strong>Agent & Admin Boards</strong></div>
-                <div><span>Core Value</span><strong>Zero Lead Drop-Off</strong></div>
+                <div><span>Core Value</span><strong>Fast Lead Capture</strong></div>
               </div>
               <Link to="/products/whatsflow" className={styles.productLink}>
                 <span>View Details</span>
@@ -743,63 +580,15 @@ export default function About() {
         </div>
       </section>
 
-      {/* ── 7. HONEST WORKING PRINCIPLES ── */}
-      <section className={styles.principlesSection}>
-        <div className="container">
-          <div className={styles.sectionHeaderCentered}>
-            <span className="tag">HOW WE OPERATE</span>
-            <h2 className={styles.sectionTitle}>A More Thoughtful Way to Build.</h2>
-            <p className={styles.sectionSub}>
-              Clear standards that ensure transparency, realistic roadmaps, and disciplined delivery.
-            </p>
-          </div>
-
-          <div className={styles.principlesGrid}>
-            <div className={styles.principleCard}>
-              <div className={styles.principleIcon}><FaCompass size={18} /></div>
-              <h3 className={styles.principleTitle}>Purpose Before Tools</h3>
-              <p className={styles.principleText}>
-                We diagnose the problem first, selecting the exact technology that fits.
-              </p>
-            </div>
-
-            <div className={styles.principleCard}>
-              <div className={styles.principleIcon}><FaCheck size={18} /></div>
-              <h3 className={styles.principleTitle}>Useful Over Unnecessary</h3>
-              <p className={styles.principleText}>
-                We engineer features that add real value, eliminating speculative bloat.
-              </p>
-            </div>
-
-            <div className={styles.principleCard}>
-              <div className={styles.principleIcon}><FaShieldAlt size={18} /></div>
-              <h3 className={styles.principleTitle}>Clarity Before Commitment</h3>
-              <p className={styles.principleText}>
-                We define deliverables and realistic timelines clearly before starting work.
-              </p>
-            </div>
-
-            <div className={styles.principleCard}>
-              <div className={styles.principleIcon}><FaChartLine size={18} /></div>
-              <h3 className={styles.principleTitle}>Evidence Over Exaggeration</h3>
-              <p className={styles.principleText}>
-                We share verified results and limitations, never making false promises.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 8. CLIENT FIT & THE TEAM ── */}
+      {/* ── 6. CLIENT FIT & PARTNERSHIPS ── */}
       <section className={styles.teamSection}>
         <div className="container">
-          {/* Client Fit Section */}
           <div className={styles.fitContainer}>
             <div className={styles.sectionHeaderCentered}>
               <span className="tag">CLIENT FIT & PARTNERSHIPS</span>
               <h2 className={styles.sectionTitle}>Built for Businesses Ready to Move Forward.</h2>
               <p className={styles.sectionSub}>
-                We partner with ambitious teams to engineer digital infrastructure, eliminate operational friction, and scale revenue.
+                We partner with ambitious teams to engineer digital infrastructure, eliminate operational friction, and build dependable systems.
               </p>
             </div>
 
@@ -856,14 +645,14 @@ export default function About() {
               </div>
             </div>
 
-            {/* Global Reach Banner */}
+            {/* Global Reach Banner (Corrected honest location statement) */}
             <div className={styles.locationBanner}>
               <div className={styles.locationIcon}>
                 <FaMapMarkerAlt size={15} />
               </div>
               <div className={styles.locationText}>
-                <strong>Headquartered in Pune, India</strong>
-                <span>Operating remote-first with clients across India, the Middle East, UK, and globally.</span>
+                <strong>Based in Pune, India</strong>
+                <span>Available for projects worldwide.</span>
               </div>
               <Link to="/contact" className={styles.locationLink}>
                 <span>Check Availability</span>
@@ -874,7 +663,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* ── 9. FINAL CTA ── */}
+      {/* ── 7. FINAL CTA ── */}
       <section className={styles.ctaSection}>
         <div className="container">
           <div className={styles.ctaCard}>
@@ -903,10 +692,10 @@ export default function About() {
                   <div className={styles.channelIconWa}>
                     <FaWhatsapp size={20} />
                   </div>
-                  <span className={styles.channelBadgeWa}>Instant Response</span>
+                  <span className={styles.channelBadgeWa}>Direct WhatsApp</span>
                 </div>
                 <h3>Direct WhatsApp Channel</h3>
-                <p>Chat directly with our founding team. Quick turnaround, direct technical scope & zero waiting.</p>
+                <p>Connect with our technical team to discuss project requirements, scope details, and pragmatic next steps.</p>
                 <span className={styles.channelActionBtn}>
                   <span>Discuss Your Business</span>
                   <FaArrowRight size={11} />
@@ -930,7 +719,7 @@ export default function About() {
               </Link>
             </div>
 
-            {/* Trust Guarantee Strip */}
+            {/* Trust Guarantee Strip (Grounded, realistic promises) */}
             <div className={styles.ctaTrustStrip}>
               <div className={styles.trustItem}>
                 <FaShieldAlt size={12} className={styles.trustIcon} />
@@ -939,12 +728,12 @@ export default function About() {
               <span className={styles.trustDivider}>•</span>
               <div className={styles.trustItem}>
                 <FaBolt size={12} className={styles.trustIcon} />
-                <span>24-Hour Initial Scope Review</span>
+                <span>Structured Scope & Timeline Planning</span>
               </div>
               <span className={styles.trustDivider}>•</span>
               <div className={styles.trustItem}>
                 <FaCheck size={12} className={styles.trustIcon} />
-                <span>Direct Founder-Led Execution</span>
+                <span>Direct Technical Collaboration</span>
               </div>
             </div>
           </div>

@@ -151,306 +151,203 @@
   flex-wrap: wrap;
 }
 
-/* Hero Terminal Visual */
+/* Hero Project Showcase Visual */
 .heroVisual {
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
-.consoleCard {
+.showcaseComposition {
   width: 100%;
-  max-width: 490px;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  margin-top: 6px;
+}
+
+/* Primary Desktop Mockup */
+.primaryMockupCard {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
-  transition: border-color 0.3s ease;
-  margin-top: 6px;
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
 }
 
-[data-theme="dark"] .consoleCard {
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+[data-theme="dark"] .primaryMockupCard {
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
 }
 
-.consoleCard:hover {
-  border-color: rgba(212, 175, 55, 0.35);
+.primaryMockupCard:hover {
+  border-color: rgba(212, 175, 55, 0.4);
 }
 
-.consoleHeader {
+.mockupHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 16px;
+  padding: 10px 14px;
   background: var(--bg2);
   border-bottom: 1px solid var(--border);
 }
 
-.consoleDots {
+.mockupDots {
   display: flex;
   gap: 6px;
 }
 
-.consoleDots span {
+.mockupDots span {
   width: 8px;
   height: 8px;
   border-radius: 50%;
 }
 
-.consoleStatusBadge {
+.dotRed { background: #ff5f56; }
+.dotYellow { background: #ffbd2e; }
+.dotGreen { background: #27c93f; }
+
+.mockupAddress {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-family: var(--font-head);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 3px 12px;
+  border-radius: 4px;
+  font-family: monospace;
   font-size: 11px;
-  font-weight: 600;
+  color: var(--text2);
+}
+
+.mockupTag {
+  font-family: var(--font-head);
+  font-size: 10.5px;
+  font-weight: 700;
   color: var(--accent);
   background: rgba(212, 175, 55, 0.1);
-  padding: 3px 9px;
-  border-radius: 12px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  letter-spacing: 0.02em;
 }
 
-.consolePulseDot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #27c93f;
-  box-shadow: 0 0 8px #27c93f;
+.mockupBody {
+  width: 100%;
+  height: 210px;
+  background: #0B0E14;
+  overflow: hidden;
+  position: relative;
 }
 
-.consoleNav {
-  display: flex;
-  background: var(--bg2);
-  border-bottom: 1px solid var(--border);
-  padding: 5px 8px;
-  gap: 6px;
+.mockupImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
 }
 
-.consoleTabBtn {
-  flex: 1;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  background: transparent;
-  border: 1px solid transparent;
-  font-family: var(--font-head);
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--text3);
-  padding: 7px 10px;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  white-space: nowrap;
-  transition: all 0.2s ease;
-}
-
-.consoleTabBtn span {
-  white-space: nowrap;
-}
-
-.consoleTabBtn:hover {
-  color: var(--text);
-}
-
-.consoleTabBtnActive {
-  color: var(--text);
-  background: var(--surface);
-  border-color: var(--border);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-.consoleScreen {
-  padding: 20px;
-  min-height: 200px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.consoleViewPane {
-  display: flex;
-  flex-direction: column;
+/* Floating Cards Row */
+.floatingCardsRow {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 12px;
 }
 
-.codeSnippetBar {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  padding: 8px 12px;
-  border-radius: var(--radius-sm);
-  font-family: monospace;
-  font-size: 11.5px;
-}
-
-.codeMethod {
-  color: #27c93f;
-  font-weight: 700;
-}
-
-.codeRoute {
-  color: var(--text);
-}
-
-.codeStatus {
-  color: var(--text3);
-  margin-left: auto;
-  font-size: 11px;
-}
-
-.metricsBoxRow {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-}
-
-.metricMiniBox {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 8px 10px;
-  text-align: center;
-}
-
-.metricMiniLabel {
-  display: block;
-  font-size: 9.5px;
-  color: var(--text3);
-  text-transform: uppercase;
-  margin-bottom: 3px;
-  letter-spacing: 0.04em;
-}
-
-.metricMiniVal {
-  display: block;
-  font-family: var(--font-head);
-  font-size: 12.5px;
-  font-weight: 700;
-  color: var(--text);
-}
-
-.consoleStackChips {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-}
-
-.consoleStackChips span {
-  font-size: 11px;
-  color: var(--text2);
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  padding: 3px 8px;
-  border-radius: var(--radius-sm);
-}
-
-.flowTraceBox {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  background: var(--bg2);
+.floatingBadgeCard {
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+  transition: all 0.25s ease;
 }
 
-.traceStep {
+[data-theme="dark"] .floatingBadgeCard {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.floatingBadgeCard:hover {
+  border-color: rgba(212, 175, 55, 0.35);
+  transform: translateY(-2px);
+}
+
+.floatingCardHead {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 12px;
-  color: var(--text);
+  gap: 9px;
 }
 
-.traceNum {
-  font-family: var(--font-head);
-  font-size: 10px;
-  font-weight: 800;
-  color: var(--accent);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
+.badgeIconWa {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: rgba(37, 211, 102, 0.12);
+  color: #25D366;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
 }
 
-.traceArrow {
-  font-size: 10px;
+.badgeIconMedia {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: rgba(212, 175, 55, 0.12);
   color: var(--accent);
-  font-family: monospace;
-  padding-left: 26px;
-}
-
-.serpMockCard {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 12px;
-  text-align: left;
-}
-
-.serpHeader {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 4px;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
-.serpUrl {
+.floatingCardHead strong {
+  display: block;
+  font-family: var(--font-head);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.floatingCardHead p {
   font-size: 10.5px;
   color: var(--text3);
-  font-family: monospace;
+  margin: 1px 0 0;
+  line-height: 1.2;
 }
 
-.serpBadge {
-  font-size: 10px;
-  font-weight: 700;
-  color: #27c93f;
-  background: rgba(39, 201, 63, 0.1);
-  padding: 1px 6px;
-  border-radius: 8px;
-}
-
-.serpTitle {
-  font-family: var(--font-head);
-  font-size: 13.5px;
-  font-weight: 700;
-  color: #1a73e8;
-  margin-bottom: 4px;
-}
-
-[data-theme="dark"] .serpTitle {
-  color: #8ab4f8;
-}
-
-.serpSnippet {
-  font-size: 11.5px;
-  color: var(--text2);
-  line-height: 1.4;
-  margin: 0;
-}
-
-.consoleFooter {
-  padding: 10px 16px;
+.floatingPreviewImgWrap {
+  width: 100%;
+  height: 90px;
+  border-radius: 6px;
+  overflow: hidden;
   background: var(--bg2);
-  border-top: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 11px;
-  color: var(--text3);
+  border: 1px solid var(--border);
 }
 
-.consoleUptime {
-  color: #27c93f;
-  font-weight: 600;
+.floatingAppThumb,
+.floatingReelThumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+.compositionFoot {
+  text-align: center;
+  font-size: 11.5px;
+  color: var(--text3);
+  letter-spacing: 0.01em;
+  padding-top: 2px;
 }
 
 /* ================= 2. WHY WE EXIST: BENTO ================= */
@@ -678,9 +575,9 @@
 }
 
 .thinkingCard p {
-  font-size: 13.5px;
+  font-size: 14.5px;
   color: var(--text2);
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 /* ================= 4. CAPABILITIES ================= */
@@ -739,9 +636,9 @@
 }
 
 .capCard p {
-  font-size: 13.5px;
+  font-size: 14.5px;
   color: var(--text2);
-  line-height: 1.55;
+  line-height: 1.6;
   margin-bottom: 18px;
 }
 
@@ -966,17 +863,17 @@
 
 .scopeCard strong {
   display: block;
-  font-size: 13px;
+  font-size: 13.5px;
   color: var(--text);
-  margin-bottom: 3px;
+  margin-bottom: 4px;
   font-weight: 700;
   word-break: break-word;
 }
 
 .scopeCard p {
-  font-size: 11.5px;
-  color: var(--text3);
-  line-height: 1.4;
+  font-size: 13px;
+  color: var(--text2);
+  line-height: 1.5;
   margin: 0;
   word-break: break-word;
 }
@@ -1151,9 +1048,9 @@
 }
 
 .productCard p {
-  font-size: 13.5px;
+  font-size: 14.5px;
   color: var(--text2);
-  line-height: 1.55;
+  line-height: 1.6;
   margin-bottom: 18px;
   flex-grow: 1;
 }
@@ -1329,7 +1226,7 @@
 }
 
 .fitCard p {
-  font-size: 14px;
+  font-size: 14.5px;
   color: var(--text2);
   line-height: 1.6;
   margin-bottom: 22px;
@@ -1612,9 +1509,9 @@
 }
 
 .channelCard p {
-  font-size: 12px;
-  color: #94A3B8;
-  line-height: 1.5;
+  font-size: 13.5px;
+  color: #cbd5e1;
+  line-height: 1.55;
   margin-bottom: 14px;
   flex-grow: 1;
 }
@@ -1813,20 +1710,21 @@
 }
 
 @media (max-width: 480px) {
-  .consoleNav {
-    padding: 3px 4px;
-    gap: 3px;
+  .floatingCardsRow {
+    grid-template-columns: 1fr;
+    gap: 10px;
   }
 
-  .consoleTabBtn {
-    font-size: 10px;
-    padding: 5px 4px;
-    gap: 3px;
-    white-space: nowrap;
+  .mockupBody {
+    height: 170px;
   }
 
-  .consoleTabBtn span {
-    white-space: nowrap;
+  .floatingBadgeCard {
+    padding: 10px;
+  }
+
+  .floatingPreviewImgWrap {
+    height: 80px;
   }
 
   .heroHighlights {
