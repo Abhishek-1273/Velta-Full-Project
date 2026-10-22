@@ -155,7 +155,8 @@ export default function About() {
                   </div>
                   <div className={styles.switcherStatusBadge}>
                     <span className={styles.livePulseDot} />
-                    <span>Verified Project Deployments</span>
+                    <span className={styles.tabDeskText}>Verified Project Deployments</span>
+                    <span className={styles.tabMobText}>Verified Deployments</span>
                   </div>
                 </div>
 
@@ -167,7 +168,8 @@ export default function About() {
                     className={`${styles.switcherTabBtn} ${activeHeroTab === 'kin' ? styles.switcherTabBtnActive : ''}`}
                   >
                     <FaLaptopCode size={13} />
-                    <span>KIN Website</span>
+                    <span className={styles.tabDeskText}>KIN Website</span>
+                    <span className={styles.tabMobText}>KIN Web</span>
                   </button>
 
                   <button
@@ -176,7 +178,8 @@ export default function About() {
                     className={`${styles.switcherTabBtn} ${activeHeroTab === 'whatsflow' ? styles.switcherTabBtnActive : ''}`}
                   >
                     <FaWhatsapp size={13} />
-                    <span>WhatsFlow CRM</span>
+                    <span className={styles.tabDeskText}>WhatsFlow CRM</span>
+                    <span className={styles.tabMobText}>WhatsFlow</span>
                   </button>
 
                   <button
@@ -185,7 +188,8 @@ export default function About() {
                     className={`${styles.switcherTabBtn} ${activeHeroTab === 'content' ? styles.switcherTabBtnActive : ''}`}
                   >
                     <FaPenNib size={12} />
-                    <span>Content Studio</span>
+                    <span className={styles.tabDeskText}>Content Studio</span>
+                    <span className={styles.tabMobText}>Content</span>
                   </button>
                 </div>
 

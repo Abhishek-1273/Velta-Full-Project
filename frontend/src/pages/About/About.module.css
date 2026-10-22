@@ -227,16 +227,32 @@
 }
 
 /* 3 Switcher Tab Buttons */
+.tabDeskText {
+  display: inline;
+}
+
+.tabMobText {
+  display: none;
+}
+
 .switcherNav {
   display: flex;
   background: var(--bg2);
   border-bottom: 1px solid var(--border);
   padding: 6px 8px;
   gap: 6px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.switcherNav::-webkit-scrollbar {
+  display: none;
 }
 
 .switcherTabBtn {
   flex: 1;
+  min-width: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -283,6 +299,7 @@
   flex-direction: column;
   gap: 12px;
   animation: fadeIn 0.25s ease;
+  width: 100%;
 }
 
 @keyframes fadeIn {
@@ -300,10 +317,14 @@
   border-radius: var(--radius-sm);
   font-family: monospace;
   font-size: 11px;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .lockIcon {
   font-size: 10px;
+  flex-shrink: 0;
 }
 
 .browserUrlText {
@@ -311,7 +332,8 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  flex-grow: 1;
+  flex: 1;
+  min-width: 0;
 }
 
 .tagPill {
@@ -323,6 +345,7 @@
   padding: 2px 7px;
   border-radius: 8px;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 /* TAB 1: KIN Preview - Full 1536x1024 (3:2) Aspect Ratio */
@@ -1991,23 +2014,10 @@
     text-align: center;
     padding: 20px;
   }
-}
 
-@media (max-width: 480px) {
-  .switcherNav {
-    padding: 4px;
-    gap: 4px;
-  }
-
-  .switcherTabBtn {
-    font-size: 11px;
-    padding: 6px 4px;
-    gap: 3px;
-  }
-
-  .previewImageContainer {
-    aspect-ratio: 1.5;
-    height: auto;
+  .switcherCard {
+    max-width: 100%;
+    margin-top: 16px;
   }
 
   .whatsflowPaneGrid,
@@ -2015,18 +2025,92 @@
     grid-template-columns: 1fr;
     justify-items: center;
     text-align: center;
-    padding: 14px;
-    gap: 14px;
+    padding: 18px 14px;
+    gap: 16px;
     min-height: auto;
+  }
+
+  .featureBulletList {
+    align-items: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .tabDeskText {
+    display: none !important;
+  }
+
+  .tabMobText {
+    display: inline !important;
+  }
+
+  .switcherTopBar {
+    padding: 9px 12px;
+  }
+
+  .switcherStatusBadge {
+    font-size: 10px;
+    padding: 2.5px 8px;
+    gap: 5px;
+  }
+
+  .switcherNav {
+    padding: 4px;
+    gap: 4px;
+  }
+
+  .switcherTabBtn {
+    font-size: 11px;
+    padding: 7px 5px;
+    gap: 4px;
+  }
+
+  .browserBarSmall {
+    padding: 5px 8px;
+    gap: 6px;
+  }
+
+  .browserUrlText {
+    font-size: 10.5px;
+  }
+
+  .tagPill {
+    font-size: 9.5px;
+    padding: 2px 6px;
+  }
+
+  .paneMetaRow {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .paneDeliverables {
+    gap: 4px;
+  }
+
+  .paneDeliverables span {
+    font-size: 10px;
+    padding: 2px 6px;
+  }
+
+  .paneActionLink {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .switcherScreen {
+    padding: 12px;
+  }
+
+  .previewImageContainer {
+    aspect-ratio: 1.5;
+    height: auto;
   }
 
   .s25UltraFrame {
     width: 125px;
     height: 255px;
-  }
-
-  .featureBulletList {
-    align-items: center;
   }
 
   .heroHighlights {
