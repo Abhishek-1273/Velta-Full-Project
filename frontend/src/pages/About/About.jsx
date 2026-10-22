@@ -300,9 +300,6 @@ export default function About() {
                               alt="Viral Instagram Reel with 193K Views"
                               className={styles.reelImg}
                             />
-                            <div className={styles.reelReachOverlay}>
-                              <span>🔥 193K+ Views</span>
-                            </div>
                           </div>
                         </div>
                         <div className={styles.contentInfoCol}>

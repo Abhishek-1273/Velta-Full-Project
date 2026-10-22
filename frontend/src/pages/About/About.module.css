@@ -531,22 +531,7 @@
   display: block;
 }
 
-.reelReachOverlay {
-  position: absolute;
-  bottom: 8px;
-  left: 8px;
-  right: 8px;
-  background: rgba(0, 0, 0, 0.82);
-  backdrop-filter: blur(6px);
-  padding: 4px 8px;
-  border-radius: 6px;
-  font-size: 10.5px;
-  font-weight: 700;
-  color: #fff;
-  text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  z-index: 5;
-}
+
 
 .contentInfoCol h4 {
   font-family: var(--font-head);
