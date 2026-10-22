@@ -31,6 +31,7 @@ export default function About() {
   const kinVideoRef = useRef(null)
   const [isVideoPlaying, setIsVideoPlaying] = useState(true)
   const [kinTab, setKinTab] = useState('portal') // 'portal' | 'crm'
+  const [activeHeroTab, setActiveHeroTab] = useState('kin') // 'kin' | 'whatsflow' | 'content'
 
   useEffect(() => {
     document.title = "About VeltaZ | Business Growth & Digital Systems"
@@ -141,75 +142,187 @@ export default function About() {
               </div>
             </div>
 
-            {/* Premium Live Work Showcase Composition (Replaced fake metric dashboard) */}
+            {/* Interactive Project Switcher (Single Unified Luxury Card) */}
             <div className={styles.heroVisual}>
-              <div className={styles.showcaseComposition}>
+              <div className={styles.switcherCard}>
                 
-                {/* Main Desktop Window: KIN Property Web Platform */}
-                <div className={styles.primaryMockupCard}>
-                  <div className={styles.mockupHeader}>
-                    <div className={styles.mockupDots}>
-                      <span className={styles.dotRed} />
-                      <span className={styles.dotYellow} />
-                      <span className={styles.dotGreen} />
-                    </div>
-                    <div className={styles.mockupAddress}>
-                      <span className={styles.lockIcon}>🔒</span>
-                      <span>kinpropertymanagement.com</span>
-                    </div>
-                    <span className={styles.mockupTag}>Web Platform</span>
+                {/* Top Bar with Window Dots & Badge */}
+                <div className={styles.switcherTopBar}>
+                  <div className={styles.switcherDots}>
+                    <span className={styles.dotRed} />
+                    <span className={styles.dotYellow} />
+                    <span className={styles.dotGreen} />
                   </div>
-                  <div className={styles.mockupBody}>
-                    <img
-                      src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1792408084/website-mockup_qnmqqk.png"
-                      alt="KIN Property Portal Live Implementation"
-                      className={styles.mockupImg}
-                    />
+                  <div className={styles.switcherStatusBadge}>
+                    <span className={styles.livePulseDot} />
+                    <span>Verified Project Deployments</span>
                   </div>
                 </div>
 
-                {/* Floating Proof Cards */}
-                <div className={styles.floatingCardsRow}>
-                  {/* Floating Proof 1: WhatsFlow Lead Automation */}
-                  <div className={styles.floatingBadgeCard}>
-                    <div className={styles.floatingCardHead}>
-                      <div className={styles.badgeIconWa}><FaWhatsapp size={14} /></div>
-                      <div>
-                        <strong>WhatsFlow CRM</strong>
-                        <p>Lead Routing & WhatsApp Sync</p>
-                      </div>
-                    </div>
-                    <div className={styles.floatingPreviewImgWrap}>
-                      <img
-                        src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1792475226/whatsflow_cbybon.jpg"
-                        alt="WhatsFlow Mobile App Interface"
-                        className={styles.floatingAppThumb}
-                      />
-                    </div>
-                  </div>
+                {/* 3 Interactive Tab Buttons */}
+                <div className={styles.switcherNav}>
+                  <button
+                    type="button"
+                    onClick={() => setActiveHeroTab('kin')}
+                    className={`${styles.switcherTabBtn} ${activeHeroTab === 'kin' ? styles.switcherTabBtnActive : ''}`}
+                  >
+                    <FaLaptopCode size={13} />
+                    <span>KIN Website</span>
+                  </button>
 
-                  {/* Floating Proof 2: Content Creation & Viral Media */}
-                  <div className={styles.floatingBadgeCard}>
-                    <div className={styles.floatingCardHead}>
-                      <div className={styles.badgeIconMedia}><FaPenNib size={13} /></div>
-                      <div>
-                        <strong>Content Studio</strong>
-                        <p>High-Engagement Video Assets</p>
-                      </div>
-                    </div>
-                    <div className={styles.floatingPreviewImgWrap}>
-                      <img
-                        src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1792053111/reel-193k_zbtf8g.png"
-                        alt="Content Creation Proof 193K Views"
-                        className={styles.floatingReelThumb}
-                      />
-                    </div>
-                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setActiveHeroTab('whatsflow')}
+                    className={`${styles.switcherTabBtn} ${activeHeroTab === 'whatsflow' ? styles.switcherTabBtnActive : ''}`}
+                  >
+                    <FaWhatsapp size={13} />
+                    <span>WhatsFlow CRM</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => setActiveHeroTab('content')}
+                    className={`${styles.switcherTabBtn} ${activeHeroTab === 'content' ? styles.switcherTabBtnActive : ''}`}
+                  >
+                    <FaPenNib size={12} />
+                    <span>Content Studio</span>
+                  </button>
                 </div>
 
-                {/* Bottom Authenticity Subtitle */}
-                <div className={styles.compositionFoot}>
-                  <span>Actual client deployments across web, automation & content</span>
+                {/* Tab Screen Pane */}
+                <div className={styles.switcherScreen}>
+                  
+                  {/* TAB 1: KIN Property Website */}
+                  {activeHeroTab === 'kin' && (
+                    <div className={styles.tabContentPane}>
+                      <div className={styles.browserBarSmall}>
+                        <span className={styles.lockIcon}>🔒</span>
+                        <span className={styles.browserUrlText}>https://kinpropertymanagement.com</span>
+                        <span className={styles.tagPill}>Web Platform</span>
+                      </div>
+                      
+                      <div className={styles.previewImageContainer}>
+                        <img
+                          src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1792408084/website-mockup_qnmqqk.png"
+                          alt="KIN Property Desktop Website Mockup"
+                          className={styles.kinDesktopImg}
+                        />
+                      </div>
+
+                      <div className={styles.paneMetaRow}>
+                        <div className={styles.paneDeliverables}>
+                          <span>Custom Search</span>
+                          <span>Geo Maps</span>
+                          <span>Lead Hooks</span>
+                        </div>
+                        <a
+                          href="#case-study"
+                          onClick={(e) => scrollToSection(e, 'case-study')}
+                          className={styles.paneActionLink}
+                        >
+                          <span>Case Study</span>
+                          <FaArrowRight size={10} />
+                        </a>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* TAB 2: WhatsFlow CRM */}
+                  {activeHeroTab === 'whatsflow' && (
+                    <div className={styles.tabContentPane}>
+                      <div className={styles.browserBarSmall}>
+                        <FaWhatsapp size={13} style={{ color: '#25D366' }} />
+                        <span className={styles.browserUrlText}>Inbound Lead Routing Engine</span>
+                        <span className={styles.tagPill}>WhatsApp CRM</span>
+                      </div>
+
+                      <div className={styles.whatsflowPaneGrid}>
+                        <div className={styles.appPhoneFrame}>
+                          <img
+                            src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1792475226/whatsflow_cbybon.jpg"
+                            alt="WhatsFlow Mobile App Interface"
+                            className={styles.phoneScreenImg}
+                          />
+                        </div>
+                        <div className={styles.whatsflowInfoCol}>
+                          <h4>Automated WhatsApp Pipeline</h4>
+                          <ul className={styles.featureBulletList}>
+                            <li><FaCheck className={styles.bulletCheck} /> 24/7 Inbound inquiry capture</li>
+                            <li><FaCheck className={styles.bulletCheck} /> Round-robin team member routing</li>
+                            <li><FaCheck className={styles.bulletCheck} /> Centralized conversation database</li>
+                          </ul>
+                          <div className={styles.wfMetaBadge}>
+                            <span>Zero lost leads • Instant agent sync</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className={styles.paneMetaRow}>
+                        <div className={styles.paneDeliverables}>
+                          <span>WhatsApp API</span>
+                          <span>Admin Portal</span>
+                          <span>Agent App</span>
+                        </div>
+                        <Link to="/products/whatsflow" className={styles.paneActionLink}>
+                          <span>View Product</span>
+                          <FaArrowRight size={10} />
+                        </Link>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* TAB 3: Content Studio */}
+                  {activeHeroTab === 'content' && (
+                    <div className={styles.tabContentPane}>
+                      <div className={styles.browserBarSmall}>
+                        <FaChartLine size={12} style={{ color: 'var(--accent)' }} />
+                        <span className={styles.browserUrlText}>High-Engagement Short-Form Video</span>
+                        <span className={styles.tagPill}>Content Studio</span>
+                      </div>
+
+                      <div className={styles.contentPaneGrid}>
+                        <div className={styles.reelFrame}>
+                          <img
+                            src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1792053111/reel-193k_zbtf8g.png"
+                            alt="Viral Instagram Reel with 193K Views"
+                            className={styles.reelImg}
+                          />
+                          <div className={styles.reelReachOverlay}>
+                            <span>🔥 193K+ Views</span>
+                          </div>
+                        </div>
+                        <div className={styles.contentInfoCol}>
+                          <h4>Organic Reach & Creative Direction</h4>
+                          <p className={styles.contentDescText}>
+                            High-impact video production and social media handling designed to establish brand authority and drive organic customer discovery.
+                          </p>
+                          <div className={styles.platformPillsRow}>
+                            <span>Instagram Reels</span>
+                            <span>LinkedIn Media</span>
+                            <span>Brand Identity</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className={styles.paneMetaRow}>
+                        <div className={styles.paneDeliverables}>
+                          <span>Viral Video Editing</span>
+                          <span>Scripting</span>
+                          <span>Page Handling</span>
+                        </div>
+                        <Link to="/content" className={styles.paneActionLink}>
+                          <span>Explore Content</span>
+                          <FaArrowRight size={10} />
+                        </Link>
+                      </div>
+                    </div>
+                  )}
+
+                </div>
+
+                {/* Card Footer Subtitle */}
+                <div className={styles.switcherFooter}>
+                  <span>Actual project deliverables deployed for real businesses</span>
                 </div>
 
               </div>
