@@ -237,12 +237,19 @@ export default function About() {
                       </div>
 
                       <div className={styles.whatsflowPaneGrid}>
-                        <div className={styles.appPhoneFrame}>
-                          <img
-                            src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1792475226/whatsflow_cbybon.jpg"
-                            alt="WhatsFlow Mobile App Interface"
-                            className={styles.phoneScreenImg}
-                          />
+                        {/* Samsung Galaxy S25 Ultra Frame */}
+                        <div className={styles.s25UltraFrame}>
+                          <div className={styles.s25VolumeBtn} />
+                          <div className={styles.s25PowerBtn} />
+                          
+                          <div className={styles.s25ScreenSurface}>
+                            <div className={styles.s25PunchHoleCamera} />
+                            <img
+                              src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1792475226/whatsflow_cbybon.jpg"
+                              alt="WhatsFlow Mobile App Interface"
+                              className={styles.phoneScreenImg}
+                            />
+                          </div>
                         </div>
                         <div className={styles.whatsflowInfoCol}>
                           <h4>Automated WhatsApp Pipeline</h4>
@@ -281,14 +288,21 @@ export default function About() {
                       </div>
 
                       <div className={styles.contentPaneGrid}>
-                        <div className={styles.reelFrame}>
-                          <img
-                            src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1792053111/reel-193k_zbtf8g.png"
-                            alt="Viral Instagram Reel with 193K Views"
-                            className={styles.reelImg}
-                          />
-                          <div className={styles.reelReachOverlay}>
-                            <span>🔥 193K+ Views</span>
+                        {/* Samsung Galaxy S25 Ultra Frame */}
+                        <div className={styles.s25UltraFrame}>
+                          <div className={styles.s25VolumeBtn} />
+                          <div className={styles.s25PowerBtn} />
+                          
+                          <div className={styles.s25ScreenSurface}>
+                            <div className={styles.s25PunchHoleCamera} />
+                            <img
+                              src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1792053111/reel-193k_zbtf8g.png"
+                              alt="Viral Instagram Reel with 193K Views"
+                              className={styles.reelImg}
+                            />
+                            <div className={styles.reelReachOverlay}>
+                              <span>🔥 193K+ Views</span>
+                            </div>
                           </div>
                         </div>
                         <div className={styles.contentInfoCol}>

@@ -348,10 +348,108 @@
   display: block;
 }
 
-/* TAB 2: WhatsFlow Grid - Realistic Mobile Phone Proportions */
+/* ══════════════════════════════════════════════════
+   SAMSUNG GALAXY S25 ULTRA PHONE FRAME
+   Key characteristics:
+   - Subtle, refined corner radius (16px outer, 12.5px inner display)
+   - Ultra-slim uniform 3.5px titanium bezel
+   - Centered Infinity-O punch-hole selfie camera with glass glint
+   - Flat titanium chassis with metallic edge highlights
+   - Side volume rocker & power key on right edge
+   - True 19.5:9 display proportion
+══════════════════════════════════════════════════ */
+.s25UltraFrame {
+  position: relative;
+  width: 140px;
+  height: 285px;
+  background: linear-gradient(
+    145deg,
+    #4a4e55 0%,
+    #2a2d33 25%,
+    #181a1d 60%,
+    #32363d 100%
+  );
+  border-radius: 16px;
+  padding: 3.5px;
+  box-shadow:
+    0 0 0 0.75px rgba(255, 255, 255, 0.12),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 18px 40px -8px rgba(0, 0, 0, 0.35),
+    0 6px 16px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.s25UltraFrame:hover {
+  transform: translateY(-2px);
+}
+
+/* S25 Ultra Titanium Side Buttons (Right Edge) */
+.s25VolumeBtn {
+  position: absolute;
+  right: -2px;
+  top: 55px;
+  width: 2px;
+  height: 38px;
+  background: #3e4249;
+  border-radius: 0 1.5px 1.5px 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.s25PowerBtn {
+  position: absolute;
+  right: -2px;
+  top: 105px;
+  width: 2px;
+  height: 22px;
+  background: #3e4249;
+  border-radius: 0 1.5px 1.5px 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* S25 Ultra Inner Display */
+.s25ScreenSurface {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 12.5px;
+  overflow: hidden;
+  background: #000000;
+  box-shadow: inset 0 0 0 0.5px rgba(0, 0, 0, 0.85);
+}
+
+/* S25 Ultra Centered Infinity-O Camera */
+.s25PunchHoleCamera {
+  position: absolute;
+  top: 7px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #182236 0%, #000000 70%);
+  border: 0.5px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.9);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.s25PunchHoleCamera::after {
+  content: '';
+  position: absolute;
+  top: 1.5px;
+  left: 1.5px;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* TAB 2: WhatsFlow Grid */
 .whatsflowPaneGrid {
   display: grid;
-  grid-template-columns: 135px 1fr;
+  grid-template-columns: 140px 1fr;
   gap: 16px;
   align-items: center;
   background: var(--bg2);
@@ -359,31 +457,6 @@
   border-radius: var(--radius-sm);
   padding: 16px;
   min-height: 310px;
-}
-
-.appPhoneFrame {
-  width: 135px;
-  height: 275px;
-  border-radius: 20px;
-  overflow: hidden;
-  border: 3.5px solid #1a1e24;
-  background: #000;
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
-  position: relative;
-  flex-shrink: 0;
-}
-
-.appPhoneFrame::before {
-  content: '';
-  position: absolute;
-  top: 7px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 32px;
-  height: 3.5px;
-  background: #2f3542;
-  border-radius: 3px;
-  z-index: 2;
 }
 
 .phoneScreenImg {
@@ -437,10 +510,10 @@
   display: inline-block;
 }
 
-/* TAB 3: Content Studio Grid - Vertical Reel Proportions */
+/* TAB 3: Content Studio Grid */
 .contentPaneGrid {
   display: grid;
-  grid-template-columns: 135px 1fr;
+  grid-template-columns: 140px 1fr;
   gap: 16px;
   align-items: center;
   background: var(--bg2);
@@ -448,18 +521,6 @@
   border-radius: var(--radius-sm);
   padding: 16px;
   min-height: 310px;
-}
-
-.reelFrame {
-  width: 135px;
-  height: 275px;
-  border-radius: 18px;
-  overflow: hidden;
-  position: relative;
-  border: 2.5px solid var(--border);
-  background: #000;
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.2);
-  flex-shrink: 0;
 }
 
 .reelImg {
@@ -484,6 +545,7 @@
   color: #fff;
   text-align: center;
   border: 1px solid rgba(255, 255, 255, 0.15);
+  z-index: 5;
 }
 
 .contentInfoCol h4 {
@@ -1973,14 +2035,9 @@
     min-height: auto;
   }
 
-  .appPhoneFrame {
-    width: 120px;
-    height: 245px;
-  }
-
-  .reelFrame {
-    width: 120px;
-    height: 245px;
+  .s25UltraFrame {
+    width: 125px;
+    height: 255px;
   }
 
   .featureBulletList {
