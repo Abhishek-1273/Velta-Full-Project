@@ -349,9 +349,9 @@ export default function About() {
                 <span className={styles.thinkingNum}>01</span>
                 <div className={styles.thinkingLine} />
               </div>
-              <h4>Diagnose the Problem First</h4>
+              <h4>Diagnose the Bottlenecks</h4>
               <p>
-                We study your business bottlenecks, customer touchpoints, and operational workflow first. Deep diagnosis ensures we solve the right challenge before proposing any code.
+                We study your business bottlenecks, customer touchpoints, and operational workflow first. Deep investigation ensures we solve core friction before writing any new code.
               </p>
             </div>
 
@@ -360,9 +360,9 @@ export default function About() {
                 <span className={styles.thinkingNum}>02</span>
                 <div className={styles.thinkingLine} />
               </div>
-              <h4>Build What Is Actually Needed</h4>
+              <h4>Build Only What Is Needed</h4>
               <p>
-                Every business is distinct. We craft the exact web application, operational dashboard, or campaign required—with zero template bloat and zero unnecessary features.
+                We build custom web applications, internal tools, and automations tailored to your exact scope. Every system is engineered with purpose, zero bloat, and zero templates.
               </p>
             </div>
 
@@ -371,9 +371,9 @@ export default function About() {
                 <span className={styles.thinkingNum}>03</span>
                 <div className={styles.thinkingLine} />
               </div>
-              <h4>Connect the Operations</h4>
+              <h4>Connect Daily Operations</h4>
               <p>
-                A digital presence must fit your daily workflow—from initial visitor discovery on search and social to WhatsApp lead qualification and CRM synchronization.
+                We connect each customer touchpoint into one unified workflow. Search inquiries, social discovery, WhatsApp qualifiers, and CRM systems work together as a single engine.
               </p>
             </div>
 
@@ -382,9 +382,9 @@ export default function About() {
                 <span className={styles.thinkingNum}>04</span>
                 <div className={styles.thinkingLine} />
               </div>
-              <h4>Ground Decisions in Evidence</h4>
+              <h4>Validate Through Evidence</h4>
               <p>
-                We use verifiable customer usage, stress testing, and real operational feedback to validate performance and deploy steady, dependable enhancements.
+                We validate technical performance through real user feedback, stress testing, and live data. Every operational upgrade is supported by solid and verifiable evidence.
               </p>
             </div>
           </div>
