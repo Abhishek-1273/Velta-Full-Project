@@ -450,7 +450,7 @@ export default function About() {
               <h3>Grow</h3>
               <p>Targeted Google SEO, Google Business Profiles, editorial content planning, and qualified customer acquisition.</p>
               <div className={styles.capChips}>
-                <span>Google Search SEO</span>
+                <span>Google SEO</span>
                 <span>Content Strategy</span>
               </div>
               <Link to="/services/seo-blogging-google-business-profile" className={styles.capLink}>
@@ -468,8 +468,8 @@ export default function About() {
               <h3>Automate</h3>
               <p>Practical lead-management setups, n8n webhook automations, WhatsApp notifications, and zero manual data re-entry.</p>
               <div className={styles.capChips}>
-                <span>WhatsApp Workflows</span>
-                <span>Database Sync</span>
+                <span>WhatsApp CRM</span>
+                <span>System Sync</span>
               </div>
               <Link to="/services/automation-systems" className={styles.capLink}>
                 <span>Explore Automation</span>
