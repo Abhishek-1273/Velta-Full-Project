@@ -1,57 +1,63 @@
 .carouselRoot {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   position: relative;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  user-select: none;
+  overflow: visible;
 }
 
 .carouselContainer {
   position: relative;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .grabFrame {
-  cursor: grab;
-  overflow: hidden;
-  padding: 12px 0 16px;
-  outline: none;
-  touch-action: pan-y;
-  user-select: none;
+  position: relative;
   width: 100%;
-}
-
-.grabFrame:active {
-  cursor: grabbing;
+  overflow: visible;
+  touch-action: pan-y;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .cardContainer {
   position: relative;
-  user-select: none;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .card {
   position: absolute;
-  left: 50%;
   top: 0;
+  left: 50%;
   aspect-ratio: 1 / 1;
+  border-radius: 18px;
   overflow: hidden;
-  border-radius: 20px;
-  background-color: var(--bg2);
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.45);
   border: 1px solid var(--border);
+  background: var(--surface);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
   will-change: transform, opacity;
-  transition: border-color 0.3s ease;
 }
 
 .cardActive {
+  box-shadow: 0 20px 48px -6px rgba(37, 99, 235, 0.35), 0 0 0 1px var(--accent);
   border-color: var(--accent);
 }
 
 .cardImg {
-  height: 100%;
   width: 100%;
+  height: 100%;
   object-fit: cover;
-  user-select: none;
+  display: block;
   pointer-events: none;
 }
 
@@ -59,255 +65,190 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 200;
-  background: var(--surface2);
-  border: 1px solid var(--border);
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
-  padding: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
   color: var(--text);
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.25s ease;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  cursor: pointer;
+  z-index: 120;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
 }
 
 .arrowBtn:hover {
   background: var(--accent);
-  color: #000;
+  color: #fff;
   border-color: var(--accent);
-  box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
 }
 
 .prevBtn {
-  left: 20px;
+  left: 12px;
 }
 
 .nextBtn {
-  right: 20px;
+  right: 12px;
 }
 
-/* ── Caption Section ── */
-.caption {
-  margin-top: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 0;
-  animation: fadeIn 0.4s ease forwards;
-  width: 100%;
-}
-
-.captionTitle {
-  font-family: var(--font-head);
-  font-size: 24px;
-  font-weight: 850;
-  color: var(--text);
-  margin-bottom: 6px;
-  letter-spacing: -0.01em;
-}
-
-.captionSubtitle {
-  font-size: 13px;
-  color: var(--text2);
-  text-align: left;
-  max-width: 450px;
-  line-height: 1.5;
-}
-
-/* Meta Data List */
-.metaList {
-  margin-top: 0;
-  width: 100%;
-  max-width: 400px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 16px 20px;
-  box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.25),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.metaRow {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-}
-
-.metaRow:last-child {
-  border-bottom: none;
-}
-
-.metaLabel {
-  color: var(--text2);
-  font-size: 11px;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-/* Accented dot on left of label */
-.metaLabel::before {
-  content: '';
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--accent, #D4AF37);
-  box-shadow: 0 0 6px var(--accent, #D4AF37);
-}
-
-.metaValue {
-  color: var(--text);
-  font-size: 12px;
-  font-weight: 700;
-  text-align: right;
-  letter-spacing: 0.02em;
-}
-
-/* ── Details Block underneath Carousel ── */
+/* Details Section (Left & Right Split) */
 .infoWrapper {
-  margin-top: 28px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  max-width: 1000px;
+  margin: 36px auto 0;
+  padding: 0 16px;
 }
 
 .detailsRow {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 40px;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 48px;
   width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.cardCol {
-  flex: 1;
-  display: flex;
-  justify-content: flex-start;
-  /* Push card to center-left of right col */
 }
 
 .textCol {
   flex: 1;
-  display: flex;
-  justify-content: flex-end;
-  /* Push text to center-right of left col */
+  min-width: 0;
 }
 
-/* ── Pagination Dots ── */
-.pagination {
-  margin-top: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-}
-
-.dot {
-  width: 24px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.dot::before {
-  content: '';
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--text2);
-  opacity: 0.3;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.dot:hover::before {
-  opacity: 0.8;
-}
-
-.activeDot::before {
-  width: 18px;
-  height: 6px;
-  border-radius: 3px;
-  background: var(--accent);
-  opacity: 1;
-  box-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+.caption {
+  animation: fadeIn 0.3s ease;
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(6px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-@media (max-width: 768px) {
-  .detailsRow {
-    flex-direction: column;
-    /* Text on top, card below it */
-    gap: 20px;
-    padding: 0 20px;
-  }
+.captionTitle {
+  font-family: var(--font-head);
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
 
-  .cardCol,
-  .textCol {
-    justify-content: center;
-    width: 100%;
-  }
-
-  .caption {
-    align-items: center;
-    text-align: center;
-    max-width: 100%;
-  }
-
-  .captionSubtitle {
-    text-align: center;
-  }
-
-  .tagList {
-    justify-content: center;
-  }
+.captionSubtitle {
+  font-size: 14px;
+  color: var(--text2);
+  line-height: 1.6;
+  max-width: 520px;
+  margin-bottom: 16px;
 }
 
 .tagList {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 12px;
 }
 
 .featureTag {
-  font-size: 10px;
-  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 600;
+  background: rgba(37, 99, 235, 0.08);
   color: var(--accent);
-  background: rgba(212, 175, 55, 0.06);
-  border: 1px solid rgba(212, 175, 55, 0.15);
-  border-radius: 5px;
-  padding: 3px 8px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  border: 1px solid rgba(37, 99, 235, 0.2);
+}
+
+/* Right Column: Specs Card */
+.cardCol {
+  width: 360px;
+  max-width: 100%;
+  flex-shrink: 0;
+}
+
+.metaList {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px 20px;
+  margin: 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.metaRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+
+.metaRow:last-child {
+  border-bottom: none;
+  padding-bottom: 4px;
+}
+
+.metaRow:first-child {
+  padding-top: 4px;
+}
+
+.metaLabel {
+  color: var(--text2);
+  font-weight: 500;
+  margin: 0;
+}
+
+.metaValue {
+  color: var(--text);
+  font-weight: 700;
+  text-align: right;
+  margin: 0;
+}
+
+/* Pagination Dots */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 32px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: var(--border);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.activeDot {
+  width: 28px;
+  background: var(--accent);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .detailsRow {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+  }
+
+  .cardCol {
+    width: 100%;
+  }
+
+  .captionTitle {
+    font-size: 22px;
+  }
 }

@@ -44,49 +44,62 @@ export default function Footer() {
             <span className={styles.colTitle}>Quick Links</span>
             <Link to="/" className={styles.link}>Home</Link>
             <Link to="/about" className={styles.link}>About Us</Link>
-            <Link to="/services" className={styles.link}>Services</Link>
-            
+            <Link to="/case-studies" className={styles.link}>Case Studies</Link>
             <Link to="/contact" className={styles.link}>Contact</Link>
           </div>
 
-          {/* Column 3: Our Products */}
+          {/* Column 3: Live Suites */}
           <div className={styles.col}>
             <span className={styles.colTitle}>Live Suites</span>
             <Link to="/products/kin-property" className={styles.link}>Kin Property</Link>
             <Link to="/products/whatsflow" className={styles.link}>WhatsFlow CRM</Link>
             <Link to="/products/docket14" className={styles.link}>Docket14 Legal</Link>
-            <Link to="/services/mobile-app-development#apps-showcase" className={styles.link}>Me & Mine Prototype</Link>
+            <Link to="/services/mobile-app-development#apps-showcase" className={styles.link}>Me &amp; Mine Prototype</Link>
           </div>
 
-          {/* Column 4: Follow Us */}
-          <div className={styles.col}>
+          {/* Column 4: Services */}
+          <div className={`${styles.col} ${styles.servicesCol}`}>
+            <span className={styles.colTitle}>Services</span>
+            <div className={styles.servicesLinks}>
+              <Link to="/services/website-development" className={styles.link}>Website Development</Link>
+              <Link to="/services/mobile-app-development" className={styles.link}>Mobile Applications</Link>
+              <Link to="/services/seo-blogging-google-business-profile" className={styles.link}>SEO &amp; Google Profile</Link>
+              <Link to="/content" className={styles.link}>Social Media &amp; Content</Link>
+              <Link to="/services/automation-systems" className={styles.link}>Automation Systems</Link>
+              <Link to="/services/performance-marketing" className={styles.link}>Performance Marketing</Link>
+            </div>
+          </div>
+
+          {/* Column 5: Follow Us */}
+          <div className={`${styles.col} ${styles.followCol}`}>
             <span className={styles.colTitle}>Follow Us</span>
-            <div className={styles.socialsRow}>
-              <a href="https://www.facebook.com/share/1bDqBcbFh8/" target="_blank" rel="noopener noreferrer" className={styles.socialCircle} aria-label="Facebook">
-                <FaFacebookF />
-              </a>
-              <a href="https://www.instagram.com/velta_ai?igsh=MTJicmZrM2kxa2dxcQ==" target="_blank" rel="noopener noreferrer" className={styles.socialCircle} aria-label="Instagram">
-                <FaInstagram />
-              </a>
-              <a href="https://www.linkedin.com/company/velta-ai/" target="_blank" rel="noopener noreferrer" className={styles.socialCircle} aria-label="LinkedIn">
-                <FaLinkedinIn />
-              </a>
-            </div>
+            <div className={styles.followActions}>
+              <div className={styles.socialsRow}>
+                <a href="https://www.facebook.com/share/1bDqBcbFh8/" target="_blank" rel="noopener noreferrer" className={styles.socialCircle} aria-label="Facebook">
+                  <FaFacebookF />
+                </a>
+                <a href="https://www.instagram.com/velta_ai?igsh=MTJicmZrM2kxa2dxcQ==" target="_blank" rel="noopener noreferrer" className={styles.socialCircle} aria-label="Instagram">
+                  <FaInstagram />
+                </a>
+                <a href="https://www.linkedin.com/company/velta-ai/" target="_blank" rel="noopener noreferrer" className={styles.socialCircle} aria-label="LinkedIn">
+                  <FaLinkedinIn />
+                </a>
+              </div>
 
-            {/* Theme Toggle Switch */}
-            <div className={styles.themeToggleWrapper}>
-              <FaSun className={styles.sunIcon} />
-              <button
-                type="button"
-                className={`${styles.toggleSwitch} ${theme === 'dark' ? styles.toggleSwitchActive : ''}`}
-                onClick={toggle}
-                aria-label="Toggle theme"
-              >
-                <span className={styles.toggleSlider} />
-              </button>
-              <FaMoon className={styles.moonIcon} />
+              {/* Theme Toggle Switch */}
+              <div className={styles.themeToggleWrapper}>
+                <FaSun className={styles.sunIcon} />
+                <button
+                  type="button"
+                  className={`${styles.toggleSwitch} ${theme === 'dark' ? styles.toggleSwitchActive : ''}`}
+                  onClick={toggle}
+                  aria-label="Toggle theme"
+                >
+                  <span className={styles.toggleSlider} />
+                </button>
+                <FaMoon className={styles.moonIcon} />
+              </div>
             </div>
-
           </div>
         </div>
 

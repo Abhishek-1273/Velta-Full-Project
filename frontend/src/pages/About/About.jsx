@@ -249,7 +249,7 @@ export default function About() {
                           <div className={styles.s25ScreenSurface}>
                             <div className={styles.s25PunchHoleCamera} />
                             <img
-                              src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1792475226/whatsflow_cbybon.jpg"
+                              src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1792917399/admin_whatsFlow.jpg_pcyu3j.jpg"
                               alt="WhatsFlow Mobile App Interface"
                               className={styles.phoneScreenImg}
                             />

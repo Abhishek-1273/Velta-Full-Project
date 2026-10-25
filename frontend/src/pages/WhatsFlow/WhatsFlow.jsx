@@ -207,7 +207,7 @@ export default function WhatsFlow() {
                   <div className={styles.phoneCameraPill} />
                   <video 
                     ref={employeeVideoRef}
-                    src="https://res.cloudinary.com/dqc1awrnc/video/upload/v1786782543/Employee_WhatsFlow_vey0gq.mp4" 
+                    src="https://res.cloudinary.com/dqc1awrnc/video/upload/v1792919480/employee_wf_xgg38y.mp4" 
                     autoPlay 
                     loop 
                     muted 
@@ -247,13 +247,13 @@ export default function WhatsFlow() {
                   <div className={styles.phoneCameraPill} />
                   <video 
                     ref={adminVideoRef}
-                    src="https://res.cloudinary.com/dqc1awrnc/video/upload/v1786782548/Admin_WhatsFlow_i38idg.mp4" 
+                    src="https://res.cloudinary.com/dqc1awrnc/video/upload/v1792919469/admin_wf_dp0qwa.mp4" 
                     autoPlay 
                     loop 
                     muted 
                     playsInline 
                     className={styles.phoneScreenVideo}
-                    poster="/images/whatsflow/employees.png"
+                    poster="https://res.cloudinary.com/dqc1awrnc/image/upload/v1792917399/admin_whatsFlow.jpg_pcyu3j.jpg"
                   />
                 </div>
 

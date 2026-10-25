@@ -66,7 +66,20 @@ export default function MobileAppDevelopment() {
     }
   }, [activeAppTab])
 
-  // Global mouse handlers for fluid desktop drag-to-scroll
+  // Global mouse handlers for fluid desktop drag-to-scroll and wheel scroll
+  useEffect(() => {
+    const el = displayScrollRef.current
+    if (!el) return
+
+    const handleWheel = (e) => {
+      el.scrollTop += e.deltaY
+      e.preventDefault()
+    }
+
+    el.addEventListener('wheel', handleWheel, { passive: false })
+    return () => el.removeEventListener('wheel', handleWheel)
+  }, [activeAppTab])
+
   useEffect(() => {
     const handleGlobalMouseUp = () => {
       if (isDraggingRef.current) {
@@ -98,7 +111,7 @@ export default function MobileAppDevelopment() {
     startYRef.current = e.clientY
     scrollTopRef.current = displayScrollRef.current.scrollTop
     displayScrollRef.current.style.cursor = 'grabbing'
-  } // 'whatsflow' | 'docket14' | 'memine'
+  }
 
   useEffect(() => {
     document.title = "Cross-Platform Mobile App Development | VeltaZ"
@@ -123,7 +136,7 @@ export default function MobileAppDevelopment() {
       name: "WhatsFlow Mobile App",
       category: "Field Operations & Lead Capture",
       desc: "Instant lead intake, pipeline qualification, and automated WhatsApp messaging hooks built for real-time sales coordination.",
-      img: "https://res.cloudinary.com/dqc1awrnc/image/upload/v1792475226/whatsflow_cbybon.jpg",
+      img: "https://res.cloudinary.com/dqc1awrnc/image/upload/v1792917662/admin_whatsFlow_long.jpg_injgph.jpg",
       tags: ["Real-time CRM", "WhatsApp API", "Role Permissions"],
       link: "/products/whatsflow"
     },
@@ -209,7 +222,7 @@ export default function MobileAppDevelopment() {
                   <img src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1786538519/Screenshot_20260812_180225_Docket_14.jpg_nxm7zh.jpg" alt="Docket14 Mobile App" />
                 </div>
                 <div className={`${styles.mockupPhone} ${styles.phoneCenter}`}>
-                  <img src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1792475226/whatsflow_cbybon.jpg" alt="WhatsFlow Mobile App" />
+                  <img src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1792917399/admin_whatsFlow.jpg_pcyu3j.jpg" alt="WhatsFlow Mobile App" />
                 </div>
                 <div className={`${styles.mockupPhone} ${styles.phoneRight}`}>
                   <img src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1786538759/IMG-20260726-WA0025.jpg_1_uq78d1.jpg" alt="Me & Mine Social App" />
@@ -326,10 +339,9 @@ export default function MobileAppDevelopment() {
                     {/* Top Micro Speaker Slit */}
                     <div className={styles.s25Speaker} />
                     
-                    {/* Fixed Hardware Punch-Hole & Gesture Home Bar overlay */}
+                    {/* Fixed Hardware Punch-Hole Camera overlay */}
                     <div className={styles.s25HardwareOverlay}>
                       <div className={styles.s25PunchHole} />
-                      <div className={styles.s25HomeBar} />
                     </div>
 
                     {/* S25 Edge-to-Edge Smooth Scrollable Display Screen */}

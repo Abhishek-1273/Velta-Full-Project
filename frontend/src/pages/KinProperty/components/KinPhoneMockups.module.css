@@ -1,0 +1,1119 @@
+/* =========================================================================
+   KIN PROPERTY MANAGEMENT — PHONE SCREEN UI STYLES
+   Pixel-perfect mobile views for the S24 Ultra mockups
+   ========================================================================= */
+
+.phoneScreen {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  overflow: hidden;
+  user-select: none;
+  font-size: 10px;
+  color: #0f172a;
+}
+
+/* ── SCREEN 1: LISTING DISCOVERY ── */
+.appHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 10px 4px;
+  background: #ffffff;
+}
+
+.brandGroup {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.brandMonogram {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  background: #111827;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 900;
+  font-family: Georgia, serif;
+}
+
+.brandName {
+  font-size: 9.5px;
+  font-weight: 800;
+  color: #111827;
+  display: block;
+  letter-spacing: -0.01em;
+}
+
+.locationPill {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 6.5px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.headerIconBtn {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #475569;
+}
+
+.notifDot {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #ef4444;
+}
+
+.searchBar {
+  margin: 4px 10px 6px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.searchIcon {
+  color: #94a3b8;
+  flex-shrink: 0;
+}
+
+.searchPlaceholder {
+  font-size: 7.5px;
+  color: #94a3b8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.filterRow {
+  display: flex;
+  gap: 4px;
+  padding: 0 10px 6px;
+  overflow-x: hidden;
+}
+
+.filterChip {
+  padding: 2px 7px;
+  border-radius: 9999px;
+  background: #f1f5f9;
+  color: #64748b;
+  font-size: 7px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.filterChipActive {
+  background: #3157E8;
+  color: #ffffff;
+}
+
+.featuredCard {
+  margin: 0 10px 6px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+}
+
+.cardImageContainer {
+  position: relative;
+  width: 100%;
+  height: 95px;
+  overflow: hidden;
+  background: #0f172a;
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.imageOverlayBadge {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background: rgba(15, 23, 42, 0.78);
+  backdrop-filter: blur(4px);
+  color: #ffffff;
+  padding: 2px 5px;
+  border-radius: 3px;
+  font-size: 6px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.priceTagPill {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background: #3157E8;
+  color: #ffffff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 8px;
+  font-weight: 800;
+  box-shadow: 0 2px 6px rgba(49, 87, 232, 0.4);
+}
+
+.cardContent {
+  padding: 6px 8px 6px;
+}
+
+.propertyTitle {
+  font-size: 8.5px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.propertySpecs {
+  font-size: 6.5px;
+  color: #64748b;
+  margin: 0 0 5px;
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 4px;
+}
+
+.agentMini {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.agentImg {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.agentName {
+  font-size: 6.5px;
+  font-weight: 700;
+  color: #334155;
+}
+
+.verifiedCheck {
+  color: #10B981;
+}
+
+.viewBtn {
+  background: #0f172a;
+  color: #ffffff;
+  border: none;
+  padding: 2px 7px;
+  border-radius: 3px;
+  font-size: 6.5px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.miniPropertyRow {
+  margin: 0 10px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  padding: 4px 6px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 5px;
+}
+
+.miniThumbWrapper {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.miniThumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.miniDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.miniTitle {
+  font-size: 7px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.miniPrice {
+  font-size: 6.5px;
+  font-weight: 800;
+  color: #3157E8;
+}
+
+.miniSpecs {
+  font-size: 5.5px;
+  color: #64748b;
+}
+
+/* ── SCREEN 2: AGENT CRM & DISPATCH ── */
+.adminHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 10px;
+  background: #0f172a;
+  color: #ffffff;
+}
+
+.adminBadge {
+  font-size: 5.5px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: #60a5fa;
+  display: block;
+}
+
+.adminTitle {
+  font-size: 9px;
+  font-weight: 800;
+  margin: 0;
+  color: #ffffff;
+}
+
+.adminLiveStatus {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  background: rgba(16, 185, 129, 0.16);
+  color: #10B981;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  padding: 2px 5px;
+  border-radius: 9999px;
+  font-size: 6px;
+  font-weight: 800;
+}
+
+.livePulse {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #10B981;
+}
+
+.crmStatsRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+  padding: 6px 10px;
+  background: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.crmStatBox {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 5px;
+  padding: 4px 5px;
+  text-align: center;
+}
+
+.crmStatVal {
+  font-size: 10px;
+  font-weight: 900;
+  color: #0f172a;
+  display: block;
+  line-height: 1.1;
+}
+
+.crmStatLabel {
+  font-size: 5.5px;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.inquiriesHeaderRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 10px 3px;
+}
+
+.inquiriesTitle {
+  font-size: 7.5px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.inquiriesFilter {
+  font-size: 6px;
+  font-weight: 700;
+  color: #10B981;
+}
+
+.leadCard {
+  margin: 3px 10px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 5px;
+  padding: 5px 6px;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.04);
+}
+
+.leadTopRow {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 3px;
+}
+
+.leadAvatarCircle {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #3157E8;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 6.5px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.leadInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.leadName {
+  font-size: 7.5px;
+  font-weight: 800;
+  color: #0f172a;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.leadProperty {
+  font-size: 6px;
+  color: #64748b;
+  display: block;
+}
+
+.leadTagHigh {
+  background: #fee2e2;
+  color: #dc2626;
+  font-size: 5.5px;
+  font-weight: 800;
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+
+.leadTagNew {
+  background: #e0e7ff;
+  color: #4338ca;
+  font-size: 5.5px;
+  font-weight: 800;
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+
+.leadMessageSnippet {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: #f8fafc;
+  border-radius: 3px;
+  padding: 3px 5px;
+  font-size: 6px;
+  color: #334155;
+  font-style: italic;
+  margin-bottom: 3px;
+}
+
+.leadMessageSnippet span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.leadMetaRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 5.5px;
+  color: #94a3b8;
+}
+
+.leadActionText {
+  color: #3157E8;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.addPropertyBtn {
+  margin: 5px 10px 0;
+  background: #3157E8;
+  color: #ffffff;
+  border: none;
+  padding: 5px 8px;
+  border-radius: 4px;
+  font-size: 7.5px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+/* ── SCREEN 3: PROPERTY DETAILS ── */
+.detailHeroWrapper {
+  position: relative;
+  width: 100%;
+  height: 110px;
+  background: #0f172a;
+}
+
+.detailHeroImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.detailTagRow {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  right: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.detailBadgeVerified {
+  background: rgba(15, 23, 42, 0.82);
+  backdrop-filter: blur(4px);
+  color: #ffffff;
+  font-size: 5.5px;
+  font-weight: 800;
+  padding: 2px 5px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.detailBadgeRating {
+  background: rgba(255, 255, 255, 0.92);
+  color: #0f172a;
+  font-size: 6px;
+  font-weight: 800;
+  padding: 2px 5px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.detailBody {
+  padding: 6px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.priceRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.priceNumber {
+  font-size: 11px;
+  font-weight: 900;
+  color: #3157E8;
+}
+
+.pricePeriod {
+  font-size: 6.5px;
+  color: #64748b;
+}
+
+.statusPill {
+  background: #ecfdf5;
+  color: #059669;
+  font-size: 6px;
+  font-weight: 800;
+  padding: 2px 5px;
+  border-radius: 3px;
+  border: 1px solid #a7f3d0;
+}
+
+.detailHeading {
+  font-size: 9px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.detailLocation {
+  font-size: 6.5px;
+  color: #64748b;
+  margin: 0 0 3px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.specsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4px;
+  margin-bottom: 5px;
+}
+
+.specBox {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  padding: 3px 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.specValue {
+  font-size: 7.5px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.specLabel {
+  font-size: 5.5px;
+  color: #64748b;
+}
+
+.actionRow {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.whatsappActionBtn {
+  background: #25D366;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-size: 7px;
+  font-weight: 800;
+  text-decoration: none;
+  box-shadow: 0 2px 6px rgba(37, 211, 102, 0.35);
+  cursor: pointer;
+}
+
+.tourActionBtn {
+  background: #0f172a;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-size: 6.5px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* ── SCREEN 4: SOCIAL MEDIA & REELS ── */
+.reelTopBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 10px 4px;
+  background: #ffffff;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.reelTopTitle {
+  font-size: 13px;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.01em;
+}
+
+.reelTopActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #475569;
+}
+
+.igIconTop {
+  color: #dd2a7b;
+}
+
+.reelFrame {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  background: #0f172a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reelMediaImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.reelGradientOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.2) 0%, rgba(15, 23, 42, 0.05) 40%, rgba(15, 23, 42, 0.85) 100%);
+  pointer-events: none;
+}
+
+.reelCenterPlayBtn {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  z-index: 5;
+}
+
+.reelActionRail {
+  position: absolute;
+  right: 8px;
+  bottom: 45px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  z-index: 6;
+}
+
+.reelActionItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  color: #ffffff;
+  font-size: 8.5px;
+  font-weight: 700;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.actionIconBox {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6));
+  cursor: pointer;
+}
+
+.reelBottomMeta {
+  position: absolute;
+  left: 10px;
+  right: 48px;
+  bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 6;
+  color: #ffffff;
+}
+
+.reelAccountRow {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.reelAvatar {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #3157e8;
+  color: #ffffff;
+  font-size: 8.5px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ffffff;
+}
+
+.reelHandle {
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.followBadge {
+  font-size: 8px;
+  font-weight: 700;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 1px 6px;
+  border-radius: 3px;
+}
+
+.reelCaption {
+  font-size: 9px;
+  line-height: 1.35;
+  color: #f8fafc;
+  margin: 0;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.reelAudioRow {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 8px;
+  color: #e2e8f0;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* ── SCREEN 5: WHATSFLOW CHAT UI ── */
+.waHeader {
+  background: #075E54;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #ffffff;
+}
+
+.waHeaderLeft {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.waAvatarBox {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #128C7E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.waOnlineDot {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #25D366;
+  border: 1px solid #ffffff;
+}
+
+.waContactMeta {
+  display: flex;
+  flex-direction: column;
+}
+
+.waNameRow {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.waContactName {
+  font-size: 9px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.waOnlineStatus {
+  font-size: 6.5px;
+  color: #D1FAE5;
+  font-weight: 500;
+}
+
+.waHeaderRight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.waChatArea {
+  flex: 1;
+  padding: 8px 8px 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  overflow-y: auto;
+  background-color: #EFEAE2;
+  background-image: radial-gradient(#D1D5DB 0.75px, transparent 0.75px);
+  background-size: 10px 10px;
+}
+
+.waDatePill {
+  align-self: center;
+  background: #FFFFFF;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 6.5px;
+  font-weight: 800;
+  color: #64748B;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.waEncryptedNotice {
+  align-self: center;
+  background: #FEF3C7;
+  border-radius: 4px;
+  padding: 3px 6px;
+  font-size: 6px;
+  font-weight: 600;
+  color: #92400E;
+  text-align: center;
+  max-width: 90%;
+  line-height: 1.3;
+}
+
+.waMsgOutbound {
+  align-self: flex-end;
+  max-width: 86%;
+}
+
+.waBubbleOut {
+  background: #E7FFDB;
+  border-radius: 8px 0px 8px 8px;
+  padding: 5px 8px 3px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+.waMsgInbound {
+  align-self: flex-start;
+  max-width: 88%;
+}
+
+.waBubbleIn {
+  background: #FFFFFF;
+  border-radius: 0px 8px 8px 8px;
+  padding: 5px 8px 3px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+.waMsgText {
+  font-size: 8px;
+  line-height: 1.35;
+  color: #111827;
+  margin: 0;
+}
+
+.waMsgMeta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 3px;
+  margin-top: 2px;
+}
+
+.waMsgTime {
+  font-size: 6px;
+  color: #9CA3AF;
+}
+
+.waBotBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  background: #EFF6FF;
+  border: 0.5px solid #BFDBFE;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 6px;
+  font-weight: 800;
+  color: #2563EB;
+  margin-bottom: 3px;
+}
+
+.botBadgePulse {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #2563EB;
+}
+
+.waDocAttachment {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 6px;
+  padding: 4px 6px;
+  margin-top: 4px;
+}
+
+.waDocIconBox {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  background: #FEE2E2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.waDocMeta {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.waDocTitle {
+  font-size: 7px;
+  font-weight: 800;
+  color: #0F172A;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.waDocSub {
+  font-size: 6px;
+  color: #16A34A;
+  font-weight: 600;
+}
+
+.waAgentBadge {
+  font-size: 6.5px;
+  font-weight: 800;
+  color: #16A34A;
+  margin-bottom: 2px;
+}
+
+.waActionChipsRow {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  flex-wrap: wrap;
+}
+
+.waChip {
+  background: #F1F5F9;
+  border: 0.5px solid #CBD5E1;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 6.5px;
+  font-weight: 700;
+  color: #475569;
+}
+
+.waChipActive {
+  background: #DCFCE7;
+  border: 0.5px solid #86EFAC;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 6.5px;
+  font-weight: 800;
+  color: #15803D;
+}
+
+.waInputBar {
+  background: #F0F2F5;
+  padding: 5px 8px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.waFakeInput {
+  flex: 1;
+  background: #FFFFFF;
+  border-radius: 999px;
+  padding: 4px 8px;
+  font-size: 7px;
+  color: #9CA3AF;
+}
+
+.waMicCircle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #128C7E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}

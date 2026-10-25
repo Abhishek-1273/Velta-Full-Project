@@ -25,15 +25,19 @@ export default function PhoneCarousel({ images }) {
     return () => clearInterval(autoRef.current)
   }, [isHovered, activeIndex])
 
-  // Prevent parent window scroll when scrolling the active mobile screenshot
+  const isDraggingRef = useRef(false)
+  const startYRef = useRef(0)
+  const scrollTopRef = useRef(0)
+
+  // Prevent parent window scroll when scrolling the active mobile screenshot, and reset scroll on slide change
   useEffect(() => {
     const el = activeScrollRef.current
     if (!el) return
 
+    el.scrollTop = 0
+
     const handleWheel = (e) => {
-      // Scroll the phone image div container manually
       el.scrollTop += e.deltaY
-      // Block the parent website window scroll
       e.preventDefault()
     }
 
@@ -42,6 +46,40 @@ export default function PhoneCarousel({ images }) {
       el.removeEventListener('wheel', handleWheel)
     }
   }, [activeIndex])
+
+  // Fluid mouse drag-to-scroll on desktop
+  useEffect(() => {
+    const handleMouseUp = () => {
+      if (isDraggingRef.current) {
+        isDraggingRef.current = false
+        if (activeScrollRef.current) {
+          activeScrollRef.current.style.cursor = 'grab'
+        }
+      }
+    }
+
+    const handleMouseMove = (e) => {
+      if (!isDraggingRef.current || !activeScrollRef.current) return
+      e.preventDefault()
+      const deltaY = e.clientY - startYRef.current
+      activeScrollRef.current.scrollTop = scrollTopRef.current - deltaY
+    }
+
+    window.addEventListener('mouseup', handleMouseUp)
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => {
+      window.removeEventListener('mouseup', handleMouseUp)
+      window.removeEventListener('mousemove', handleMouseMove)
+    }
+  }, [])
+
+  const handleMouseDown = (e) => {
+    if (e.button !== 0 || !activeScrollRef.current) return
+    isDraggingRef.current = true
+    startYRef.current = e.clientY
+    scrollTopRef.current = activeScrollRef.current.scrollTop
+    activeScrollRef.current.style.cursor = 'grabbing'
+  }
 
   const goTo = (i) => {
     setActiveIndex(i)
@@ -72,7 +110,7 @@ export default function PhoneCarousel({ images }) {
               onMouseEnter={() => isCenter && setIsHovered(true)}
               onMouseLeave={() => isCenter && setIsHovered(false)}
             >
-              {/* ── Samsung S24 Ultra Frame ── */}
+              {/* Samsung S24 Ultra Frame */}
               <div className={styles.s24UltraFrame}>
 
                 {/* Flat titanium side buttons */}
@@ -86,22 +124,26 @@ export default function PhoneCarousel({ images }) {
                   {/* Punch-hole camera */}
                   <div className={styles.punchHole} />
 
-                  {/* Scrollable screen area — only scrollable when center */}
+                  {/* Scrollable screen area */}
                   <div
                     ref={isCenter ? activeScrollRef : null}
                     className={styles.screenScroll}
-                    style={{ overflowY: isCenter ? 'auto' : 'hidden' }}
+                    style={{ 
+                      overflowY: isCenter ? 'auto' : 'hidden',
+                      cursor: isCenter ? 'grab' : 'default'
+                    }}
+                    onMouseDown={isCenter ? handleMouseDown : undefined}
                   >
                     <img
                       src={img.src}
                       alt={img.alt}
                       className={styles.screenImg}
                       draggable={false}
+                      style={{ pointerEvents: 'none' }}
                     />
                   </div>
 
-                  {/* Home gesture bar */}
-                  <div className={styles.homeBar} />
+
                 </div>
               </div>
 
@@ -109,7 +151,7 @@ export default function PhoneCarousel({ images }) {
           )
         })}
 
-        {/* ── Dot indicators + arrows ── */}
+        {/* Dot indicators + arrows */}
         <div className={styles.controls}>
           <button className={styles.arrowBtn} onClick={prev} aria-label="Previous">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

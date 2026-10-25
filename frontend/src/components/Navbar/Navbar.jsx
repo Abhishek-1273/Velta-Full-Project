@@ -55,6 +55,7 @@ export default function Navbar() {
   const location = useLocation()
 
   const isServicesActive = location.pathname.startsWith('/services') || location.pathname === '/content'
+  const isCaseStudy = location.pathname.startsWith('/case-studies') || location.pathname.startsWith('/products/')
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
@@ -90,7 +91,7 @@ export default function Navbar() {
         onClick={() => setOpen(false)}
       />
 
-      <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''} ${open ? styles.menuOpen : ''}`}>
+      <nav className={`${styles.nav} ${scrolled || isCaseStudy ? styles.scrolled : ''} ${open ? styles.menuOpen : ''}`}>
         <div className={"container " + styles.inner}>
 
           {/* LOGO */}
@@ -232,7 +233,18 @@ export default function Navbar() {
                 </ul>
               </li>
 
-              {/* 4. ABOUT US */}
+              {/* 4. CASE STUDIES */}
+              <li>
+                <Link
+                  to="/case-studies"
+                  onClick={() => setOpen(false)}
+                  className={`${styles.link} ${location.pathname.startsWith('/case-stud') ? styles.active : ''}`}
+                >
+                  Case Studies
+                </Link>
+              </li>
+
+              {/* 5. ABOUT US */}
               <li>
                 <Link
                   to="/about"

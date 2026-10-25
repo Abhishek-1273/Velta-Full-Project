@@ -324,8 +324,8 @@
 
 .serviceCard:hover .serviceIconWrap {
   border-color: var(--accent);
-  background: rgba(212, 175, 55, 0.2);
-  color: #fff;
+  background: rgba(212, 175, 55, 0.18);
+  color: var(--accent);
   transform: scale(1.08);
 }
 

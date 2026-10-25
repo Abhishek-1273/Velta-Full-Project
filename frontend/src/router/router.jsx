@@ -7,7 +7,6 @@ import RootLayout from '../layouts/App.jsx'
 import Home from '../pages/Home/Home.jsx'
 import About from '../pages/About/About.jsx'
 import Contact from '../pages/Contact/Contact.jsx'
-import Demo from '../pages/Demo/Demo.jsx'
 import RootError from '../pages/errors/RootError.jsx'
 import NotFound from '../pages/errors/NotFound.jsx'
 import WhatsFlow from '../pages/WhatsFlow/WhatsFlow.jsx'
@@ -20,6 +19,7 @@ import SeoBloggingGbp from '../pages/SeoBloggingGbp/SeoBloggingGbp.jsx'
 import MobileAppDevelopment from '../pages/MobileAppDevelopment/MobileAppDevelopment.jsx'
 import PerformanceMarketing from '../pages/PerformanceMarketing/PerformanceMarketing.jsx'
 import AutomationSystems from '../pages/AutomationSystems/AutomationSystems.jsx'
+import CaseStudies from '../pages/CaseStudies/CaseStudies.jsx'
 
 
 // ─────────────────────────────────────────────────────────────────
@@ -35,6 +35,14 @@ export const router = createBrowserRouter([
       // ── Public pages
       { index: true, element: <Home /> },
       { path: 'about', element: <About /> },
+      { path: 'case-studies', element: <CaseStudies /> },
+      { path: 'case-study', loader: () => redirect('/case-studies') },
+      { path: 'case-studies/kin-property', element: <KinProperty /> },
+      { path: 'case-studies/kin-property-management', element: <KinProperty /> },
+      { path: 'case-studies/whatsflow', element: <WhatsFlow /> },
+      { path: 'case-studies/docket14', element: <Docket14 /> },
+      { path: 'case-studies/content-studio', element: <ContentStudio /> },
+
       { path: 'services', element: <Services /> },
       { path: 'services/website-development', element: <WebsiteDevelopment /> },
       { path: 'services/web-development', element: <WebsiteDevelopment /> },
@@ -55,11 +63,10 @@ export const router = createBrowserRouter([
       { path: 'privacy', loader: () => redirect('/') },
 
       // ── Products & Demos (Public)
-      { path: 'products', loader: () => redirect('/services/mobile-app-development#apps-showcase') },
+      { path: 'products', loader: () => redirect('/case-studies') },
       { path: 'products/whatsflow', element: <WhatsFlow /> },
       { path: 'products/docket14', element: <Docket14 /> },
       { path: 'products/kin-property', element: <KinProperty /> },
-      { path: 'demo', element: <Demo /> },
       { path: 'plan', loader: () => redirect('/') },
 
       // ── Auth redirects (safe redirects to home)

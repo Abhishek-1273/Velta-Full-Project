@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar/Navbar.jsx'
 import Footer from '../components/Footer/Footer.jsx'
 import PageTransition from '../components/Animation/PageTransition.jsx'
 import VeltaChat from '../components/VeltaChat/VeltaChat.jsx'
+import ScrollToTop from '../components/ScrollToTop/ScrollToTop.jsx'
 
 export default function RootLayout() {
   useEffect(() => {
@@ -35,6 +36,7 @@ export default function RootLayout() {
         <Outlet />
       </PageTransition>
       <Footer />
+      <ScrollToTop />
       <VeltaChat />
     </ThemeProvider>
   )

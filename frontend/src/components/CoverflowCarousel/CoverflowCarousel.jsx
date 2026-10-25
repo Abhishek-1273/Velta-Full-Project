@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react'
-import { Link } from 'react-router-dom'
 import styles from './CoverflowCarousel.module.css'
 
 const useIsoLayoutEffect =
@@ -19,13 +18,13 @@ const ChevronRight = () => (
 
 export function CoverflowCarousel({
   slides,
-  rotate = 44,
-  depth = 0.6,
-  perspective = 3,
-  falloff = 0.56,
-  fade = 0.1,
-  cardWidth = 'clamp(148px, 22vw, 260px)',
-  gap = 0.05,
+  rotate = 40,
+  depth = 0.5,
+  perspective = 3.5,
+  falloff = 0.6,
+  fade = 0.12,
+  cardWidth = 'clamp(150px, 22vw, 240px)',
+  gap = 0.08,
   loop = true,
   showCaption = true,
   showPagination = true,
@@ -88,7 +87,7 @@ export function CoverflowCarousel({
       const edge = loop ? Math.min(1, Math.max(0, count / 2 - distance)) : 1
       card.style.opacity = String(Math.max(0, 1 - fade * distance) * edge)
       card.style.zIndex = String(100 - Math.round(distance))
-    });
+    })
   }, [count, depth, fade, falloff, gap, loop, rotate])
 
   const settle = useCallback(
@@ -98,14 +97,14 @@ export function CoverflowCarousel({
       setSelected(indexAt(target))
 
       const step = () => {
-        const remaining = target - posRef.current
-        if (Math.abs(remaining) < 0.0004) {
-          posRef.current = target
+        const diff = targetRef.current - posRef.current
+        if (Math.abs(diff) < 0.002) {
+          posRef.current = targetRef.current
           paint()
           rafRef.current = null
           return
         }
-        posRef.current += remaining * 0.16
+        posRef.current += diff * 0.15
         paint()
         rafRef.current = requestAnimationFrame(step)
       }
@@ -114,128 +113,73 @@ export function CoverflowCarousel({
     [indexAt, paint]
   )
 
-  const clamp = useCallback(
-    (pos) => (loop ? pos : Math.max(0, Math.min(count - 1, pos))),
-    [count, loop]
+  const nudge = useCallback(
+    (delta, pauseMs = 60000) => {
+      pauseAutoPlay(pauseMs)
+      settle(Math.round(posRef.current) + delta)
+    },
+    [pauseAutoPlay, settle]
   )
 
   const goTo = useCallback(
-    (index, pauseDuration = 60000) => {
-      if (pauseDuration > 0) {
-        pauseAutoPlay(pauseDuration)
+    (index, pauseMs = 60000) => {
+      pauseAutoPlay(pauseMs)
+      let offset = index - indexAt(posRef.current)
+      if (loop) {
+        if (offset > count / 2) offset -= count
+        else if (offset < -count / 2) offset += count
       }
-      const target = loop
-        ? index + Math.round((targetRef.current - index) / count) * count
-        : index
-      settle(clamp(target))
+      settle(posRef.current + offset)
     },
-    [clamp, count, loop, pauseAutoPlay, settle]
+    [count, indexAt, loop, pauseAutoPlay, settle]
   )
 
-  const nudge = useCallback(
-    (by, pauseDuration = 0) => {
-      if (pauseDuration > 0) {
-        pauseAutoPlay(pauseDuration)
-      }
-      settle(clamp(Math.round(targetRef.current) + by))
-    },
-    [clamp, pauseAutoPlay, settle]
-  )
-
-  const onPointerDown = (event) => {
+  const onPointerDown = (e) => {
     pauseAutoPlay(60000)
-    if (rafRef.current !== null) {
-      cancelAnimationFrame(rafRef.current)
-      rafRef.current = null
-    }
-    event.currentTarget.setPointerCapture(event.pointerId)
-    targetRef.current = posRef.current
     dragRef.current = {
-      id: event.pointerId,
-      startX: event.clientX,
-      startY: event.clientY,
-      x: event.clientX,
-      pos: posRef.current,
-      v: 0,
-      t: performance.now(),
+      startX: e.clientX,
+      startPos: posRef.current,
+      pointerId: e.pointerId,
+    }
+    if (frameRef.current) {
+      frameRef.current.setPointerCapture(e.pointerId)
     }
   }
 
-  const onPointerMove = (event) => {
-    const drag = dragRef.current
-    if (!drag || drag.id !== event.pointerId) return
-
-    const pitch = widthRef.current * (1 + gap)
-    if (!pitch) return
-
-    const now = performance.now()
-    const previous = posRef.current
-    posRef.current = clamp(drag.pos - (event.clientX - drag.x) / pitch)
-    drag.v = ((posRef.current - previous) / Math.max(now - drag.t, 1)) * 1000
-    drag.t = now
-
-    const index = indexAt(posRef.current)
-    if (index !== selected) setSelected(index)
+  const onPointerMove = (e) => {
+    if (!dragRef.current || dragRef.current.pointerId !== e.pointerId) return
+    const width = widthRef.current || 200
+    const deltaX = e.clientX - dragRef.current.startX
+    posRef.current = dragRef.current.startPos - (deltaX / width) * 0.8
     paint()
   }
 
-  const endDrag = (event) => {
-    const drag = dragRef.current
-    if (!drag || drag.id !== event.pointerId) return
-    dragRef.current = null
-
-    const deltaX = Math.abs(event.clientX - drag.startX)
-    const deltaY = Math.abs(event.clientY - drag.startY)
-    const duration = performance.now() - drag.t
-
-    // If pointer moved very little and released quickly, treat it as a click
-    if (deltaX < 6 && deltaY < 6 && duration < 300) {
-      const cardEl = event.target.closest('.' + styles.card)
-      if (cardEl) {
-        const clickedIndex = parseInt(cardEl.getAttribute('data-index'), 10)
-        if (!isNaN(clickedIndex)) {
-          goTo(clickedIndex, 60000)
-          return
-        }
-      }
+  const endDrag = (e) => {
+    if (!dragRef.current || dragRef.current.pointerId !== e.pointerId) return
+    if (frameRef.current && frameRef.current.hasPointerCapture(e.pointerId)) {
+      frameRef.current.releasePointerCapture(e.pointerId)
     }
-
-    const carried = Math.max(-2, Math.min(2, drag.v * 0.18))
-    settle(clamp(Math.round(posRef.current + carried)))
+    dragRef.current = null
+    settle(Math.round(posRef.current))
   }
 
   useIsoLayoutEffect(() => {
-    const frame = frameRef.current
-    if (!frame) return
-
-    const measure = () => {
-      const card = cardRefs.current[0]
-      if (!card) return
-      widthRef.current = card.offsetWidth
-      paint()
+    const updateWidth = () => {
+      if (cardRefs.current[0]) {
+        widthRef.current = cardRefs.current[0].offsetWidth
+        paint()
+      }
     }
-
-    measure()
-    const observer = new ResizeObserver(measure)
-    observer.observe(frame)
-    return () => observer.disconnect()
+    updateWidth()
+    window.addEventListener('resize', updateWidth)
+    return () => window.removeEventListener('resize', updateWidth)
   }, [paint])
 
   useEffect(() => {
-    return () => {
-      if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current)
-      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current)
-    }
-  }, [])
-
-  // Auto-play interval: 3.5s per slide, paused for 1 minute (60s) whenever user clicks or interacts
-  useEffect(() => {
     if (isPaused) return
-
     const interval = setInterval(() => {
       nudge(1, 0)
-    }, 3500)
-
+    }, 4500)
     return () => clearInterval(interval)
   }, [isPaused, nudge])
 
@@ -332,15 +276,16 @@ export function CoverflowCarousel({
           onClick={() => pauseAutoPlay(60000)}
           onMouseEnter={() => pauseAutoPlay(60000)}
         >
-          
           <div className={styles.detailsRow}>
-            {/* LEFT: DEFINITION TEXT */}
-            {active?.title && (
+            {/* LEFT: TITLE, SUBTITLE & FEATURE TAGS */}
+            {active && (
               <div className={styles.textCol}>
                 <div key={selected} className={styles.caption}>
-                  <h3 className={styles.captionTitle}>
-                    {active.title}
-                  </h3>
+                  {active.title && (
+                    <h3 className={styles.captionTitle}>
+                      {active.title}
+                    </h3>
+                  )}
                   {active.subtitle && (
                     <p className={styles.captionSubtitle}>
                       {active.subtitle}
@@ -359,7 +304,7 @@ export function CoverflowCarousel({
               </div>
             )}
 
-            {/* RIGHT: SPECS CARD */}
+            {/* RIGHT: SPECS / METADATA CARD */}
             {active?.meta && active.meta.length > 0 && (
               <div className={styles.cardCol}>
                 <dl className={styles.metaList}>
@@ -388,9 +333,8 @@ export function CoverflowCarousel({
               ))}
             </div>
           )}
-
         </div>
       )}
     </div>
-  );
+  )
 }

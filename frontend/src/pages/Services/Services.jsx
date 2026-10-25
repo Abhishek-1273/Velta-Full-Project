@@ -320,7 +320,7 @@ export default function Services() {
                   <img src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1786538519/Screenshot_20260812_180225_Docket_14.jpg_nxm7zh.jpg" alt="Docket14 App screen" />
                 </div>
                 <div className={`${styles.miniPhone} ${styles.phone2}`}>
-                  <img src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1792475226/whatsflow_cbybon.jpg" alt="WhatsFlow App screen" />
+                  <img src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1792917399/admin_whatsFlow.jpg_pcyu3j.jpg" alt="WhatsFlow App screen" />
                 </div>
                 <div className={`${styles.miniPhone} ${styles.phone3}`}>
                   <img src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1786538759/IMG-20260726-WA0025.jpg_1_uq78d1.jpg" alt="Me & Mine App screen" />
