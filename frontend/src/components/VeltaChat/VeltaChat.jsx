@@ -6,9 +6,10 @@ import styles from './VeltaChat.module.css'
 const quickQuestions = [
   "What is WhatsFlow?",
   "Custom software & CRMs",
-  "Automation & n8n systems",
-  "Request a live demo",
-  "How to get started?",
+  "Website Development",
+  "Mobile Applications",
+  "Performance Marketing",
+  "Content Studio",
 ]
 
 function renderFormattedContent(text) {
@@ -63,7 +64,7 @@ export default function VeltaChat() {
   const [messages, setMessages] = useState([
     {
       role: 'assistant',
-      content: "Hi! I'm VeltaZ AI 👋\n\nAsk me anything about VeltaZ products, custom software, or automations — I'm here to help!",
+      content: "Hi! I'm VeltaZ AI 👋\n\nAsk me anything about our services, custom software, automations, or digital growth — I'm here to help!",
     },
   ])
   const [input, setInput] = useState('')

@@ -64,14 +64,14 @@ export const VELTA_KNOWLEDGE = {
   ],
   services: [
     {
-      title: "Web & Brand Architecture",
+      title: "Website Development",
       desc: "Custom React/Next.js platforms built for speed, conversion, and Lighthouse 98%+ Core Web Vitals.",
-      link: "/services/web-development"
+      link: "/services/website-development"
     },
     {
-      title: "Custom Business Software",
-      desc: "Private agency portals, internal CRM dashboards, and docket systems engineered around your daily operational workflow.",
-      link: "/services/software-development"
+      title: "Mobile Applications",
+      desc: "Cross-platform iOS & Android mobile apps engineered with 60fps animations, offline sync, and secure APIs.",
+      link: "/services/mobile-app-development"
     },
     {
       title: "Automation Systems",
@@ -79,18 +79,24 @@ export const VELTA_KNOWLEDGE = {
       link: "/services/automation-systems"
     },
     {
-      title: "Market Search & SEO",
+      title: "SEO & Google Profile",
       desc: "Google 1st page keyword ranking, Google Business Profile (GBP) management, and high-intent editorial content.",
-      link: "/services/seo-blogging-gbp"
+      link: "/services/seo-blogging-google-business-profile"
     },
     {
-      title: "Paid Meta & Google Ads",
+      title: "Performance Marketing",
       desc: "Data-driven ad campaigns connected directly with automated WhatsApp lead qualifiers.",
-      link: "/services/paid-campaigns"
+      link: "/services/performance-marketing"
     },
     {
-      title: "UI/UX & Brand Design",
-      desc: "Figma design systems, brand identities, custom 3D product renders, and interactive web flows."
+      title: "Content Studio & Social Media",
+      desc: "Reels, video creation, personal branding, and high-engagement social media campaigns.",
+      link: "/content"
+    },
+    {
+      title: "Custom Business Software & CRMs",
+      desc: "Private agency portals, internal CRM dashboards, and docket systems engineered around your daily operational workflow.",
+      link: "/contact"
     }
   ]
 }
@@ -173,15 +179,75 @@ export function getVeltaResponse(input = "") {
   }
 
   // 4. SERVICES
-  if (/services?|website|web dev|develop|app|mobile|seo|automation|crm|marketing|ads|design/.test(query)) {
+  if (/services?|website|web dev|web development|develop|app\b|mobile|seo|automation|crm|custom software|marketing|ads|content|reels|studio|design/.test(query)) {
+    if (/website|web dev|web development|frontend|next\.?js/.test(query)) {
+      return (
+        "💻 **Website & Web Platform Development:**\n\n" +
+        "We build high-performance, conversion-engineered digital platforms:\n" +
+        "• Modern React / Next.js architecture with instant load speeds (Lighthouse 98%+)\n" +
+        "• Custom animations, smooth micro-interactions & bespoke design systems\n" +
+        "• Custom client portals & scalable web application backends\n" +
+        "• 100% mobile responsive across all devices\n\n" +
+        "Explore our [Website Development Services](/services/website-development) or [Contact Us](/contact) to build your project!"
+      )
+    }
+
+    if (/mobile|app\b|apps\b|ios|android/.test(query) && !/whatsflow|whatsapp/.test(query)) {
+      return (
+        "📱 **Mobile Application Development:**\n\n" +
+        "We craft sleek, high-performing iOS and Android applications:\n" +
+        "• Native-feel hybrid mobile apps running at a smooth 60fps\n" +
+        "• Offline data synchronization & secure cloud backend APIs\n" +
+        "• Push notifications, user auth & interactive app logic\n" +
+        "• Full app submission and deployment support\n\n" +
+        "Check out our [Mobile Applications Services](/services/mobile-app-development)!"
+      )
+    }
+
+    if (/performance marketing|marketing|paid ads|ad campaigns?|meta ads?|google ads?|insta boost|ppc/.test(query)) {
+      return (
+        "📈 **Performance Marketing & Paid Ad Campaigns:**\n\n" +
+        "We run data-driven ad campaigns focused strictly on ROI & customer acquisition:\n" +
+        "• Meta Campaign Ads (Facebook & Instagram hyper-targeted setups)\n" +
+        "• Google Search & Display Ads capturing active buyers\n" +
+        "• Direct integration with WhatsApp automation so no leads slip away\n" +
+        "• Continuous A/B testing on ad creatives & landing page funnels\n\n" +
+        "Learn more on our [Performance Marketing Page](/services/performance-marketing)!"
+      )
+    }
+
+    if (/content|social media|reels?|video|studio|insta branding|linkedin branding/.test(query)) {
+      return (
+        "🎬 **Content Studio & Social Media Branding:**\n\n" +
+        "We craft viral, authority-building content that scales brand presence:\n" +
+        "• High-retention short-form video & Reels editing\n" +
+        "• Founder personal branding on LinkedIn & Instagram\n" +
+        "• Thumb-stopping motion graphics, scripting & visual design\n" +
+        "• Cohesive aesthetic positioning for your brand\n\n" +
+        "Explore our [Content Studio & Social Media](/content)!"
+      )
+    }
+
+    if (/crm|custom software|portal|dashboard|internal system/.test(query)) {
+      return (
+        "🏢 **Custom Business Software & CRMs:**\n\n" +
+        "We eliminate repetitive manual work with proprietary business software:\n" +
+        "• Private agency dashboards & lead tracking CRMs\n" +
+        "• Tailored admin portals & role-based associate access\n" +
+        "• Secure cloud databases with zero recurring template bloat\n" +
+        "• Custom webhook pipelines & automated reports\n\n" +
+        "Have a custom software requirement? Let's discuss on our [Contact Page](/contact)!"
+      )
+    }
+
     if (/seo|google|ranking|gbp|blog/.test(query)) {
       return (
         "🔍 **Search Engine & GBP Growth:**\n\n" +
         "We structure organic discovery so high-intent buyers find you first:\n" +
-        "• Google 1st Page Keyword Optimization\n" +
-        "• Google Business Profile (GBP) ranking & map pack dominance\n" +
+        "• Google 1st Page Keyword Optimization & technical on-page SEO\n" +
+        "• Google Business Profile (GBP) ranking & local map pack dominance\n" +
         "• Editorial content and high-authority backlink architecture\n\n" +
-        "Explore our [SEO & GBP Services](/services/seo-blogging-gbp)!"
+        "Explore our [SEO & GBP Services](/services/seo-blogging-google-business-profile)!"
       )
     }
 
@@ -197,13 +263,14 @@ export function getVeltaResponse(input = "") {
     }
 
     return (
-      "🛠️ **VeltaZ Digital Services:**\n\n" +
-      "• **Web & Brand Architecture:** Ultra-fast custom React/Next.js websites (Lighthouse 98%+).\n" +
-      "• **Custom Business Software:** Agency dashboards, internal portals, client CRMs.\n" +
-      "• **Automation Systems:** n8n pipelines, WhatsApp routing, automated follow-ups.\n" +
-      "• **SEO & GBP:** Google 1st Page rankings and local map pack dominance.\n" +
-      "• **Paid Ad Campaigns:** Meta & Google ads linked to WhatsApp qualifiers.\n\n" +
-      "Tell us what you're looking to build, and we'll advise the best approach!"
+      "🛠️ **VeltaZ Core Services:**\n\n" +
+      "• **[Website Development](/services/website-development):** Ultra-fast React/Next.js platforms (Lighthouse 98%+).\n" +
+      "• **[Mobile Applications](/services/mobile-app-development):** 60fps hybrid iOS & Android apps.\n" +
+      "• **[Performance Marketing](/services/performance-marketing):** High-ROI Meta & Google ad campaigns.\n" +
+      "• **[Content Studio](/content):** Reels, video editing & social media branding.\n" +
+      "• **[Custom Software & CRMs](/contact):** Agency portals, custom databases & dashboards.\n" +
+      "• **[Automation Systems](/services/automation-systems):** n8n pipelines & WhatsApp routing.\n\n" +
+      "Which service would you like to explore?"
     )
   }
 
