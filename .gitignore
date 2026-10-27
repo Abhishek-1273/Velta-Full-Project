@@ -8,6 +8,5 @@ node_modules
 .DS_Store
 frontend/dist
 frontend/.vite
-kin/dist
 dist
 *.zip

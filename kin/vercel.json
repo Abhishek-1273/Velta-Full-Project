@@ -1,6 +1,0 @@
-{
-  "rewrites": [
-    { "source": "/sitemap.xml", "destination": "https://realestate-z3nz.onrender.com/sitemap.xml" },
-    { "source": "/(.*)", "destination": "/index.html" }
-  ]
-}
