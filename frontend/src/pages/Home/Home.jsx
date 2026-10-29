@@ -11,34 +11,34 @@ const SEO_DESC = 'VeltaZ helps businesses build digital solutions, strengthen th
 // Four core capabilities (links only to routes that exist in router.jsx)
 const capabilities = [
   { num: '01', title: 'Research', desc: 'Understand markets, competitors, customers and opportunities before committing time and resources.', to: '/services' },
-  { num: '02', title: 'Build', desc: 'Websites, mobile applications, web platforms and custom business systems built around real requirements.', to: '/services/website-development' },
-  { num: '03', title: 'Grow', desc: 'Strengthen how your business presents itself, publish content and reach potential customers through digital channels.', to: '/services/seo-blogging-google-business-profile' },
-  { num: '04', title: 'Automate', desc: 'Connect tools, streamline workflows and reduce repetitive operational tasks through appropriate automation.', to: '/services/automation-systems' },
+  { num: '02', title: 'Build', desc: 'Websites, mobile applications, web platforms and custom business systems built around real requirements.', to: '/website-development' },
+  { num: '03', title: 'Grow', desc: 'Strengthen how your business presents itself, publish content and reach potential customers through digital channels.', to: '/seo-blogging-google-business-profile' },
+  { num: '04', title: 'Automate', desc: 'Connect tools, streamline workflows and reduce repetitive operational tasks through appropriate automation.', to: '/automation-systems' },
 ]
 
 // What we offer — short service details (routes verified in router.jsx)
 // What we offer — short service details (routes verified in router.jsx)
 const offers = [
   {
-    key: 'web', tab: 'Website Development', to: '/services/website-development',
+    key: 'web', tab: 'Website Development', to: '/website-development',
     img: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1792436389/web_zbmt6u.png',
     desc: 'Business websites and web platforms designed around your goals and built to work well on every device.',
     points: ['Business and company websites', 'Custom admin portals', 'Responsive on mobile and desktop', 'On-page SEO setup', 'SSL-secured hosting setup'],
   },
   {
-    key: 'app', tab: 'Mobile Applications', to: '/services/mobile-app-development',
+    key: 'app', tab: 'Mobile Applications', to: '/mobile-app-development',
     img: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1792436389/app_speudl.jpg',
     desc: 'iOS and Android applications built around how your team and customers actually work.',
     points: ['Hybrid iOS and Android apps', 'Offline data synchronisation', 'Push notifications', 'Admin and user dashboards'],
   },
   {
-    key: 'auto', tab: 'Automation Systems', to: '/services/automation-systems',
+    key: 'auto', tab: 'Automation Systems', to: '/automation-systems',
     img: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1792436396/automation_b0h9bp.png',
     desc: 'Connect lead channels, CRMs and messaging so routing and routine follow-ups need less manual entry.',
     points: ['Lead routing', 'CRM pipeline automation', 'Google Sheets integration', 'Invoice and PDF generation', 'Automated email follow-ups'],
   },
   {
-    key: 'seo', tab: 'SEO & Google Profile', to: '/services/seo-blogging-google-business-profile',
+    key: 'seo', tab: 'SEO & Google Profile', to: '/seo-blogging-google-business-profile',
     img: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1792436396/seo_np0wtz.png',
     desc: 'Improve how your business is found on Google through technical fixes, keyword research and local listings.',
     points: ['Technical SEO audits', 'Keyword research', 'Google Business Profile setup', 'Schema markup', 'SEO blogging'],
@@ -50,7 +50,7 @@ const offers = [
     points: ['Instagram and LinkedIn management', 'Reels and video content', 'Posters and creatives', 'Weekly content calendar', 'Copywriting'],
   },
   {
-    key: 'ads', tab: 'Performance Marketing', to: '/services/performance-marketing',
+    key: 'ads', tab: 'Performance Marketing', to: '/performance-marketing',
     img: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1792436389/performance_s8jzdg.png',
     desc: 'High-ROI paid advertising campaigns engineered across search, social, and AI channels to generate qualified business enquiries.',
     points: [
@@ -366,7 +366,7 @@ export default function Home() {
                 tag: 'Interactive Prototype',
                 desc: 'Social & dating app prototype engineered with smart matching and real-time conversation flows.',
                 color: '#FF6B9D',
-                link: '/services/mobile-app-development#apps-showcase',
+                link: '/mobile-app-development#apps-showcase',
                 status: 'Prototype',
                 svg: (
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">

@@ -54,19 +54,19 @@ export default function Footer() {
             <Link to="/products/kin-property" className={styles.link}>Kin Property</Link>
             <Link to="/products/whatsflow" className={styles.link}>WhatsFlow CRM</Link>
             <Link to="/products/docket14" className={styles.link}>Docket14 Legal</Link>
-            <Link to="/services/mobile-app-development#apps-showcase" className={styles.link}>Me &amp; Mine Prototype</Link>
+            <Link to="/mobile-app-development#apps-showcase" className={styles.link}>Me &amp; Mine Prototype</Link>
           </div>
 
           {/* Column 4: Services */}
           <div className={`${styles.col} ${styles.servicesCol}`}>
             <span className={styles.colTitle}>Services</span>
             <div className={styles.servicesLinks}>
-              <Link to="/services/website-development" className={styles.link}>Website Development</Link>
-              <Link to="/services/mobile-app-development" className={styles.link}>Mobile Applications</Link>
-              <Link to="/services/seo-blogging-google-business-profile" className={styles.link}>SEO &amp; Google Profile</Link>
+              <Link to="/website-development" className={styles.link}>Website Development</Link>
+              <Link to="/mobile-app-development" className={styles.link}>Mobile Applications</Link>
+              <Link to="/seo-blogging-google-business-profile" className={styles.link}>SEO &amp; Google Profile</Link>
               <Link to="/content" className={styles.link}>Social Media &amp; Content</Link>
-              <Link to="/services/automation-systems" className={styles.link}>Automation Systems</Link>
-              <Link to="/services/performance-marketing" className={styles.link}>Performance Marketing</Link>
+              <Link to="/automation-systems" className={styles.link}>Automation Systems</Link>
+              <Link to="/performance-marketing" className={styles.link}>Performance Marketing</Link>
             </div>
           </div>
 

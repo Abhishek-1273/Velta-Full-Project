@@ -9,19 +9,19 @@ import {
 
 const veltaServices = [
   {
-    to: '/services/website-development',
+    to: '/website-development',
     title: 'Website Development',
     desc: 'Modern SPAs, business websites & custom admin portals',
     icon: <FaLaptopCode />,
   },
   {
-    to: '/services/mobile-app-development',
+    to: '/mobile-app-development',
     title: 'Mobile Applications',
     desc: 'Hybrid iOS & Android apps with offline sync & 60fps',
     icon: <FaMobileAlt />,
   },
   {
-    to: '/services/seo-blogging-google-business-profile',
+    to: '/seo-blogging-google-business-profile',
     title: 'SEO & Google Profile',
     desc: 'Technical search ranking, blogging & verified GBP setup',
     icon: <FaSearch />,
@@ -33,13 +33,13 @@ const veltaServices = [
     icon: <FaVideo />,
   },
   {
-    to: '/services/automation-systems',
+    to: '/automation-systems',
     title: 'Automation Systems',
     desc: 'Lead routing, CRM pipeline automation & message triggers',
     icon: <FaCogs />,
   },
   {
-    to: '/services/performance-marketing',
+    to: '/performance-marketing',
     title: 'Performance Marketing',
     desc: 'Meta Campaign Ads, Insta Boost, Google Ads, ChatGPT & LinkedIn Ads',
     icon: <FaBullhorn />,
@@ -54,7 +54,7 @@ export default function Navbar() {
   const dropdownTimerRef = useRef(null)
   const location = useLocation()
 
-  const isServicesActive = location.pathname.startsWith('/services') || location.pathname === '/content'
+  const isServicesActive = location.pathname.startsWith('/services') || ['/website-development', '/mobile-app-development', '/seo-blogging-google-business-profile', '/automation-systems', '/performance-marketing', '/content'].some(p => location.pathname === p || location.pathname.startsWith(p + '/'))
   const isCaseStudy = location.pathname.startsWith('/case-studies') || location.pathname.startsWith('/products/')
 
   useEffect(() => {

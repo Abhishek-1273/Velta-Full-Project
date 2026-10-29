@@ -450,7 +450,7 @@ export default function About() {
                 <span>Web Platforms</span>
                 <span>Custom Software</span>
               </div>
-              <Link to="/services/website-development" className={styles.capLink}>
+              <Link to="/website-development" className={styles.capLink}>
                 <span>Explore Development</span>
                 <FaArrowRight size={11} />
               </Link>
@@ -468,7 +468,7 @@ export default function About() {
                 <span>Google SEO</span>
                 <span>Content Strategy</span>
               </div>
-              <Link to="/services/seo-blogging-google-business-profile" className={styles.capLink}>
+              <Link to="/seo-blogging-google-business-profile" className={styles.capLink}>
                 <span>Explore SEO & Content</span>
                 <FaArrowRight size={11} />
               </Link>
@@ -486,7 +486,7 @@ export default function About() {
                 <span>WhatsApp CRM</span>
                 <span>System Sync</span>
               </div>
-              <Link to="/services/automation-systems" className={styles.capLink}>
+              <Link to="/automation-systems" className={styles.capLink}>
                 <span>Explore Automation</span>
                 <FaArrowRight size={11} />
               </Link>

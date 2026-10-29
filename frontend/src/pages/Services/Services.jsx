@@ -209,7 +209,7 @@ export default function Services() {
               {/* Direct Link to Website Development Portal */}
               <div style={{ marginTop: '14px' }}>
                 <Link 
-                  to="/services/website-development" 
+                  to="/website-development" 
                   className="btn btn-primary" 
                   style={{ 
                     display: 'inline-flex', 
@@ -295,7 +295,7 @@ export default function Services() {
               {/* Direct Link to Mobile App Development Portal */}
               <div style={{ marginTop: "14px" }}>
                 <Link 
-                  to="/services/mobile-app-development" 
+                  to="/mobile-app-development" 
                   className="btn btn-primary" 
                   style={{ 
                     display: "inline-flex", 
@@ -382,7 +382,7 @@ export default function Services() {
                   <span style={{ fontSize: '20px', alignContent: "center" }}>→</span>
                 </Link>
                 <Link
-                  to="/services/performance-marketing"
+                  to="/performance-marketing"
                   className="btn btn-outline"
                   style={{
                     padding: '12px 22px',
@@ -520,7 +520,7 @@ export default function Services() {
               {/* Direct Link to SEO, Blogging & GBP Portal */}
               <div style={{ marginTop: '14px' }}>
                 <Link 
-                  to="/services/seo-blogging-google-business-profile" 
+                  to="/seo-blogging-google-business-profile" 
                   className="btn btn-primary" 
                   style={{ 
                     display: 'inline-flex', 

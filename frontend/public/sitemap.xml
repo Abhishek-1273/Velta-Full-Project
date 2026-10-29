@@ -2,9 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://www.veltalabs.net/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://www.veltalabs.net/services</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.veltalabs.net/services/website-development</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.veltalabs.net/services/seo-blogging-google-business-profile</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.veltalabs.net/services/mobile-app-development</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.veltalabs.net/website-development</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.veltalabs.net/seo-blogging-google-business-profile</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.veltalabs.net/mobile-app-development</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.veltalabs.net/automation-systems</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.veltalabs.net/performance-marketing</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.veltalabs.net/content</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.veltalabs.net/products</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.veltalabs.net/products/whatsflow</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>

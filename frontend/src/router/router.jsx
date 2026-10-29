@@ -44,18 +44,38 @@ export const router = createBrowserRouter([
       { path: 'case-studies/content-studio', element: <ContentStudio /> },
 
       { path: 'services', element: <Services /> },
-      { path: 'services/website-development', element: <WebsiteDevelopment /> },
-      { path: 'services/web-development', element: <WebsiteDevelopment /> },
-      { path: 'services/software-development', element: <WebsiteDevelopment /> },
-      { path: 'services/seo-blogging-google-business-profile', element: <SeoBloggingGbp /> },
-      { path: 'services/seo-blogging-gbp', element: <SeoBloggingGbp /> },
-      { path: 'services/mobile-app-development', element: <MobileAppDevelopment /> },
-      { path: 'services/cross-platform-apps', element: <MobileAppDevelopment /> },
-      { path: 'services/performance-marketing', element: <PerformanceMarketing /> },
-      { path: 'services/paid-campaigns', element: <PerformanceMarketing /> },
-      { path: 'services/automation-systems', element: <AutomationSystems /> },
-      { path: 'services/automations', element: <AutomationSystems /> },
-      { path: 'services/digital-marketing', element: <PerformanceMarketing /> },
+
+      // ── Clean top-level service URLs (like /content)
+      { path: 'website-development', element: <WebsiteDevelopment /> },
+      { path: 'web-development', loader: () => redirect('/website-development') },
+      { path: 'software-development', loader: () => redirect('/website-development') },
+
+      { path: 'mobile-app-development', element: <MobileAppDevelopment /> },
+      { path: 'cross-platform-apps', loader: () => redirect('/mobile-app-development') },
+
+      { path: 'seo-blogging-google-business-profile', element: <SeoBloggingGbp /> },
+      { path: 'seo-blogging-gbp', loader: () => redirect('/seo-blogging-google-business-profile') },
+
+      { path: 'automation-systems', element: <AutomationSystems /> },
+      { path: 'automations', loader: () => redirect('/automation-systems') },
+
+      { path: 'performance-marketing', element: <PerformanceMarketing /> },
+      { path: 'paid-campaigns', loader: () => redirect('/performance-marketing') },
+      { path: 'digital-marketing', loader: () => redirect('/performance-marketing') },
+
+      // ── Backward-compatibility: redirect legacy /services/* to clean top-level routes
+      { path: 'services/website-development', loader: () => redirect('/website-development') },
+      { path: 'services/web-development', loader: () => redirect('/website-development') },
+      { path: 'services/software-development', loader: () => redirect('/website-development') },
+      { path: 'services/seo-blogging-google-business-profile', loader: () => redirect('/seo-blogging-google-business-profile') },
+      { path: 'services/seo-blogging-gbp', loader: () => redirect('/seo-blogging-google-business-profile') },
+      { path: 'services/mobile-app-development', loader: () => redirect('/mobile-app-development') },
+      { path: 'services/cross-platform-apps', loader: () => redirect('/mobile-app-development') },
+      { path: 'services/performance-marketing', loader: () => redirect('/performance-marketing') },
+      { path: 'services/paid-campaigns', loader: () => redirect('/performance-marketing') },
+      { path: 'services/automation-systems', loader: () => redirect('/automation-systems') },
+      { path: 'services/automations', loader: () => redirect('/automation-systems') },
+      { path: 'services/digital-marketing', loader: () => redirect('/performance-marketing') },
 
       { path: 'content', element: <ContentStudio /> },
       { path: 'contact', element: <Contact /> },

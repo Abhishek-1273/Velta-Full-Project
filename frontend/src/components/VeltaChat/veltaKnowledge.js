@@ -66,27 +66,27 @@ export const VELTA_KNOWLEDGE = {
     {
       title: "Website Development",
       desc: "Custom React/Next.js platforms built for speed, conversion, and Lighthouse 98%+ Core Web Vitals.",
-      link: "/services/website-development"
+      link: "/website-development"
     },
     {
       title: "Mobile Applications",
       desc: "Cross-platform iOS & Android mobile apps engineered with 60fps animations, offline sync, and secure APIs.",
-      link: "/services/mobile-app-development"
+      link: "/mobile-app-development"
     },
     {
       title: "Automation Systems",
       desc: "Frictionless n8n pipelines, WhatsApp lead routing, webhook syncs, and zero manual data entry.",
-      link: "/services/automation-systems"
+      link: "/automation-systems"
     },
     {
       title: "SEO & Google Profile",
       desc: "Google 1st page keyword ranking, Google Business Profile (GBP) management, and high-intent editorial content.",
-      link: "/services/seo-blogging-google-business-profile"
+      link: "/seo-blogging-google-business-profile"
     },
     {
       title: "Performance Marketing",
       desc: "Data-driven ad campaigns connected directly with automated WhatsApp lead qualifiers.",
-      link: "/services/performance-marketing"
+      link: "/performance-marketing"
     },
     {
       title: "Content Studio & Social Media",
@@ -188,7 +188,7 @@ export function getVeltaResponse(input = "") {
         "• Custom animations, smooth micro-interactions & bespoke design systems\n" +
         "• Custom client portals & scalable web application backends\n" +
         "• 100% mobile responsive across all devices\n\n" +
-        "Explore our [Website Development Services](/services/website-development) or [Contact Us](/contact) to build your project!"
+        "Explore our [Website Development Services](/website-development) or [Contact Us](/contact) to build your project!"
       )
     }
 
@@ -200,7 +200,7 @@ export function getVeltaResponse(input = "") {
         "• Offline data synchronization & secure cloud backend APIs\n" +
         "• Push notifications, user auth & interactive app logic\n" +
         "• Full app submission and deployment support\n\n" +
-        "Check out our [Mobile Applications Services](/services/mobile-app-development)!"
+        "Check out our [Mobile Applications Services](/mobile-app-development)!"
       )
     }
 
@@ -212,7 +212,7 @@ export function getVeltaResponse(input = "") {
         "• Google Search & Display Ads capturing active buyers\n" +
         "• Direct integration with WhatsApp automation so no leads slip away\n" +
         "• Continuous A/B testing on ad creatives & landing page funnels\n\n" +
-        "Learn more on our [Performance Marketing Page](/services/performance-marketing)!"
+        "Learn more on our [Performance Marketing Page](/performance-marketing)!"
       )
     }
 
@@ -247,7 +247,7 @@ export function getVeltaResponse(input = "") {
         "• Google 1st Page Keyword Optimization & technical on-page SEO\n" +
         "• Google Business Profile (GBP) ranking & local map pack dominance\n" +
         "• Editorial content and high-authority backlink architecture\n\n" +
-        "Explore our [SEO & GBP Services](/services/seo-blogging-google-business-profile)!"
+        "Explore our [SEO & GBP Services](/seo-blogging-google-business-profile)!"
       )
     }
 
@@ -258,18 +258,18 @@ export function getVeltaResponse(input = "") {
         "• n8n workflows syncing websites, CRMs, and spreadsheets\n" +
         "• Instant WhatsApp & email notifications on lead capture\n" +
         "• Zero manual data entry and zero lost leads\n\n" +
-        "Read more on our [Automation Systems Page](/services/automation-systems)!"
+        "Read more on our [Automation Systems Page](/automation-systems)!"
       )
     }
 
     return (
       "🛠️ **VeltaZ Core Services:**\n\n" +
-      "• **[Website Development](/services/website-development):** Ultra-fast React/Next.js platforms (Lighthouse 98%+).\n" +
-      "• **[Mobile Applications](/services/mobile-app-development):** 60fps hybrid iOS & Android apps.\n" +
-      "• **[Performance Marketing](/services/performance-marketing):** High-ROI Meta & Google ad campaigns.\n" +
+      "• **[Website Development](/website-development):** Ultra-fast React/Next.js platforms (Lighthouse 98%+).\n" +
+      "• **[Mobile Applications](/mobile-app-development):** 60fps hybrid iOS & Android apps.\n" +
+      "• **[Performance Marketing](/performance-marketing):** High-ROI Meta & Google ad campaigns.\n" +
       "• **[Content Studio](/content):** Reels, video editing & social media branding.\n" +
       "• **[Custom Software & CRMs](/contact):** Agency portals, custom databases & dashboards.\n" +
-      "• **[Automation Systems](/services/automation-systems):** n8n pipelines & WhatsApp routing.\n\n" +
+      "• **[Automation Systems](/automation-systems):** n8n pipelines & WhatsApp routing.\n\n" +
       "Which service would you like to explore?"
     )
   }
