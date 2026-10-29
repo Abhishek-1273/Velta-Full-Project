@@ -353,8 +353,9 @@ export default function ContentStudio() {
                             }
                           }}
                           title="Watch original Reel on Instagram"
+                          aria-label="Play Reel"
                         >
-                          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style={{ transform: 'translateX(1px)' }}>
                             <polygon points="5 3 19 12 5 21 5 3" />
                           </svg>
                         </div>
