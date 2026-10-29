@@ -68,12 +68,14 @@
   color: #38BDF8;
   background: linear-gradient(135deg, #60A5FA, #38BDF8);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 :global([data-theme="light"]) .blueHighlight {
   background: linear-gradient(135deg, #1D4ED8, #0284C7);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
