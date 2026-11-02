@@ -55,7 +55,7 @@ export default function Navbar() {
   const location = useLocation()
 
   const isServicesActive = location.pathname.startsWith('/services') || ['/website-development', '/mobile-app-development', '/seo-blogging-google-business-profile', '/automation-systems', '/performance-marketing', '/content'].some(p => location.pathname === p || location.pathname.startsWith(p + '/'))
-  const isCaseStudy = location.pathname.startsWith('/case-studies') || location.pathname.startsWith('/products/')
+  const isCaseStudy = location.pathname.startsWith('/case-studies') || location.pathname.startsWith('/products/') || ['/whatsflow', '/docket14', '/kin-property'].includes(location.pathname)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)

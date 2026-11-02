@@ -32,20 +32,33 @@ export const router = createBrowserRouter([
     element: <RootLayout />,
     errorElement: <RootError />,
     children: [
-      // ── Public pages
+      // ── Core Pages
       { index: true, element: <Home /> },
       { path: 'about', element: <About /> },
+      { path: 'contact', element: <Contact /> },
+
+      // ── Work & Case Studies
       { path: 'case-studies', element: <CaseStudies /> },
       { path: 'case-study', loader: () => redirect('/case-studies') },
-      { path: 'case-studies/kin-property', element: <KinProperty /> },
-      { path: 'case-studies/kin-property-management', element: <KinProperty /> },
-      { path: 'case-studies/whatsflow', element: <WhatsFlow /> },
-      { path: 'case-studies/docket14', element: <Docket14 /> },
-      { path: 'case-studies/content-studio', element: <ContentStudio /> },
+      { path: 'products', loader: () => redirect('/case-studies') },
 
+      // ── Clean Top-Level Tools & Platforms
+      { path: 'whatsflow', element: <WhatsFlow /> },
+      { path: 'docket14', element: <Docket14 /> },
+      { path: 'kin-property', element: <KinProperty /> },
+
+      // Legacy / alternate route aliases (seamless redirects)
+      { path: 'products/whatsflow', loader: () => redirect('/whatsflow') },
+      { path: 'products/docket14', loader: () => redirect('/docket14') },
+      { path: 'products/kin-property', loader: () => redirect('/kin-property') },
+      { path: 'case-studies/whatsflow', loader: () => redirect('/whatsflow') },
+      { path: 'case-studies/docket14', loader: () => redirect('/docket14') },
+      { path: 'case-studies/kin-property', loader: () => redirect('/kin-property') },
+      { path: 'case-studies/kin-property-management', loader: () => redirect('/kin-property') },
+      { path: 'case-studies/content-studio', loader: () => redirect('/content') },
+
+      // ── Services & Offerings (Clean direct routes)
       { path: 'services', element: <Services /> },
-
-      // ── Clean top-level service URLs (like /content)
       { path: 'website-development', element: <WebsiteDevelopment /> },
       { path: 'web-development', loader: () => redirect('/website-development') },
       { path: 'software-development', loader: () => redirect('/website-development') },
@@ -63,7 +76,9 @@ export const router = createBrowserRouter([
       { path: 'paid-campaigns', loader: () => redirect('/performance-marketing') },
       { path: 'digital-marketing', loader: () => redirect('/performance-marketing') },
 
-      // ── Backward-compatibility: redirect legacy /services/* to clean top-level routes
+      { path: 'content', element: <ContentStudio /> },
+
+      // Backward-compatibility: redirect legacy /services/* to clean top-level routes
       { path: 'services/website-development', loader: () => redirect('/website-development') },
       { path: 'services/web-development', loader: () => redirect('/website-development') },
       { path: 'services/software-development', loader: () => redirect('/website-development') },
@@ -77,24 +92,7 @@ export const router = createBrowserRouter([
       { path: 'services/automations', loader: () => redirect('/automation-systems') },
       { path: 'services/digital-marketing', loader: () => redirect('/performance-marketing') },
 
-      { path: 'content', element: <ContentStudio /> },
-      { path: 'contact', element: <Contact /> },
-      { path: 'terms', loader: () => redirect('/') },
-      { path: 'privacy', loader: () => redirect('/') },
-
-      // ── Products & Demos (Public)
-      { path: 'products', loader: () => redirect('/case-studies') },
-      { path: 'products/whatsflow', element: <WhatsFlow /> },
-      { path: 'products/docket14', element: <Docket14 /> },
-      { path: 'products/kin-property', element: <KinProperty /> },
-      { path: 'plan', loader: () => redirect('/') },
-
-      // ── Auth redirects (safe redirects to home)
-      { path: 'signin', loader: () => redirect('/') },
-      { path: 'login', loader: () => redirect('/') },
-      { path: 'signup', loader: () => redirect('/') },
-
-      // ── 404
+      // ── 404 Catch-All
       { path: '*', element: <NotFound /> },
     ],
   },

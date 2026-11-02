@@ -138,7 +138,7 @@ export default function MobileAppDevelopment() {
       desc: "Instant lead intake, pipeline qualification, and automated WhatsApp messaging hooks built for real-time sales coordination.",
       img: "https://res.cloudinary.com/dqc1awrnc/image/upload/v1792917662/admin_whatsFlow_long.jpg_injgph.jpg",
       tags: ["Real-time CRM", "WhatsApp API", "Role Permissions"],
-      link: "/products/whatsflow"
+      link: "/whatsflow"
     },
     docket14: {
       name: "Docket14 Legal & Task App",
@@ -146,7 +146,7 @@ export default function MobileAppDevelopment() {
       desc: "Designed for high-frequency legal updates, automated hearing reminders, offline case logs, and client notification feeds.",
       img: "https://res.cloudinary.com/dqc1awrnc/image/upload/v1786538519/Screenshot_20260812_180225_Docket_14.jpg_nxm7zh.jpg",
       tags: ["Offline Mode", "Push Alerts", "Encrypted Docs"],
-      link: "/products/docket14"
+      link: "/docket14"
     },
     memine: {
       name: "Me & Mine (Social App Prototype)",

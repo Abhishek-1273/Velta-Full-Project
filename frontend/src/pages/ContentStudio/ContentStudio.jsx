@@ -454,7 +454,7 @@ export default function ContentStudio() {
                 Verified Meta Business Suite insights — showing how strategic short-form content drives consistent organic reach, follower growth, and inbound enquiries without paid ad spend.
               </p>
             </div>
-            <Link to="/products/kin-property" className={styles.viewAllLink}>
+            <Link to="/kin-property" className={styles.viewAllLink}>
               View Kin Case Study →
             </Link>
           </div>
@@ -680,10 +680,10 @@ export default function ContentStudio() {
               <Link to="/services" className={styles.secondaryTechLink}>
                 Web Development →
               </Link>
-              <Link to="/products/whatsflow" className={styles.secondaryTechLink}>
+              <Link to="/whatsflow" className={styles.secondaryTechLink}>
                 WhatsFlow Automation →
               </Link>
-              <Link to="/products/docket14" className={styles.secondaryTechLink}>
+              <Link to="/docket14" className={styles.secondaryTechLink}>
                 Docket14 Portal →
               </Link>
             </div>

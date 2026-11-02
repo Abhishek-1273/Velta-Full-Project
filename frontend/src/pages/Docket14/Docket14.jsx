@@ -116,7 +116,6 @@ export default function Docket14() {
                     muted 
                     playsInline 
                     className={styles.phoneScreenVideo}
-                    poster="/images/whatsflow/leads.png" 
                   />
                 </div>
                 
@@ -156,7 +155,6 @@ export default function Docket14() {
                     muted 
                     playsInline 
                     className={styles.phoneScreenVideo}
-                    poster="/images/whatsflow/employees.png"
                   />
                 </div>
 

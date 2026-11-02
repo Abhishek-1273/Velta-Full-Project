@@ -47,7 +47,7 @@ export default function CaseStudies() {
         {/* ── 3. PROJECT GRID: KIN PROPERTY BOX ── */}
         <div className={styles.grid}>
           <Link
-            to="/products/kin-property"
+            to="/kin-property"
             className={styles.card}
             aria-label="View KIN Property case study"
           >

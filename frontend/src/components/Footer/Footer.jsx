@@ -51,9 +51,9 @@ export default function Footer() {
           {/* Column 3: Live Suites */}
           <div className={styles.col}>
             <span className={styles.colTitle}>Live Suites</span>
-            <Link to="/products/kin-property" className={styles.link}>Kin Property</Link>
-            <Link to="/products/whatsflow" className={styles.link}>WhatsFlow CRM</Link>
-            <Link to="/products/docket14" className={styles.link}>Docket14 Legal</Link>
+            <Link to="/kin-property" className={styles.link}>Kin Property</Link>
+            <Link to="/whatsflow" className={styles.link}>WhatsFlow CRM</Link>
+            <Link to="/docket14" className={styles.link}>Docket14 Legal</Link>
             <Link to="/mobile-app-development#apps-showcase" className={styles.link}>Me &amp; Mine Prototype</Link>
           </div>
 

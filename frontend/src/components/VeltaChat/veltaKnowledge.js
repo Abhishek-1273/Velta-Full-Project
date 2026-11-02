@@ -7,7 +7,7 @@ export const VELTA_KNOWLEDGE = {
     tagline: "Business Growth & Digital Systems Partner",
     headquarters: "Pune, Maharashtra, India",
     reach: "Remote-first with clients across India, the Middle East, UK, and globally.",
-    email: "hello@veltalabs.net",
+    email: "support@veltalabs.net",
     whatsapp: "+91 9960240648",
     whatsappLink: "https://wa.me/919960240648?text=Hi%20VeltaZ%2C%20I%20have%20an%20inquiry.",
     website: "https://veltalabs.net",
@@ -41,19 +41,19 @@ export const VELTA_KNOWLEDGE = {
         enterprise: "₹29,999 setup + ₹5,999/month",
         custom: "Starts at ₹4,999 consultation"
       },
-      link: "/products/whatsflow"
+      link: "/whatsflow"
     },
     {
       name: "Docket14",
       tag: "Legal Practice Management",
       desc: "A modern practice management SaaS for law firms and advocates — manages case transition logs, hearings history, associate task matrices, and client notification vaults.",
-      link: "/products/docket14"
+      link: "/docket14"
     },
     {
       name: "KIN Property",
       tag: "Real Estate Listing Portal & CRM",
       desc: "A luxury property management and listing portal with virtual video tours, verified listings, and an integrated agency admin CRM.",
-      link: "/products/kin-property"
+      link: "/kin-property"
     },
     {
       name: "Me & Mine",
@@ -121,14 +121,11 @@ export function getVeltaResponse(input = "") {
   if (/whatsflow|whatsapp|pricing|price|cost|charges|plan|fee|kitna/.test(query)) {
     if (/pricing|price|cost|charges|plan|fee|kitna/.test(query) && !/service|website|custom/.test(query)) {
       return (
-        "💼 **WhatsFlow Pricing Plans:**\n\n" +
-        "• **Starter Plan:** ₹9,999 setup + ₹1,499/mo\n" +
-        "  (Automated replies, basic lead logging)\n\n" +
-        "• **Growth Plan (Most Popular ⭐):** ₹19,999 setup + ₹2,999/mo\n" +
-        "  (Round-robin team routing, full CRM, analytics)\n\n" +
-        "• **Enterprise Plan:** ₹29,999 setup + ₹5,999/mo\n" +
-        "  (Multi-branch setups, high volume broadcasts, custom webhook integrations)\n\n" +
-        "Need a tailored custom software quote? Visit our [Contact Page](/contact) or chat directly with us on [WhatsApp](https://wa.me/919960240648)."
+        "💼 **VeltaZ & WhatsFlow Pricing:**\n\n" +
+        "Every business has unique team sizes, lead volume, and workflow integrations:\n\n" +
+        "• **WhatsFlow Platform:** Flexible onboarding tiers tailored to your active representative count and message volume.\n" +
+        "• **Custom Software & Websites:** Milestone-based quotes scoped around your exact operational requirements.\n\n" +
+        "To get an exact quote and schedule a live demo, chat directly with our team on [WhatsApp (+91 9960240648)](https://wa.me/919960240648) or submit an inquiry on our [Contact Page](/contact)!"
       )
     }
 
@@ -153,7 +150,7 @@ export function getVeltaResponse(input = "") {
         "• Associate task matrices & automated deadline alerts\n" +
         "• Client notification triggers & time tracking\n" +
         "• Secure digital document vault\n\n" +
-        "Learn more on our [Docket14 Page](/products/docket14) or contact our team!"
+        "Learn more on our [Docket14 Page](/docket14) or contact our team!"
       )
     }
 
@@ -264,7 +261,7 @@ export function getVeltaResponse(input = "") {
 
     return (
       "🛠️ **VeltaZ Core Services:**\n\n" +
-      "• **[Website Development](/website-development):** Ultra-fast React/Next.js platforms (Lighthouse 98%+).\n" +
+      "• **[Website Development](/website-development):** Ultra-fast custom React platforms engineered for speed & conversion.\n" +
       "• **[Mobile Applications](/mobile-app-development):** 60fps hybrid iOS & Android apps.\n" +
       "• **[Performance Marketing](/performance-marketing):** High-ROI Meta & Google ad campaigns.\n" +
       "• **[Content Studio](/content):** Reels, video editing & social media branding.\n" +
@@ -277,11 +274,12 @@ export function getVeltaResponse(input = "") {
   // 5. FOUNDERS & TEAM
   if (/founder|founders|team|who (made|built|started|owns)|ceo|cto|cpo|dhruv|arman|abhishek/.test(query)) {
     return (
-      "👥 **The Founders Behind VeltaZ:**\n\n" +
-      "• **Dhruv (Co-Founder & CEO):** Leads growth, client strategy, and marketing operations.\n" +
-      "• **Arman (Co-Founder & CTO):** Architects rock-solid backend infrastructure, APIs, and databases.\n" +
-      "• **Abhishek (Co-Founder & CPO):** Obsessed with product perfection, high-fidelity UI/UX, and design systems.\n\n" +
-      "Together, they build custom technology that solves tangible business bottlenecks."
+      "👥 **The Team Behind VeltaZ:**\n\n" +
+      "VeltaZ is engineered by a specialized team of software architects, product designers, and growth partners based in Pune:\n\n" +
+      "• **Growth & Client Strategy:** Aligns digital systems with real-world customer acquisition.\n" +
+      "• **Systems Architecture:** High-availability web platforms, custom APIs, and backend databases.\n" +
+      "• **Product Perfection:** High-fidelity UI/UX, design systems, and mobile interfaces.\n\n" +
+      "Want to discuss a project with our team? Connect directly on [WhatsApp (+91 9960240648)](https://wa.me/919960240648)!"
     )
   }
 
@@ -299,7 +297,7 @@ export function getVeltaResponse(input = "") {
     return (
       "📞 **Get in Touch with VeltaZ:**\n\n" +
       "• **WhatsApp Direct:** [+91 9960240648](https://wa.me/919960240648)\n" +
-      "• **Email:** hello@veltalabs.net\n" +
+      "• **Email:** support@veltalabs.net\n" +
       "• **Online Form:** Visit our [Contact Page](/contact)\n\n" +
       "We typically respond within 1–2 hours during business days. Feel free to reach out anytime!"
     )
@@ -343,7 +341,7 @@ export function getVeltaResponse(input = "") {
   // 11. DEFAULT HELPFUL FALLBACK
   return (
     "I'd be glad to help with that! At VeltaZ, we specialize in:\n\n" +
-    "• **WhatsFlow:** WhatsApp automation & lead routing (starting ₹9,999)\n" +
+    "• **WhatsFlow:** WhatsApp lead automation & smart team routing\n" +
     "• **Custom Software:** Web apps, portals, internal CRMs\n" +
     "• **Growth Systems:** Google SEO, paid ad campaigns & automations\n\n" +
     "You can also chat directly with our founders on [WhatsApp (+91 9960240648)](https://wa.me/919960240648) or submit an inquiry on our [Contact Page](/contact)!"

@@ -274,7 +274,7 @@ export default function About() {
                           <span>Admin Portal</span>
                           <span>Agent App</span>
                         </div>
-                        <Link to="/products/whatsflow" className={styles.paneActionLink}>
+                        <Link to="/whatsflow" className={styles.paneActionLink}>
                           <span>View Product</span>
                           <FaArrowRight size={10} />
                         </Link>
@@ -549,7 +549,7 @@ export default function About() {
                     <div className={styles.scopeIconWrap}><FaWhatsapp size={14} /></div>
                     <div>
                       <strong>WhatsFlow Lead Routing</strong>
-                      <p>Inbound lead capture, team member assignment, and fast WhatsApp follow-ups.</p>
+                      <p>Inbound lead capture, team member assignment, and fast WhatsApp response times.</p>
                     </div>
                   </div>
 
@@ -571,7 +571,7 @@ export default function About() {
                 </div>
 
                 <div className={styles.caseStudyActions}>
-                  <Link to="/products/kin-property" className="btn btn-primary">
+                  <Link to="/kin-property" className="btn btn-primary">
                     <span>Explore Full Case Study</span>
                     <FaArrowRight size={12} />
                   </Link>
@@ -658,12 +658,12 @@ export default function About() {
                 <span className={styles.productStatusDot}>Active Tool</span>
               </div>
               <h3>WhatsFlow</h3>
-              <p>A specialized lead-management tool supporting customer enquiries, agent status tracking, and automated follow-ups.</p>
+              <p>A specialized lead-management tool supporting customer enquiries, agent assignment, and real-time status tracking.</p>
               <div className={styles.productSpecs}>
                 <div><span>Interface</span><strong>Agent & Admin Boards</strong></div>
                 <div><span>Core Value</span><strong>Fast Lead Capture</strong></div>
               </div>
-              <Link to="/products/whatsflow" className={styles.productLink}>
+              <Link to="/whatsflow" className={styles.productLink}>
                 <span>View Details</span>
                 <FaArrowRight size={11} />
               </Link>
@@ -681,7 +681,7 @@ export default function About() {
                 <div><span>Interface</span><strong>Advocate Workspaces</strong></div>
                 <div><span>Core Value</span><strong>Lifecycle Clarity</strong></div>
               </div>
-              <Link to="/products/docket14" className={styles.productLink}>
+              <Link to="/docket14" className={styles.productLink}>
                 <span>View Details</span>
                 <FaArrowRight size={11} />
               </Link>
@@ -699,7 +699,7 @@ export default function About() {
                 <div><span>Interface</span><strong>Client Portal + CRM</strong></div>
                 <div><span>Core Value</span><strong>Fast Discovery</strong></div>
               </div>
-              <Link to="/products/kin-property" className={styles.productLink}>
+              <Link to="/kin-property" className={styles.productLink}>
                 <span>View Details</span>
                 <FaArrowRight size={11} />
               </Link>

@@ -334,7 +334,7 @@ export default function Home() {
                 tag: 'Lead Management',
                 desc: 'A private lead-management application for capturing, qualifying and following up on business enquiries.',
                 color: '#10b981',
-                link: '/products/whatsflow',
+                link: '/whatsflow',
                 status: '',
                 svg: (
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -348,7 +348,7 @@ export default function Home() {
                 tag: 'Legal Practice',
                 desc: 'A legal practice management application for cases, tasks and hearing schedules.',
                 color: '#4F8EF7',
-                link: '/products/docket14',
+                link: '/docket14',
                 status: '',
                 svg: (
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -434,7 +434,7 @@ export default function Home() {
                 ))}
               </ul>
               <motion.div whileHover={{ scale: 1.03, y: -1 }} whileTap={{ scale: 0.97 }} style={{ display: 'inline-block' }}>
-                <Link to="/products/kin-property" className="btn btn-primary" style={{ marginTop: '24px' }}>
+                <Link to="/kin-property" className="btn btn-primary" style={{ marginTop: '24px' }}>
                   View Kin Property
                 </Link>
               </motion.div>

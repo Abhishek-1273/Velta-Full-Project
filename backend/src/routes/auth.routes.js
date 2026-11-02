@@ -1,10 +1,14 @@
 import express from 'express';
-import { signup, signin, signout, getMe } from '../controllers/auth.controller.js';
+import { signin, signout, getMe } from '../controllers/auth.controller.js';
 import { protect } from '../middleware/auth.middleware.js';
 
 const router = express.Router();
 
-router.post('/signup', signup);
+// Public signup is disabled for security (Internal admin access only)
+router.post('/signup', (_req, res) => {
+    res.status(403).json({ success: false, message: 'Public registrations are disabled.' });
+});
+
 router.post('/signin', signin);
 router.post('/signout', signout);
 router.get('/me', protect, getMe);

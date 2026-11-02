@@ -7,13 +7,25 @@ import authRoutes from './routes/auth.routes.js';
 import contactRouter from './routes/contact.routes.js';
 import chatRouter from './routes/chat.routes.js';
 
-// Validate Environment Variables
-const REQUIRED_ENV = ['MONGO_URI', 'JWT_SECRET'];
-const missing = REQUIRED_ENV.filter(k => !process.env[k]);
-if (missing.length) {
-    console.error(`Missing required env vars: ${missing.join(', ')}`);
+// Validate Environment Variables on Startup
+const FATAL_ENV = ['MONGO_URI', 'JWT_SECRET'];
+const missingFatal = FATAL_ENV.filter(k => !process.env[k]);
+if (missingFatal.length) {
+    console.error(`[FATAL] Missing required env vars: ${missingFatal.join(', ')}`);
     process.exit(1);
 }
+
+// Non-fatal warnings for third-party integrations
+const optionalServices = [
+    { key: 'RESEND_API_KEY', msg: 'Resend API key missing. Email notifications will be disabled.' },
+    { key: 'NOTIFY_EMAIL', msg: 'NOTIFY_EMAIL missing. Contact notifications will not be delivered.' },
+    { key: 'GROQ_API_KEY', msg: 'GROQ_API_KEY missing. Velta AI Chatbot will be unavailable.' },
+];
+optionalServices.forEach(({ key, msg }) => {
+    if (!process.env[key]) {
+        console.warn(`[WARN] ${msg}`);
+    }
+});
 
 const app = express();
 
@@ -22,19 +34,20 @@ app.set('trust proxy', 1);
 // Connect Database
 connectDB();
 
-// CORS Configuration - automatically allow Vercel domains, localhost, and CLIENT_URL
+// CORS Configuration - restrict to official production domains, configured CLIENT_URL, and localhost
 const configuredOrigins = (process.env.CLIENT_URL || '')
     .split(',')
     .map(o => o.trim().replace(/\/$/, ''))
     .filter(Boolean);
 
 const isOriginAllowed = (origin) => {
-    if (!origin) return true; // Server-to-server or tools
+    if (!origin) return true; // Server-to-server, health checks, or curl
     const clean = origin.replace(/\/$/, '');
     if (configuredOrigins.includes(clean)) return true;
+    if (clean === 'https://veltalabs.net' || clean === 'https://www.veltalabs.net') return true;
+    if (clean === 'https://veltaai.vercel.app') return true;
     if (/^https?:\/\/localhost(:\d+)?$/.test(clean)) return true;
     if (/^https?:\/\/127\.0\.0\.1(:\d+)?$/.test(clean)) return true;
-    if (/\.vercel\.app$/.test(clean) || clean === 'https://veltaai.vercel.app') return true;
     return false;
 };
 
@@ -43,7 +56,6 @@ app.use(cors({
         if (isOriginAllowed(origin)) {
             return cb(null, true);
         }
-        // Don't throw unhandled Error, just disallow origin
         return cb(null, false);
     },
     credentials: true,
@@ -54,6 +66,7 @@ app.use(express.json({ limit: '1mb' }));
 app.use(cookieParser());
 
 // Rate Limiters
+// 1. Sign-in Rate Limiter (20 attempts per 15 min)
 const authAttempts = new Map();
 const AUTH_WINDOW = 15 * 60 * 1000;
 const AUTH_LIMIT = 20;
@@ -79,6 +92,34 @@ app.use('/api/auth/signin', (req, res, next) => {
     next();
 });
 
+// 2. Contact Form Rate Limiter (5 submissions per 15 min per IP to prevent spam & protect Resend quota)
+const contactLimits = new Map();
+const CONTACT_WINDOW = 15 * 60 * 1000;
+const CONTACT_LIMIT = 5;
+
+app.use('/api/contact', (req, res, next) => {
+    if (req.method !== 'POST') return next();
+    const ip = req.ip;
+    const now = Date.now();
+    const rec = contactLimits.get(ip);
+
+    if (rec && now < rec.resetAt) {
+        if (rec.count >= CONTACT_LIMIT) {
+            const wait = Math.ceil((rec.resetAt - now) / 60000);
+            return res.status(429).json({
+                success: false,
+                message: `Too many submissions. Please wait ${wait} minute${wait !== 1 ? 's' : ''} before submitting another inquiry.`,
+            });
+        }
+        rec.count++;
+    } else {
+        contactLimits.set(ip, { count: 1, resetAt: now + CONTACT_WINDOW });
+    }
+
+    next();
+});
+
+// 3. Chat Rate Limiter (30 requests per 10 min per IP)
 const chatLimits = new Map();
 const CHAT_WINDOW = 10 * 60 * 1000;
 const CHAT_LIMIT = 30;
