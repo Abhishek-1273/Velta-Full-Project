@@ -634,10 +634,7 @@
     padding: 18px 18px 24px;
     gap: 4px;
     border-left: 1px solid rgba(0, 0, 0, 0.08);
-    border-top-left-radius: 24px;
-    border-bottom-left-radius: 24px;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
+    border-radius: 0 !important;
     display: none;
     pointer-events: none;
     box-shadow: none;
