@@ -1,20 +1,198 @@
-/* ── Container ── */
+/* ── Container (Constrained & Centered: Proper Width Like Rest of Section) ── */
 .carouselContainer {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 10px 16px 30px;
+  overflow: visible;
+  box-sizing: border-box;
+}
+
+/* Master Stage: Left Wheel + Center Phones + Right Wheel */
+.stageOrbitLayout {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
-  padding: 10px 0 40px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* ── Orbit Side Columns (Left & Right) ── */
+.orbitSideWrapLeft,
+.orbitSideWrapRight {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 280px;
+  height: 440px;
+  flex-shrink: 0;
+  z-index: 25;
   overflow: visible;
 }
+
+.orbitSideWrapLeft {
+  justify-content: flex-start;
+  transform-origin: left center;
+}
+
+.orbitSideWrapRight {
+  justify-content: flex-end;
+  transform-origin: right center;
+}
+
+/* Framer Motion Full Rotating Wheel (Holds all 9 points - On Top of Circle Line) */
+.wheelMotionContainer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* SVG Line Arc & Whisker Tails (Static golden guide - Sits cleanly behind cards) */
+.orbitSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+  filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.28));
+  z-index: 1;
+}
+
+/* ── Feature Pill Cards (Horizontal Interactive Badges Floating Above the Circle) ── */
+.featureCard {
+  position: absolute;
+  width: 215px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 12px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(253, 249, 240, 0.95) 100%);
+  border: 1.5px solid rgba(212, 175, 55, 0.42);
+  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.18), 0 2px 6px rgba(0, 0, 0, 0.04);
+  cursor: pointer;
+  user-select: none;
+  z-index: 30;
+  pointer-events: auto;
+  box-sizing: border-box;
+  backdrop-filter: blur(10px);
+  transition: border-color 0.22s ease, box-shadow 0.22s ease;
+}
+
+:global([data-theme="dark"]) .featureCard,
+[data-theme="dark"] .featureCard {
+  background: linear-gradient(135deg, rgba(26, 25, 36, 0.98) 0%, rgba(18, 17, 24, 0.96) 100%);
+  border-color: rgba(212, 175, 55, 0.48);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55), 0 0 14px rgba(212, 175, 55, 0.2);
+}
+
+.featureCard:hover {
+  border-color: #d4af37;
+  box-shadow: 0 12px 28px rgba(212, 175, 55, 0.28), 0 0 14px rgba(212, 175, 55, 0.25);
+}
+
+/* Card Icon Box */
+.cardIconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #b58d20;
+  flex-shrink: 0;
+}
+
+:global([data-theme="dark"]) .cardIconWrap,
+[data-theme="dark"] .cardIconWrap {
+  color: #ffd54f;
+}
+
+/* Card Text Column */
+.cardTextCol {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  min-width: 0;
+  flex: 1;
+}
+
+.cardTitle {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text, #111827);
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+:global([data-theme="dark"]) .cardTitle,
+[data-theme="dark"] .cardTitle {
+  color: #f3f4f6;
+}
+
+.cardDesc {
+  font-size: 9.8px;
+  font-weight: 400;
+  color: var(--text3, #6b7280);
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+:global([data-theme="dark"]) .cardDesc,
+[data-theme="dark"] .cardDesc {
+  color: #9ca3af;
+}
+
+/* Arrow Icon */
+.cardArrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #d4af37;
+  flex-shrink: 0;
+  opacity: 0.85;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.featureCard:hover .cardArrow {
+  opacity: 1;
+  transform: translate(2px, -2px);
+}
+
+/* Active 3 cards for the selected app */
+.badgeActive {
+  opacity: 1;
+  pointer-events: auto;
+  border-color: rgba(212, 175, 55, 0.7);
+  box-shadow: 0 10px 26px rgba(212, 175, 55, 0.22), 0 0 12px rgba(212, 175, 55, 0.18);
+}
+
+/* Other 6 cards on hidden back half */
+.badgeInactive {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ── Center Phones Layout ── */
 .phonesLayout {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  max-width: 600px;
+  max-width: 380px;
   height: 410px;
+  z-index: 12;
+  flex-shrink: 0;
 }
 
 /* ── Slot System ── */
@@ -33,13 +211,13 @@
   pointer-events: all;
 }
 .left {
-  transform: translateX(-120px) scale(0.65);
+  transform: translateX(-105px) scale(0.65);
   opacity: 0.34;
   z-index: 2;
   pointer-events: none;
 }
 .right {
-  transform: translateX(120px) scale(0.65);
+  transform: translateX(105px) scale(0.65);
   opacity: 0.34;
   z-index: 2;
   pointer-events: none;
@@ -299,7 +477,29 @@
 }
 
 /* ── Responsive ── */
+@media (max-width: 1150px) {
+  .stageOrbitLayout {
+    width: 100%;
+    padding: 0 8px;
+  }
+  .orbitSideWrapLeft,
+  .orbitSideWrapRight {
+    transform: scale(0.86);
+  }
+}
+
+@media (max-width: 980px) {
+  .orbitSideWrapLeft,
+  .orbitSideWrapRight {
+    transform: scale(0.74);
+  }
+}
+
 @media (max-width: 860px) {
+  .orbitSideWrapLeft,
+  .orbitSideWrapRight {
+    display: none;
+  }
   .phonesLayout { height: 490px; }
   .left  { transform: translateX(-132px) scale(0.73); }
   .right { transform: translateX(132px)  scale(0.73); }

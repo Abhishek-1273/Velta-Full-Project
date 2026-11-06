@@ -58,10 +58,14 @@ export default function Navbar() {
   const isCaseStudy = location.pathname.startsWith('/case-studies') || location.pathname.startsWith('/products/') || ['/whatsflow', '/docket14', '/kin-property'].includes(location.pathname)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
-    window.addEventListener('scroll', onScroll)
+    const onScroll = () => {
+      const threshold = location.pathname === '/' ? 260 : 40
+      setScrolled(window.scrollY > threshold)
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    onScroll()
     return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+  }, [location.pathname])
 
   useEffect(() => {
     setOpen(false)
@@ -71,6 +75,14 @@ export default function Navbar() {
 
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : 'auto'
+    if (open) {
+      document.body.setAttribute('data-nav-open', 'true')
+    } else {
+      document.body.removeAttribute('data-nav-open')
+    }
+    return () => {
+      document.body.removeAttribute('data-nav-open')
+    }
   }, [open])
 
   const handleMouseEnter = () => {
@@ -91,207 +103,225 @@ export default function Navbar() {
         onClick={() => setOpen(false)}
       />
 
-      <nav className={`${styles.nav} ${scrolled || isCaseStudy ? styles.scrolled : ''} ${open ? styles.menuOpen : ''}`}>
-        <div className={"container " + styles.inner}>
-
-          {/* LOGO */}
-          <Link to="/" className={styles.logo}>
-            <img src="/logo/logo.png?v=2" alt="Veltaz Logo" className={styles.logoImg} />
+      <header className={`${styles.navWrapper} ${scrolled ? styles.wrapperScrolled : ''}`}>
+        <nav
+          className={`${styles.capsuleNav} ${scrolled ? styles.capsuleScrolled : ''} ${open ? styles.menuOpen : ''}`}
+        >
+          {/* LEFT: CIRCULAR WHITE LOGO BADGE (EXACT MATCH TO REFERENCE) */}
+          <Link to="/" className={styles.capsuleLogoOrb} aria-label="VeltaZ Home">
+            <img src="/logo/logo-gold.png" alt="VeltaZ" className={styles.orbImg} />
           </Link>
 
-          {/* RIGHT GROUP (Links + Actions) */}
-          <div className={styles.rightGroup}>
-            {/* NAV LINKS */}
-            <ul className={`${styles.links} ${open ? styles.open : ''}`}>
-              {/* MOBILE DRAWER HEADER LOGO */}
-              <li className={styles.mobileLogoItem}>
-                <Link to="/" className={styles.mobileLogoLink} onClick={() => setOpen(false)}>
-                  <img src="/logo/logo-gold.png" alt="Veltaz Emblem" className={styles.mobileLogoImg} />
-                </Link>
-              </li>
-
-              {/* 1. HOME */}
-              <li>
-                <Link
-                  to="/"
-                  onClick={() => setOpen(false)}
-                  className={`${styles.link} ${location.pathname === '/' ? styles.active : ''}`}
-                >
-                  Home
-                </Link>
-              </li>
-
-
-
-              {/* 3. SERVICES (CLEAN 6-SERVICE DROPDOWN) */}
-              <li
-                className={styles.dropdownParent}
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
+          {/* CENTER: DESKTOP NAV LINKS / MOBILE DRAWER */}
+          <ul className={`${styles.links} ${open ? styles.open : ''}`}>
+            {/* MOBILE DRAWER HEADER */}
+            <li className={styles.mobileDrawerHeader}>
+              <Link to="/" className={styles.mobileLogoLink} onClick={() => setOpen(false)} aria-label="VeltaZ Home">
+                <img src="/logo/logo-gold.png" alt="VeltaZ Emblem" className={styles.mobileLogoImg} />
+              </Link>
+              <button
+                type="button"
+                className={styles.mobileCloseBtn}
+                onClick={() => setOpen(false)}
+                aria-label="Close menu"
               >
-                {/* Desktop Link / Mobile Expand */}
-                <div className={styles.dropdownTriggerWrapper}>
-                  <Link
-                    to="/services"
-                    onClick={(e) => {
-                      if (window.innerWidth <= 900) {
-                        e.preventDefault()
-                        setMobileServicesOpen(prev => !prev)
-                      } else {
-                        setOpen(false)
-                      }
-                    }}
-                    className={`${styles.link} ${styles.dropdownTrigger} ${isServicesActive ? styles.active : ''}`}
-                    aria-expanded={servicesOpen}
-                    aria-haspopup="true"
-                  >
-                    <span>Services</span>
-                    <svg
-                      className={`${styles.chevron} ${(servicesOpen || mobileServicesOpen) ? styles.chevronOpen : ''}`}
-                      width="12"
-                      height="12"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <polyline points="6 9 12 15 18 9"></polyline>
-                    </svg>
-                  </Link>
-                </div>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
+            </li>
 
-                {/* DESKTOP DROPDOWN (ONLY OUR 6 REAL SERVICES) */}
-                <div className={`${styles.dropdownMenu} ${servicesOpen ? styles.dropdownVisible : ''}`}>
-                  <div className={styles.dropdownCard}>
-                    <div className={styles.dropdownHeader}>
-                      <span className={styles.dropdownEyebrow}>Our Services</span>
-                      <Link 
-                        to="/services" 
-                        className={styles.viewAllLink}
+            {/* 1. HOME */}
+            <li>
+              <Link
+                to="/"
+                onClick={() => setOpen(false)}
+                className={`${styles.link} ${location.pathname === '/' ? styles.active : ''}`}
+              >
+                Home
+              </Link>
+            </li>
+
+            {/* 2. SERVICES (CLEAN 6-SERVICE DROPDOWN) */}
+            <li
+              className={styles.dropdownParent}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
+              {/* Desktop Link / Mobile Expand */}
+              <div className={styles.dropdownTriggerWrapper}>
+                <Link
+                  to="/services"
+                  onClick={(e) => {
+                    if (window.innerWidth <= 900) {
+                      e.preventDefault()
+                      setMobileServicesOpen(prev => !prev)
+                    } else {
+                      setOpen(false)
+                    }
+                  }}
+                  className={`${styles.link} ${styles.dropdownTrigger} ${isServicesActive ? styles.active : ''}`}
+                  aria-expanded={servicesOpen}
+                  aria-haspopup="true"
+                >
+                  <span>Services</span>
+                  <svg
+                    className={`${styles.chevron} ${(servicesOpen || mobileServicesOpen) ? styles.chevronOpen : ''}`}
+                    width="11"
+                    height="11"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </Link>
+              </div>
+
+              {/* DESKTOP DROPDOWN (ONLY OUR 6 REAL SERVICES) */}
+              <div className={`${styles.dropdownMenu} ${servicesOpen ? styles.dropdownVisible : ''}`}>
+                <div className={styles.dropdownCard}>
+                  <div className={styles.dropdownHeader}>
+                    <span className={styles.dropdownEyebrow}>Our Services</span>
+                    <Link 
+                      to="/services" 
+                      className={styles.viewAllLink}
+                      onClick={() => {
+                        setServicesOpen(false)
+                        setOpen(false)
+                      }}
+                    >
+                      All Services Overview →
+                    </Link>
+                  </div>
+
+                  <div className={styles.servicesGrid}>
+                    {veltaServices.map((s, idx) => (
+                      <Link
+                        key={idx}
+                        to={s.to}
                         onClick={() => {
                           setServicesOpen(false)
                           setOpen(false)
                         }}
+                        className={styles.serviceCard}
                       >
-                        All Services Overview →
+                        <div className={styles.serviceIconWrap}>
+                          {s.icon}
+                        </div>
+                        <div className={styles.serviceText}>
+                          <span className={styles.serviceTitle}>{s.title}</span>
+                          <span className={styles.serviceDesc}>{s.desc}</span>
+                        </div>
                       </Link>
-                    </div>
-
-                    <div className={styles.servicesGrid}>
-                      {veltaServices.map((s, idx) => (
-                        <Link
-                          key={idx}
-                          to={s.to}
-                          onClick={() => {
-                            setServicesOpen(false)
-                            setOpen(false)
-                          }}
-                          className={styles.serviceCard}
-                        >
-                          <div className={styles.serviceIconWrap}>
-                            {s.icon}
-                          </div>
-                          <div className={styles.serviceText}>
-                            <span className={styles.serviceTitle}>{s.title}</span>
-                            <span className={styles.serviceDesc}>{s.desc}</span>
-                          </div>
-                        </Link>
-                      ))}
-                    </div>
+                    ))}
                   </div>
                 </div>
+              </div>
 
-                {/* MOBILE ACCORDION SUBMENU */}
-                <ul className={`${styles.mobileSubmenu} ${mobileServicesOpen ? styles.mobileSubmenuOpen : ''}`}>
-                  <li className={styles.mobileOverviewItem}>
-                      <Link
-                        to="/services"
-                        onClick={() => {
-                          setMobileServicesOpen(false)
-                          setOpen(false)
-                        }}
-                        className={styles.mobileOverviewLink}
-                      >
-                        <span>All Services Overview</span>
-                        <span className={styles.mobileOverviewArrow}>→</span>
-                      </Link>
-                    </li>
-                    {veltaServices.map((s, idx) => (
-                    <li key={idx}>
-                      <Link
-                        to={s.to}
-                        onClick={() => setOpen(false)}
-                        className={styles.mobileSubLink}
-                      >
-                        <span className={styles.mobileSubIcon}>{s.icon}</span>
-                        <span>{s.title}</span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </li>
+              {/* MOBILE ACCORDION SUBMENU */}
+              <ul className={`${styles.mobileSubmenu} ${mobileServicesOpen ? styles.mobileSubmenuOpen : ''}`}>
+                <li className={styles.mobileOverviewItem}>
+                  <Link
+                    to="/services"
+                    onClick={() => {
+                      setMobileServicesOpen(false)
+                      setOpen(false)
+                    }}
+                    className={styles.mobileOverviewLink}
+                  >
+                    <span>All Services Overview</span>
+                    <span className={styles.mobileOverviewArrow}>→</span>
+                  </Link>
+                </li>
+                {veltaServices.map((s, idx) => (
+                  <li key={idx}>
+                    <Link
+                      to={s.to}
+                      onClick={() => setOpen(false)}
+                      className={styles.mobileSubLink}
+                    >
+                      <span className={styles.mobileSubIcon}>{s.icon}</span>
+                      <span>{s.title}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </li>
 
-              {/* 4. CASE STUDIES */}
-              <li>
-                <Link
-                  to="/case-studies"
-                  onClick={() => setOpen(false)}
-                  className={`${styles.link} ${location.pathname.startsWith('/case-stud') ? styles.active : ''}`}
-                >
-                  Case Studies
-                </Link>
-              </li>
+            {/* 3. CASE STUDIES */}
+            <li>
+              <Link
+                to="/case-studies"
+                onClick={() => setOpen(false)}
+                className={`${styles.link} ${location.pathname.startsWith('/case-stud') ? styles.active : ''}`}
+              >
+                Case Studies
+              </Link>
+            </li>
 
-              {/* 5. ABOUT US */}
-              <li>
-                <Link
-                  to="/about"
-                  onClick={() => setOpen(false)}
-                  className={`${styles.link} ${location.pathname === '/about' ? styles.active : ''}`}
-                >
-                  About Us
-                </Link>
-              </li>
+            {/* 4. ABOUT US */}
+            <li>
+              <Link
+                to="/about"
+                onClick={() => setOpen(false)}
+                className={`${styles.link} ${location.pathname === '/about' ? styles.active : ''}`}
+              >
+                About Us
+              </Link>
+            </li>
 
-              {/* 5. CONTACT */}
-              <li>
-                <Link
-                  to="/contact"
-                  onClick={() => setOpen(false)}
-                  className={`${styles.link} ${location.pathname === '/contact' ? styles.active : ''}`}
-                >
-                  Contact
-                </Link>
-              </li>
+            {/* 5. CONTACT */}
+            <li>
+              <Link
+                to="/contact"
+                onClick={() => setOpen(false)}
+                className={`${styles.link} ${location.pathname === '/contact' ? styles.active : ''}`}
+              >
+                Contact
+              </Link>
+            </li>
 
-              {/* MOBILE THEME TOGGLE */}
-              <li className={styles.mobileThemeToggle}>
-                <div className={styles.mobileToggleInner}>
-                  <span>Appearance</span>
-                  <ThemeToggle />
-                </div>
-              </li>
-            </ul>
+            {/* MOBILE DRAWER FOOTER */}
+            <li className={styles.mobileDrawerFooter}>
+              <div className={styles.mobileToggleInner}>
+                <span>Appearance</span>
+                <ThemeToggle />
+              </div>
+              <Link
+                to="/contact"
+                className={styles.mobileCtaBtn}
+                onClick={() => setOpen(false)}
+              >
+                Discuss Your Business →
+              </Link>
+            </li>
+          </ul>
 
-            {/* DESKTOP ACTIONS */}
-            <div className={styles.desktopActions}>
-              <ThemeToggle />
+          {/* RIGHT: ACTIONS & MOBILE BURGER */}
+          <div className={styles.capsuleRightGroup}>
+            <div className={styles.capsuleActions}>
+              <div className={styles.themeToggleWrap}>
+                <ThemeToggle />
+              </div>
             </div>
+
+            {/* BURGER FOR MOBILE */}
+            <button
+              className={`${styles.burger} ${open ? styles.burgerOpen : ''}`}
+              onClick={() => setOpen(o => !o)}
+              aria-label="Toggle navigation menu"
+            >
+              <span /><span /><span />
+            </button>
           </div>
 
-          {/* BURGER */}
-          <button
-            className={`${styles.burger} ${open ? styles.burgerOpen : ''}`}
-            onClick={() => setOpen(o => !o)}
-            aria-label="Toggle navigation menu"
-          >
-            <span /><span /><span />
-          </button>
-
-        </div>
-      </nav>
+        </nav>
+      </header>
     </>
   )
 }
