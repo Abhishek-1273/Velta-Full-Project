@@ -623,7 +623,10 @@ export default function Home() {
         <div className="container">
           <div className={styles.resultsHeader}>
             <span className="tag">What We Do</span>
-            <h2 className={styles.resultsTitle}>One Partner.<br />Connected Capabilities.</h2>
+            <h2 className={styles.resultsTitle}>
+              One Partner.<br />
+              <span className={styles.resultsConnectedLine}>Connected Capabilities.</span>
+            </h2>
             <p className={styles.resultsSub}>
               Strategy, technology, content and automation working together, depending on what your business needs.
             </p>
