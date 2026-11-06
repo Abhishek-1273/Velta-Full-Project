@@ -74,13 +74,21 @@ export default function Navbar() {
   }, [location])
 
   useEffect(() => {
-    document.body.style.overflow = open ? 'hidden' : 'auto'
     if (open) {
+      document.documentElement.style.overflow = 'hidden'
+      document.body.style.overflow = 'hidden'
+      document.documentElement.setAttribute('data-nav-open', 'true')
       document.body.setAttribute('data-nav-open', 'true')
     } else {
+      document.documentElement.style.overflow = ''
+      document.body.style.overflow = ''
+      document.documentElement.removeAttribute('data-nav-open')
       document.body.removeAttribute('data-nav-open')
     }
     return () => {
+      document.documentElement.style.overflow = ''
+      document.body.style.overflow = ''
+      document.documentElement.removeAttribute('data-nav-open')
       document.body.removeAttribute('data-nav-open')
     }
   }, [open])
@@ -101,6 +109,9 @@ export default function Navbar() {
       <div
         className={`${styles.overlay} ${open ? styles.show : ''}`}
         onClick={() => setOpen(false)}
+        onTouchMove={(e) => {
+          if (e.cancelable) e.preventDefault()
+        }}
       />
 
       <header className={`${styles.navWrapper} ${scrolled ? styles.wrapperScrolled : ''}`}>

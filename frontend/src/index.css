@@ -6,6 +6,33 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+html,
+body {
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+/* Eliminate blue/grey tap overlay and long-press callouts on mobile */
+a,
+button,
+input,
+select,
+textarea,
+[role="button"],
+[tabindex] {
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-touch-callout: none;
+}
+
+button,
+[role="button"],
+nav,
+header,
+svg {
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 /* ── DARK MODE (default) ── */
@@ -110,6 +137,14 @@ body {
     -ms-overflow-style: none !important;
     scrollbar-width: none !important;
   }
+}
+
+/* Prevent background scrolling when mobile navigation menu is open */
+html[data-nav-open="true"],
+body[data-nav-open="true"] {
+  overflow: hidden !important;
+  overscroll-behavior: none !important;
+  touch-action: none !important;
 }
 
 /* Hide floating chatbot and scroll-to-top button when mobile navigation menu is open */

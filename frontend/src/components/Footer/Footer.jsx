@@ -78,7 +78,7 @@ export default function Footer() {
                 <a href="https://www.facebook.com/share/1bDqBcbFh8/" target="_blank" rel="noopener noreferrer" className={styles.socialCircle} aria-label="Facebook">
                   <FaFacebookF />
                 </a>
-                <a href="https://www.instagram.com/velta_ai?igsh=MTJicmZrM2kxa2dxcQ==" target="_blank" rel="noopener noreferrer" className={styles.socialCircle} aria-label="Instagram">
+                <a href="https://www.instagram.com/veltaz.ai?exln=bTR1YWQxMXYwdjJ2" target="_blank" rel="noopener noreferrer" className={styles.socialCircle} aria-label="Instagram">
                   <FaInstagram />
                 </a>
                 <a href="https://www.linkedin.com/company/velta-ai/" target="_blank" rel="noopener noreferrer" className={styles.socialCircle} aria-label="LinkedIn">

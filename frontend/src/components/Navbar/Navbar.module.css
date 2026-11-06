@@ -481,6 +481,8 @@
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   z-index: 990;
+  touch-action: none;
+  overscroll-behavior: none;
 }
 
 .overlay.show {
@@ -640,6 +642,9 @@
     box-shadow: none;
     z-index: 1050;
     overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
   }
 
   :global([data-theme="dark"]) .links,
