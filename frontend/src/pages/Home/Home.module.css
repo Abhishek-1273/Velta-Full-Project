@@ -22,6 +22,11 @@
   border-bottom: none;
 }
 
+:global([data-theme="dark"]) .hero,
+[data-theme="dark"] .hero {
+  background-color: #050505;
+}
+
 /* Scenic Background Image Layer (Ghibli / Landscape) */
 .heroBackdropWrap {
   position: absolute;
@@ -43,26 +48,54 @@
   display: block;
 }
 
+.heroImgLight {
+  display: block;
+}
+
+.heroImgDark {
+  display: none;
+}
+
+:global([data-theme="dark"]) .heroImgLight,
+[data-theme="dark"] .heroImgLight {
+  display: none;
+}
+
+:global([data-theme="dark"]) .heroImgDark,
+[data-theme="dark"] .heroImgDark {
+  display: block;
+  opacity: 1;
+  filter: saturate(1.08) contrast(1.05);
+}
+
 .heroBackdropOverlay {
   display: none;
 }
 
-/* Subtle bottom fade ONLY at the very bottom edge where mockups start */
+/* Subtle bottom fade to seamlessly merge landscape bottom into page background */
 .heroBackdropWrap::after {
   content: '';
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
-  height: 110px;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.4) 60%, var(--bg) 100%);
+  height: 120px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 50%, var(--bg) 100%);
   pointer-events: none;
-  z-index: 2;
+  z-index: 3;
 }
 
 :global([data-theme="dark"]) .heroBackdropWrap::after,
 [data-theme="dark"] .heroBackdropWrap::after {
-  background: linear-gradient(to bottom, transparent 0%, transparent 60%, var(--bg) 100%);
+  height: 150px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(5, 5, 5, 0.35) 45%,
+    rgba(5, 5, 5, 0.85) 75%,
+    var(--bg) 100%
+  );
+  z-index: 3;
 }
 
 .heroContent {
@@ -88,6 +121,12 @@
   margin-bottom: 20px;
 }
 
+:global([data-theme="dark"]) .heroEyebrow,
+[data-theme="dark"] .heroEyebrow {
+  color: #d4af37;
+  text-shadow: 0 0 16px rgba(212, 175, 55, 0.25);
+}
+
 /* Main Typography Headline Group */
 .heroTitleGroup {
   display: flex;
@@ -110,6 +149,12 @@
   letter-spacing: -0.03em;
   line-height: 1.15;
   text-shadow: 0 1px 16px rgba(255, 255, 255, 0.7);
+}
+
+:global([data-theme="dark"]) .titleLineOne,
+[data-theme="dark"] .titleLineOne {
+  color: #ffffff;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.9), 0 0 35px rgba(212, 175, 55, 0.12);
 }
 
 /* Original Clean Blue Arrow Badge */
@@ -156,6 +201,12 @@
   -webkit-touch-callout: none !important;
   -webkit-user-select: none !important;
   user-select: none !important;
+}
+
+:global([data-theme="dark"]) .growthWord,
+[data-theme="dark"] .growthWord {
+  color: #ffffff;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.9), 0 0 35px rgba(212, 175, 55, 0.12);
 }
 
 .growthText {
@@ -246,12 +297,24 @@
   text-shadow: 0 1px 16px rgba(255, 255, 255, 0.7);
 }
 
+:global([data-theme="dark"]) .titleLineThree,
+[data-theme="dark"] .titleLineThree {
+  color: #ffffff;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.9), 0 0 35px rgba(212, 175, 55, 0.12);
+}
+
 .cursorIcon {
   width: clamp(16px, 1.8vw, 24px);
   height: clamp(16px, 1.8vw, 24px);
   color: #111827;
   transform: translateY(-2px);
   filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2));
+}
+
+:global([data-theme="dark"]) .cursorIcon,
+[data-theme="dark"] .cursorIcon {
+  color: #ffffff;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.7));
 }
 
 /* Subtitle */
@@ -263,6 +326,12 @@
   max-width: 520px;
   margin: 0 auto 22px;
   text-align: center;
+}
+
+:global([data-theme="dark"]) .heroSub,
+[data-theme="dark"] .heroSub {
+  color: #cbd5e1;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.7);
 }
 
 /* Buttons */
@@ -309,8 +378,18 @@
   transition: all 0.2s ease;
 }
 
+:global([data-theme="dark"]) .linkMoreAbout,
+[data-theme="dark"] .linkMoreAbout {
+  color: #e2e8f0;
+}
+
 .linkMoreAbout:hover {
   color: #d4af37;
+}
+
+:global([data-theme="dark"]) .linkMoreAbout:hover,
+[data-theme="dark"] .linkMoreAbout:hover {
+  color: #ffd54f;
 }
 
 /* Ecosystem / Client Partner Bar (Reference style) */
@@ -325,6 +404,11 @@
   border-top: 1px dashed rgba(0, 0, 0, 0.1);
 }
 
+:global([data-theme="dark"]) .heroPartners,
+[data-theme="dark"] .heroPartners {
+  border-top-color: rgba(255, 255, 255, 0.1);
+}
+
 .partnerItem {
   font-family: var(--font-head);
   font-size: clamp(11px, 1.1vw, 13px);
@@ -336,9 +420,19 @@
   user-select: none;
 }
 
+:global([data-theme="dark"]) .partnerItem,
+[data-theme="dark"] .partnerItem {
+  color: #94a3b8;
+}
+
 .partnerItem:hover {
   color: #111827;
   transform: translateY(-1px);
+}
+
+:global([data-theme="dark"]) .partnerItem:hover,
+[data-theme="dark"] .partnerItem:hover {
+  color: #ffffff;
 }
 
 .partnerDot {

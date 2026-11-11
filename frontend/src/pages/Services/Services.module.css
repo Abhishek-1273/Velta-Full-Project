@@ -9,9 +9,9 @@
 
 /* ── Hero Section ── */
 .hero {
-  padding: 96px 0 20px;
+  padding: 92px 0 10px;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   text-align: center;
 }
 
@@ -20,6 +20,37 @@
   inset: 0;
   pointer-events: none;
   z-index: 0;
+  overflow: hidden;
+}
+
+.ambientBlobLeft {
+  position: absolute;
+  top: -60px;
+  left: -80px;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(223, 168, 64, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.ambientBlobRight {
+  position: absolute;
+  top: 40px;
+  right: -100px;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(223, 168, 64, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+:global([data-theme='dark']) .ambientBlobLeft {
+  background: radial-gradient(circle, rgba(223, 168, 64, 0.05) 0%, transparent 70%);
+}
+
+:global([data-theme='dark']) .ambientBlobRight {
+  background: radial-gradient(circle, rgba(223, 168, 64, 0.04) 0%, transparent 70%);
 }
 
 .grid {
@@ -27,42 +58,159 @@
   inset: 0;
   background-image: radial-gradient(var(--border) 1px, transparent 1px);
   background-size: 32px 32px;
-  opacity: 0.4;
-  mask-image: radial-gradient(circle at 50% 50%, black, transparent 80%);
-  -webkit-mask-image: radial-gradient(circle at 50% 50%, black, transparent 80%);
+  opacity: 0.35;
+  mask-image: radial-gradient(circle at 50% 40%, black, transparent 80%);
+  -webkit-mask-image: radial-gradient(circle at 50% 40%, black, transparent 80%);
 }
 
 .heroContent {
   position: relative;
   z-index: 1;
-  max-width: 800px;
+  max-width: 860px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 16px;
+}
+
+.eyebrowBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 16px;
+  border-radius: 9999px;
+  background: rgba(223, 168, 64, 0.08);
+  border: 1px solid rgba(223, 168, 64, 0.25);
+  color: #c4912b;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 10px rgba(223, 168, 64, 0.06);
+}
+
+:global([data-theme='dark']) .eyebrowBadge {
+  background: rgba(223, 168, 64, 0.12);
+  color: #dfa840;
+  border-color: rgba(223, 168, 64, 0.35);
+}
+
+.eyebrowDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #dfa840;
+  box-shadow: 0 0 8px rgba(223, 168, 64, 0.6);
 }
 
 .title {
   font-family: var(--font-head);
-  font-size: clamp(34px, 5.5vw, 56px);
+  font-size: clamp(32px, 5.2vw, 54px);
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -0.03em;
-  margin: 12px 0 10px;
+  margin: 0 0 10px;
+  color: var(--text);
+}
+
+.goldText {
+  background: linear-gradient(135deg, #dfa840 0%, #b8860b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
 }
 
 .sub {
-  font-size: 16px;
+  font-size: clamp(14.5px, 2vw, 16px);
   color: var(--text2);
-  line-height: 1.5;
-  max-width: 580px;
+  line-height: 1.55;
+  max-width: 620px;
+  margin: 0 auto 14px;
 }
 
-/* ── Services Grid Section ── */
+/* Minimal Capsule Filter Bar */
+.filterBarWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+  position: relative;
+  z-index: 2;
+}
+
+.filterBar {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  padding: 5px;
+  border-radius: 9999px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.filterBar::-webkit-scrollbar {
+  display: none;
+}
+
+:global([data-theme='dark']) .filterBar {
+  background: #111113;
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.filterTab {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 15px;
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text2);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.filterTab:hover {
+  color: var(--text);
+}
+
+.filterTabActive {
+  background: #111113 !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+}
+
+:global([data-theme='dark']) .filterTabActive {
+  background: #dfa840 !important;
+  color: #0b0b0d !important;
+  box-shadow: 0 4px 16px rgba(223, 168, 64, 0.35);
+}
+
+.filterIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  line-height: 1;
+}
+
+/* ── Services Carousel Section ── */
 .servicesSection {
-  padding: 48px 0 30px;
+  padding: 10px 0 60px;
   position: relative;
   z-index: 1;
+  overflow: visible;
 }
 
 .servicesGrid {

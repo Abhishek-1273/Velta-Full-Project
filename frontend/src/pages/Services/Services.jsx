@@ -1,94 +1,141 @@
 import React, { useState } from 'react'
 import { createPortal } from 'react-dom'
 import { Link } from 'react-router-dom'
-import { CoverflowCarousel } from '../../components/CoverflowCarousel/CoverflowCarousel'
+import CatalogCarousel from '../../components/CatalogCarousel/CatalogCarousel'
 import styles from './Services.module.css'
 
-const servicesSlides = [
+const catalogServices = [
   {
+    id: 'automation',
+    title: 'Automation',
+    category: 'automation',
+    desc: 'Automate repetitive workflows and scale faster.',
+    image: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1794381115/automation_cqs2uh.png',
+    link: '/contact'
+  },
+  {
+    id: 'digital-marketing',
+    title: 'Digital Marketing',
+    category: 'marketing',
+    desc: 'Grow your online presence with data-driven strategies.',
+    image: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1794381116/digital-marketing_etlhix.png',
+    link: '/contact'
+  },
+  {
+    id: 'custom-software',
+    title: 'Custom Software',
+    category: 'software',
+    desc: 'Bespoke enterprise software tailored to your workflows.',
+    image: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1794381115/custom-software_blou73.png',
+    link: '/contact'
+  },
+  {
+    id: 'app-development',
+    title: 'App Development',
+    category: 'software',
+    desc: 'Build scalable iOS and Android mobile solutions.',
+    image: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1794381115/custom-dev_qgurso.png',
+    link: '/contact'
+  },
+  {
+    id: 'website-development',
     title: 'Website Development',
-    subtitle: 'We design and build modern, high-speed business websites and web portals tailored to your brand, optimized for mobile responsiveness and Google search ranking.',
-    src: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1792408083/web_development_4k_fyoa97.jpg',
-    alt: 'Website Development Services',
-    features: ['Custom Responsive Design', 'Admin Dashboard & CMS', 'Fast Page Loading Speed', 'Lead Forms & WhatsApp Hook', 'On-Page Google SEO', 'Free SSL & Security Setup'],
-    meta: [
-      { label: 'Deliverables', value: 'Business Website & Admin Panel' },
-      { label: 'Key Features', value: 'Mobile-First, Fast & Responsive' },
-      { label: 'Tech Stack', value: 'React / Node.js / Modern Web' },
-      { label: 'SEO & Security', value: 'Google Indexing & Free SSL' }
-    ]
+    category: 'web',
+    desc: 'Modern, fast and conversion-focused websites.',
+    image: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1794381116/web-solutions_vyju3l.png',
+    link: '/website-development'
   },
   {
-    title: 'Mobile Applications',
-    subtitle: 'Custom Android and iOS applications built with React Native for fast loading, smooth user experience, instant push notifications, and cloud database sync.',
-    src: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1792408082/mobile_app_development_4k_xzvwcd.jpg',
-    alt: 'Mobile Applications Services',
-    features: ['Android & iOS Apps', 'React Native Framework', 'Instant Push Notifications', 'Secure Login & OTP', 'Clean UI & Fast Loading', 'Cloud Database Sync'],
-    meta: [
-      { label: 'Platforms', value: 'Google Play & Apple App Store' },
-      { label: 'Framework', value: 'React Native (Single Codebase)' },
-      { label: 'Core Features', value: 'Push Alerts, OTP & User Roles' },
-      { label: 'Backend', value: 'REST APIs & Cloud Database' }
-    ]
+    id: 'content-creation',
+    title: 'Content Creation',
+    category: 'content',
+    desc: 'Compelling content that builds your brand.',
+    image: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1794381115/content-creation_u47jyk.png',
+    link: '/contact'
   },
   {
-    title: 'Automation Systems',
-    subtitle: 'Automate repetitive daily tasks by connecting your lead forms, WhatsApp, Google Sheets, and CRM to respond to leads instantly without manual copy-pasting.',
-    src: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1792408086/automation_system_4k_i2rc1i.jpg',
-    alt: 'Automation Systems Services',
-    features: ['Instant Lead Routing', 'WhatsApp Automation', 'Google Sheets Integration', 'CRM Pipeline Setup', 'Automated PDF Invoices', 'Email Notification Drips'],
-    meta: [
-      { label: 'Lead Capture', value: 'Website Forms, Ads & WhatsApp' },
-      { label: 'Integrations', value: 'Google Sheets, CRM & Webhooks' },
-      { label: 'Automated Tasks', value: 'Instant Alerts & Invoice PDFs' },
-      { label: 'Follow-ups', value: 'Automated WhatsApp & Email' }
-    ]
+    id: 'seo-ranking',
+    title: 'SEO & Ranking',
+    category: 'seo',
+    desc: 'Targeted keyword ranking & Google visibility.',
+    image: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1794381116/seo-ranking_jcy3gt.png',
+    link: '/contact'
+  }
+]
+
+const FILTER_TABS = [
+  { 
+    id: 'all', 
+    label: 'All Services', 
+    icon: (
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="3" y="3" width="7" height="7" rx="1.5" />
+        <rect x="14" y="3" width="7" height="7" rx="1.5" />
+        <rect x="14" y="14" width="7" height="7" rx="1.5" />
+        <rect x="3" y="14" width="7" height="7" rx="1.5" />
+      </svg>
+    )
   },
-  {
-    title: 'Performance Marketing',
-    subtitle: 'Targeted paid advertising campaigns across Facebook, Instagram, Google, and LinkedIn engineered to generate qualified enquiries and genuine customer sales leads.',
-    src: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1792408082/digital_marketing_4k_hwpovn.jpg',
-    alt: 'Performance Marketing Services',
-    features: [
-      'Meta Ads (Facebook & Instagram)',
-      'Google Search & Keyword Ads',
-      'LinkedIn B2B Advertising',
-      'Lead Form Optimization',
-      'Ad Creatives & Copywriting',
-      'Retargeting & ROI Tracking'
-    ],
-    meta: [
-      { label: 'Ad Platforms', value: 'Meta (FB & Insta) & Google Ads' },
-      { label: 'Campaign Goal', value: 'High-Intent Customer Leads' },
-      { label: 'Targeting', value: 'Audience Research & Retargeting' },
-      { label: 'Reporting', value: 'Live Lead Alerts & ROI Analytics' }
-    ]
+  { 
+    id: 'software', 
+    label: 'Software', 
+    icon: (
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="16 18 22 12 16 6" />
+        <polyline points="8 6 2 12 8 18" />
+      </svg>
+    )
   },
-  {
-    title: 'Social Media Handling',
-    subtitle: 'Build an active and trusted brand presence on Instagram and LinkedIn with high-quality graphic posts, engaging Reels, and consistent content scheduling.',
-    src: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1792408083/social_media_linkedin_handling_4k_jbzz4r.jpg',
-    alt: 'Social Media Handling Services',
-    features: ['Instagram & LinkedIn Growth', 'Creative Posters & Banners', 'Short Video / Reels Editing', 'Engaging Captions & Hashtags', 'Monthly Content Calendar', 'Profile Branding & Optimization'],
-    meta: [
-      { label: 'Channels', value: 'Instagram, LinkedIn & Facebook' },
-      { label: 'Deliverables', value: 'Custom Posts, Reels & Stories' },
-      { label: 'Strategy', value: 'Advance Content Calendar & Copy' },
-      { label: 'Goal', value: 'Brand Trust & Organic Reach' }
-    ]
+  { 
+    id: 'web', 
+    label: 'Web', 
+    icon: (
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10" />
+        <line x1="2" y1="12" x2="22" y2="12" />
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+      </svg>
+    )
   },
-  {
-    title: 'Search Engine Optimization (SEO)',
-    subtitle: 'Improve your Google search rankings and local Google Maps visibility so potential customers find your business first when searching for your services.',
-    src: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1792408089/seo_google_ranking_4k_wrf7wj.jpg',
-    alt: 'Search Engine Optimization (SEO) Services',
-    features: ['Google 1st Page Keyword Focus', 'Google Business Profile (GMB)', 'On-Page SEO & Meta Tags', 'Website Speed Optimization', 'Local Search & Map Ranking', 'Monthly Keyword Reports'],
-    meta: [
-      { label: 'Search Ranking', value: 'Targeted Keyword Ranking' },
-      { label: 'Local Visibility', value: 'Google Business Profile (GMB)' },
-      { label: 'Optimization', value: 'Page Speed, Meta & Sitemaps' },
-      { label: 'Reporting', value: 'Transparent Monthly Analytics' }
-    ]
+  { 
+    id: 'automation', 
+    label: 'Automation', 
+    icon: (
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+      </svg>
+    )
+  },
+  { 
+    id: 'marketing', 
+    label: 'Marketing', 
+    icon: (
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <line x1="18" y1="20" x2="18" y2="10" />
+        <line x1="12" y1="20" x2="12" y2="4" />
+        <line x1="6" y1="20" x2="6" y2="14" />
+      </svg>
+    )
+  },
+  { 
+    id: 'content', 
+    label: 'Content', 
+    icon: (
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 20h9" />
+        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+      </svg>
+    )
+  },
+  { 
+    id: 'seo', 
+    label: 'SEO', 
+    icon: (
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="11" cy="11" r="8" />
+        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+      </svg>
+    )
   }
 ]
 
@@ -121,8 +168,12 @@ const socialImages = [
 ]
 
 export default function Services() {
-  const [activeIdx, setActiveIdx] = useState(0)
+  const [activeTab, setActiveTab] = useState('all')
   const [activeLightboxImg, setActiveLightboxImg] = useState(null)
+
+  const handleTabClick = (tab) => {
+    setActiveTab(tab.id)
+  }
 
   React.useEffect(() => {
     if (activeLightboxImg) {
@@ -138,38 +189,56 @@ export default function Services() {
   return (
     <div className={styles.page}>
       
-      {/* HERO */}
+      {/* MINIMAL & SIMPLE SERVICE CATALOG HERO */}
       <section className={styles.hero}>
         <div className={styles.bg}>
+          <div className={styles.ambientBlobLeft} />
+          <div className={styles.ambientBlobRight} />
           <div className={styles.grid} />
         </div>
         <div className="container">
           <div className={styles.heroContent}>
-            <span className="tag">Service Catalog</span>
+            <div className={styles.eyebrowBadge}>
+              <span className={styles.eyebrowDot} />
+              <span>Service Catalog</span>
+            </div>
             <h1 className={styles.title}>
               Engineering Quality<br />
-              <span className="gradient-text">Operational Services</span>
+              <span className={styles.goldText}>Operational Services</span>
             </h1>
             <p className={styles.sub}>
-              Swipe or drag to explore the complete catalog of custom development, automation pipelines, and marketing services we engineer at VeltaZ.
+              Swipe or explore the complete catalog of custom development, automation pipelines, and marketing services we engineer at VeltaZ.
             </p>
+
+            {/* MINIMAL CAPSULE FILTER BAR */}
+            <div className={styles.filterBarWrapper}>
+              <div className={styles.filterBar}>
+                {FILTER_TABS.map((tab) => {
+                  const isActive = activeTab === tab.id
+                  return (
+                    <button
+                      key={tab.id}
+                      type="button"
+                      className={`${styles.filterTab} ${isActive ? styles.filterTabActive : ''}`}
+                      onClick={() => handleTabClick(tab)}
+                    >
+                      <span className={styles.filterIcon}>{tab.icon}</span>
+                      <span>{tab.label}</span>
+                    </button>
+                  )
+                })}
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* DYNAMIC COVERFLOW CAROUSEL */}
+      {/* CATALOG CAROUSEL MATCHING IMAGE 2 */}
       <section className={styles.servicesSection}>
         <div className="container" style={{ overflow: 'visible' }}>
-          <CoverflowCarousel 
-            slides={servicesSlides} 
-            cardWidth="clamp(160px, 22vw, 220px)"
-            rotate={35}
-            depth={0.45}
-            perspective={4}
-            loop={true}
-            showCaption={true}
-            showPagination={true}
-            showNavigation={false}
+          <CatalogCarousel 
+            services={catalogServices}
+            activeCategory={activeTab}
           />
         </div>
       </section>

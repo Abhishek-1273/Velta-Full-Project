@@ -416,16 +416,22 @@ export default function Home() {
 
       {/* MODERN TYPOGRAPHY HERO (INSPIRED BY REFERENCE) */}
       <section className={styles.hero}>
-        {/* Optional Background Image Layer */}
+        {/* Background Image Layer (Day & Real Night Version) */}
         <div className={styles.heroBackdropWrap}>
           <img
             src="https://res.cloudinary.com/dqc1awrnc/image/upload/f_auto,q_auto/v1793958357/hero-landscape_vsrmmk.png"
-            alt=""
+            alt="VeltaZ Scenic Day Landscape"
             decoding="async"
-            className={styles.heroBackdropImg}
+            className={`${styles.heroBackdropImg} ${styles.heroImgLight}`}
             onError={(e) => { e.currentTarget.style.display = 'none' }}
           />
-          <div className={styles.heroBackdropOverlay} />
+          <img
+            src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1794378243/hero-landscape_sqqzzt.png"
+            alt="VeltaZ Scenic Night Landscape"
+            decoding="async"
+            className={`${styles.heroBackdropImg} ${styles.heroImgDark}`}
+            onError={(e) => { e.currentTarget.style.display = 'none' }}
+          />
         </div>
 
         <div className="container" style={{ position: 'relative', zIndex: 10, width: '100%' }}>
