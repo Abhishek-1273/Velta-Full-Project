@@ -2737,25 +2737,48 @@
   z-index: 1;
 }
 
-.tagDashedPath {
-  stroke: #cbd5e1;
-  stroke-width: 2.2;
+.tagBaseTrack {
+  stroke: rgba(223, 168, 64, 0.22);
+  stroke-width: 2;
   stroke-dasharray: 6 6;
   fill: none;
 }
 
-:global([data-theme="dark"]) .tagDashedPath {
-  stroke: rgba(255, 255, 255, 0.18);
+:global([data-theme="light"]) .tagBaseTrack {
+  stroke: rgba(0, 0, 0, 0.12);
 }
 
-.energyPulseDot {
-  filter: drop-shadow(0 0 6px #dfa840);
+.tagShootingStar {
+  filter: drop-shadow(0 0 6px #ffd700) drop-shadow(0 0 16px rgba(223, 168, 64, 0.8));
   pointer-events: none;
 }
 
-.energyPulseAura {
-  pointer-events: none;
-  filter: blur(2px);
+:global([data-theme="light"]) .tagShootingStar {
+  filter: drop-shadow(0 0 5px rgba(196, 145, 43, 0.85)) drop-shadow(0 0 12px rgba(223, 168, 64, 0.5));
+}
+
+.tagLaserBeam {
+  stroke: url(#laserBeamGrad);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  fill: none;
+  filter: drop-shadow(0 0 6px #dfa840) drop-shadow(0 0 14px rgba(223, 168, 64, 0.6));
+  stroke-dasharray: 60 840;
+  animation: laserBeamFlow 3.8s linear infinite;
+}
+
+:global([data-theme="light"]) .tagLaserBeam {
+  stroke: #c4912b;
+  filter: drop-shadow(0 0 6px rgba(196, 145, 43, 0.6));
+}
+
+@keyframes laserBeamFlow {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -900;
+  }
 }
 
 .tagCardItem {

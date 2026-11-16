@@ -761,32 +761,61 @@ export default function Home() {
           </div>
 
           <div className={styles.tagFlowContainer}>
-            {/* Dashed Connecting S-Curve Line with Drawing Animation & Live Gold Energy Pulse */}
+            {/* Elegant Connecting S-Curve with Traveling Gold Shooting Star */}
             <svg className={styles.tagDashedSvg} viewBox="0 0 600 750" preserveAspectRatio="none">
-              <motion.path
-                id="sCurvePath"
+              <defs>
+                <linearGradient id="meteorTailGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#dfa840" stopOpacity="0" />
+                  <stop offset="50%" stopColor="#dfa840" stopOpacity="0.4" />
+                  <stop offset="85%" stopColor="#ffd700" stopOpacity="0.85" />
+                  <stop offset="100%" stopColor="#ffffff" stopOpacity="1" />
+                </linearGradient>
+              </defs>
+
+              {/* 1. Base Subtle Guide Track */}
+              <path
                 d="M 430,70 C 250,140 180,210 170,270 C 160,350 420,390 430,470 C 440,550 180,590 170,660"
-                className={styles.tagDashedPath}
-                initial={{ pathLength: 0, opacity: 0 }}
-                whileInView={{ pathLength: 1, opacity: 1 }}
-                viewport={{ once: true, margin: '-60px' }}
-                transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+                className={styles.tagBaseTrack}
               />
-              {/* Continuous Traveling Energy Laser Pulse */}
-              <circle r="5" fill="#dfa840" className={styles.energyPulseDot}>
+
+              {/* 2. Traveling Gold Shooting Star / Meteor along S-Curve */}
+              <g className={styles.tagShootingStar}>
                 <animateMotion
-                  dur="4.5s"
+                  dur="4.2s"
                   repeatCount="indefinite"
+                  rotate="auto"
                   path="M 430,70 C 250,140 180,210 170,270 C 160,350 420,390 430,470 C 440,550 180,590 170,660"
                 />
-              </circle>
-              <circle r="12" fill="rgba(223, 168, 64, 0.3)" className={styles.energyPulseAura}>
-                <animateMotion
-                  dur="4.5s"
-                  repeatCount="indefinite"
-                  path="M 430,70 C 250,140 180,210 170,270 C 160,350 420,390 430,470 C 440,550 180,590 170,660"
+                {/* Outer Glow Tail */}
+                <line
+                  x1="-55"
+                  y1="0"
+                  x2="0"
+                  y2="0"
+                  stroke="url(#meteorTailGrad)"
+                  strokeWidth="5"
+                  strokeLinecap="round"
+                  opacity="0.4"
                 />
-              </circle>
+                {/* Core Streamlined Comet Tail */}
+                <line
+                  x1="-65"
+                  y1="0"
+                  x2="0"
+                  y2="0"
+                  stroke="url(#meteorTailGrad)"
+                  strokeWidth="2.8"
+                  strokeLinecap="round"
+                />
+                {/* Soft Star Aura Halo */}
+                <circle cx="0" cy="0" r="10" fill="rgba(223, 168, 64, 0.25)" />
+                {/* Warm Gold Corona */}
+                <circle cx="0" cy="0" r="5" fill="rgba(255, 215, 0, 0.75)" />
+                {/* Brilliant Star Flare / Glint */}
+                <path d="M 0 -7 L 0 7 M -7 0 L 7 0" stroke="#ffffff" strokeWidth="1" opacity="0.9" />
+                {/* Pure White Hot Star Nucleus */}
+                <circle cx="0" cy="0" r="2.6" fill="#ffffff" />
+              </g>
             </svg>
 
             {capabilities.map((c) => (

@@ -341,6 +341,18 @@ export default function PhoneCarousel({ images }) {
     setIsHovered(false)
   }
 
+  const touchStartXRef = useRef(0)
+  const handleTouchStart = (e) => {
+    touchStartXRef.current = e.touches[0].clientX
+  }
+  const handleTouchEnd = (e) => {
+    const diff = touchStartXRef.current - e.changedTouches[0].clientX
+    if (Math.abs(diff) > 40) {
+      if (diff > 0) next()
+      else prev()
+    }
+  }
+
   const getSlot = (i) => {
     const diff = (i - activeIndex + n) % n
     if (diff === 0) return 'center'
@@ -460,7 +472,11 @@ export default function PhoneCarousel({ images }) {
         </div>
 
         {/* ── CENTER 3-PHONE CAROUSEL ── */}
-        <div className={styles.phonesLayout}>
+        <div
+          className={styles.phonesLayout}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
           {images.map((img, i) => {
             const slot = getSlot(i)
             const isCenter = slot === 'center'
