@@ -323,9 +323,102 @@ function NumberTicker({ value, decimals = 0, suffix = '', prefix = '' }) {
   )
 }
 
+// 4 Distinct Luxury Vector Geometries (Zero Emojis)
+const SparkleVectorShape = ({ type }) => {
+  switch (type) {
+    case 0:
+      // 1. Classic 4-Point Concave Diamond Star
+      return (
+        <svg viewBox="0 0 24 24" width="100%" height="100%" fill="none">
+          <path
+            d="M12 0 C12 7 17 12 24 12 C17 12 12 17 12 24 C12 17 7 12 0 12 C7 12 12 7 12 0 Z"
+            fill="#ffd700"
+          />
+          <path
+            d="M12 4 C12 8 16 12 20 12 C16 12 12 16 12 20 C12 16 8 12 4 12 C8 12 12 8 12 4 Z"
+            fill="#ffffff"
+            opacity="0.9"
+          />
+        </svg>
+      )
+    case 1:
+      // 2. 8-Point Cosmic Star (4 Major Beams + 4 Diagonal Rays)
+      return (
+        <svg viewBox="0 0 24 24" width="100%" height="100%" fill="none">
+          <path
+            d="M12 4 L14 10 L20 12 L14 14 L12 20 L10 14 L4 12 L10 10 Z"
+            fill="#dfa840"
+            opacity="0.7"
+            transform="rotate(45 12 12)"
+          />
+          <path
+            d="M12 1 L14.5 9.5 L23 12 L14.5 14.5 L12 23 L9.5 14.5 L1 12 L9.5 9.5 Z"
+            fill="#ffd700"
+          />
+          <circle cx="12" cy="12" r="3.2" fill="#ffffff" />
+        </svg>
+      )
+    case 2:
+      // 3. Starlight Flare Cross with Halo
+      return (
+        <svg viewBox="0 0 24 24" width="100%" height="100%" fill="none">
+          <line x1="12" y1="0" x2="12" y2="24" stroke="#ffd700" strokeWidth="2.2" strokeLinecap="round" />
+          <line x1="0" y1="12" x2="24" y2="12" stroke="#ffd700" strokeWidth="2.2" strokeLinecap="round" />
+          <circle cx="12" cy="12" r="5.5" fill="rgba(255, 215, 0, 0.35)" />
+          <circle cx="12" cy="12" r="2.8" fill="#ffffff" />
+        </svg>
+      )
+    default:
+      // 4. Shimmering Specular Golden Orb
+      return (
+        <svg viewBox="0 0 24 24" width="100%" height="100%" fill="none">
+          <circle cx="12" cy="12" r="8" fill="rgba(223, 168, 64, 0.3)" />
+          <circle cx="12" cy="12" r="5" fill="#ffd700" />
+          <circle cx="12" cy="12" r="2.5" fill="#ffffff" />
+        </svg>
+      )
+  }
+}
+
 export default function Home() {
   const [activeBuildIdx, setActiveBuildIdx] = useState(0)
   const [isGrowthActive, setIsGrowthActive] = useState(false)
+  const [sparkles, setSparkles] = useState([])
+
+  const triggerProfessionalSparkles = () => {
+    const count = 40
+    const newSparkles = Array.from({ length: count }, (_, i) => {
+      // 360 degree radial spread with subtle natural jitter
+      const angle = (i / count) * 2 * Math.PI + (Math.random() - 0.5) * 0.45
+      // Massive cinematic distance: 300px to 800px so sparkles glide smoothly far across the screen
+      const distance = 300 + Math.random() * 500
+      const size = 10 + Math.random() * 8 // Crisp, elegant smaller size (10px to 18px)
+      const type = i % 4 // Alternate through the 4 distinct luxury shapes
+      return {
+        id: Date.now() + i + Math.random(),
+        type,
+        size,
+        x: Math.cos(angle) * distance,
+        y: Math.sin(angle) * (distance * 0.68),
+        scale: Math.random() * 0.35 + 0.75, // Subtle, refined scaling
+        rotate: (Math.random() - 0.5) * 220, // Gentle, silky drift rotation
+      }
+    })
+    setSparkles(newSparkles)
+    setTimeout(() => setSparkles([]), 1950)
+  }
+
+  const handleToggleGrowth = () => {
+    setIsGrowthActive((prev) => {
+      const next = !prev
+      // Only fire sparkles when turning ON (never when turning OFF)
+      if (next) {
+        triggerProfessionalSparkles()
+      }
+      return next
+    })
+  }
+
   const prevBuild = () => setActiveBuildIdx((i) => (i - 1 + featuredBuilds.length) % featuredBuilds.length)
   const nextBuild = () => setActiveBuildIdx((i) => (i + 1) % featuredBuilds.length)
 
@@ -528,17 +621,20 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.55, delay: 0.08 }}
               >
-                <span>We build systems for</span>
-                <motion.span
-                  className={styles.heroArrowPill}
-                  whileHover={{ scale: 1.15, rotate: 45 }}
-                  transition={{ type: 'spring', stiffness: 400, damping: 15 }}
-                >
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="7" y1="17" x2="17" y2="7" />
-                    <polyline points="7 7 17 7 17 17" />
-                  </svg>
-                </motion.span>
+                <span className={styles.titleTextMain}>We build systems</span>
+                <span className={styles.titleTextForGroup}>
+                  <span>for</span>
+                  <motion.span
+                    className={styles.heroArrowPill}
+                    whileHover={{ scale: 1.15, rotate: 45 }}
+                    transition={{ type: 'spring', stiffness: 400, damping: 15 }}
+                  >
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="7" y1="17" x2="17" y2="7" />
+                      <polyline points="7 7 17 7 17 17" />
+                    </svg>
+                  </motion.span>
+                </span>
               </motion.div>
 
               {/* Line 2: gr [TOGGLE] wth */}
@@ -548,23 +644,53 @@ export default function Home() {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.16 }}
               >
-                <div className={styles.growthWord}>
+                <div className={`${styles.growthWord} ${isGrowthActive ? styles.growthWordActive : ''}`}>
                   <span className={styles.growthText}>gr</span>
                   {/* Interactive 3D Toggle Pill for "o" */}
-                  <button
-                    type="button"
-                    className={`${styles.growthToggle} ${isGrowthActive ? styles.growthToggleActive : ''}`}
-                    onClick={() => setIsGrowthActive(!isGrowthActive)}
-                    style={{ justifyContent: isGrowthActive ? 'flex-end' : 'flex-start' }}
-                    aria-label="Toggle Growth Mode"
-                    title="Click to toggle growth mode"
-                  >
-                    <motion.span
-                      layout
-                      className={styles.toggleThumb}
-                      transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-                    />
-                  </button>
+                  <div className={styles.toggleOuterWrap}>
+                    <button
+                      type="button"
+                      className={`${styles.growthToggle} ${isGrowthActive ? styles.growthToggleActive : ''}`}
+                      onClick={handleToggleGrowth}
+                      style={{ justifyContent: isGrowthActive ? 'flex-end' : 'flex-start' }}
+                      aria-label="Toggle Growth Mode"
+                      title="Click to toggle growth mode"
+                    >
+                      <motion.span
+                        layout
+                        className={styles.toggleThumb}
+                        transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+                      />
+                    </button>
+
+                    {/* Professional Luxury Vector Diamond Sparkles (Zero Emojis, 4 Distinct Shapes) */}
+                    <AnimatePresence>
+                      {sparkles.map((s) => (
+                        <motion.span
+                          key={s.id}
+                          className={styles.sparkleParticle}
+                          style={{ width: s.size, height: s.size }}
+                          initial={{ opacity: 0, scale: 0, x: 0, y: 0 }}
+                          animate={{ 
+                            opacity: [0, 1, 0.9, 0], 
+                            scale: [0, s.scale * 1.15, s.scale * 0.95, 0], 
+                            x: s.x, 
+                            y: s.y, 
+                            rotate: s.rotate 
+                          }}
+                          exit={{ opacity: 0 }}
+                          transition={{ 
+                            duration: 1.85, 
+                            ease: [0.22, 1, 0.36, 1],
+                            opacity: { duration: 1.85, times: [0, 0.12, 0.72, 1], ease: 'easeInOut' },
+                            scale: { duration: 1.85, times: [0, 0.15, 0.75, 1], ease: [0.22, 1, 0.36, 1] },
+                          }}
+                        >
+                          <SparkleVectorShape type={s.type} />
+                        </motion.span>
+                      ))}
+                    </AnimatePresence>
+                  </div>
                   <span className={styles.growthText}>wth</span>
                 </div>
               </motion.div>
@@ -761,61 +887,55 @@ export default function Home() {
           </div>
 
           <div className={styles.tagFlowContainer}>
-            {/* Elegant Connecting S-Curve with Traveling Gold Shooting Star */}
+            {/* Elegant Connecting S-Curve with Traveling Continuous Fading Gold Laser */}
             <svg className={styles.tagDashedSvg} viewBox="0 0 600 750" preserveAspectRatio="none">
               <defs>
-                <linearGradient id="meteorTailGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#dfa840" stopOpacity="0" />
-                  <stop offset="50%" stopColor="#dfa840" stopOpacity="0.4" />
-                  <stop offset="85%" stopColor="#ffd700" stopOpacity="0.85" />
-                  <stop offset="100%" stopColor="#ffffff" stopOpacity="1" />
+                {/* Continuous Smooth Fading Mask along Motion Vector */}
+                <linearGradient id="laserTailSmoothGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  {/* Farthest tail tip (-95px): completely transparent */}
+                  <stop offset="0%" stopColor="#000000" stopOpacity="0" />
+                  <stop offset="15%" stopColor="#ffffff" stopOpacity="0.08" />
+                  <stop offset="35%" stopColor="#ffffff" stopOpacity="0.25" />
+                  <stop offset="60%" stopColor="#ffffff" stopOpacity="0.55" />
+                  <stop offset="85%" stopColor="#ffffff" stopOpacity="0.88" />
+                  {/* Head (0px): full 100% solid opacity */}
+                  <stop offset="94%" stopColor="#ffffff" stopOpacity="1" />
+                  {/* Crisp cutoff right in front of head (+4px) */}
+                  <stop offset="98%" stopColor="#000000" stopOpacity="0" />
+                  <stop offset="100%" stopColor="#000000" stopOpacity="0" />
                 </linearGradient>
+
+                <mask id="laserTailMask" maskUnits="userSpaceOnUse" x="0" y="0" width="600" height="750">
+                  <g>
+                    <animateMotion
+                      dur="3.8s"
+                      repeatCount="indefinite"
+                      rotate="auto"
+                      path="M 430,70 C 250,140 180,210 170,270 C 160,350 420,390 430,470 C 440,550 180,590 170,660"
+                    />
+                    <rect
+                      x="-95"
+                      y="-30"
+                      width="105"
+                      height="60"
+                      fill="url(#laserTailSmoothGrad)"
+                    />
+                  </g>
+                </mask>
               </defs>
 
-              {/* 1. Base Subtle Guide Track */}
+              {/* 1. Base Subtle Guide Track (Completely Untouched) */}
               <path
                 d="M 430,70 C 250,140 180,210 170,270 C 160,350 420,390 430,470 C 440,550 180,590 170,660"
                 className={styles.tagBaseTrack}
               />
 
-              {/* 2. Traveling Gold Shooting Star / Meteor along S-Curve */}
-              <g className={styles.tagShootingStar}>
-                <animateMotion
-                  dur="4.2s"
-                  repeatCount="indefinite"
-                  rotate="auto"
-                  path="M 430,70 C 250,140 180,210 170,270 C 160,350 420,390 430,470 C 440,550 180,590 170,660"
-                />
-                {/* Outer Glow Tail */}
-                <line
-                  x1="-55"
-                  y1="0"
-                  x2="0"
-                  y2="0"
-                  stroke="url(#meteorTailGrad)"
-                  strokeWidth="5"
-                  strokeLinecap="round"
-                  opacity="0.4"
-                />
-                {/* Core Streamlined Comet Tail */}
-                <line
-                  x1="-65"
-                  y1="0"
-                  x2="0"
-                  y2="0"
-                  stroke="url(#meteorTailGrad)"
-                  strokeWidth="2.8"
-                  strokeLinecap="round"
-                />
-                {/* Soft Star Aura Halo */}
-                <circle cx="0" cy="0" r="10" fill="rgba(223, 168, 64, 0.25)" />
-                {/* Warm Gold Corona */}
-                <circle cx="0" cy="0" r="5" fill="rgba(255, 215, 0, 0.75)" />
-                {/* Brilliant Star Flare / Glint */}
-                <path d="M 0 -7 L 0 7 M -7 0 L 7 0" stroke="#ffffff" strokeWidth="1" opacity="0.9" />
-                {/* Pure White Hot Star Nucleus */}
-                <circle cx="0" cy="0" r="2.6" fill="#ffffff" />
-              </g>
+              {/* 2. Traveling Gold Line with Continuous Smooth Fading Tail (Clean, No Blurry Glow) */}
+              <path
+                d="M 430,70 C 250,140 180,210 170,270 C 160,350 420,390 430,470 C 440,550 180,590 170,660"
+                mask="url(#laserTailMask)"
+                className={styles.smoothLaserBeam}
+              />
             </svg>
 
             {capabilities.map((c) => (

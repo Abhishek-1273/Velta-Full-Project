@@ -49,8 +49,8 @@
   pointer-events: none;
   display: block;
   transition: opacity 0.8s cubic-bezier(0.25, 1, 0.35, 1),
-              filter 0.8s cubic-bezier(0.25, 1, 0.35, 1),
-              transform 0.8s cubic-bezier(0.25, 1, 0.35, 1);
+    filter 0.8s cubic-bezier(0.25, 1, 0.35, 1),
+    transform 0.8s cubic-bezier(0.25, 1, 0.35, 1);
   will-change: opacity, filter, transform;
 }
 
@@ -107,13 +107,11 @@
   right: 0;
   bottom: 0;
   height: 150px;
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    rgba(5, 5, 5, 0.35) 45%,
-    rgba(5, 5, 5, 0.85) 75%,
-    #050505 100%
-  );
+  background: linear-gradient(to bottom,
+      transparent 0%,
+      rgba(5, 5, 5, 0.35) 45%,
+      rgba(5, 5, 5, 0.85) 75%,
+      #050505 100%);
   pointer-events: none;
   z-index: 4;
   opacity: 0;
@@ -170,6 +168,7 @@
     transform: translate(-50%, -50%) scale(0.94);
     opacity: 0.65;
   }
+
   100% {
     transform: translate(-50%, -50%) scale(1.08);
     opacity: 1;
@@ -180,6 +179,7 @@
 .heroEyebrow {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   font-family: var(--font-head);
   font-size: 11px;
@@ -195,6 +195,28 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
+  white-space: nowrap !important;
+  max-width: 95vw;
+}
+
+@media (max-width: 520px) {
+  .heroEyebrow {
+    font-size: clamp(8.5px, 2.6vw, 10px);
+    letter-spacing: 0.12em;
+    padding: 5px 13px;
+    gap: 6px;
+    white-space: nowrap !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .heroEyebrow {
+    font-size: 8px;
+    letter-spacing: 0.08em;
+    padding: 4px 10px;
+    gap: 5px;
+    white-space: nowrap !important;
+  }
 }
 
 :global([data-theme="dark"]) .heroEyebrow,
@@ -218,10 +240,13 @@
 }
 
 @keyframes pulseDot {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 0.45;
     transform: scale(0.85);
   }
+
   50% {
     opacity: 1;
     transform: scale(1.2);
@@ -234,8 +259,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  text-align: center;
   margin-bottom: 22px;
   user-select: none;
+  width: 100%;
 }
 
 /* Line 1: We build systems for ↗ */
@@ -243,14 +271,50 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
   gap: 12px;
   font-family: var(--font-head);
-  font-size: clamp(28px, 4vw, 56px);
+  font-size: clamp(26px, 4vw, 56px);
   font-weight: 800;
   color: #111827;
   letter-spacing: -0.03em;
   line-height: 1.15;
   text-shadow: 0 1px 16px rgba(255, 255, 255, 0.7);
+  width: 100%;
+}
+
+.titleTextMain {
+  display: inline-block;
+  text-align: center;
+}
+
+.titleTextForGroup {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+@media (max-width: 600px) {
+  .titleLineOne {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 4px;
+    font-size: clamp(24px, 6.5vw, 32px);
+  }
+
+  .titleTextMain {
+    width: 100%;
+    text-align: center;
+  }
+
+  .titleTextForGroup {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
 }
 
 :global([data-theme="dark"]) .titleLineOne,
@@ -331,7 +395,7 @@
   background: linear-gradient(135deg, #e6ca65 0%, #d4af37 50%, #b38b1f 100%);
   border: none;
   padding: 4px 5px;
-  margin: 20px 6px 0px 8px;
+  margin: 25px 6px 0px 8px;
   transform: translateY(0.15em);
   cursor: pointer;
   box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.18), 0 8px 24px rgba(212, 175, 55, 0.38);
@@ -399,6 +463,30 @@
   text-shadow: 0 1px 16px rgba(255, 255, 255, 0.7);
 }
 
+.toggleOuterWrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+/* Golden Sparkle Star Burst - Professional Vector Diamond (Flying Far & Wide) */
+.sparkleParticle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: center center;
+  pointer-events: none;
+  filter: drop-shadow(0 0 3px rgba(255, 215, 0, 0.95)) drop-shadow(0 0 7px rgba(223, 168, 64, 0.45));
+  z-index: 999;
+  user-select: none;
+  will-change: transform, opacity;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 :global([data-theme="dark"]) .titleLineThree,
 [data-theme="dark"] .titleLineThree {
   color: #ffffff;
@@ -452,7 +540,8 @@
   align-items: center;
   justify-content: center;
   background: linear-gradient(135deg, #f0ca52 0%, #dfa840 50%, #c4912b 100%);
-  color: #111113 !important; /* Bold deep dark text on gold for WCAG AAA & luxury aesthetic */
+  color: #111113 !important;
+  /* Bold deep dark text on gold for WCAG AAA & luxury aesthetic */
   padding: 13px 34px;
   border-radius: 9999px;
   font-family: var(--font-head);
@@ -460,25 +549,32 @@
   font-weight: 800;
   letter-spacing: -0.01em;
   text-decoration: none;
-  border: 1px solid rgba(255, 255, 255, 0.45);
-  box-shadow: 0 8px 26px rgba(223, 168, 64, 0.38), 0 2px 6px rgba(0, 0, 0, 0.12);
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  /* Pure Inner Inset Shadow from CSS lesson: inset 0 2px 8px rgba(...) */
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
   isolation: isolate;
   user-select: none;
   -webkit-user-select: none;
+  cursor: pointer;
 }
 
 :global([data-theme="dark"]) .btnEstimate,
 [data-theme="dark"] .btnEstimate {
   background: linear-gradient(135deg, #f5d061 0%, #dfa840 50%, #b8861e 100%);
   color: #111113 !important;
-  box-shadow: 0 10px 32px rgba(223, 168, 64, 0.35), 0 0 22px rgba(223, 168, 64, 0.2);
-  border-color: rgba(255, 255, 255, 0.32);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .btnEstimate:hover {
-  box-shadow: 0 14px 38px rgba(223, 168, 64, 0.55), 0 0 28px rgba(223, 168, 64, 0.32);
+  transform: translateY(-1px);
+  box-shadow: inset 0 3px 10px rgba(0, 0, 0, 0.45);
+}
+
+.btnEstimate:active {
+  transform: translateY(1px);
+  box-shadow: inset 0 4px 12px rgba(0, 0, 0, 0.6);
 }
 
 /* Magic UI Moving Shimmer Sweep */
@@ -488,12 +584,10 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.48) 50%,
-    transparent 100%
-  );
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.48) 50%,
+      transparent 100%);
   transform: translateX(-150%) skewX(-24deg);
   animation: shimmerSweep 3.6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   pointer-events: none;
@@ -504,7 +598,9 @@
   0% {
     transform: translateX(-150%) skewX(-24deg);
   }
-  38%, 100% {
+
+  38%,
+  100% {
     transform: translateX(250%) skewX(-24deg);
   }
 }
@@ -945,14 +1041,12 @@
   height: 250%;
   top: -75%;
   left: -75%;
-  background: conic-gradient(
-    from 0deg,
-    transparent 0deg,
-    transparent 300deg,
-    rgba(223, 168, 64, 0.25) 325deg,
-    #dfa840 350deg,
-    #fff5d0 360deg
-  );
+  background: conic-gradient(from 0deg,
+      transparent 0deg,
+      transparent 300deg,
+      rgba(223, 168, 64, 0.25) 325deg,
+      #dfa840 350deg,
+      #fff5d0 360deg);
   animation: borderBeamSpin 7.5s linear infinite;
   will-change: transform;
 }
@@ -961,6 +1055,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -1020,7 +1115,8 @@
   align-items: center;
   justify-content: center;
   background: linear-gradient(135deg, #f0ca52 0%, #dfa840 50%, #c4912b 100%);
-  color: #111113 !important; /* Bold deep dark text on gold */
+  color: #111113 !important;
+  /* Bold deep dark text on gold */
   padding: 14px 38px;
   border-radius: 9999px;
   font-family: var(--font-head);
@@ -1031,7 +1127,7 @@
   border: 1px solid rgba(255, 255, 255, 0.45);
   box-shadow: 0 10px 30px rgba(223, 168, 64, 0.38), 0 2px 6px rgba(0, 0, 0, 0.12);
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   isolation: isolate;
   user-select: none;
 }
@@ -1344,8 +1440,8 @@
   text-align: left;
   transform: perspective(1000px) rotateX(var(--card-tilt-x, 0deg)) rotateY(var(--card-tilt-y, 0deg));
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.3s ease,
-              border-color 0.3s ease;
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
   will-change: transform;
 }
 
@@ -1445,10 +1541,13 @@
 }
 
 @keyframes livePing {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: scale(0.9);
     opacity: 0.6;
   }
+
   50% {
     transform: scale(1.25);
     opacity: 1;
@@ -2423,9 +2522,8 @@
   display: flex;
   flex-direction: column;
   box-shadow: 0 4px 20px -6px rgba(0, 0, 0, 0.05);
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.3s ease;
+  transition: box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.3s ease;
   cursor: pointer;
   isolation: isolate;
 }
@@ -2445,20 +2543,16 @@
   opacity: 0;
   transition: opacity 0.3s ease;
   z-index: 0;
-  background: radial-gradient(
-    320px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    rgba(223, 168, 64, 0.12),
-    transparent 65%
-  );
+  background: radial-gradient(320px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(223, 168, 64, 0.12),
+      transparent 65%);
 }
 
 :global([data-theme="dark"]) .serviceCardSpotlight,
 [data-theme="dark"] .serviceCardSpotlight {
-  background: radial-gradient(
-    320px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    rgba(223, 168, 64, 0.18),
-    transparent 70%
-  );
+  background: radial-gradient(320px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(223, 168, 64, 0.18),
+      transparent 70%);
 }
 
 .serviceCard:hover .serviceCardSpotlight {
@@ -2472,11 +2566,9 @@
   inset: -1px;
   border-radius: 25px;
   padding: 1px;
-  background: radial-gradient(
-    280px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    rgba(223, 168, 64, 0.65),
-    transparent 60%
-  );
+  background: radial-gradient(280px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(223, 168, 64, 0.65),
+      transparent 60%);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -2491,15 +2583,15 @@
 }
 
 .serviceCard:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 42px -10px rgba(223, 168, 64, 0.16), 0 0 0 1px rgba(223, 168, 64, 0.2);
-  border-color: rgba(223, 168, 64, 0.4);
+  /* No physical translateY on outer container prevents border flicker/glitch thrashing */
+  box-shadow: 0 18px 40px -8px rgba(223, 168, 64, 0.2), 0 0 0 1px rgba(223, 168, 64, 0.35);
+  border-color: rgba(223, 168, 64, 0.5);
 }
 
 :global([data-theme="dark"]) .serviceCard:hover,
 [data-theme="dark"] .serviceCard:hover {
-  box-shadow: 0 22px 48px -10px rgba(0, 0, 0, 0.65), 0 0 28px -4px rgba(223, 168, 64, 0.24);
-  border-color: rgba(223, 168, 64, 0.5);
+  box-shadow: 0 22px 48px -10px rgba(0, 0, 0, 0.7), 0 0 28px -4px rgba(223, 168, 64, 0.28);
+  border-color: rgba(223, 168, 64, 0.6);
 }
 
 .serviceCardImgWrap {
@@ -2748,37 +2840,16 @@
   stroke: rgba(0, 0, 0, 0.12);
 }
 
-.tagShootingStar {
-  filter: drop-shadow(0 0 6px #ffd700) drop-shadow(0 0 16px rgba(223, 168, 64, 0.8));
-  pointer-events: none;
-}
-
-:global([data-theme="light"]) .tagShootingStar {
-  filter: drop-shadow(0 0 5px rgba(196, 145, 43, 0.85)) drop-shadow(0 0 12px rgba(223, 168, 64, 0.5));
-}
-
-.tagLaserBeam {
-  stroke: url(#laserBeamGrad);
-  stroke-width: 3.5;
+/* ── Clean Continuous Smooth Fading Laser Line along S-Curve (Crisp, No Blurry Glow) ── */
+.smoothLaserBeam {
+  stroke: #dfa840;
+  stroke-width: 3;
   stroke-linecap: round;
   fill: none;
-  filter: drop-shadow(0 0 6px #dfa840) drop-shadow(0 0 14px rgba(223, 168, 64, 0.6));
-  stroke-dasharray: 60 840;
-  animation: laserBeamFlow 3.8s linear infinite;
 }
 
-:global([data-theme="light"]) .tagLaserBeam {
+:global([data-theme="light"]) .smoothLaserBeam {
   stroke: #c4912b;
-  filter: drop-shadow(0 0 6px rgba(196, 145, 43, 0.6));
-}
-
-@keyframes laserBeamFlow {
-  from {
-    stroke-dashoffset: 0;
-  }
-  to {
-    stroke-dashoffset: -900;
-  }
 }
 
 .tagCardItem {
