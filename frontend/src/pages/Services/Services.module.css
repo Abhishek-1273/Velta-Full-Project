@@ -118,6 +118,7 @@
 .goldText {
   background: linear-gradient(135deg, #dfa840 0%, #b8860b 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
 }

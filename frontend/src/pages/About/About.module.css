@@ -142,6 +142,7 @@
 .goldText {
   background: linear-gradient(135deg, #dfa840 0%, #b8860b 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
   text-shadow: none;
@@ -151,6 +152,7 @@
 :global([data-theme='dark']) .goldText {
   background: linear-gradient(135deg, #f5d76e 0%, #dfa840 50%, #b8860b 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 0 22px rgba(223, 168, 64, 0.35));
 }
@@ -2414,6 +2416,7 @@
 .ctaTitleGradient {
   background: linear-gradient(135deg, #FFFFFF 40%, var(--accent) 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
