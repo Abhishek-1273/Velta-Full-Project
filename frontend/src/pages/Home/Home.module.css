@@ -1027,9 +1027,10 @@
   inset: 0;
   border-radius: inherit;
   padding: 2px;
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: destination-out;
+  mask: linear-gradient(#ffffff, #ffffff) content-box, linear-gradient(#ffffff, #ffffff);
   mask-composite: exclude;
+  -webkit-mask: linear-gradient(#ffffff, #ffffff) content-box, linear-gradient(#ffffff, #ffffff);
+  -webkit-mask-composite: destination-out;
   pointer-events: none;
   z-index: 2;
   overflow: hidden;
@@ -2569,9 +2570,10 @@
   background: radial-gradient(280px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
       rgba(223, 168, 64, 0.65),
       transparent 60%);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: destination-out;
+  mask: linear-gradient(#ffffff, #ffffff) content-box, linear-gradient(#ffffff, #ffffff);
   mask-composite: exclude;
+  -webkit-mask: linear-gradient(#ffffff, #ffffff) content-box, linear-gradient(#ffffff, #ffffff);
+  -webkit-mask-composite: destination-out;
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.3s ease;
