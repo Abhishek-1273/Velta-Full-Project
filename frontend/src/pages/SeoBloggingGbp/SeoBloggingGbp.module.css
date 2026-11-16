@@ -14,7 +14,7 @@
 
 /* ── 1. HERO SECTION ── */
 .heroSection {
-  padding: 120px 0 80px;
+  padding: 110px 0 80px;
   background: radial-gradient(circle at 80% 20%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
               radial-gradient(circle at 20% 80%, rgba(16, 185, 129, 0.05) 0%, transparent 40%);
   border-bottom: 1px solid var(--border);
@@ -213,6 +213,49 @@
   margin: 0 auto 44px;
 }
 
+/* Type A Section Eyebrow (────── [ PILL ] ──────) */
+.sectionEyebrowWrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.sectionEyebrowLine {
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background: #10b981;
+  opacity: 0.65;
+}
+
+.sectionEyebrowPill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 16px;
+  border-radius: 9999px;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  background: rgba(16, 185, 129, 0.08);
+  font-family: var(--font-head);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #047857;
+}
+
+:global([data-theme="dark"]) .sectionEyebrowPill {
+  color: #34d399;
+  border-color: rgba(52, 211, 153, 0.4);
+  background: rgba(16, 185, 129, 0.12);
+}
+
+:global([data-theme="dark"]) .sectionEyebrowLine {
+  background: #34d399;
+}
+
 .sectionHeader h2 {
   font-family: var(--font-head);
   font-size: clamp(26px, 3.2vw, 36px);
@@ -320,7 +363,7 @@
   font-size: 14px;
   font-weight: 700;
   padding: 10px 22px;
-  border-radius: 10px;
+  border-radius: 9999px;
   cursor: pointer;
   transition: all 0.2s ease;
   display: inline-flex;
@@ -524,7 +567,7 @@
   display: inline-flex;
   background: var(--surface2);
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: 9999px;
   padding: 4px;
   gap: 4px;
   margin-top: 18px;
@@ -537,7 +580,7 @@
   font-size: 13px;
   font-weight: 700;
   padding: 6px 16px;
-  border-radius: 7px;
+  border-radius: 9999px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -789,7 +832,7 @@
   font-size: 13px;
   font-weight: 700;
   padding: 8px 18px;
-  border-radius: 8px;
+  border-radius: 9999px;
   cursor: pointer;
   transition: all 0.2s ease;
 }

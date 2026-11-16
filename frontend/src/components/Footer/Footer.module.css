@@ -184,12 +184,35 @@
 
 .bottom {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   padding: 32px 0 0;
   font-size: 13px;
   color: var(--text3);
-  text-align: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.legalLinks {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.legalLink {
+  color: var(--text3);
+  text-decoration: none;
+  font-size: 13px;
+  transition: color 0.2s;
+}
+
+.legalLink:hover {
+  color: var(--accent, #dfa840);
+}
+
+.legalDivider {
+  color: var(--border);
+  font-size: 11px;
 }
 
 .servicesLinks {

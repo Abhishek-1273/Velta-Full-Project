@@ -4,7 +4,13 @@ import dotenv from 'dotenv'
 
 dotenv.config()
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+let resendClient = null;
+const getResend = () => {
+    if (!resendClient && process.env.RESEND_API_KEY) {
+        resendClient = new Resend(process.env.RESEND_API_KEY);
+    }
+    return resendClient;
+};
 
 // A retry of the same enquiry inside this window (e.g. the first request
 // succeeded but the browser timed out) is treated as already received.
@@ -25,6 +31,14 @@ const oneLine = (v = '') => String(v).replace(/[\r\n]+/g, ' ').trim();
 
 // Send notification email to owner
 const sendNotificationEmail = async ({ fullName, businessName, email, country, projectType, budgetRange, timeline, message }) => {
+    if (!process.env.RESEND_API_KEY || !process.env.NOTIFY_EMAIL) {
+        console.warn('⚠️ Skipping notification email: RESEND_API_KEY or NOTIFY_EMAIL is not configured.');
+        return;
+    }
+
+    const resend = getResend();
+    if (!resend) return;
+
     const row = (label, value, first = false) => `
                         <tr${first ? '' : ' style="border-top: 1px solid #f0f0f0;"'}>
                             <td style="padding: 10px 0; color: #888; font-size: 13px; width: 140px; vertical-align: top;">${label}</td>

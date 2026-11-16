@@ -10,3 +10,7 @@ frontend/dist
 frontend/.vite
 dist
 *.zip
+
+# Agent Customizations & Guidelines
+.agents/
+GEMINI.md

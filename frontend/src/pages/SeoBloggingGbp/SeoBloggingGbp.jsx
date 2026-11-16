@@ -203,7 +203,11 @@ export default function SeoBloggingGbp() {
       <section className={styles.problemsSection}>
         <div className="container">
           <div className={styles.sectionHeader}>
-            <span className="tag">Strategic Assessment</span>
+            <div className={styles.sectionEyebrowWrap}>
+              <span className={styles.sectionEyebrowLine} />
+              <div className={styles.sectionEyebrowPill}>STRATEGIC ASSESSMENT</div>
+              <span className={styles.sectionEyebrowLine} />
+            </div>
             <h2>Being Online Is Not the Same as Being Easy to Find.</h2>
             <p>
               Having a live website does not automatically bring relevant search visitors. Most businesses struggle with one or more of these core visibility hurdles.
@@ -255,7 +259,11 @@ export default function SeoBloggingGbp() {
       <section className={styles.capabilitiesSection}>
         <div className="container">
           <div className={styles.sectionHeader}>
-            <span className="tag">Full-Stack Execution</span>
+            <div className={styles.sectionEyebrowWrap}>
+              <span className={styles.sectionEyebrowLine} />
+              <div className={styles.sectionEyebrowPill}>FULL-STACK EXECUTION</div>
+              <span className={styles.sectionEyebrowLine} />
+            </div>
             <h2>Three Connected Search Capabilities</h2>
             <p>
               Search engines reward clarity, authority and consistency. We connect website technicals, content creation and local profile management into one coherent workflow.
@@ -443,9 +451,11 @@ export default function SeoBloggingGbp() {
       <section className={styles.finalCtaSection} style={{ borderTop: '1px solid var(--border)' }}>
         <div className="container">
           <div className={styles.ctaBox}>
-            <span className="tag" style={{ background: 'rgba(255,255,255,0.1)', color: '#fff', border: '1px solid rgba(255,255,255,0.2)' }}>
-              Get Started
-            </span>
+            <div className={styles.sectionEyebrowWrap}>
+              <span className={styles.sectionEyebrowLine} />
+              <div className={styles.sectionEyebrowPill}>GET STARTED</div>
+              <span className={styles.sectionEyebrowLine} />
+            </div>
             <h2>Let's Make Your Business Easier to Find.</h2>
             <p>
               Tell us about your website, your target customers and the search challenges you want to address. We'll help define a practical starting point and confirm the custom scope before work begins.
@@ -457,7 +467,7 @@ export default function SeoBloggingGbp() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-primary"
-                style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '14px 34px', fontSize: '16px', fontWeight: 700 }}
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '14px 34px', fontSize: '16px', fontWeight: 700, borderRadius: '9999px' }}
               >
                 <FaWhatsapp size={20} />
                 <span>Discuss My SEO Requirements</span>
@@ -475,7 +485,11 @@ export default function SeoBloggingGbp() {
       <section className={styles.processSection}>
         <div className="container">
           <div className={styles.sectionHeader}>
-            <span className="tag">Methodical Execution</span>
+            <div className={styles.sectionEyebrowWrap}>
+              <span className={styles.sectionEyebrowLine} />
+              <div className={styles.sectionEyebrowPill}>METHODICAL EXECUTION</div>
+              <span className={styles.sectionEyebrowLine} />
+            </div>
             <h2>Research. Improve. Publish. Measure.</h2>
             <p>
               We do not rely on shortcuts or automated black-hat tactics. We execute a disciplined four-step operational cycle.
@@ -514,7 +528,11 @@ export default function SeoBloggingGbp() {
       <section id="featured-work" className={styles.featuredSection}>
         <div className="container">
           <div className={styles.sectionHeader}>
-            <span className="tag">Portfolio Evidence</span>
+            <div className={styles.sectionEyebrowWrap}>
+              <span className={styles.sectionEyebrowLine} />
+              <div className={styles.sectionEyebrowPill}>PORTFOLIO EVIDENCE</div>
+              <span className={styles.sectionEyebrowLine} />
+            </div>
             <h2>Practical SEO Work in a Real Business</h2>
             <p>
               Explore verified examples of our search optimization and performance tracking executed for KIN Property Management in Pune.
@@ -584,7 +602,11 @@ export default function SeoBloggingGbp() {
       <section className={styles.reportingSection}>
         <div className="container">
           <div className={styles.sectionHeader}>
-            <span className="tag">Accountability</span>
+            <div className={styles.sectionEyebrowWrap}>
+              <span className={styles.sectionEyebrowLine} />
+              <div className={styles.sectionEyebrowPill}>ACCOUNTABILITY</div>
+              <span className={styles.sectionEyebrowLine} />
+            </div>
             <h2>Know What Was Done and What Changed.</h2>
             <p>
               We do not hide behind automated jargon or invent metrics. Every month, you receive a concise, actionable report breaking down the data that matters.
@@ -628,7 +650,11 @@ export default function SeoBloggingGbp() {
       <section className={styles.faqSection}>
         <div className="container">
           <div className={styles.sectionHeader}>
-            <span className="tag">Got Questions?</span>
+            <div className={styles.sectionEyebrowWrap}>
+              <span className={styles.sectionEyebrowLine} />
+              <div className={styles.sectionEyebrowPill}>GOT QUESTIONS?</div>
+              <span className={styles.sectionEyebrowLine} />
+            </div>
             <h2>Frequently Asked Questions</h2>
             <p>Direct, transparent answers regarding deliverables, guarantees, timelines, and scope.</p>
           </div>

@@ -586,7 +586,8 @@
   }
 
   .capsuleActions {
-    display: none !important;
+    display: flex !important;
+    align-items: center;
   }
 
   .burger {
@@ -616,8 +617,8 @@
     height: 1.8px;
   }
 
-  /* When drawer is open, hide navbar burger since drawer has its own close button */
-  .menuOpen .burger {
+  /* When drawer is open, hide navbar right group since drawer has its own close button */
+  .menuOpen .capsuleRightGroup {
     opacity: 0;
     pointer-events: none;
   }

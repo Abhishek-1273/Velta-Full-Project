@@ -54,7 +54,6 @@ export default function Footer() {
             <Link to="/kin-property" className={styles.link}>Kin Property</Link>
             <Link to="/whatsflow" className={styles.link}>WhatsFlow CRM</Link>
             <Link to="/docket14" className={styles.link}>Docket14 Legal</Link>
-            <Link to="/mobile-app-development#apps-showcase" className={styles.link}>Me &amp; Mine Prototype</Link>
           </div>
 
           {/* Column 4: Services */}
@@ -106,6 +105,11 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className={styles.bottom}>
           <p className={styles.copy}>© {new Date().getFullYear()} VeltaZ | All rights reserved.</p>
+          <div className={styles.legalLinks}>
+            <Link to="/privacy-policy" className={styles.legalLink}>Privacy Policy</Link>
+            <span className={styles.legalDivider}>•</span>
+            <Link to="/terms" className={styles.legalLink}>Terms of Service</Link>
+          </div>
         </div>
       </div>
     </footer>

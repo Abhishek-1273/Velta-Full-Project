@@ -76,4 +76,7 @@ const contactSchema = new mongoose.Schema({
     timestamps: true
 });
 
+// Index to optimize idempotency and duplicate checking
+contactSchema.index({ email: 1, createdAt: -1 });
+
 export const Contact = mongoose.model("Contact", contactSchema);

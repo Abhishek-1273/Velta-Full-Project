@@ -62,7 +62,10 @@ export default function WhatsFlow() {
         </div>
         <div className="container">
           <div className={styles.heroContent}>
-            <span className="tag">WhatsFlow Platform</span>
+            <div className={styles.heroEyebrow}>
+              <span className={styles.heroEyebrowDot} />
+              <span>WHATSFLOW PLATFORM · VELTAZ</span>
+            </div>
             <h1 className={styles.title}>
               Multi-Tenant AI Lead<br />
               <span className="gradient-text">Automation Platform.</span>
@@ -78,7 +81,11 @@ export default function WhatsFlow() {
       <section className="section" style={{ borderBottom: '1px solid var(--border)' }}>
         <div className="container">
           <div className={styles.sectionHeader}>
-            <span className="tag">App Showcase</span>
+            <div className={styles.sectionEyebrowWrap}>
+              <span className={styles.sectionEyebrowLine} />
+              <div className={styles.sectionEyebrowPill}>APP SHOWCASE</div>
+              <span className={styles.sectionEyebrowLine} />
+            </div>
             <h2>WhatsFlow Mobile Experience</h2>
             <p>Step inside the actual app interface. Custom built for high-speed lead management and team automation.</p>
           </div>
@@ -170,7 +177,11 @@ export default function WhatsFlow() {
       <section className="section" style={{ background: 'var(--bg2)' }}>
         <div className="container">
           <div className={styles.sectionHeader}>
-            <span className="tag">Workflow Story</span>
+            <div className={styles.sectionEyebrowWrap}>
+              <span className={styles.sectionEyebrowLine} />
+              <div className={styles.sectionEyebrowPill}>WORKFLOW STORY</div>
+              <span className={styles.sectionEyebrowLine} />
+            </div>
             <h2>The Friction Shift</h2>
             <p>Compare operational efficiency before and after deploying VeltaZ's WhatsFlow.</p>
           </div>
@@ -229,7 +240,11 @@ export default function WhatsFlow() {
       <section className="section">
         <div className="container">
           <div className={styles.sectionHeader}>
-            <span className="tag">Platform Capabilities</span>
+            <div className={styles.sectionEyebrowWrap}>
+              <span className={styles.sectionEyebrowLine} />
+              <div className={styles.sectionEyebrowPill}>PLATFORM CAPABILITIES</div>
+              <span className={styles.sectionEyebrowLine} />
+            </div>
             <h2>Core Features Built for Scale</h2>
             <p>Every element designed to support enterprise-level reliability and performance.</p>
           </div>

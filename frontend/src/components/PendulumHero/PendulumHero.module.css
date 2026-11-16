@@ -1,0 +1,225 @@
+.wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  padding: 0;
+  background: transparent;
+}
+
+/* Open, Borderless Stage (No Box, Completely Seamless on Page Background) */
+.stage {
+  position: relative;
+  width: 100%;
+  height: 410px;
+  overflow: visible;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  --tile-size: 54px;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Eyebrow Pill at Top Center (Solid luxury pill, cord suspended underneath) */
+.pillContainer {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 20;
+}
+
+.eyebrowPill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 18px;
+  border-radius: 9999px;
+  border: 1px solid rgba(223, 168, 64, 0.45);
+  background: #0d0f17;
+  font-family: var(--font-head);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #dfa840;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4), 0 0 16px rgba(223, 168, 64, 0.15);
+  white-space: nowrap;
+  flex-shrink: 0;
+  z-index: 21;
+}
+
+:global([data-theme="light"]) .eyebrowPill {
+  color: #b8860b;
+  background: #ffffff;
+  border-color: rgba(201, 162, 39, 0.35);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06), 0 0 14px rgba(201, 162, 39, 0.12);
+}
+
+/* Pendulum Rig suspended BEHIND the pill (z-index 5) */
+.pendulumRig {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  width: 0;
+  height: var(--cord-length, 250px);
+  transform-origin: top center;
+  will-change: transform;
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Realistic Luxury Gold Rope Cord */
+.cord {
+  position: absolute;
+  top: 0;
+  left: -1px;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    #dfa840 0%,
+    #f5d76e 35%,
+    #dfa840 70%,
+    #b8860b 100%
+  );
+  box-shadow: 0 0 6px rgba(223, 168, 64, 0.6);
+}
+
+.bob {
+  position: absolute;
+  top: 100%;
+  left: calc(var(--tile-size) / -2);
+  width: var(--tile-size);
+  height: var(--tile-size);
+  z-index: 6;
+}
+
+/* Bob Tile:
+   In Dark Mode: White surface + gold logo (matches navbar emblem in dark mode).
+   In Light Mode: Deep dark/black surface + gold logo (matches navbar emblem in light mode). */
+.tile {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 24%;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1.5px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 255, 255, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+:global([data-theme="light"]) .tile {
+  background: #111215;
+  border: 1.5px solid rgba(223, 168, 64, 0.45);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16), 0 0 16px rgba(223, 168, 64, 0.22);
+}
+
+.tileImg {
+  display: block;
+  width: 68%;
+  height: 68%;
+  object-fit: contain;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Headline with clean Steacode typography */
+.headline {
+  position: absolute;
+  top: 195px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 440px;
+  height: 110px;
+  text-align: center;
+  font-family: var(--font-head, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(34px, 5.5vw, 54px);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 0.98;
+  background: transparent;
+}
+
+.message {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  color: var(--text, #ffffff);
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  will-change: clip-path;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
+}
+
+:global([data-theme="light"]) .message {
+  color: #111111;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+/* Reveal Layer (100% transparent, zero box or background artifact) */
+.messageReveal {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  will-change: clip-path;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+:global([data-theme="light"]) .messageReveal {
+  background: transparent;
+}
+
+.messageTalk {
+  color: #dfa840;
+  text-shadow: none;
+}
+
+:global([data-theme="light"]) .messageTalk {
+  color: #c4912b;
+  text-shadow: none;
+}
+
+@media (max-width: 640px) {
+  .stage {
+    height: 350px;
+    --tile-size: 46px;
+  }
+  .headline {
+    top: 180px;
+    max-width: 340px;
+    height: 95px;
+    font-size: clamp(28px, 7vw, 40px);
+  }
+}

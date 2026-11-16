@@ -33,9 +33,85 @@
 
 .hero {
   position: relative;
-  padding: 140px 0 60px;
+  padding: 110px 0 60px;
   overflow: hidden;
   border-bottom: 1px solid var(--border);
+}
+
+/* Type B Hero Eyebrow (Luxury Gold) */
+.heroEyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  border-radius: 9999px;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  background: rgba(212, 175, 55, 0.08);
+  font-family: var(--font-head);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #b58d20;
+  margin-bottom: 16px;
+}
+
+:global([data-theme="dark"]) .heroEyebrow {
+  color: #e6ca65;
+  border-color: rgba(212, 175, 55, 0.5);
+  background: rgba(212, 175, 55, 0.12);
+}
+
+.heroEyebrowDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #d4af37;
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.7);
+  flex-shrink: 0;
+}
+
+/* Type A Section Eyebrow (────── [ PILL ] ──────) - Luxury Gold */
+.sectionEyebrowWrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.sectionEyebrowLine {
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background: #c59a3f;
+  opacity: 0.65;
+}
+
+.sectionEyebrowPill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 16px;
+  border-radius: 9999px;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  background: rgba(212, 175, 55, 0.06);
+  font-family: var(--font-head);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #b58d20;
+}
+
+:global([data-theme="dark"]) .sectionEyebrowPill {
+  color: #e6ca65;
+  border-color: rgba(212, 175, 55, 0.5);
+  background: rgba(212, 175, 55, 0.1);
+}
+
+:global([data-theme="dark"]) .sectionEyebrowLine {
+  background: #d4af37;
 }
 
 .bg {

@@ -9,7 +9,7 @@
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
-  padding-top: 80px;
+  padding-top: 110px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
@@ -162,7 +162,7 @@
   color: #ffffff;
   font-size: 13.5px;
   font-weight: 650;
-  border-radius: 10px;
+  border-radius: 9999px;
   text-decoration: none;
   box-shadow: 0 4px 14px rgba(49, 87, 232, 0.32);
   transition: all 0.2s ease;
@@ -202,7 +202,7 @@
   border: 1px solid #cbd5e1;
   font-size: 13.5px;
   font-weight: 650;
-  border-radius: 10px;
+  border-radius: 9999px;
   cursor: pointer;
   transition: all 0.2s ease;
 }
@@ -4005,7 +4005,7 @@
   background: #3157E8;
   color: #FFFFFF;
   padding: 14px 26px;
-  border-radius: 12px;
+  border-radius: 9999px;
   font-size: 14.5px;
   font-weight: 700;
   text-decoration: none;
@@ -5383,7 +5383,7 @@
   background: #3B82F6;
   color: #FFFFFF;
   border: none;
-  border-radius: 12px;
+  border-radius: 9999px;
   padding: 14px 28px;
   font-size: 14.5px;
   font-weight: 800;
@@ -5413,7 +5413,7 @@
   background: rgba(255, 255, 255, 0.08);
   color: #E2E8F0;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 12px;
+  border-radius: 9999px;
   padding: 14px 28px;
   font-size: 14.5px;
   font-weight: 700;
@@ -7484,4 +7484,24 @@
 :global([data-theme="dark"]) .aaBlueCircle {
   background: linear-gradient(135deg, #F59E0B 0%, #D4AF37 50%, #B8860B 100%);
   box-shadow: 0 0 26px rgba(212, 175, 55, 0.55), 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+:global([data-theme="dark"]) .heroMainTitle {
+  color: #ffffff;
+}
+
+:global([data-theme="dark"]) .personaSectionText {
+  color: #94a3b8;
+}
+
+:global([data-theme="dark"]) .solutionItemText {
+  color: #f1f5f9;
+}
+
+:global([data-theme="dark"]) .metricLabel {
+  color: #94a3b8;
+}
+
+:global([data-theme="dark"]) .browserUrlText {
+  color: #94a3b8;
 }

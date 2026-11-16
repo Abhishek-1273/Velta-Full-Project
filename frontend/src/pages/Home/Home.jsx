@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
+import PendulumHero from '../../components/PendulumHero/PendulumHero.jsx'
 import styles from './Home.module.css'
 import PhoneMockupBasic from '../../components/ui/phone-mockups-1'
 import {
@@ -151,7 +152,7 @@ const kinScope = [
   { title: 'Lead-management workflows', desc: 'Workflows for handling and following up on enquiries.' },
 ]
 
-// Featured Builds & Systems (Exact match to reference design: WhatsFlow, Docket14, Me & Mine)
+// Featured Builds & Systems (Exact match to reference design: WhatsFlow, Docket14, KIN Property)
 const featuredBuilds = [
   {
     id: 'whatsflow',
@@ -272,6 +273,56 @@ const featuredBuilds = [
   }
 ]
 
+// High-Performance Spring Number Ticker Component (Magic UI Pattern)
+function NumberTicker({ value, decimals = 0, suffix = '', prefix = '' }) {
+  const [displayValue, setDisplayValue] = useState(0)
+  const ref = useRef(null)
+
+  useEffect(() => {
+    let observer
+    let startTimestamp
+    const duration = 1600
+    const target = parseFloat(value)
+
+    const step = (timestamp) => {
+      if (!startTimestamp) startTimestamp = timestamp
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1)
+      const easedProgress = 1 - Math.pow(1 - progress, 3)
+      const current = easedProgress * target
+      setDisplayValue(current)
+
+      if (progress < 1) {
+        requestAnimationFrame(step)
+      } else {
+        setDisplayValue(target)
+      }
+    }
+
+    if (ref.current) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          if (entries[0].isIntersecting) {
+            requestAnimationFrame(step)
+            observer.disconnect()
+          }
+        },
+        { threshold: 0.25 }
+      )
+      observer.observe(ref.current)
+    }
+
+    return () => observer?.disconnect()
+  }, [value])
+
+  return (
+    <span ref={ref}>
+      {prefix}
+      {displayValue.toFixed(decimals)}
+      {suffix}
+    </span>
+  )
+}
+
 export default function Home() {
   const [activeBuildIdx, setActiveBuildIdx] = useState(0)
   const [isGrowthActive, setIsGrowthActive] = useState(false)
@@ -344,6 +395,16 @@ export default function Home() {
     }, 1200)
   }
 
+  // ReactBits Spotlight Mouse Coordinates on Service Cards
+  const handleCardMouseMove = (e) => {
+    const card = e.currentTarget
+    const rect = card.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+    card.style.setProperty('--mouse-x', `${x}px`)
+    card.style.setProperty('--mouse-y', `${y}px`)
+  }
+
   useEffect(() => {
     isPausedRef.current = isPaused
   }, [isPaused])
@@ -391,6 +452,14 @@ export default function Home() {
   }, [])
 
   useEffect(() => {
+    // Eagerly prefetch alternate landscapes so switching themes never pops or stutters
+    const imgLight = new Image()
+    imgLight.src = 'https://res.cloudinary.com/dqc1awrnc/image/upload/f_auto,q_auto/v1793958357/hero-landscape_vsrmmk.png'
+    const imgDark = new Image()
+    imgDark.src = 'https://res.cloudinary.com/dqc1awrnc/image/upload/f_auto,q_auto/v1794378243/hero-landscape_sqqzzt.png'
+  }, [])
+
+  useEffect(() => {
     const prevTitle = document.title
     let meta = document.querySelector('meta[name="description"]')
     const created = !meta
@@ -426,7 +495,7 @@ export default function Home() {
             onError={(e) => { e.currentTarget.style.display = 'none' }}
           />
           <img
-            src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1794378243/hero-landscape_sqqzzt.png"
+            src="https://res.cloudinary.com/dqc1awrnc/image/upload/f_auto,q_auto/v1794378243/hero-landscape_sqqzzt.png"
             alt="VeltaZ Scenic Night Landscape"
             decoding="async"
             className={`${styles.heroBackdropImg} ${styles.heroImgDark}`}
@@ -436,14 +505,18 @@ export default function Home() {
 
         <div className="container" style={{ position: 'relative', zIndex: 10, width: '100%' }}>
           <div className={styles.heroContent}>
-            {/* Minimalist Uppercase Eyebrow */}
+            {/* Ambient Breathing Gold Mesh Glow */}
+            <div className={styles.heroAmbientGlow} aria-hidden="true" />
+
+            {/* Minimalist Uppercase Eyebrow with Telemetry Pulse Dot */}
             <motion.div
               className={styles.heroEyebrow}
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45 }}
             >
-              STRATEGY, TECHNOLOGY &amp; AUTOMATION
+              <span className={styles.eyebrowDot} aria-hidden="true" />
+              <span>STRATEGY, TECHNOLOGY &amp; AUTOMATION</span>
             </motion.div>
 
             {/* Typography Masterpiece Headline */}
@@ -456,12 +529,16 @@ export default function Home() {
                 transition={{ duration: 0.55, delay: 0.08 }}
               >
                 <span>We build systems for</span>
-                <span className={styles.heroArrowPill}>
+                <motion.span
+                  className={styles.heroArrowPill}
+                  whileHover={{ scale: 1.15, rotate: 45 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 15 }}
+                >
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="7" y1="17" x2="17" y2="7" />
                     <polyline points="7 7 17 7 17 17" />
                   </svg>
-                </span>
+                </motion.span>
               </motion.div>
 
               {/* Line 2: gr [TOGGLE] wth */}
@@ -499,9 +576,17 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.55, delay: 0.24 }}
               >
-                <svg className={styles.cursorIcon} width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                <motion.svg
+                  className={styles.cursorIcon}
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  animate={{ x: [0, 4, 0], y: [0, -4, 0] }}
+                  transition={{ repeat: Infinity, duration: 3.2, ease: 'easeInOut' }}
+                >
                   <path d="M4 2l12 11.5-5.2.7 3.2 6.8-2.6 1.2-3.2-6.8L4 18.5V2z" />
-                </svg>
+                </motion.svg>
                 <span>of your business</span>
               </motion.div>
             </div>
@@ -516,19 +601,48 @@ export default function Home() {
               We turn ambitious ideas into high-performance software, custom platforms and automated workflows engineered to scale.
             </motion.p>
 
-            {/* CTAs */}
+            {/* CTAs with Magic UI Shimmer & Physics Spring */}
             <motion.div
               className={styles.heroCta}
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.36 }}
             >
-              <Link to="/contact" className={styles.btnEstimate}>
-                Discuss Your Business
-              </Link>
-              <Link to="/about" className={styles.linkMoreAbout}>
-                More about us
-              </Link>
+              <motion.div 
+                whileHover={{ scale: 1.04, y: -2 }} 
+                whileTap={{ scale: 0.97 }} 
+                transition={{ type: 'spring', stiffness: 420, damping: 20 }}
+                style={{ display: 'inline-block' }}
+              >
+                <Link to="/contact" className={styles.btnEstimate}>
+                  <span className={styles.btnShimmerWave} aria-hidden="true" />
+                  <span className={styles.btnContentWrap}>
+                    <span>Discuss Your Business</span>
+                    <span className={styles.btnArrow}>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                        <polyline points="12 5 19 12 12 19" />
+                      </svg>
+                    </span>
+                  </span>
+                </Link>
+              </motion.div>
+              <motion.div 
+                whileHover={{ scale: 1.04, y: -1 }} 
+                whileTap={{ scale: 0.97 }} 
+                transition={{ type: 'spring', stiffness: 420, damping: 20 }}
+                style={{ display: 'inline-block' }}
+              >
+                <Link to="/about" className={styles.linkMoreAbout}>
+                  <span>More about us</span>
+                  <span className={styles.linkMoreArrow}>
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="7" y1="17" x2="17" y2="7" />
+                      <polyline points="7 7 17 7 17 17" />
+                    </svg>
+                  </span>
+                </Link>
+              </motion.div>
             </motion.div>
           </div>
         </div>
@@ -589,10 +703,14 @@ export default function Home() {
                 key={`${s.key}-${idx}`}
                 to={s.to}
                 className={styles.serviceCard}
+                onMouseMove={handleCardMouseMove}
                 onClick={(e) => {
                   if (didDrag) e.preventDefault()
                 }}
               >
+                {/* ReactBits Spotlight Surface Glow */}
+                <div className={styles.serviceCardSpotlight} aria-hidden="true" />
+
                 <div className={styles.serviceCardImgWrap}>
                   <img
                     src={s.img}
@@ -628,7 +746,11 @@ export default function Home() {
       <section className={styles.resultsSection}>
         <div className="container">
           <div className={styles.resultsHeader}>
-            <span className="tag">What We Do</span>
+            <div className={styles.methodEyebrowWrap}>
+              <span className={styles.methodEyebrowLine} />
+              <div className={styles.methodEyebrowPill}>WHAT WE DO</div>
+              <span className={styles.methodEyebrowLine} />
+            </div>
             <h2 className={styles.resultsTitle}>
               One Partner.<br />
               <span className={styles.resultsConnectedLine}>Connected Capabilities.</span>
@@ -639,12 +761,32 @@ export default function Home() {
           </div>
 
           <div className={styles.tagFlowContainer}>
-            {/* Dashed Connecting S-Curve Line */}
+            {/* Dashed Connecting S-Curve Line with Drawing Animation & Live Gold Energy Pulse */}
             <svg className={styles.tagDashedSvg} viewBox="0 0 600 750" preserveAspectRatio="none">
-              <path
+              <motion.path
+                id="sCurvePath"
                 d="M 430,70 C 250,140 180,210 170,270 C 160,350 420,390 430,470 C 440,550 180,590 170,660"
                 className={styles.tagDashedPath}
+                initial={{ pathLength: 0, opacity: 0 }}
+                whileInView={{ pathLength: 1, opacity: 1 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
               />
+              {/* Continuous Traveling Energy Laser Pulse */}
+              <circle r="5" fill="#dfa840" className={styles.energyPulseDot}>
+                <animateMotion
+                  dur="4.5s"
+                  repeatCount="indefinite"
+                  path="M 430,70 C 250,140 180,210 170,270 C 160,350 420,390 430,470 C 440,550 180,590 170,660"
+                />
+              </circle>
+              <circle r="12" fill="rgba(223, 168, 64, 0.3)" className={styles.energyPulseAura}>
+                <animateMotion
+                  dur="4.5s"
+                  repeatCount="indefinite"
+                  path="M 430,70 C 250,140 180,210 170,270 C 160,350 420,390 430,470 C 440,550 180,590 170,660"
+                />
+              </circle>
             </svg>
 
             {capabilities.map((c) => (
@@ -684,10 +826,10 @@ export default function Home() {
             viewport={{ once: true, margin: '-50px' }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className={styles.buildsEyebrow}>
-              <span className={styles.buildsEyebrowLine} />
-              <span>FEATURED BUILDS & SYSTEMS</span>
-              <span className={styles.buildsEyebrowLine} />
+            <div className={styles.methodEyebrowWrap}>
+              <span className={styles.methodEyebrowLine} />
+              <div className={styles.methodEyebrowPill}>FEATURED BUILDS &amp; SYSTEMS</div>
+              <span className={styles.methodEyebrowLine} />
             </div>
 
             <h2 className={styles.buildsTitle}>
@@ -699,7 +841,7 @@ export default function Home() {
             </p>
           </motion.div>
 
-          {/* Quick Switcher Tabs: WhatsFlow | Docket14 | Me & Mine */}
+          {/* Quick Switcher Tabs: WhatsFlow | Docket14 | KIN Property */}
           <div className={styles.buildsTabsRow}>
             {featuredBuilds.map((b, idx) => (
               <button
@@ -729,58 +871,92 @@ export default function Home() {
               <HiChevronLeft className={styles.buildsNavArrowIcon} />
             </button>
 
-            {/* Active Build Card */}
-            {(() => {
-              const build = featuredBuilds[activeBuildIdx]
-              return (
-                <div key={build.id} className={styles.buildsCard}>
-                  {/* Left Column: Visual Mockup */}
-                  <div className={styles.buildsVisualWrap}>
-                    <img
-                      src={build.img}
-                      alt={build.brand}
-                      className={styles.buildsVisualImg}
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </div>
-
-                  {/* Right Column: Information & Specs */}
-                  <div className={styles.buildsInfo}>
-                    <div className={styles.buildsBrandRow}>
-                      <span className={styles.buildsBrandName}>{build.brand}</span>
-                      <span className={styles.buildsBrandDivider}>|</span>
-                      <span className={styles.buildsBrandBadge}>{build.badge}</span>
+            {/* Active Build Card with Smooth Slide & Fade Transition */}
+            <AnimatePresence mode="wait">
+              {(() => {
+                const build = featuredBuilds[activeBuildIdx]
+                return (
+                  <motion.div
+                    key={build.id}
+                    className={styles.buildsCard}
+                    initial={{ opacity: 0, x: 20, scale: 0.985 }}
+                    animate={{ opacity: 1, x: 0, scale: 1 }}
+                    exit={{ opacity: 0, x: -20, scale: 0.985 }}
+                    transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
+                    onMouseMove={(e) => {
+                      const card = e.currentTarget
+                      const rect = card.getBoundingClientRect()
+                      const x = (e.clientX - rect.left) / rect.width - 0.5
+                      const y = (e.clientY - rect.top) / rect.height - 0.5
+                      card.style.setProperty('--card-tilt-x', `${-y * 5}deg`)
+                      card.style.setProperty('--card-tilt-y', `${x * 5}deg`)
+                    }}
+                    onMouseLeave={(e) => {
+                      const card = e.currentTarget
+                      card.style.setProperty('--card-tilt-x', '0deg')
+                      card.style.setProperty('--card-tilt-y', '0deg')
+                    }}
+                  >
+                    {/* Left Column: Visual Mockup with 3D Depth Float */}
+                    <div className={styles.buildsVisualWrap}>
+                      <img
+                        src={build.img}
+                        alt={build.brand}
+                        className={styles.buildsVisualImg}
+                        loading="lazy"
+                        decoding="async"
+                      />
                     </div>
 
-                    <h3 className={styles.buildsHeadline}>
-                      <span>{build.headlineLead}</span>
-                      <br />
-                      <span>{build.headlineSub}</span>
-                    </h3>
-
-                    <p className={styles.buildsDesc}>{build.desc}</p>
-
-                    {/* 3 Specs with Gold Icons & Vertical Dividers */}
-                    <div className={styles.buildsSpecsRow}>
-                      {build.specs.map((spec, sIdx) => (
-                        <div key={sIdx} className={styles.buildSpecItem}>
-                          <div className={styles.buildSpecIcon}>{spec.icon}</div>
-                          <div className={styles.buildSpecLabel}>{spec.label}</div>
+                    {/* Right Column: Information & Specs */}
+                    <div className={styles.buildsInfo}>
+                      <div className={styles.buildsBrandRow}>
+                        <div className={styles.buildsBrandIdentity}>
+                          <span className={styles.buildsBrandName}>{build.brand}</span>
+                          <span className={styles.buildsBrandDivider}>|</span>
+                          <span className={styles.buildsBrandBadge}>{build.badge}</span>
                         </div>
-                      ))}
-                    </div>
+                        <div className={styles.buildsLiveIndicator}>
+                          <span className={styles.livePulseDot} />
+                          <span>LIVE SYSTEM</span>
+                        </div>
+                      </div>
 
-                    {/* Underlined Action Link */}
-                    <div className={styles.buildsActionWrap}>
-                      <Link to={build.link} className={styles.buildsActionLink}>
-                        Explore the system <span>→</span>
-                      </Link>
+                      <h3 className={styles.buildsHeadline}>
+                        <span>{build.headlineLead}</span>
+                        <br />
+                        <span>{build.headlineSub}</span>
+                      </h3>
+
+                      <p className={styles.buildsDesc}>{build.desc}</p>
+
+                      {/* 3 Specs with Gold Icons & Vertical Dividers */}
+                      <div className={styles.buildsSpecsRow}>
+                        {build.specs.map((spec, sIdx) => (
+                          <div key={sIdx} className={styles.buildSpecItem}>
+                            <div className={styles.buildSpecIcon}>{spec.icon}</div>
+                            <div className={styles.buildSpecLabel}>{spec.label}</div>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* Underlined Action Link with Bold Geometric Arrow */}
+                      <div className={styles.buildsActionWrap}>
+                        <Link to={build.link} className={styles.buildsActionLink}>
+                          <span>Explore the system</span>
+                          <span className={styles.buildsArrow}>
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
+                              <line x1="5" y1="12" x2="19" y2="12" />
+                              <polyline points="12 5 19 12 12 19" />
+                            </svg>
+                          </span>
+                        </Link>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              )
-            })()}
+                  </motion.div>
+                )
+              })()}
+            </AnimatePresence>
 
             {/* Next Arrow Button */}
             <button
@@ -819,10 +995,10 @@ export default function Home() {
             viewport={{ once: true, margin: '-50px' }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className={styles.selectedWorkEyebrow}>
-              <span className={styles.eyebrowLine} />
-              <span>CLIENT CASE STUDIES</span>
-              <span className={styles.eyebrowLine} />
+            <div className={styles.methodEyebrowWrap}>
+              <span className={styles.methodEyebrowLine} />
+              <div className={styles.methodEyebrowPill}>CLIENT CASE STUDIES</div>
+              <span className={styles.methodEyebrowLine} />
             </div>
 
             <h2 className={styles.selectedWorkTitle}>
@@ -841,6 +1017,7 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-50px' }}
             transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+            whileHover={{ y: -6, transition: { duration: 0.25, ease: 'easeOut' } }}
           >
             <div className={styles.featuredCaseImgWrap}>
               <img
@@ -861,18 +1038,28 @@ export default function Home() {
 
               <div className={styles.featuredCaseMetrics}>
                 <div className={styles.featuredMetricItem}>
-                  <div className={styles.featuredMetricVal}>3.2×</div>
+                  <div className={styles.featuredMetricVal}>
+                    <NumberTicker value={3.2} decimals={1} suffix="×" />
+                  </div>
                   <div className={styles.featuredMetricLabel}>qualified enquiries</div>
                 </div>
                 <div className={styles.featuredMetricDivider} />
                 <div className={styles.featuredMetricItem}>
-                  <div className={styles.featuredMetricVal}>42%</div>
+                  <div className={styles.featuredMetricVal}>
+                    <NumberTicker value={42} decimals={0} suffix="%" />
+                  </div>
                   <div className={styles.featuredMetricLabel}>faster lead response</div>
                 </div>
               </div>
 
               <Link to="/kin-property" className={styles.caseStudyLink}>
-                Explore case study <span>→</span>
+                <span>Explore case study</span>
+                <span className={styles.caseStudyArrow}>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </span>
               </Link>
             </div>
           </motion.div>
@@ -886,6 +1073,7 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ y: -6, transition: { duration: 0.25, ease: 'easeOut' } }}
             >
               <div className={styles.companionImgWrap}>
                 <img
@@ -903,9 +1091,15 @@ export default function Home() {
                 <p className={styles.companionDesc}>
                   Automating multi-channel WhatsApp inquiries into structured CRM leads — eliminating response delays and dropped prospects.
                 </p>
-                <button type="button" disabled className={styles.caseStudyLinkDisabled}>
-                  Explore case study <span>→</span>
-                </button>
+                <Link to="/whatsflow" className={styles.caseStudyLink}>
+                  <span>Explore case study</span>
+                  <span className={styles.caseStudyArrow}>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12" />
+                      <polyline points="12 5 19 12 12 19" />
+                    </svg>
+                  </span>
+                </Link>
               </div>
             </motion.div>
 
@@ -916,6 +1110,7 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ y: -6, transition: { duration: 0.25, ease: 'easeOut' } }}
             >
               <div className={styles.companionImgWrap}>
                 <img
@@ -933,9 +1128,15 @@ export default function Home() {
                 <p className={styles.companionDesc}>
                   Transitioning high-volume litigation practices from paper dockets to a synchronized digital calendar and secure vault.
                 </p>
-                <button type="button" disabled className={styles.caseStudyLinkDisabled}>
-                  Explore case study <span>→</span>
-                </button>
+                <Link to="/docket14" className={styles.caseStudyLink}>
+                  <span>Explore case study</span>
+                  <span className={styles.caseStudyArrow}>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12" />
+                      <polyline points="12 5 19 12 12 19" />
+                    </svg>
+                  </span>
+                </Link>
               </div>
             </motion.div>
           </div>
@@ -972,8 +1173,16 @@ export default function Home() {
 
           {/* Connected Cards Track */}
           <div className={styles.methodTrackWrapper}>
-            {/* Horizontal Connecting Gold Line */}
-            <div className={styles.methodConnectorLine} aria-hidden="true" />
+            {/* Horizontal Connecting Gold Line with Scroll Draw Animation */}
+            <motion.div
+              className={styles.methodConnectorLine}
+              aria-hidden="true"
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+              style={{ transformOrigin: 'left center' }}
+            />
 
             {/* 4 Cards Grid */}
             <div className={styles.methodCardsGrid}>
@@ -981,11 +1190,11 @@ export default function Home() {
                 <motion.div
                   key={p.num}
                   className={styles.methodCard}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, y: 28, scale: 0.97 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   viewport={{ once: true, margin: '-40px' }}
-                  transition={{ duration: 0.5, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                  whileHover={{ y: -6, transition: { duration: 0.2 } }}
+                  transition={{ duration: 0.55, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                  whileHover={{ y: -8, scale: 1.02, transition: { duration: 0.22, ease: 'easeOut' } }}
                 >
                   <div className={styles.methodCardTop}>
                     <div className={styles.methodNumBadge}>{p.num}</div>
@@ -1011,23 +1220,34 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FINAL ENQUIRY CTA */}
+      {/* FINAL ENQUIRY CTA WITH SIGNATURE SEAMLESS PENDULUM REVEAL */}
       <section className={styles.ctaSection}>
-        <div className="container">
-          <motion.div
-            className={styles.ctaBox}
-            initial={{ opacity: 0, scale: 0.96, y: 20 }}
-            whileInView={{ opacity: 1, scale: 1, y: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
-            transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+        <div className="container" style={{ textAlign: 'center' }}>
+          {/* Boxless, Open Pendulum with cord originating right from the GET IN TOUCH pill */}
+          <PendulumHero />
+
+          <p className={styles.ctaSub} style={{ maxWidth: '640px', margin: '20px auto 0' }}>
+            Tell us what you're working on, what isn't working or what you'd like to build. Let's explore a practical next step.
+          </p>
+
+          <motion.div 
+            whileHover={{ scale: 1.05, y: -2 }} 
+            whileTap={{ scale: 0.97 }} 
+            transition={{ type: 'spring', stiffness: 420, damping: 20 }}
+            style={{ display: 'inline-block', marginTop: '24px' }}
           >
-            <h2>Have a Business Challenge Worth Solving?</h2>
-            <p>Tell us what you're working on, what isn't working or what you'd like to build. Let's explore a practical next step.</p>
-            <motion.div whileHover={{ scale: 1.04, y: -2 }} whileTap={{ scale: 0.96 }} style={{ display: 'inline-block' }}>
-              <Link to="/contact" className="btn btn-primary" style={{ padding: '14px 34px' }}>
-                Let's Contact
-              </Link>
-            </motion.div>
+            <Link to="/contact" className={styles.ctaPrimaryBtn}>
+              <span className={styles.btnShimmerWave} aria-hidden="true" />
+              <span className={styles.btnContentWrap}>
+                <span>Discuss Your Business</span>
+                <span className={styles.btnArrow}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </span>
+              </span>
+            </Link>
           </motion.div>
         </div>
       </section>

@@ -10,23 +10,23 @@ const catalogServices = [
     title: 'Automation',
     category: 'automation',
     desc: 'Automate repetitive workflows and scale faster.',
-    image: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1794381115/automation_cqs2uh.png',
-    link: '/contact'
+    image: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1794676558/automation_wi9icv.png',
+    link: '/automation-systems'
   },
   {
     id: 'digital-marketing',
     title: 'Digital Marketing',
     category: 'marketing',
     desc: 'Grow your online presence with data-driven strategies.',
-    image: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1794381116/digital-marketing_etlhix.png',
-    link: '/contact'
+    image: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1794676557/digital-marketting_dkil0g.png',
+    link: '/performance-marketing'
   },
   {
     id: 'custom-software',
     title: 'Custom Software',
     category: 'software',
     desc: 'Bespoke enterprise software tailored to your workflows.',
-    image: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1794381115/custom-software_blou73.png',
+    image: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1794676563/custom-software_ijwkon.png',
     link: '/contact'
   },
   {
@@ -34,15 +34,15 @@ const catalogServices = [
     title: 'App Development',
     category: 'software',
     desc: 'Build scalable iOS and Android mobile solutions.',
-    image: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1794381115/custom-dev_qgurso.png',
-    link: '/contact'
+    image: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1794676558/mobile_x1tbwo.png',
+    link: '/mobile-app-development'
   },
   {
     id: 'website-development',
     title: 'Website Development',
     category: 'web',
     desc: 'Modern, fast and conversion-focused websites.',
-    image: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1794381116/web-solutions_vyju3l.png',
+    image: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1794676557/web-dev_x7ctoi.png',
     link: '/website-development'
   },
   {
@@ -50,16 +50,16 @@ const catalogServices = [
     title: 'Content Creation',
     category: 'content',
     desc: 'Compelling content that builds your brand.',
-    image: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1794381115/content-creation_u47jyk.png',
-    link: '/contact'
+    image: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1794676563/social-media_nozexc.png',
+    link: '/content'
   },
   {
     id: 'seo-ranking',
     title: 'SEO & Ranking',
     category: 'seo',
     desc: 'Targeted keyword ranking & Google visibility.',
-    image: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1794381116/seo-ranking_jcy3gt.png',
-    link: '/contact'
+    image: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1794676557/seo_lqhq3j.png',
+    link: '/seo-blogging-google-business-profile'
   }
 ]
 
@@ -142,7 +142,7 @@ const FILTER_TABS = [
 const socialImages = [
   {
     title: 'LinkedIn Company Page (iPad View)',
-    desc: 'Velta LinkedIn corporate authority presence',
+    desc: 'VeltaZ LinkedIn corporate authority presence',
     src: 'https://res.cloudinary.com/dqc1awrnc/image/upload/v1786862364/LinkedIn_bxqjpj.jpg'
   },
   {
@@ -284,8 +284,8 @@ export default function Services() {
                     display: 'inline-flex', 
                     alignItems: 'center', 
                     gap: '8px', 
-                    padding: '8px 18px', 
-                    borderRadius: '8px', 
+                    padding: '8px 20px', 
+                    borderRadius: '9999px', 
                     fontWeight: 700, 
                     fontSize: '13px',
                     boxShadow: '0 4px 14px rgba(37, 99, 235, 0.3)' 
@@ -353,8 +353,8 @@ export default function Services() {
                   <p>Hearing schedules, status logs, and task notifications.</p>
                 </div>
                 <div className={styles.showcaseItem}>
-                  <h5>Me & Mine (Prototype)</h5>
-                  <p>Interactive concept: matchmaking UI, location filters & chat flows.</p>
+                  <h5>Offline-First Architecture</h5>
+                  <p>Local SQLite caching, auto-sync and instant responsive UI.</p>
                 </div>
                 <div className={styles.showcaseItem}>
                   <h5>Cloud Sync & Push Alerts</h5>
@@ -370,8 +370,8 @@ export default function Services() {
                     display: "inline-flex", 
                     alignItems: "center", 
                     gap: "8px", 
-                    padding: "8px 18px", 
-                    borderRadius: "8px", 
+                    padding: "8px 20px", 
+                    borderRadius: "9999px", 
                     fontWeight: 700, 
                     fontSize: "13px",
                     boxShadow: "0 4px 14px rgba(37, 99, 235, 0.3)" 
@@ -392,7 +392,7 @@ export default function Services() {
                   <img src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1792917399/admin_whatsFlow.jpg_pcyu3j.jpg" alt="WhatsFlow App screen" />
                 </div>
                 <div className={`${styles.miniPhone} ${styles.phone3}`}>
-                  <img src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1786538759/IMG-20260726-WA0025.jpg_1_uq78d1.jpg" alt="Me & Mine App screen" />
+                  <img src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1786538759/IMG-20260726-WA0025.jpg_1_uq78d1.jpg" alt="Mobile App UI screen" />
                 </div>
               </div>
             </div>
@@ -432,38 +432,24 @@ export default function Services() {
                 </div>
               </div>
 
-              {/* DIRECT CONTENT STUDIO CTA BUTTON */}
-              <div style={{ marginTop: '28px', display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
+              {/* Direct Link to Content Studio Portal */}
+              <div style={{ marginTop: '14px' }}>
                 <Link
                   to="/content"
                   className="btn btn-primary"
                   style={{
-                    padding: '12px 28px',
                     display: 'inline-flex',
                     alignItems: 'center',
-                    gap: '10px',
-                    fontSize: '14.5px',
+                    gap: '8px',
+                    padding: '8px 20px',
+                    borderRadius: '9999px',
                     fontWeight: 700,
-                    boxShadow: '0 8px 24px rgba(37, 99, 235, 0.4)'
+                    fontSize: '13px',
+                    boxShadow: '0 4px 14px rgba(37, 99, 235, 0.3)'
                   }}
                 >
                   <span>Explore Content Studio & Portfolio</span>
                   <span style={{ fontSize: '20px', alignContent: "center" }}>→</span>
-                </Link>
-                <Link
-                  to="/performance-marketing"
-                  className="btn btn-outline"
-                  style={{
-                    padding: '12px 22px',
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '8px',
-                    fontSize: '13.5px',
-                    fontWeight: 600
-                  }}
-                >
-                  <span>Explore Performance Marketing (5 Ads)</span>
-                  <span style={{ fontSize: '18px' }}>→</span>
                 </Link>
               </div>
             </div>
@@ -595,8 +581,8 @@ export default function Services() {
                     display: 'inline-flex', 
                     alignItems: 'center', 
                     gap: '8px', 
-                    padding: '8px 18px', 
-                    borderRadius: '8px', 
+                    padding: '8px 20px', 
+                    borderRadius: '9999px', 
                     fontWeight: 700, 
                     fontSize: '13px',
                     boxShadow: '0 4px 14px rgba(37, 99, 235, 0.3)' 

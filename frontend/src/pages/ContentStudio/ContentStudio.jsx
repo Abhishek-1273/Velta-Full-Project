@@ -244,9 +244,7 @@ export default function ContentStudio() {
           <div className={styles.heroGrid}>
             <div className={styles.heroLeft}>
               <div className={styles.pillTag}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-                </svg>
+                <span className={styles.eyebrowDot} />
                 <span>VELTAZ CONTENT STUDIO</span>
               </div>
               <h1 className={styles.heroTitle}>
@@ -446,17 +444,16 @@ export default function ContentStudio() {
       {/* ── PORTFOLIO / WORK SECTION (2 INSTAGRAM + 2 FACEBOOK PC INSIGHTS) ── */}
       <section className={styles.workSection} id="work">
         <div className="container">
-          <div className={styles.sectionHeaderRow}>
-            <div>
-              <span className={styles.sectionTag}>PROVEN TRACK RECORD</span>
-              <h2 className={styles.sectionTitle}>Organic Reach, Audience Growth & Enquiries</h2>
-              <p className={styles.sectionSub}>
-                Verified Meta Business Suite insights — showing how strategic short-form content drives consistent organic reach, follower growth, and inbound enquiries without paid ad spend.
-              </p>
+          <div className={styles.sectionHeaderCentered}>
+            <div className={styles.sectionEyebrowWrap}>
+              <span className={styles.sectionEyebrowLine} />
+              <div className={styles.sectionEyebrowPill}>PROVEN TRACK RECORD</div>
+              <span className={styles.sectionEyebrowLine} />
             </div>
-            <Link to="/kin-property" className={styles.viewAllLink}>
-              View Kin Case Study →
-            </Link>
+            <h2 className={styles.sectionTitle}>Organic Reach, Audience Growth &amp; Enquiries</h2>
+            <p className={styles.sectionSub}>
+              Verified Meta Business Suite insights — showing how strategic short-form content drives consistent organic reach, follower growth, and inbound enquiries without paid ad spend.
+            </p>
           </div>
 
           {/* SECTION 1: INSTAGRAM IN SAMSUNG S25 ULTRA MOCKUPS */}
@@ -586,7 +583,11 @@ export default function ContentStudio() {
       <section className={styles.servicesSection} id="services">
         <div className="container">
           <div style={{ textAlign: 'center', maxWidth: 640, margin: '0 auto 48px' }}>
-            <span className={styles.sectionTag}>WHAT WE DO</span>
+            <div className={styles.sectionEyebrowWrap}>
+              <span className={styles.sectionEyebrowLine} />
+              <div className={styles.sectionEyebrowPill}>WHAT WE DO</div>
+              <span className={styles.sectionEyebrowLine} />
+            </div>
             <h2 className={styles.sectionTitle}>Full-Stack Content Creation</h2>
             <p className={styles.sectionSub}>
               Everything your local brand needs to consistently attract new customers across Instagram, Facebook and LinkedIn.
@@ -697,7 +698,11 @@ export default function ContentStudio() {
           <div className={styles.offerCard}>
             <div className={styles.offerTopRow}>
               <div>
-                <span className={styles.offerTag}>STARTER TRIAL</span>
+                <div className={styles.sectionEyebrowWrap}>
+                  <span className={styles.sectionEyebrowLine} />
+                  <div className={styles.sectionEyebrowPill}>STARTER TRIAL</div>
+                  <span className={styles.sectionEyebrowLine} />
+                </div>
                 <h2 className={styles.offerHeading}>Reel Starter Pack</h2>
               </div>
               <div className={styles.offerSubNote}>
@@ -820,7 +825,11 @@ export default function ContentStudio() {
       <section className={styles.processSection} id="how-it-works">
         <div className="container">
           <div style={{ textAlign: 'center', maxWidth: 600, margin: '0 auto 48px' }}>
-            <span className={styles.sectionTag}>HOW IT WORKS</span>
+            <div className={styles.sectionEyebrowWrap}>
+              <span className={styles.sectionEyebrowLine} />
+              <div className={styles.sectionEyebrowPill}>HOW IT WORKS</div>
+              <span className={styles.sectionEyebrowLine} />
+            </div>
             <h2 className={styles.sectionTitle}>Simple, Transparent Process</h2>
             <p className={styles.sectionSub}>
               From raw phone clips to polished viral-ready Reels in 4 easy steps.
@@ -844,7 +853,11 @@ export default function ContentStudio() {
         <div className="container">
                     <div className={styles.finalCtaBox}>
             <div className={styles.finalCtaLeft}>
-              <span className={styles.finalCtaTag}>READY TO GROW?</span>
+              <div className={styles.sectionEyebrowWrap}>
+                <span className={styles.sectionEyebrowLine} />
+                <div className={styles.sectionEyebrowPill}>READY TO GROW?</div>
+                <span className={styles.sectionEyebrowLine} />
+              </div>
               <h2 className={styles.finalCtaTitle}>
                 Take Your Business's Instagram to the Next Level
               </h2>

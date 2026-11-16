@@ -165,21 +165,34 @@ export default function Contact() {
   return (
     <div className={styles.page}>
 
-      {/* HERO */}
+      {/* HERO WITH MAGIC UI BORDER BEAM & AMBIENT GLOW CARD */}
       <section className={styles.hero}>
         <div className={styles.bg}>
           <div className={styles.grid} />
         </div>
         <div className="container">
-          <div className={styles.heroContent}>
-            <span className="tag">Contact Us</span>
-            <h1 className={styles.title}>
-              Tell Us What{' '}<br />
-              <span className="gradient-text">You're Building.</span>
-            </h1>
-            <p className={styles.sub}>
-              Share your business challenge, project idea or current requirements. We'll review the details and discuss a practical next step.
-            </p>
+          <div className={styles.ctaCard}>
+            {/* Magic UI Circulating Border Laser Beam */}
+            <div className={styles.borderBeamWrap} aria-hidden="true">
+              <div className={styles.borderBeamLine} />
+            </div>
+
+            {/* Ambient Gold Core Glow */}
+            <div className={styles.ctaCardGlow} aria-hidden="true" />
+
+            <div className={styles.heroContent}>
+              <div className={styles.eyebrow}>
+                <span className={styles.eyebrowDot} />
+                <span>CONTACT US · VELTAZ</span>
+              </div>
+              <h1 className={styles.title}>
+                Tell Us What{' '}<br />
+                <span className={styles.goldText}>You're Building.</span>
+              </h1>
+              <p className={styles.sub}>
+                Share your business challenge, project idea or current requirements. We'll review the details and discuss a practical next step.
+              </p>
+            </div>
           </div>
         </div>
       </section>

@@ -4,6 +4,13 @@ import { SYSTEM_PROMPT } from "../config/systemPrompt.js";
 
 export const chatHandler = async (req, res) => {
   try {
+    if (!process.env.GROQ_API_KEY) {
+      return res.status(503).json({
+        success: false,
+        error: "AI chat service is currently unavailable. Please check server configuration.",
+      });
+    }
+
     const { messages } = req.body;
 
     // Basic validation — frontend must send a messages array

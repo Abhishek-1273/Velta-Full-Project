@@ -19,7 +19,7 @@ if (missingFatal.length) {
 const optionalServices = [
     { key: 'RESEND_API_KEY', msg: 'Resend API key missing. Email notifications will be disabled.' },
     { key: 'NOTIFY_EMAIL', msg: 'NOTIFY_EMAIL missing. Contact notifications will not be delivered.' },
-    { key: 'GROQ_API_KEY', msg: 'GROQ_API_KEY missing. Velta AI Chatbot will be unavailable.' },
+    { key: 'GROQ_API_KEY', msg: 'GROQ_API_KEY missing. VeltaZ AI Chatbot will be unavailable.' },
 ];
 optionalServices.forEach(({ key, msg }) => {
     if (!process.env[key]) {
@@ -30,6 +30,19 @@ optionalServices.forEach(({ key, msg }) => {
 const app = express();
 
 app.set('trust proxy', 1);
+app.disable('x-powered-by');
+
+// Native Security Headers Middleware
+app.use((_req, res, next) => {
+    res.setHeader('X-Content-Type-Options', 'nosniff');
+    res.setHeader('X-Frame-Options', 'DENY');
+    res.setHeader('X-XSS-Protection', '0');
+    res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+    if (process.env.NODE_ENV === 'production') {
+        res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
+    }
+    next();
+});
 
 // Connect Database
 connectDB();
@@ -144,6 +157,26 @@ app.use('/api/chat', (req, res, next) => {
 
     next();
 });
+
+// Periodic Rate Limiter Memory Cleanup (Prevents unbounded memory leak)
+const pruneExpiredRateLimits = (map) => {
+    const now = Date.now();
+    for (const [key, record] of map.entries()) {
+        if (record.resetAt <= now) {
+            map.delete(key);
+        }
+    }
+};
+
+const cleanupInterval = setInterval(() => {
+    pruneExpiredRateLimits(authAttempts);
+    pruneExpiredRateLimits(contactLimits);
+    pruneExpiredRateLimits(chatLimits);
+}, 10 * 60 * 1000);
+
+if (cleanupInterval.unref) {
+    cleanupInterval.unref();
+}
 
 // Routes
 app.use('/api/auth', authRoutes);

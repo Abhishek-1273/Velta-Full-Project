@@ -303,7 +303,11 @@ export default function PerformanceMarketing() {
       <section id="ad-channels" className={styles.channelsSection}>
         <div className="container">
           <div className={styles.sectionHeader}>
-            <span className="tag">Dedicated Multi-Channel Arsenal</span>
+            <div className={styles.sectionEyebrowWrap}>
+              <span className={styles.sectionEyebrowLine} />
+              <div className={styles.sectionEyebrowPill}>MULTI-CHANNEL ARSENAL</div>
+              <span className={styles.sectionEyebrowLine} />
+            </div>
             <h2>The 5 Core Performance Ad Networks</h2>
             <p>
               We don't rely on random vanity metrics. We deploy specialized campaign architecture tailored to each platform's unique conversion dynamics.
@@ -419,7 +423,11 @@ export default function PerformanceMarketing() {
       <section className={styles.methodologySection}>
         <div className="container">
           <div className={styles.sectionHeader}>
-            <span className="tag">Strategic Execution</span>
+            <div className={styles.sectionEyebrowWrap}>
+              <span className={styles.sectionEyebrowLine} />
+              <div className={styles.sectionEyebrowPill}>STRATEGIC EXECUTION</div>
+              <span className={styles.sectionEyebrowLine} />
+            </div>
             <h2>Our 4-Stage Performance Framework</h2>
             <p>From initial market diagnosis to continuous CPA compression, every rupee spent is backed by structured experimentation.</p>
           </div>
@@ -453,7 +461,11 @@ export default function PerformanceMarketing() {
       <section className={styles.ctaSection} style={{ borderTop: '1px solid var(--border)' }}>
         <div className="container">
           <div className={styles.ctaBox}>
-            <span className="tag" style={{ marginBottom: 14 }}>Scale With Confidence</span>
+            <div className={styles.sectionEyebrowWrap}>
+              <span className={styles.sectionEyebrowLine} />
+              <div className={styles.sectionEyebrowPill}>SCALE WITH CONFIDENCE</div>
+              <span className={styles.sectionEyebrowLine} />
+            </div>
             <h2>Ready to Scale Your Inbound Pipeline?</h2>
             <p>
               Schedule a 15-minute ad audit with our performance marketing engineers to diagnose current bottlenecks and project realistic acquisition numbers for your business.
@@ -481,7 +493,11 @@ export default function PerformanceMarketing() {
       <section className={styles.faqSection}>
         <div className="container">
           <div className={styles.sectionHeader}>
-            <span className="tag">Clarity & Confidence</span>
+            <div className={styles.sectionEyebrowWrap}>
+              <span className={styles.sectionEyebrowLine} />
+              <div className={styles.sectionEyebrowPill}>CLARITY &amp; CONFIDENCE</div>
+              <span className={styles.sectionEyebrowLine} />
+            </div>
             <h2>Frequently Asked Questions</h2>
             <p>Common questions business owners ask before launching paid ad campaigns with VeltaZ.</p>
           </div>

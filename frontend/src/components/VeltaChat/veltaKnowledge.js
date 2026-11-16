@@ -54,12 +54,6 @@ export const VELTA_KNOWLEDGE = {
       tag: "Real Estate Listing Portal & CRM",
       desc: "A luxury property management and listing portal with virtual video tours, verified listings, and an integrated agency admin CRM.",
       link: "/kin-property"
-    },
-    {
-      name: "Me & Mine",
-      tag: "Compatibility Matchmaking App",
-      desc: "An interactive matchmaking mobile application currently under active development, featuring verified profile checks and real-time secure chats.",
-      status: "Under Development"
     }
   ],
   services: [
@@ -141,7 +135,7 @@ export function getVeltaResponse(input = "") {
   }
 
   // 3. ALL PRODUCTS
-  if (/products?|tool|tools|software|docket|kin property|me & mine/.test(query)) {
+  if (/products?|tool|tools|software|docket|kin property/.test(query)) {
     if (/docket|legal|law|advocate|court/.test(query)) {
       return (
         "⚖️ **Docket14 — Legal Practice Management SaaS:**\n\n" +
@@ -169,8 +163,7 @@ export function getVeltaResponse(input = "") {
       "🚀 **VeltaZ Products Suite:**\n\n" +
       "1. **WhatsFlow:** WhatsApp lead-management & auto-routing platform.\n" +
       "2. **Docket14:** Legal practice and case docket management software.\n" +
-      "3. **KIN Property:** Luxury real estate portal and broker CRM.\n" +
-      "4. **Me & Mine (In Development):** Compatibility-driven matchmaking mobile app.\n\n" +
+      "3. **KIN Property:** Luxury real estate portal and broker CRM.\n\n" +
       "Which product would you like more details on?"
     )
   }

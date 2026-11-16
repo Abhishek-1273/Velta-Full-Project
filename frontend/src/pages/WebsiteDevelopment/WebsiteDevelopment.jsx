@@ -1,18 +1,18 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { 
-  FaWhatsapp, 
-  FaCheck, 
-  FaPlay, 
-  FaPause, 
-  FaArrowRight, 
-  FaLock, 
-  FaShieldAlt, 
-  FaMobileAlt, 
-  FaSearch, 
-  FaCode, 
-  FaImage, 
-  FaSitemap, 
+import {
+  FaWhatsapp,
+  FaCheck,
+  FaPlay,
+  FaPause,
+  FaArrowRight,
+  FaLock,
+  FaShieldAlt,
+  FaMobileAlt,
+  FaSearch,
+  FaCode,
+  FaImage,
+  FaSitemap,
   FaRocket,
   FaPlus,
   FaMinus,
@@ -82,7 +82,7 @@ export default function WebsiteDevelopment() {
         heroVideoRef.current.pause()
         setHeroVideoPlaying(false)
       } else {
-        heroVideoRef.current.play().catch(() => {})
+        heroVideoRef.current.play().catch(() => { })
         setHeroVideoPlaying(true)
       }
     }
@@ -94,7 +94,7 @@ export default function WebsiteDevelopment() {
         projectVideoRef.current.pause()
         setProjectVideoPlaying(false)
       } else {
-        projectVideoRef.current.play().catch(() => {})
+        projectVideoRef.current.play().catch(() => { })
         setProjectVideoPlaying(true)
       }
     }
@@ -102,7 +102,7 @@ export default function WebsiteDevelopment() {
 
   return (
     <div className={styles.page}>
-      
+
       {/* ── 1. HERO SECTION ── */}
       <section className={styles.hero}>
         <div className={styles.heroBg}>
@@ -110,9 +110,10 @@ export default function WebsiteDevelopment() {
         </div>
         <div className="container">
           <div className={styles.heroContent}>
-            <span className={styles.eyebrow}>
-              WEBSITE DEVELOPMENT · VELTAZ
-            </span>
+            <div className={styles.eyebrow}>
+              <span className={styles.eyebrowDot} />
+              <span>WEBSITE DEVELOPMENT · VELTAZ</span>
+            </div>
             <h1 className={styles.heroTitle}>
               Websites Built Around Your <span className={styles.heroTitleHighlight}>Business Goals.</span>
             </h1>
@@ -124,10 +125,10 @@ export default function WebsiteDevelopment() {
             </p>
 
             <div className={styles.heroActions}>
-              <a 
-                href={WHATSAPP_URL} 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={styles.heroWhatsappBtn}
               >
                 <FaWhatsapp size={19} />
@@ -149,14 +150,14 @@ export default function WebsiteDevelopment() {
                     <span className={`${styles.browserDot} ${styles.browserDotMax}`} />
                   </div>
                   <div className={styles.browserUrlBar}>
-                      <FaLock className={styles.browserUrlLock} />
-                      <span className={styles.urlDesktopText}>https://kinpropertymanagement.com</span>
-                      <span className={styles.urlMobileText}>kinpropertymanagement.com</span>
-                    </div>
+                    <FaLock className={styles.browserUrlLock} />
+                    <span className={styles.urlDesktopText}>https://kinpropertymanagement.com</span>
+                    <span className={styles.urlMobileText}>kinpropertymanagement.com</span>
+                  </div>
                 </div>
 
-                <div 
-                  className={styles.browserScreen} 
+                <div
+                  className={styles.browserScreen}
                   onClick={toggleHeroVideo}
                   title={heroVideoPlaying ? "Click to Pause" : "Click to Play"}
                 >
@@ -171,12 +172,12 @@ export default function WebsiteDevelopment() {
                   />
                   <div className={styles.browserOverlayInfo}>
                     <div className={styles.browserBadge}>
-                        <span className={styles.liveGreenDot}>●</span>
-                        <span className={styles.badgeFullText}>Live Production · KIN Property Management</span>
-                        <span className={styles.badgeShortText}>Live: KIN Property</span>
-                      </div>
-                    <button 
-                      className={styles.browserPlayControl} 
+                      <span className={styles.liveGreenDot}>●</span>
+                      <span className={styles.badgeFullText}>Live Production · KIN Property Management</span>
+                      <span className={styles.badgeShortText}>Live: KIN Property</span>
+                    </div>
+                    <button
+                      className={styles.browserPlayControl}
                       onClick={(e) => { e.stopPropagation(); toggleHeroVideo(); }}
                       aria-label={heroVideoPlaying ? "Pause Video" : "Play Video"}
                     >
@@ -195,7 +196,11 @@ export default function WebsiteDevelopment() {
       <section className={styles.finalCtaSection} style={{ borderTop: '1px solid var(--border)' }}>
         <div className="container">
           <div className={styles.finalCtaBox}>
-            <span className="tag" style={{ marginBottom: 14 }}>Start The Conversation</span>
+            <div className={styles.sectionEyebrowWrap}>
+              <span className={styles.sectionEyebrowLine} />
+              <div className={styles.sectionEyebrowPill}>START THE CONVERSATION</div>
+              <span className={styles.sectionEyebrowLine} />
+            </div>
             <h2>Let's Build the Right Website for Your Business.</h2>
             <p>
               Tell us what your business needs to achieve. We'll help define the right website type, functionality and custom scope before development begins.
@@ -212,8 +217,8 @@ export default function WebsiteDevelopment() {
                 <FaWhatsapp size={20} />
                 <span>Discuss Your Project</span>
               </a>
-              <Link 
-                to="/contact" 
+              <Link
+                to="/contact"
                 className={styles.heroSecondaryBtn}
                 style={{ padding: '15px 28px', fontSize: '15px' }}
               >
@@ -241,7 +246,11 @@ export default function WebsiteDevelopment() {
       <section className="section" style={{ borderTop: '1px solid var(--border)', background: 'var(--bg2)' }}>
         <div className="container">
           <div className={styles.sectionHeader}>
-            <span className="tag">Strategic Engineering</span>
+            <div className={styles.sectionEyebrowWrap}>
+              <span className={styles.sectionEyebrowLine} />
+              <div className={styles.sectionEyebrowPill}>STRATEGIC ENGINEERING</div>
+              <span className={styles.sectionEyebrowLine} />
+            </div>
             <h2>We Build for the Business, Not Just the Browser.</h2>
             <p>
               VeltaZ focuses on making websites useful for the actual business objective rather than adding unnecessary features.
@@ -289,7 +298,11 @@ export default function WebsiteDevelopment() {
       <section className="section" style={{ borderTop: '1px solid var(--border)' }}>
         <div className="container">
           <div className={styles.sectionHeader}>
-            <span className="tag">Search Foundations</span>
+            <div className={styles.sectionEyebrowWrap}>
+              <span className={styles.sectionEyebrowLine} />
+              <div className={styles.sectionEyebrowPill}>SEARCH FOUNDATIONS</div>
+              <span className={styles.sectionEyebrowLine} />
+            </div>
             <h2>Basic SEO Included in Both Packages</h2>
             <p>
               Both website options include the agreed foundational setup to ensure search crawlers can index and understand your content cleanly.
@@ -349,7 +362,11 @@ export default function WebsiteDevelopment() {
       <section id="featured-work" className="section" style={{ borderTop: '1px solid var(--border)', background: 'var(--bg2)', padding: '48px 0' }}>
         <div className="container">
           <div className={styles.sectionHeader}>
-            <span className="tag">Live Project Demonstration</span>
+            <div className={styles.sectionEyebrowWrap}>
+              <span className={styles.sectionEyebrowLine} />
+              <div className={styles.sectionEyebrowPill}>LIVE PROJECT DEMONSTRATION</div>
+              <span className={styles.sectionEyebrowLine} />
+            </div>
             <h2>Real Project Showcase</h2>
             <p>
               See how we engineer full-stack platforms — featuring the KIN Property portal with live listing search and an internal agent CRM.
@@ -378,9 +395,9 @@ export default function WebsiteDevelopment() {
             </div>
 
             <div className={styles.projectContentGrid}>
-              
+
               {/* VIDEO DECK */}
-              <div 
+              <div
                 className={styles.projectVideoDeck}
                 onClick={toggleProjectVideo}
                 title={projectVideoPlaying ? "Click to Pause" : "Click to Play"}
@@ -425,8 +442,8 @@ export default function WebsiteDevelopment() {
                     {projectTab === 'website' ? 'Dynamic Listing Platform' : 'Management Workspace'}
                   </span>
                   <h3>
-                    {projectTab === 'website' 
-                      ? 'KIN Property Website & Listing Search' 
+                    {projectTab === 'website'
+                      ? 'KIN Property Website & Listing Search'
                       : 'KIN Agency Admin Dashboard'}
                   </h3>
                   <p>
@@ -456,20 +473,20 @@ export default function WebsiteDevelopment() {
                 </div>
 
                 <div className={styles.projectBtnRow}>
-                  <a 
-                    href="https://kinpropertymanagement.com" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="btn btn-outline" 
+                  <a
+                    href="https://kinpropertymanagement.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-outline"
                     style={{ padding: '9px 18px', fontSize: 13 }}
                   >
                     <span>Visit Live Website</span>
                     <FaArrowRight size={12} />
                   </a>
-                  <a 
-                    href={WHATSAPP_URL} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
+                  <a
+                    href={WHATSAPP_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="btn btn-primary"
                     style={{ padding: '9px 18px', fontSize: 13 }}
                   >
@@ -483,12 +500,16 @@ export default function WebsiteDevelopment() {
         </div>
       </section>
 
-      
+
       {/* ── WEBSITE MAINTENANCE & CARE PLANS ── */}
       <section className={styles.maintenanceSection} id="maintenance">
         <div className="container">
           <div className={styles.sectionHeader}>
-            <span className="tag">Post-Launch Support</span>
+            <div className={styles.sectionEyebrowWrap}>
+              <span className={styles.sectionEyebrowLine} />
+              <div className={styles.sectionEyebrowPill}>POST-LAUNCH SUPPORT</div>
+              <span className={styles.sectionEyebrowLine} />
+            </div>
             <h2>Keep Your Website Running Smoothly</h2>
             <p>
               Keep your website maintained after launch with ongoing checks, backups and small updates.
@@ -496,7 +517,7 @@ export default function WebsiteDevelopment() {
           </div>
 
           <div className={styles.careGrid}>
-            
+
             {/* STATIC CARE */}
             <div className={styles.careCard}>
               <h3 className={styles.careTitle}>Static Website Care</h3>
@@ -588,7 +609,11 @@ export default function WebsiteDevelopment() {
       <section className="section" style={{ borderTop: '1px solid var(--border)' }}>
         <div className="container">
           <div className={styles.sectionHeader}>
-            <span className="tag">Questions & Answers</span>
+            <div className={styles.sectionEyebrowWrap}>
+              <span className={styles.sectionEyebrowLine} />
+              <div className={styles.sectionEyebrowPill}>QUESTIONS &amp; ANSWERS</div>
+              <span className={styles.sectionEyebrowLine} />
+            </div>
             <h2>Frequently Asked Questions</h2>
             <p>Clear answers to common questions about our website packages, scopes, and processes.</p>
           </div>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import {
   FaArrowRight,
   FaCheck,
@@ -27,11 +28,219 @@ const WHATSAPP_NUMBER = '919960240648'
 const WHATSAPP_MSG = encodeURIComponent("Hi VeltaZ, I'd like to discuss my business and explore practical digital solutions.")
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MSG}`
 
+// ── TASTE-SKILL: Interactive 3D Perspective Tilt Card with Cursor Spotlight ──
+function TiltCard({ children, className = '', maxRotate = 7, glareOpacity = 0.14, ...props }) {
+  const cardRef = useRef(null)
+  const [tilt, setTilt] = useState({ x: 0, y: 0, glareX: 50, glareY: 50, active: false })
+
+  const handleMouseMove = (e) => {
+    if (!cardRef.current) return
+    const rect = cardRef.current.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+    const centerX = rect.width / 2
+    const centerY = rect.height / 2
+    const rotateX = ((y - centerY) / centerY) * -maxRotate
+    const rotateY = ((x - centerX) / centerX) * maxRotate
+    setTilt({
+      x: rotateX,
+      y: rotateY,
+      glareX: (x / rect.width) * 100,
+      glareY: (y / rect.height) * 100,
+      active: true,
+    })
+  }
+
+  const handleMouseLeave = () => {
+    setTilt({ x: 0, y: 0, glareX: 50, glareY: 50, active: false })
+  }
+
+  return (
+    <div
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className={className}
+      style={{
+        transform: `perspective(1100px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale3d(${tilt.active ? 1.02 : 1}, ${tilt.active ? 1.02 : 1}, 1)`,
+        transition: tilt.active ? 'transform 0.08s ease-out' : 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
+        position: 'relative',
+        transformStyle: 'preserve-3d',
+      }}
+      {...props}
+    >
+      {tilt.active && (
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            pointerEvents: 'none',
+            borderRadius: 'inherit',
+            background: `radial-gradient(circle at ${tilt.glareX}% ${tilt.glareY}%, rgba(223, 168, 64, ${glareOpacity}) 0%, transparent 65%)`,
+            zIndex: 10,
+          }}
+        />
+      )}
+      {children}
+    </div>
+  )
+}
+
+// ── Interactive Draggable Golden Stars (Springs Back on Release) ──
+function DraggableSparkle({ size = 22, style, rotate = 0 }) {
+  return (
+    <motion.div
+      drag
+      dragSnapToOrigin
+      dragElastic={0.8}
+      dragTransition={{ bounceStiffness: 450, bounceDamping: 22 }}
+      whileHover={{ scale: 1.35, rotate: rotate + 25, cursor: 'grab' }}
+      whileDrag={{ scale: 1.6, cursor: 'grabbing' }}
+      className={styles.draggableStar}
+      style={{ ...style, transform: `rotate(${rotate}deg)` }}
+      title="Drag me!"
+    >
+      <svg
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        className={styles.starSvg}
+      >
+        <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+      </svg>
+    </motion.div>
+  )
+}
+
+const PHILOSOPHY_STEPS = [
+  {
+    step: '01',
+    title: 'Diagnose the Bottlenecks',
+    desc: 'We study your business bottlenecks, customer touchpoints, and operational workflow first. Deep investigation ensures we solve core friction before writing any new code.',
+    tag: 'Root-Cause Audit',
+    icon: FaSearch,
+  },
+  {
+    step: '02',
+    title: 'Build Only What Is Needed',
+    desc: 'We build custom web applications, internal tools, and automations tailored to your exact scope. Every system is engineered with purpose, zero bloat, and zero templates.',
+    tag: 'Purpose-Built Engine',
+    icon: FaCogs,
+  },
+  {
+    step: '03',
+    title: 'Connect Daily Operations',
+    desc: 'We connect each customer touchpoint into one unified workflow. Search inquiries, social discovery, WhatsApp qualifiers, and CRM systems work together as a single engine.',
+    tag: 'Unified Workflows',
+    icon: FaDatabase,
+  },
+  {
+    step: '04',
+    title: 'Validate Through Evidence',
+    desc: 'We validate technical performance through real user feedback, stress testing, and live data. Every operational upgrade is supported by solid and verifiable evidence.',
+    tag: 'Evidence & Telemetry',
+    icon: FaChartLine,
+  },
+]
+
+const PRACTICAL_PRODUCTS = [
+  {
+    id: 'whatsflow',
+    title: 'WhatsFlow',
+    badge: 'Automation & Lead OS',
+    status: 'Active Tool',
+    domain: 'app.whatsflow.io',
+    icon: FaWhatsapp,
+    desc: 'Bespoke WhatsApp automation suite engineered to eliminate manual lead entry and sync conversations directly into CRM.',
+    metric: '< 120ms',
+    metricLabel: 'Inbound Latency',
+    pill: 'Meta Cloud API',
+    highlights: [
+      'Meta Cloud API direct webhook gateway',
+      'Shared multi-agent team inbox routing',
+      'Zero-leak automated lead capture flows',
+      'Bi-directional live CRM database sync',
+    ],
+    link: '/whatsflow',
+  },
+  {
+    id: 'docket14',
+    title: 'Docket14',
+    badge: 'Legal Practice CRM',
+    status: 'Internal Tool',
+    domain: 'docket14.legal',
+    icon: FaBriefcase,
+    desc: 'Custom law firm practice management tool built to digitize daily court cause-lists, advocate dockets, and hearing lifecycles.',
+    metric: '100%',
+    metricLabel: 'Docket Sync Rate',
+    pill: 'Courtroom CRM',
+    highlights: [
+      'Daily District & High Court cause-lists',
+      'Hearing stage tracking & next-date alerts',
+      'Advocate case notes & client dockets',
+      'Fee ledger & expense approval system',
+    ],
+    link: '/docket14',
+  },
+  {
+    id: 'kin-property',
+    title: 'Kin Property',
+    badge: 'PropTech Ecosystem',
+    status: 'Live Platform',
+    domain: 'kinproperty.in',
+    icon: FaBuilding,
+    desc: 'End-to-end real estate engine featuring localized Pune property search, verified inventory, and instant WhatsApp tour routing.',
+    metric: '3.2×',
+    metricLabel: 'Inbound Surge',
+    pill: 'Pune PropTech',
+    highlights: [
+      'Localized Pune inventory search filters',
+      'Google SEO & GBP inbound lead funnels',
+      'Instant WhatsApp tour booking triggers',
+      'Admin property deal & inventory board',
+    ],
+    link: '/kin-property',
+  },
+]
+
+// ── TASTE-SKILL: Magnetic Button with Cursor Attraction Physics ──
+function MagneticButton({ children }) {
+  const ref = useRef(null)
+  const [pos, setPos] = useState({ x: 0, y: 0 })
+
+  const handleMouseMove = (e) => {
+    if (!ref.current) return
+    const rect = ref.current.getBoundingClientRect()
+    const centerX = rect.left + rect.width / 2
+    const centerY = rect.top + rect.height / 2
+    const distanceX = (e.clientX - centerX) * 0.28
+    const distanceY = (e.clientY - centerY) * 0.28
+    setPos({ x: distanceX, y: distanceY })
+  }
+
+  const handleMouseLeave = () => {
+    setPos({ x: 0, y: 0 })
+  }
+
+  return (
+    <motion.div
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      animate={{ x: pos.x, y: pos.y }}
+      transition={{ type: 'spring', stiffness: 350, damping: 22, mass: 0.5 }}
+      style={{ display: 'inline-block' }}
+    >
+      {children}
+    </motion.div>
+  )
+}
+
 export default function About() {
   const kinVideoRef = useRef(null)
   const [isVideoPlaying, setIsVideoPlaying] = useState(true)
   const [kinTab, setKinTab] = useState('portal') // 'portal' | 'crm'
-  const [activeHeroTab, setActiveHeroTab] = useState('kin') // 'kin' | 'whatsflow' | 'content'
 
   useEffect(() => {
     document.title = "About VeltaZ | Business Growth & Digital Systems"
@@ -53,7 +262,7 @@ export default function About() {
         kinVideoRef.current.pause()
         setIsVideoPlaying(false)
       } else {
-        kinVideoRef.current.play().catch(() => {})
+        kinVideoRef.current.play().catch(() => { })
         setIsVideoPlaying(true)
       }
     }
@@ -64,7 +273,7 @@ export default function About() {
     setIsVideoPlaying(true)
     if (kinVideoRef.current) {
       kinVideoRef.current.load()
-      kinVideoRef.current.play().catch(() => {})
+      kinVideoRef.current.play().catch(() => { })
     }
   }
 
@@ -78,339 +287,177 @@ export default function About() {
 
   return (
     <div className={styles.page}>
+      {/* 2026 Luxury Noise Grain Overlay */}
+      <div className={styles.noiseOverlay} aria-hidden="true" />
 
-      {/* ── 1. HERO SECTION ── */}
+      {/* ── 1. HERO SECTION (MATCHING LUXURY DESIGN MOCKUP) ── */}
       <section className={styles.hero}>
         <div className={styles.heroBg}>
+          <div className={styles.ambientBlobLeft} />
+          <div className={styles.ambientBlobRight} />
           <div className={styles.gridOverlay} />
-          <div className={styles.ambientGlow} />
         </div>
-        
+
         <div className="container">
           <div className={styles.heroGrid}>
+            {/* Left Content */}
             <div className={styles.heroContent}>
-              <div className={styles.badgeRow}>
-                <span className="tag">ABOUT VELTAZ</span>
+              <div className={styles.eyebrowBadge}>
+                <span className={styles.eyebrowDot} />
+                <span>ABOUT US · VELTAZ</span>
               </div>
 
               <h1 className={styles.heroTitle}>
-                We Build the Systems Behind <span className={styles.titleGradient}>Business Growth.</span>
+                Turning Ideas<br />
+                Into <span className={styles.goldText}>Impact.</span>
               </h1>
 
-              <p className={styles.heroLead}>
-                VeltaZ unites business thinking, digital experiences, creative execution, and custom automation to help modern companies scale with clarity.
+              <p className={styles.heroDesc}>
+                At Veltaz, we're a team of passionate thinkers, designers and developers, dedicated to turning bold ideas into scalable digital solutions.
               </p>
 
-              {/* Quick Value Points */}
-              <div className={styles.heroHighlights}>
-                <div className={styles.highlightChip}>
-                  <FaCompass className={styles.chipIcon} />
-                  <span>Problem-First Strategy</span>
+              {/* Value Pillars Row */}
+              <div className={styles.statsRow}>
+                <div className={styles.statItem}>
+                  <div className={styles.pillarTitle}>Custom Code</div>
+                  <div className={styles.pillarDesc}>Bespoke Web & Software</div>
                 </div>
-                <div className={styles.highlightChip}>
-                  <FaLaptopCode className={styles.chipIcon} />
-                  <span>Proprietary Tech</span>
+
+                <div className={styles.statDivider} />
+
+                <div className={styles.statItem}>
+                  <div className={styles.pillarTitle}>WhatsFlow</div>
+                  <div className={styles.pillarDesc}>WhatsApp & CRM Workflows</div>
                 </div>
-                <div className={styles.highlightChip}>
-                  <FaBolt className={styles.chipIcon} />
-                  <span>Frictionless Automation</span>
-                </div>
-                <div className={`${styles.highlightChip} ${styles.mobileOnlyChip}`}>
-                  <FaChartLine className={styles.chipIcon} />
-                  <span>Reliable Delivery</span>
+
+                <div className={styles.statDivider} />
+
+                <div className={styles.statItem}>
+                  <div className={styles.pillarTitle}>Direct Access</div>
+                  <div className={styles.pillarDesc}>Work With Builders</div>
                 </div>
               </div>
 
-              <div className={styles.heroCtas}>
-                <a
-                  href="#case-study"
-                  onClick={(e) => scrollToSection(e, 'case-study')}
-                  className="btn btn-primary"
-                >
-                  <span>Explore Flagship Work</span>
-                  <FaArrowRight size={12} />
-                </a>
-                <a
-                  href={WHATSAPP_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-outline"
-                >
-                  <FaWhatsapp size={14} style={{ color: '#25D366' }} />
-                  <span>Discuss Your Business</span>
-                </a>
+              {/* Action Buttons with Taste-Skill Magnetic Attraction */}
+              <div className={styles.heroActions}>
+                <MagneticButton>
+                  <Link
+                    to="/case-studies"
+                    className={styles.btnJourney}
+                  >
+                    <span>Explore Our Work</span>
+                    <FaArrowRight size={12} />
+                  </Link>
+                </MagneticButton>
+
+                <MagneticButton>
+                  <Link
+                    to="/contact"
+                    className={styles.btnWatch}
+                  >
+                    <span>Start a Project</span>
+                    <FaArrowRight size={12} />
+                  </Link>
+                </MagneticButton>
               </div>
             </div>
 
-            {/* Interactive Project Switcher (Single Unified Luxury Card) */}
-            <div className={styles.heroVisual}>
-              <div className={styles.switcherCard}>
-                
-                {/* Top Bar with Window Dots & Badge */}
-                <div className={styles.switcherTopBar}>
-                  <div className={styles.switcherDots}>
-                    <span className={styles.dotRed} />
-                    <span className={styles.dotYellow} />
-                    <span className={styles.dotGreen} />
-                  </div>
-                  <div className={styles.switcherStatusBadge}>
-                    <span className={styles.livePulseDot} />
-                    <span className={styles.tabDeskText}>Verified Project Deployments</span>
-                    <span className={styles.tabMobText}>Verified Deployments</span>
-                  </div>
-                </div>
-
-                {/* 3 Interactive Tab Buttons */}
-                <div className={styles.switcherNav}>
-                  <button
-                    type="button"
-                    onClick={() => setActiveHeroTab('kin')}
-                    className={`${styles.switcherTabBtn} ${activeHeroTab === 'kin' ? styles.switcherTabBtnActive : ''}`}
-                  >
-                    <FaLaptopCode size={13} />
-                    <span className={styles.tabDeskText}>KIN Website</span>
-                    <span className={styles.tabMobText}>KIN Web</span>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => setActiveHeroTab('whatsflow')}
-                    className={`${styles.switcherTabBtn} ${activeHeroTab === 'whatsflow' ? styles.switcherTabBtnActive : ''}`}
-                  >
-                    <FaWhatsapp size={13} />
-                    <span className={styles.tabDeskText}>WhatsFlow CRM</span>
-                    <span className={styles.tabMobText}>WhatsFlow</span>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => setActiveHeroTab('content')}
-                    className={`${styles.switcherTabBtn} ${activeHeroTab === 'content' ? styles.switcherTabBtnActive : ''}`}
-                  >
-                    <FaPenNib size={12} />
-                    <span className={styles.tabDeskText}>Content Studio</span>
-                    <span className={styles.tabMobText}>Content</span>
-                  </button>
-                </div>
-
-                {/* Tab Screen Pane */}
-                <div className={styles.switcherScreen}>
-                  
-                  {/* TAB 1: KIN Property Website */}
-                  {activeHeroTab === 'kin' && (
-                    <div className={styles.tabContentPane}>
-                      <div className={styles.browserBarSmall}>
-                        <span className={styles.lockIcon}>🔒</span>
-                        <span className={styles.browserUrlText}>https://kinpropertymanagement.com</span>
-                        <span className={styles.tagPill}>Web Platform</span>
-                      </div>
-                      
-                      <div className={styles.previewImageContainer}>
-                        <img
-                          src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1792408084/website-mockup_qnmqqk.png"
-                          alt="KIN Property Desktop Website Mockup"
-                          className={styles.kinDesktopImg}
-                        />
-                      </div>
-
-                      <div className={styles.paneMetaRow}>
-                        <div className={styles.paneDeliverables}>
-                          <span>Custom Search</span>
-                          <span>Geo Maps</span>
-                          <span>Lead Hooks</span>
-                        </div>
-                        <a
-                          href="#case-study"
-                          onClick={(e) => scrollToSection(e, 'case-study')}
-                          className={styles.paneActionLink}
-                        >
-                          <span>Case Study</span>
-                          <FaArrowRight size={10} />
-                        </a>
-                      </div>
-                    </div>
-                  )}
-
-                  {/* TAB 2: WhatsFlow CRM */}
-                  {activeHeroTab === 'whatsflow' && (
-                    <div className={styles.tabContentPane}>
-                      <div className={styles.browserBarSmall}>
-                        <FaWhatsapp size={13} style={{ color: '#25D366' }} />
-                        <span className={styles.browserUrlText}>Inbound Lead Routing Engine</span>
-                        <span className={styles.tagPill}>WhatsApp CRM</span>
-                      </div>
-
-                      <div className={styles.whatsflowPaneGrid}>
-                        {/* Samsung Galaxy S25 Ultra Frame */}
-                        <div className={styles.s25UltraFrame}>
-                          <div className={styles.s25VolumeBtn} />
-                          <div className={styles.s25PowerBtn} />
-                          
-                          <div className={styles.s25ScreenSurface}>
-                            <div className={styles.s25PunchHoleCamera} />
-                            <img
-                              src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1792917399/admin_whatsFlow.jpg_pcyu3j.jpg"
-                              alt="WhatsFlow Mobile App Interface"
-                              className={styles.phoneScreenImg}
-                            />
-                          </div>
-                        </div>
-                        <div className={styles.whatsflowInfoCol}>
-                          <h4>Automated WhatsApp Pipeline</h4>
-                          <ul className={styles.featureBulletList}>
-                            <li><FaCheck className={styles.bulletCheck} /> 24/7 Inbound inquiry capture</li>
-                            <li><FaCheck className={styles.bulletCheck} /> Round-robin team member routing</li>
-                            <li><FaCheck className={styles.bulletCheck} /> Centralized conversation database</li>
-                          </ul>
-                          <div className={styles.wfMetaBadge}>
-                            <span>Zero lost leads • Instant agent sync</span>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className={styles.paneMetaRow}>
-                        <div className={styles.paneDeliverables}>
-                          <span>WhatsApp API</span>
-                          <span>Admin Portal</span>
-                          <span>Agent App</span>
-                        </div>
-                        <Link to="/whatsflow" className={styles.paneActionLink}>
-                          <span>View Product</span>
-                          <FaArrowRight size={10} />
-                        </Link>
-                      </div>
-                    </div>
-                  )}
-
-                  {/* TAB 3: Content Studio */}
-                  {activeHeroTab === 'content' && (
-                    <div className={styles.tabContentPane}>
-                      <div className={styles.browserBarSmall}>
-                        <FaChartLine size={12} style={{ color: 'var(--accent)' }} />
-                        <span className={styles.browserUrlText}>High-Engagement Short-Form Video</span>
-                        <span className={styles.tagPill}>Content Studio</span>
-                      </div>
-
-                      <div className={styles.contentPaneGrid}>
-                        {/* Samsung Galaxy S25 Ultra Frame */}
-                        <div className={styles.s25UltraFrame}>
-                          <div className={styles.s25VolumeBtn} />
-                          <div className={styles.s25PowerBtn} />
-                          
-                          <div className={styles.s25ScreenSurface}>
-                            <div className={styles.s25PunchHoleCamera} />
-                            <img
-                              src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1792053111/reel-193k_zbtf8g.png"
-                              alt="Viral Instagram Reel with 193K Views"
-                              className={styles.reelImg}
-                            />
-                          </div>
-                        </div>
-                        <div className={styles.contentInfoCol}>
-                          <h4>Organic Reach & Creative Direction</h4>
-                          <p className={styles.contentDescText}>
-                            High-impact video production and social media handling designed to establish brand authority and drive organic customer discovery.
-                          </p>
-                          <div className={styles.platformPillsRow}>
-                            <span>Instagram Reels</span>
-                            <span>LinkedIn Media</span>
-                            <span>Brand Identity</span>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className={styles.paneMetaRow}>
-                        <div className={styles.paneDeliverables}>
-                          <span>Viral Video Editing</span>
-                          <span>Scripting</span>
-                          <span>Page Handling</span>
-                        </div>
-                        <Link to="/content" className={styles.paneActionLink}>
-                          <span>Explore Content</span>
-                          <FaArrowRight size={10} />
-                        </Link>
-                      </div>
-                    </div>
-                  )}
-
-                </div>
-
-                {/* Card Footer Subtitle */}
-                <div className={styles.switcherFooter}>
-                  <span>Actual project deliverables deployed for real businesses</span>
-                </div>
-
+            {/* Right Visual Image */}
+            <div className={styles.heroVisualWrap}>
+              <div className={styles.heroGlowBackdrop} />
+              <div className={styles.heroVisualInner}>
+                <img
+                  src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1794644576/VELTAZ_original_4K_zwclzg.png"
+                  alt="VeltaZ 3D Logo"
+                  className={styles.hero3dImg}
+                  fetchPriority="high"
+                />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── 2. BRAND PHILOSOPHY (CONSOLIDATED) ── */}
-      <section className={styles.philosophySection}>
+      {/* ── 2. BRAND PHILOSOPHY (3D PERSPECTIVE & INTERACTIVE ARCHITECTURE) ── */}
+      <section id="philosophy" className={styles.philosophySection}>
         <div className="container">
           <div className={styles.sectionHeaderCentered}>
-            <span className="tag">OUR PHILOSOPHY</span>
+            {/* Playful Interactive Draggable Golden Stars (Spring Back Physics) */}
+            <DraggableSparkle size={26} rotate={14} style={{ top: -16, right: '6%' }} />
+            <DraggableSparkle size={18} rotate={-22} style={{ bottom: -8, left: '6%' }} />
+
+            <div className={styles.sectionEyebrowWrap}>
+              <span className={styles.sectionEyebrowLine} />
+              <div className={styles.sectionEyebrowPill}>OUR PHILOSOPHY</div>
+              <span className={styles.sectionEyebrowLine} />
+            </div>
             <h2 className={styles.sectionTitle}>Understand First. Build with Purpose.</h2>
             <p className={styles.sectionSub}>
-              A website alone isn’t enough. Neither is isolated marketing or disconnected software. 
+              A website alone isn’t enough. Neither is isolated marketing or disconnected software.
               Real momentum happens when your digital footprint connects directly with real-world business operations.
             </p>
           </div>
 
           <div className={styles.thinkingGrid}>
-            <div className={styles.thinkingCard}>
-              <div className={styles.thinkingHead}>
-                <span className={styles.thinkingNum}>01</span>
-                <div className={styles.thinkingLine} />
-              </div>
-              <h4>Diagnose the Bottlenecks</h4>
-              <p>
-                We study your business bottlenecks, customer touchpoints, and operational workflow first. Deep investigation ensures we solve core friction before writing any new code.
-              </p>
-            </div>
+            {PHILOSOPHY_STEPS.map((step, idx) => {
+              const Icon = step.icon
+              return (
+                <TiltCard
+                  key={step.step}
+                  maxRotate={9}
+                  className={styles.thinkingCard3D}
+                >
+                  {/* Holographic Parallax 3D Watermark Number */}
+                  <div className={styles.watermarkNumber} aria-hidden="true">
+                    {step.step}
+                  </div>
 
-            <div className={styles.thinkingCard}>
-              <div className={styles.thinkingHead}>
-                <span className={styles.thinkingNum}>02</span>
-                <div className={styles.thinkingLine} />
-              </div>
-              <h4>Build Only What Is Needed</h4>
-              <p>
-                We build custom web applications, internal tools, and automations tailored to your exact scope. Every system is engineered with purpose, zero bloat, and zero templates.
-              </p>
-            </div>
+                  {/* Top 3D Header: Icon Capsule + Step + Corner Arrow (Image 1 style) */}
+                  <div className={styles.thinkingHead3D}>
+                    <div className={styles.headLeft3D}>
+                      <div className={styles.iconCapsule3D}>
+                        <Icon size={16} />
+                      </div>
+                      <span className={styles.stepBadge3D}>PHASE {step.step}</span>
+                    </div>
 
-            <div className={styles.thinkingCard}>
-              <div className={styles.thinkingHead}>
-                <span className={styles.thinkingNum}>03</span>
-                <div className={styles.thinkingLine} />
-              </div>
-              <h4>Connect Daily Operations</h4>
-              <p>
-                We connect each customer touchpoint into one unified workflow. Search inquiries, social discovery, WhatsApp qualifiers, and CRM systems work together as a single engine.
-              </p>
-            </div>
+                    <div className={styles.cornerArrowBtn} title="Explore Phase">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="7" y1="17" x2="17" y2="7" />
+                        <polyline points="7 7 17 7 17 17" />
+                      </svg>
+                    </div>
+                  </div>
 
-            <div className={styles.thinkingCard}>
-              <div className={styles.thinkingHead}>
-                <span className={styles.thinkingNum}>04</span>
-                <div className={styles.thinkingLine} />
-              </div>
-              <h4>Validate Through Evidence</h4>
-              <p>
-                We validate technical performance through real user feedback, stress testing, and live data. Every operational upgrade is supported by solid and verifiable evidence.
-              </p>
-            </div>
+                  {/* 3D Title */}
+                  <h4 className={styles.thinkingTitle3D}>{step.title}</h4>
+
+                  {/* 3D Body */}
+                  <p className={styles.thinkingDesc3D}>{step.desc}</p>
+
+                  {/* Bottom 3D Foot Tag */}
+                  <div className={styles.thinkingFoot3D}>
+                    <span className={styles.footTagPill}>
+                      <span className={styles.footDot} /> {step.tag}
+                    </span>
+                    <span className={styles.stepProgressInd}>{idx + 1}/4</span>
+                  </div>
+                </TiltCard>
+              )
+            })}
           </div>
         </div>
       </section>
 
-      {/* ── 3. FOUR CONNECTED CAPABILITIES ── */}
+      {/* ── 3. FOUR CONNECTED CAPABILITIES (EDITORIAL BENTO GRID) ── */}
       <section className={styles.capabilitiesSection}>
         <div className="container">
           <div className={styles.sectionHeaderCentered}>
-            <span className="tag">FOUR CORE CAPABILITIES</span>
+            <div className={styles.sectionEyebrowWrap}>
+              <span className={styles.sectionEyebrowLine} />
+              <div className={styles.sectionEyebrowPill}>FOUR CORE CAPABILITIES</div>
+              <span className={styles.sectionEyebrowLine} />
+            </div>
             <h2 className={styles.sectionTitle}>
               Research. Build. Grow. Automate.
             </h2>
@@ -419,78 +466,193 @@ export default function About() {
             </p>
           </div>
 
-          <div className={styles.capabilitiesGrid}>
-            {/* Strategy */}
-            <div className={styles.capCard}>
-              <div className={styles.capHead}>
-                <div className={styles.capIcon}><FaCompass size={18} /></div>
-                <span className={styles.capTag}>Discipline 01</span>
+          <div className={styles.bentoGrid}>
+            {/* Bento Card 1: Research & Strategy (Top-Left 5-col) */}
+            <TiltCard className={`${styles.bentoCard} ${styles.bentoCardResearch}`}>
+              <div className={styles.bentoHeader}>
+                <div className={styles.capHead}>
+                  <div className={styles.capIcon}><FaCompass size={18} /></div>
+                  <span className={styles.bentoTag}>RESEARCH · STRATEGY</span>
+                </div>
+                <span className={styles.statusLivePill}>Phase 01</span>
               </div>
-              <h3>Research & Strategy</h3>
-              <p>Business diagnosis, competitive positioning, customer journey mapping, and realistic technical roadmaps.</p>
-              <div className={styles.capChips}>
-                <span>Market Diagnosis</span>
-                <span>Scope Planning</span>
-              </div>
-              <Link to="/contact" className={styles.capLink}>
-                <span>Discuss Project Scope</span>
-                <FaArrowRight size={11} />
-              </Link>
-            </div>
 
-            {/* Build */}
-            <div className={styles.capCard}>
-              <div className={styles.capHead}>
-                <div className={styles.capIcon}><FaLaptopCode size={18} /></div>
-                <span className={styles.capTag}>Discipline 02</span>
-              </div>
-              <h3>Build</h3>
-              <p>Modern responsive business websites, web applications, client portals, and custom operational software.</p>
-              <div className={styles.capChips}>
-                <span>Web Platforms</span>
-                <span>Custom Software</span>
-              </div>
-              <Link to="/website-development" className={styles.capLink}>
-                <span>Explore Development</span>
-                <FaArrowRight size={11} />
-              </Link>
-            </div>
+              <h3 className={styles.bentoTitle}>Research &amp; Scoping</h3>
+              <p className={styles.bentoDesc}>
+                We study your business bottlenecks first. Clear scope, zero wasted code, and realistic delivery before building.
+              </p>
 
-            {/* Grow */}
-            <div className={styles.capCard}>
-              <div className={styles.capHead}>
-                <div className={styles.capIcon}><FaChartLine size={18} /></div>
-                <span className={styles.capTag}>Discipline 03</span>
-              </div>
-              <h3>Grow</h3>
-              <p>Targeted Google SEO, Google Business Profiles, editorial content planning, and qualified customer acquisition.</p>
-              <div className={styles.capChips}>
-                <span>Google SEO</span>
-                <span>Content Strategy</span>
-              </div>
-              <Link to="/seo-blogging-google-business-profile" className={styles.capLink}>
-                <span>Explore SEO & Content</span>
-                <FaArrowRight size={11} />
-              </Link>
-            </div>
+              {/* Minimalist 3-Step Audit Widget */}
+              <div className={styles.bentoAuditWidget}>
+                <div className={styles.auditRow}>
+                  <div className={styles.auditLeft}>
+                    <span className={styles.auditNum}>01</span>
+                    <span className={styles.auditLabel}>Identify Bottlenecks</span>
+                  </div>
+                  <span className={styles.auditTag}>Audit</span>
+                </div>
 
-            {/* Automate */}
-            <div className={styles.capCard}>
-              <div className={styles.capHead}>
-                <div className={styles.capIcon}><FaCogs size={18} /></div>
-                <span className={styles.capTag}>Discipline 04</span>
+                <div className={styles.auditRow}>
+                  <div className={styles.auditLeft}>
+                    <span className={styles.auditNum}>02</span>
+                    <span className={styles.auditLabel}>Purpose-Built Spec</span>
+                  </div>
+                  <span className={styles.auditTagGold}>Zero Bloat</span>
+                </div>
+
+                <div className={styles.auditRow}>
+                  <div className={styles.auditLeft}>
+                    <span className={styles.auditNum}>03</span>
+                    <span className={styles.auditLabel}>Milestones &amp; Timeline</span>
+                  </div>
+                  <span className={styles.auditTagGreen}>Guaranteed</span>
+                </div>
               </div>
-              <h3>Automate</h3>
-              <p>Practical lead-management setups, n8n webhook automations, WhatsApp notifications, and zero manual data re-entry.</p>
-              <div className={styles.capChips}>
-                <span>WhatsApp CRM</span>
-                <span>System Sync</span>
+
+              <div className={styles.bentoFooter}>
+                <div className={styles.capChips}>
+                  <span>Bottleneck Audit</span>
+                  <span>Scope Lock</span>
+                </div>
+                <Link to="/contact" className={styles.capLink}>
+                  <span>Discuss Project Scope</span>
+                  <FaArrowRight size={11} />
+                </Link>
               </div>
-              <Link to="/automation-systems" className={styles.capLink}>
-                <span>Explore Automation</span>
-                <FaArrowRight size={11} />
-              </Link>
-            </div>
+            </TiltCard>
+
+            {/* Bento Card 2: Build (Top-Right Featured 7-col) */}
+            <TiltCard className={`${styles.bentoCard} ${styles.bentoCardBuild}`}>
+              <div className={styles.bentoHeader}>
+                <div className={styles.capHead}>
+                  <div className={styles.capIcon}><FaLaptopCode size={18} /></div>
+                  <span className={styles.bentoTag}>CORE PILLAR · BUILD</span>
+                </div>
+                <div className={styles.livePulseBadge}>
+                  <span className={styles.pulseDot} />
+                  <span>Sub-second TTFB</span>
+                </div>
+              </div>
+
+              <h3 className={styles.bentoTitle}>High-Performance Web &amp; Custom Platforms</h3>
+              <p className={styles.bentoDesc}>
+                Modern responsive business websites, web applications, client portals, and custom operational software engineered around real requirements.
+              </p>
+
+              {/* Interactive Live Architecture Snippet Widget */}
+              <div className={styles.bentoTerminalWidget}>
+                <div className={styles.terminalBar}>
+                  <div className={styles.termDots}>
+                    <span className={styles.termDot} style={{ background: '#ff5f56' }} />
+                    <span className={styles.termDot} style={{ background: '#ffbd2e' }} />
+                    <span className={styles.termDot} style={{ background: '#27c93f' }} />
+                  </div>
+                  <span className={styles.terminalTitle}>veltaz-architecture.ts</span>
+                </div>
+                <div className={styles.terminalCode}>
+                  <code>
+                    <span className={styles.codeDim}>// Clean modular stack</span><br />
+                    <span className={styles.codeKey}>const</span> <span className={styles.codeVar}>system</span> = <span className={styles.codeKey}>await</span> veltaz.<span className={styles.codeFn}>deploy</span>({'{'}<br />
+                    &nbsp;&nbsp;frontend: <span className={styles.codeStr}>'React 18 · Vite'</span>,<br />
+                    &nbsp;&nbsp;backend: <span className={styles.codeStr}>'Node.js REST API'</span>,<br />
+                    &nbsp;&nbsp;uptime: <span className={styles.codeGold}>'99.9%'</span><br />
+                    {'}'})
+                  </code>
+                </div>
+              </div>
+
+              <div className={styles.bentoFooter}>
+                <div className={styles.capChips}>
+                  <span>Web Platforms</span>
+                  <span>Custom CRM</span>
+                  <span>Zero Bloat</span>
+                </div>
+                <Link to="/website-development" className={styles.capLink}>
+                  <span>Explore Development</span>
+                  <FaArrowRight size={11} />
+                </Link>
+              </div>
+            </TiltCard>
+
+            {/* Bento Card 3: Grow & SEO (Bottom-Left 7-col) */}
+            <TiltCard className={`${styles.bentoCard} ${styles.bentoCardGrow}`}>
+              <div className={styles.bentoHeader}>
+                <div className={styles.capHead}>
+                  <div className={styles.capIcon}><FaChartLine size={18} /></div>
+                  <span className={styles.bentoTag}>VISIBILITY · GROWTH</span>
+                </div>
+                <div className={styles.ratingBadge}>
+                  <span className={styles.ratingStars}>★★★★★</span>
+                  <span className={styles.ratingScore}>4.9/5</span>
+                </div>
+              </div>
+
+              <h3 className={styles.bentoTitle}>Targeted SEO &amp; Organic Discovery</h3>
+              <p className={styles.bentoDesc}>
+                Targeted Google SEO, Google Business Profiles, editorial content architecture, and qualified organic customer acquisition.
+              </p>
+
+              {/* Interactive Google Search Snippet Widget */}
+              <div className={styles.bentoSearchWidget}>
+                <div className={styles.searchHead}>
+                  <FaSearch size={11} color="#dfa840" />
+                  <span className={styles.searchUrl}>veltalabs.net › custom-software</span>
+                </div>
+                <div className={styles.searchTitle}>VeltaZ — Bespoke Web Platforms &amp; Automations</div>
+                <div className={styles.searchSnippetText}>#1 Ranking keyword visibility · 3.2× verified organic enquiry growth.</div>
+              </div>
+
+              <div className={styles.bentoFooter}>
+                <div className={styles.capChips}>
+                  <span>Google SEO</span>
+                  <span>Content Strategy</span>
+                  <span>High Authority</span>
+                </div>
+                <Link to="/seo-blogging-google-business-profile" className={styles.capLink}>
+                  <span>Explore SEO &amp; Content</span>
+                  <FaArrowRight size={11} />
+                </Link>
+              </div>
+            </TiltCard>
+
+            {/* Bento Card 4: Automate (WhatsFlow - Bottom-Right 5-col) */}
+            <TiltCard className={`${styles.bentoCard} ${styles.bentoCardAuto}`}>
+              <div className={styles.bentoHeader}>
+                <div className={styles.capHead}>
+                  <div className={styles.capIcon}><FaCogs size={18} /></div>
+                  <span className={styles.bentoTag}>WHATSFLOW · AUTOMATE</span>
+                </div>
+                <span className={styles.statusLivePill}>Active Webhooks</span>
+              </div>
+
+              <h3 className={styles.bentoTitle}>WhatsFlow &amp; Workflow Engines</h3>
+              <p className={styles.bentoDesc}>
+                Practical lead-management setups, n8n webhook automations, WhatsApp qualifiers, and zero manual data re-entry.
+              </p>
+
+              {/* Interactive WhatsApp Router Widget */}
+              <div className={styles.bentoWhatsappWidget}>
+                <div className={styles.waHeader}>
+                  <FaWhatsapp size={15} color="#25D366" />
+                  <span>Meta Cloud API · 120ms ping</span>
+                </div>
+                <div className={styles.waChatBubble}>
+                  <p className={styles.waChatText}>🔔 <strong>New Client Lead Captured:</strong></p>
+                  <p className={styles.waChatSub}>Auto-synced into CRM pipeline &amp; assigned to builder.</p>
+                </div>
+              </div>
+
+              <div className={styles.bentoFooter}>
+                <div className={styles.capChips}>
+                  <span>WhatsApp CRM</span>
+                  <span>Webhook Sync</span>
+                </div>
+                <Link to="/automation-systems" className={styles.capLink}>
+                  <span>Explore Automation</span>
+                  <FaArrowRight size={11} />
+                </Link>
+              </div>
+            </TiltCard>
           </div>
         </div>
       </section>
@@ -499,7 +661,7 @@ export default function About() {
       <section id="case-study" className={styles.caseStudySection}>
         <div className="container">
           <div className={styles.caseStudyContainer}>
-            
+
             {/* Top Navigation Bar with View Switcher */}
             <div className={styles.caseStudyTopBar}>
               <div className={styles.caseStudyBadges}>
@@ -527,7 +689,7 @@ export default function About() {
             </div>
 
             <div className={styles.caseStudyMainGrid}>
-              
+
               {/* Left Column: Scope & Overview */}
               <div className={styles.caseStudyInfo}>
                 <h2 className={styles.caseStudyTitle}>KIN Property Management</h2>
@@ -537,37 +699,53 @@ export default function About() {
 
                 {/* 2x2 Bento Scope Cards */}
                 <div className={styles.scopeBento}>
-                  <div className={styles.scopeCard}>
+                  <motion.div
+                    whileHover={{ y: -3, scale: 1.015 }}
+                    transition={{ type: 'spring', stiffness: 350, damping: 22 }}
+                    className={styles.scopeCard}
+                  >
                     <div className={styles.scopeIconWrap}><FaLaptopCode size={14} /></div>
                     <div>
                       <strong>Property Search Portal</strong>
                       <p>Custom search filters, property listings, and responsive mobile layout.</p>
                     </div>
-                  </div>
+                  </motion.div>
 
-                  <div className={styles.scopeCard}>
+                  <motion.div
+                    whileHover={{ y: -3, scale: 1.015 }}
+                    transition={{ type: 'spring', stiffness: 350, damping: 22 }}
+                    className={styles.scopeCard}
+                  >
                     <div className={styles.scopeIconWrap}><FaWhatsapp size={14} /></div>
                     <div>
                       <strong>WhatsFlow Lead Routing</strong>
                       <p>Inbound lead capture, team member assignment, and fast WhatsApp response times.</p>
                     </div>
-                  </div>
+                  </motion.div>
 
-                  <div className={styles.scopeCard}>
+                  <motion.div
+                    whileHover={{ y: -3, scale: 1.015 }}
+                    transition={{ type: 'spring', stiffness: 350, damping: 22 }}
+                    className={styles.scopeCard}
+                  >
                     <div className={styles.scopeIconWrap}><FaSearch size={14} /></div>
                     <div>
                       <strong>GBP & Local SEO</strong>
                       <p>Targeted Pune keywords, listing structured data, and verified business profile.</p>
                     </div>
-                  </div>
+                  </motion.div>
 
-                  <div className={styles.scopeCard}>
+                  <motion.div
+                    whileHover={{ y: -3, scale: 1.015 }}
+                    transition={{ type: 'spring', stiffness: 350, damping: 22 }}
+                    className={styles.scopeCard}
+                  >
                     <div className={styles.scopeIconWrap}><FaPenNib size={14} /></div>
                     <div>
                       <strong>Brand & Content Studio</strong>
                       <p>Clean visual identity, property photography, and social media reels.</p>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
 
                 <div className={styles.caseStudyActions}>
@@ -641,69 +819,84 @@ export default function About() {
         </div>
       </section>
 
-      {/* ── 5. REAL PRODUCTS & SYSTEMS ── */}
+      {/* ── 5. REAL PRODUCTS & SYSTEMS (INTERACTIVE APP SHOWCASE) ── */}
       <section className={styles.productsSection}>
         <div className="container">
           <div className={styles.sectionHeaderCentered}>
-            <span className="tag">PRACTICAL SOLUTIONS</span>
+            {/* Draggable Star for Interactive Flair */}
+            <DraggableSparkle size={24} rotate={20} style={{ top: -14, right: '8%' }} />
+
+            <div className={styles.sectionEyebrowWrap}>
+              <span className={styles.sectionEyebrowLine} />
+              <div className={styles.sectionEyebrowPill}>PRACTICAL SOLUTIONS</div>
+              <span className={styles.sectionEyebrowLine} />
+            </div>
             <h2 className={styles.sectionTitle}>We Build Solutions Around Real Operational Needs.</h2>
             <p className={styles.sectionSub}>Practical software platforms engineered to solve tangible operational bottlenecks.</p>
           </div>
 
           <div className={styles.productsGrid}>
-            {/* WhatsFlow */}
-            <div className={styles.productCard}>
-              <div className={styles.productHead}>
-                <span className={styles.productBadge}>Lead Routing</span>
-                <span className={styles.productStatusDot}>Active Tool</span>
-              </div>
-              <h3>WhatsFlow</h3>
-              <p>A specialized lead-management tool supporting customer enquiries, agent assignment, and real-time status tracking.</p>
-              <div className={styles.productSpecs}>
-                <div><span>Interface</span><strong>Agent & Admin Boards</strong></div>
-                <div><span>Core Value</span><strong>Fast Lead Capture</strong></div>
-              </div>
-              <Link to="/whatsflow" className={styles.productLink}>
-                <span>View Details</span>
-                <FaArrowRight size={11} />
-              </Link>
-            </div>
+            {PRACTICAL_PRODUCTS.map((product) => {
+              const Icon = product.icon
+              return (
+                <div
+                  key={product.id}
+                  className={styles.productInfoCard}
+                >
+                  {/* Glowing Top Accent Bar */}
+                  <div className={styles.cardAccentLine} aria-hidden="true" />
 
-            {/* Docket14 */}
-            <div className={styles.productCard}>
-              <div className={styles.productHead}>
-                <span className={styles.productBadge}>Legal Practice</span>
-                <span className={styles.productStatusDot}>Internal Tool</span>
-              </div>
-              <h3>Docket14</h3>
-              <p>A practice management platform built around court dockets, multi-stage case lifecycles, and advocate expense approvals.</p>
-              <div className={styles.productSpecs}>
-                <div><span>Interface</span><strong>Advocate Workspaces</strong></div>
-                <div><span>Core Value</span><strong>Lifecycle Clarity</strong></div>
-              </div>
-              <Link to="/docket14" className={styles.productLink}>
-                <span>View Details</span>
-                <FaArrowRight size={11} />
-              </Link>
-            </div>
+                  {/* Top Bar with Icon & Status */}
+                  <div className={styles.infoCardTopBar}>
+                    <div className={styles.infoBrandWrap}>
+                      <div className={styles.infoIconPod}>
+                        <Icon size={20} />
+                      </div>
+                      <div className={styles.infoTitleBlock}>
+                        <h3 className={styles.infoTitle}>{product.title}</h3>
+                        <span className={styles.infoBadgePill}>{product.badge}</span>
+                      </div>
+                    </div>
+                    <span className={styles.infoStatusDot}>
+                      <span className={styles.statusPulseDot} /> {product.status}
+                    </span>
+                  </div>
 
-            {/* Kin Property */}
-            <div className={styles.productCard}>
-              <div className={styles.productHead}>
-                <span className={styles.productBadge}>Real Estate</span>
-                <span className={styles.productStatusDot}>Live Platform</span>
-              </div>
-              <h3>Kin Property</h3>
-              <p>A real estate engine featuring localized property search, listing verifications, and streamlined backend lead management.</p>
-              <div className={styles.productSpecs}>
-                <div><span>Interface</span><strong>Client Portal + CRM</strong></div>
-                <div><span>Core Value</span><strong>Fast Discovery</strong></div>
-              </div>
-              <Link to="/kin-property" className={styles.productLink}>
-                <span>View Details</span>
-                <FaArrowRight size={11} />
-              </Link>
-            </div>
+                  {/* Clear Focused Description (Strict Symmetrical Height) */}
+                  <p className={styles.infoDesc}>{product.desc}</p>
+
+                  {/* Core Feature Matrix (Strict Symmetrical Height) */}
+                  <div className={styles.infoCheckList}>
+                    {product.highlights.map((item) => (
+                      <div key={item} className={styles.checkItem}>
+                        <FaCheck size={9} className={styles.checkIcon} />
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Telemetry Metric Bar (Strict Symmetrical Layout) */}
+                  <div className={styles.infoTelemetryBar}>
+                    <div className={styles.telemetryStat}>
+                      <span className={styles.statNum}>{product.metric}</span>
+                      <span className={styles.statLabel}>{product.metricLabel}</span>
+                    </div>
+                    <span className={styles.telemetryPill}>{product.pill}</span>
+                  </div>
+
+                  {/* Interactive Action Link Footer */}
+                  <Link to={product.link} className={styles.infoActionFooter}>
+                    <span className={styles.actionBtnText}>Explore Architecture</span>
+                    <div className={styles.actionArrowCircle}>
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="7" y1="17" x2="17" y2="7" />
+                        <polyline points="7 7 17 7 17 17" />
+                      </svg>
+                    </div>
+                  </Link>
+                </div>
+              )
+            })}
           </div>
         </div>
       </section>
@@ -713,7 +906,11 @@ export default function About() {
         <div className="container">
           <div className={styles.fitContainer}>
             <div className={styles.sectionHeaderCentered}>
-              <span className="tag">CLIENT FIT & PARTNERSHIPS</span>
+              <div className={styles.sectionEyebrowWrap}>
+                <span className={styles.sectionEyebrowLine} />
+                <div className={styles.sectionEyebrowPill}>CLIENT FIT &amp; PARTNERSHIPS</div>
+                <span className={styles.sectionEyebrowLine} />
+              </div>
               <h2 className={styles.sectionTitle}>Built for Businesses Ready to Move Forward.</h2>
               <p className={styles.sectionSub}>
                 We partner with ambitious teams to engineer digital infrastructure, eliminate operational friction, and build dependable systems.
@@ -722,7 +919,7 @@ export default function About() {
 
             <div className={styles.fitCardsGrid}>
               {/* Card 1: Founders */}
-              <div className={styles.fitCard}>
+              <TiltCard className={styles.fitCard}>
                 <div className={styles.fitCardHead}>
                   <div className={styles.fitCardIcon}><FaRocket size={18} /></div>
                   <span className={styles.fitCardStage}>Stage: 0 to 1</span>
@@ -736,10 +933,10 @@ export default function About() {
                   <span>Custom Web App</span>
                   <span>Google SEO</span>
                 </div>
-              </div>
+              </TiltCard>
 
               {/* Card 2: Growing Companies */}
-              <div className={styles.fitCard}>
+              <TiltCard className={styles.fitCard}>
                 <div className={styles.fitCardHead}>
                   <div className={styles.fitCardIcon}><FaBuilding size={18} /></div>
                   <span className={styles.fitCardStage}>Stage: Scaling</span>
@@ -753,10 +950,10 @@ export default function About() {
                   <span>Workflow Automation</span>
                   <span>Lead Funnels</span>
                 </div>
-              </div>
+              </TiltCard>
 
               {/* Card 3: Service Practices */}
-              <div className={styles.fitCard}>
+              <TiltCard className={styles.fitCard}>
                 <div className={styles.fitCardHead}>
                   <div className={styles.fitCardIcon}><FaBriefcase size={18} /></div>
                   <span className={styles.fitCardStage}>Stage: Operational</span>
@@ -770,7 +967,7 @@ export default function About() {
                   <span>Docket Management</span>
                   <span>Listing Platforms</span>
                 </div>
-              </div>
+              </TiltCard>
             </div>
 
             {/* Global Reach Banner (Corrected honest location statement) */}
@@ -798,7 +995,11 @@ export default function About() {
             <div className={styles.ctaGlow} />
             <div className={styles.ctaGridOverlay} />
 
-            <span className="tag">START A CONVERSATION</span>
+            <div className={styles.sectionEyebrowWrap}>
+              <span className={styles.sectionEyebrowLine} />
+              <div className={styles.sectionEyebrowPill}>START A CONVERSATION</div>
+              <span className={styles.sectionEyebrowLine} />
+            </div>
             <h2 className={styles.ctaHeading}>
               Every Business Has a Different Challenge. <br />
               <span className={styles.ctaTitleGradient}>Let's Engineer the Solution.</span>
@@ -810,7 +1011,9 @@ export default function About() {
             {/* 2 Interactive Channels */}
             <div className={styles.ctaActionGrid}>
               {/* Channel 1: WhatsApp */}
-              <a
+              <motion.a
+                whileHover={{ y: -4, scale: 1.015 }}
+                transition={{ type: 'spring', stiffness: 320, damping: 20 }}
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -828,23 +1031,29 @@ export default function About() {
                   <span>Discuss Your Business</span>
                   <FaArrowRight size={11} />
                 </span>
-              </a>
+              </motion.a>
 
               {/* Channel 2: Services & Audit */}
-              <Link to="/services" className={styles.channelCard}>
-                <div className={styles.channelHead}>
-                  <div className={styles.channelIconAudit}>
-                    <FaCompass size={18} />
+              <motion.div
+                whileHover={{ y: -4, scale: 1.015 }}
+                transition={{ type: 'spring', stiffness: 320, damping: 20 }}
+                style={{ display: 'flex' }}
+              >
+                <Link to="/services" className={styles.channelCard} style={{ width: '100%' }}>
+                  <div className={styles.channelHead}>
+                    <div className={styles.channelIconAudit}>
+                      <FaCompass size={18} />
+                    </div>
+                    <span className={styles.channelBadgeAudit}>Full Capabilities</span>
                   </div>
-                  <span className={styles.channelBadgeAudit}>Full Capabilities</span>
-                </div>
-                <h3>Explore Services & Scope</h3>
-                <p>Browse our complete engineering capabilities across web development, custom software & SEO.</p>
-                <span className={styles.channelActionBtn}>
-                  <span>Explore Our Services</span>
-                  <FaArrowRight size={11} />
-                </span>
-              </Link>
+                  <h3>Explore Services & Scope</h3>
+                  <p>Browse our complete engineering capabilities across web development, custom software & SEO.</p>
+                  <span className={styles.channelActionBtn}>
+                    <span>Explore Our Services</span>
+                    <FaArrowRight size={11} />
+                  </span>
+                </Link>
+              </motion.div>
             </div>
 
             {/* Trust Guarantee Strip (Grounded, realistic promises) */}

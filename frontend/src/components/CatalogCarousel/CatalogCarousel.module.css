@@ -317,48 +317,67 @@
 
 @media (max-width: 768px) {
   .cardsTrack {
-    height: 250px;
+    height: 260px;
   }
   .card, .filteredCard {
-    width: 220px;
-    height: 220px;
+    width: 228px;
+    height: 228px;
     border-radius: 22px;
   }
   .cardImageContainer {
-    height: 110px;
-    padding: 10px 12px 2px 12px;
+    height: 120px;
+    padding: 8px 10px 2px 10px;
   }
   .cardBody {
-    padding: 6px 14px 12px;
+    padding: 4px 15px 14px;
   }
   .cardFarLeft,
   .cardFarRight {
     display: none;
   }
   .cardNearLeft {
-    transform: translateX(-180px) scale(0.92);
+    transform: translateX(-185px) scale(0.92);
     opacity: 0.5;
   }
   .cardNearRight {
-    transform: translateX(180px) scale(0.92);
+    transform: translateX(185px) scale(0.92);
     opacity: 0.5;
   }
 }
 
 @media (max-width: 480px) {
+  .cardsTrack {
+    height: 255px;
+  }
   .card, .filteredCard {
-    width: 200px;
-    height: 200px;
+    width: 212px;
+    height: 212px;
   }
   .cardImageContainer {
-    height: 95px;
+    height: 110px;
+    padding: 6px 8px 0 8px;
+  }
+  .cardBody {
+    padding: 4px 14px 12px;
+  }
+  .cardTitle {
+    font-size: 14.5px;
+    margin: 0 0 5px;
+  }
+  .cardDesc {
+    font-size: 11.5px;
+    line-height: 1.35;
+    margin: 0 0 8px;
+  }
+  .cardExplore {
+    font-size: 12.5px;
   }
   .cardNearLeft {
-    transform: translateX(-150px) scale(0.86);
+    transform: translateX(-155px) scale(0.86);
     opacity: 0.35;
   }
   .cardNearRight {
-    transform: translateX(150px) scale(0.86);
+    transform: translateX(155px) scale(0.86);
     opacity: 0.35;
   }
 }

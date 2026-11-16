@@ -48,7 +48,10 @@ export default function Docket14() {
         </div>
         <div className="container">
           <div className={styles.heroContent}>
-            <span className="tag">Product Roster</span>
+            <div className={styles.heroEyebrow}>
+              <span className={styles.heroEyebrowDot} />
+              <span>DOCKET14 · LEGAL TECH</span>
+            </div>
             <h1 className={styles.heroTitle}>Docket14</h1>
             <p className={styles.heroSub}>
               Centralized case management and task tracking engine built for modern law practices. 
@@ -67,7 +70,11 @@ export default function Docket14() {
       <section className="section" style={{ borderTop: '1px solid var(--border)', background: 'var(--bg2)' }}>
         <div className="container">
           <div className={styles.sectionHeader}>
-            <span className="tag">Capabilities</span>
+            <div className={styles.sectionEyebrowWrap}>
+              <span className={styles.sectionEyebrowLine} />
+              <div className={styles.sectionEyebrowPill}>SYSTEM CAPABILITIES</div>
+              <span className={styles.sectionEyebrowLine} />
+            </div>
             <h2>Why Law Firms Trust Docket14</h2>
             <p>Built specifically to eliminate administrative friction and keep case lifecycles transparent.</p>
           </div>
@@ -93,7 +100,11 @@ export default function Docket14() {
       <section id="showcase" className="section" style={{ borderTop: '1px solid var(--border)' }}>
         <div className="container">
           <div className={styles.sectionHeader}>
-            <span className="tag">App Showcase</span>
+            <div className={styles.sectionEyebrowWrap}>
+              <span className={styles.sectionEyebrowLine} />
+              <div className={styles.sectionEyebrowPill}>APP SHOWCASE</div>
+              <span className={styles.sectionEyebrowLine} />
+            </div>
             <h2>Docket14 Mobile Experience</h2>
             <p>Observe the legal operations system in action. Clean, responsive, and automated workflows.</p>
           </div>

@@ -52,7 +52,7 @@ const faqItems = [
 
 export default function MobileAppDevelopment() {
   const [activeFaq, setActiveFaq] = useState(null)
-  const [activeAppTab, setActiveAppTab] = useState('whatsflow') // 'whatsflow' | 'docket14' | 'memine'
+  const [activeAppTab, setActiveAppTab] = useState('whatsflow') // 'whatsflow' | 'docket14'
 
   const displayScrollRef = useRef(null)
   const isDraggingRef = useRef(false)
@@ -147,14 +147,6 @@ export default function MobileAppDevelopment() {
       img: "https://res.cloudinary.com/dqc1awrnc/image/upload/v1786538519/Screenshot_20260812_180225_Docket_14.jpg_nxm7zh.jpg",
       tags: ["Offline Mode", "Push Alerts", "Encrypted Docs"],
       link: "/docket14"
-    },
-    memine: {
-      name: "Me & Mine (Social App Prototype)",
-      category: "Interactive Design Prototype",
-      desc: "A custom interactive prototype engineered by VeltaZ to demonstrate matchmaking UI/UX flows, geo-location filters, dynamic questionnaires, and real-time chat interface architecture.",
-      img: "https://res.cloudinary.com/dqc1awrnc/image/upload/v1786538759/IMG-20260726-WA0025.jpg_1_uq78d1.jpg",
-      tags: ["Interactive Prototype", "UI/UX Architecture", "Geo-Discovery Concept", "Chat UI Flow"],
-      link: null
     }
   }
 
@@ -225,7 +217,7 @@ export default function MobileAppDevelopment() {
                   <img src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1792917399/admin_whatsFlow.jpg_pcyu3j.jpg" alt="WhatsFlow Mobile App" />
                 </div>
                 <div className={`${styles.mockupPhone} ${styles.phoneRight}`}>
-                  <img src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1786538759/IMG-20260726-WA0025.jpg_1_uq78d1.jpg" alt="Me & Mine Social App" />
+                  <img src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1786538759/IMG-20260726-WA0025.jpg_1_uq78d1.jpg" alt="Cross-Platform App UI" />
                 </div>
               </div>
             </div>
@@ -237,8 +229,12 @@ export default function MobileAppDevelopment() {
       <section className={styles.featuresSection}>
         <div className="container">
           <div className={styles.sectionHeader}>
-            <span className="tag">Core Capabilities</span>
-            <h2>Built for Performance, Speed & Scale</h2>
+            <div className={styles.sectionEyebrowWrap}>
+              <span className={styles.sectionEyebrowLine} />
+              <div className={styles.sectionEyebrowPill}>CORE CAPABILITIES</div>
+              <span className={styles.sectionEyebrowLine} />
+            </div>
+            <h2>Built for Performance, Speed &amp; Scale</h2>
             <p>
               We engineer production-ready mobile applications designed to deliver a smooth user experience across both iOS and Android.
             </p>
@@ -276,7 +272,11 @@ export default function MobileAppDevelopment() {
       <section id="apps-showcase" className={styles.showcaseSection}>
         <div className="container">
           <div className={styles.sectionHeader}>
-            <span className="tag">Production Builds</span>
+            <div className={styles.sectionEyebrowWrap}>
+              <span className={styles.sectionEyebrowLine} />
+              <div className={styles.sectionEyebrowPill}>PRODUCTION BUILDS</div>
+              <span className={styles.sectionEyebrowLine} />
+            </div>
             <h2>Proven Mobile Implementations</h2>
             <p>Explore production mobile apps engineered for operational workflows, real-time communication, and compliance.</p>
           </div>
@@ -295,13 +295,6 @@ export default function MobileAppDevelopment() {
               className={`${styles.appTabBtn} ${activeAppTab === 'docket14' ? styles.appTabBtnActive : ''}`}
             >
               Docket14 Legal App
-            </button>
-            <button 
-              type="button" 
-              onClick={() => setActiveAppTab('memine')}
-              className={`${styles.appTabBtn} ${activeAppTab === 'memine' ? styles.appTabBtnActive : ''}`}
-            >
-              Me & Mine Social App
             </button>
           </div>
 
@@ -379,9 +372,11 @@ export default function MobileAppDevelopment() {
       <section className={styles.finalCtaSection} style={{ borderTop: '1px solid var(--border)' }}>
         <div className="container">
           <div className={styles.ctaBox}>
-            <span className="tag" style={{ background: 'rgba(255,255,255,0.1)', color: '#fff', border: '1px solid rgba(255,255,255,0.2)' }}>
-              Let's Build
-            </span>
+            <div className={styles.sectionEyebrowWrap}>
+              <span className={styles.sectionEyebrowLine} />
+              <div className={styles.sectionEyebrowPill}>LET'S BUILD</div>
+              <span className={styles.sectionEyebrowLine} />
+            </div>
             <h2>Ready to Deploy Your Mobile Application?</h2>
             <p>
               Share your concept, workflow requirements, or target release timeline. We'll outline a clean technical architecture and deliver a fixed-scope milestone proposal.
@@ -393,7 +388,7 @@ export default function MobileAppDevelopment() {
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="btn btn-primary"
-                style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '14px 34px', fontSize: '16px', fontWeight: 700 }}
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '14px 34px', fontSize: '16px', fontWeight: 700, borderRadius: '9999px' }}
               >
                 <FaWhatsapp size={20} />
                 <span>Discuss Your Mobile App</span>
@@ -407,7 +402,11 @@ export default function MobileAppDevelopment() {
       <section className={styles.faqSection}>
         <div className="container">
           <div className={styles.sectionHeader}>
-            <span className="tag">Clarity</span>
+            <div className={styles.sectionEyebrowWrap}>
+              <span className={styles.sectionEyebrowLine} />
+              <div className={styles.sectionEyebrowPill}>CLARITY</div>
+              <span className={styles.sectionEyebrowLine} />
+            </div>
             <h2>Mobile App Development FAQs</h2>
             <p>Direct answers regarding platforms, performance, timelines, and store approvals.</p>
           </div>

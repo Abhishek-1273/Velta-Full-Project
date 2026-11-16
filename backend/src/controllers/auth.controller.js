@@ -16,6 +16,7 @@ const sendTokenCookie = (res, user) => {
         secure: isProd,
         sameSite: isProd ? 'none' : 'lax',
         maxAge: 24 * 60 * 60 * 1000,
+        path: '/',
     });
 
     return token;
@@ -127,6 +128,7 @@ export const signout = (req, res) => {
         httpOnly: true,
         secure: isProd,
         sameSite: isProd ? 'none' : 'lax',
+        path: '/',
     });
     return res.json({ success: true, message: 'Signed out successfully.' });
 };

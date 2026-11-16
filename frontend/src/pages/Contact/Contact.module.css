@@ -5,7 +5,7 @@
 
 /* ================= HERO ================= */
 .hero {
-  padding: 160px 0 80px;
+  padding: 110px 0 80px;
   position: relative;
   overflow: hidden;
 }
@@ -24,13 +24,125 @@
   opacity: 0.55;
 }
 
+.ctaCard {
+  position: relative;
+  border-radius: 32px;
+  overflow: hidden;
+  background: #ffffff;
+  padding: clamp(48px, 6vw, 72px) clamp(24px, 5vw, 64px);
+  max-width: 860px;
+  margin: 0 auto;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 16px 48px -10px rgba(0, 0, 0, 0.05);
+  isolation: isolate;
+  text-align: center;
+}
+
+:global([data-theme="dark"]) .ctaCard,
+[data-theme="dark"] .ctaCard {
+  background: #101115;
+  border-color: rgba(223, 168, 64, 0.22);
+  box-shadow: 0 24px 64px -12px rgba(0, 0, 0, 0.7), 0 0 45px rgba(223, 168, 64, 0.09);
+}
+
+/* Magic UI Rotating Border Laser Beam */
+.borderBeamWrap {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.borderBeamLine {
+  position: absolute;
+  width: 250%;
+  height: 250%;
+  top: -75%;
+  left: -75%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 300deg,
+    rgba(223, 168, 64, 0.25) 325deg,
+    #dfa840 350deg,
+    #fff5d0 360deg
+  );
+  animation: borderBeamSpin 7.5s linear infinite;
+  will-change: transform;
+}
+
+@keyframes borderBeamSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Ambient Center Glow */
+.ctaCardGlow {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(280px, 45vw, 440px);
+  height: 190px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(223, 168, 64, 0.16) 0%, transparent 70%);
+  filter: blur(50px);
+  pointer-events: none;
+  z-index: 0;
+}
+
 .heroContent {
+  position: relative;
+  z-index: 3;
   max-width: 800px;
   margin: 0 auto;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+/* Type B Hero Eyebrow */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  border-radius: 9999px;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  background: rgba(212, 175, 55, 0.08);
+  font-family: var(--font-head);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #b58d20;
+  margin-bottom: 8px;
+}
+
+:global([data-theme="dark"]) .eyebrow {
+  color: #e6ca65;
+  border-color: rgba(212, 175, 55, 0.5);
+  background: rgba(212, 175, 55, 0.12);
+}
+
+.eyebrowDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #d4af37;
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.7);
+  flex-shrink: 0;
 }
 
 .title {
@@ -41,6 +153,21 @@
   letter-spacing: -0.02em;
   margin: 24px 0 16px;
   color: var(--text);
+}
+
+.goldText {
+  background: linear-gradient(135deg, #dfa840 0%, #b8860b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  filter: drop-shadow(0 2px 14px rgba(223, 168, 64, 0.22));
+}
+
+:global([data-theme='dark']) .goldText {
+  background: linear-gradient(135deg, #f5d76e 0%, #dfa840 50%, #b8860b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 22px rgba(223, 168, 64, 0.35));
 }
 
 .sub {
@@ -354,6 +481,7 @@ select.inp option {
 .form .submitBtn {
   width: 100%;
   padding: 14px 0;
+  border-radius: 9999px;
 }
 
 .form .submitBtn:disabled,

@@ -173,9 +173,10 @@ export default function AutomationSystems() {
 
         <div className="container">
           <div className={styles.heroContent}>
-            <span className={styles.eyebrow}>
-              AUTOMATION SYSTEMS · VELTAZ
-            </span>
+            <div className={styles.eyebrow}>
+              <span className={styles.eyebrowDot} />
+              <span>AUTOMATION SYSTEMS · VELTAZ</span>
+            </div>
 
             <h1 className={styles.heroTitle}>
               Connect Your Tools. <br />
@@ -249,7 +250,11 @@ export default function AutomationSystems() {
       <section id="automations-list" className="section" style={{ borderTop: '1px solid var(--border)' }}>
         <div className="container">
           <div className={styles.sectionHeader}>
-            <span className="tag">Full Automation Capabilities</span>
+            <div className={styles.sectionEyebrowWrap}>
+              <span className={styles.sectionEyebrowLine} />
+              <div className={styles.sectionEyebrowPill}>FULL AUTOMATION CAPABILITIES</div>
+              <span className={styles.sectionEyebrowLine} />
+            </div>
             <h2>Six High-Impact Automations We Build</h2>
             <p>
               Engineered around your actual business tools. We connect your inquiries, spreadsheets, calendar, and sales team into one synchronized workflow.
@@ -296,7 +301,11 @@ export default function AutomationSystems() {
       <section className="section" style={{ borderTop: '1px solid var(--border)', background: 'var(--bg2)' }}>
         <div className="container">
           <div className={styles.sectionHeader}>
-            <span className="tag">Unified Operations</span>
+            <div className={styles.sectionEyebrowWrap}>
+              <span className={styles.sectionEyebrowLine} />
+              <div className={styles.sectionEyebrowPill}>UNIFIED OPERATIONS</div>
+              <span className={styles.sectionEyebrowLine} />
+            </div>
             <h2>How These Automations Run Together</h2>
             <p>See how an inquiry moves effortlessly from discovery to completed booking without any staff copy-pasting.</p>
           </div>
@@ -356,7 +365,11 @@ export default function AutomationSystems() {
       <section className={styles.finalCtaSection} style={{ borderTop: '1px solid var(--border)' }}>
         <div className="container">
           <div className={styles.finalCtaBox}>
-            <span className="tag" style={{ marginBottom: 14 }}>Eliminate Manual Operations</span>
+            <div className={styles.sectionEyebrowWrap}>
+              <span className={styles.sectionEyebrowLine} />
+              <div className={styles.sectionEyebrowPill}>ELIMINATE MANUAL OPERATIONS</div>
+              <span className={styles.sectionEyebrowLine} />
+            </div>
             <h2>Let's Engineer Your Custom Business Automation.</h2>
             <p>
               Tell us where your team spends manual hours every day. We'll design a customized, automated pipeline blueprint for WhatsApp, Excel, and Leads within 24 hours.
@@ -402,7 +415,11 @@ export default function AutomationSystems() {
       <section className="section" style={{ borderTop: '1px solid var(--border)' }}>
         <div className="container">
           <div className={styles.sectionHeader}>
-            <span className="tag">Questions & Answers</span>
+            <div className={styles.sectionEyebrowWrap}>
+              <span className={styles.sectionEyebrowLine} />
+              <div className={styles.sectionEyebrowPill}>QUESTIONS &amp; ANSWERS</div>
+              <span className={styles.sectionEyebrowLine} />
+            </div>
             <h2>Frequently Asked Questions</h2>
             <p>Clear, direct answers regarding automation architecture, software compatibility, and maintenance.</p>
           </div>

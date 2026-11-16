@@ -3,6 +3,15 @@
 
 <head>
   <meta charset="UTF-8" />
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ME9KNNVLLP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-ME9KNNVLLP');
+  </script>
   <script>
     (function() {
       const saved = localStorage.getItem('velta-theme');
@@ -10,17 +19,67 @@
       document.documentElement.setAttribute('data-theme', theme);
     })();
   </script>
+  <meta name="google-site-verification" content="8XHAT26dKSwOY6sQp0DpvaWHB_olpHlN0o-aGAlTCm4" />
   <link rel="icon" type="image/png" href="/logo/favicon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description"
     content="VeltaZ — Engineering high-performance web platforms, custom mobile applications, SEO, and intelligent automation systems for modern businesses." />
+  <link rel="canonical" href="https://www.veltalabs.net/" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.veltalabs.net/" />
+  <meta property="og:site_name" content="VeltaZ" />
   <meta property="og:title" content="VeltaZ — Custom Software & Intelligent Automations" />
-  <meta property="og:image" content="/logo/logo.png" />
+  <meta property="og:description"
+    content="VeltaZ — Engineering high-performance web platforms, custom mobile applications, SEO, and intelligent automation systems for modern businesses." />
+  <meta property="og:image" content="https://www.veltalabs.net/logo/logo.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://www.veltalabs.net/" />
+  <meta name="twitter:title" content="VeltaZ — Custom Software & Intelligent Automations" />
+  <meta name="twitter:description"
+    content="VeltaZ — Engineering high-performance web platforms, custom mobile applications, SEO, and intelligent automation systems for modern businesses." />
+  <meta name="twitter:image" content="https://www.veltalabs.net/logo/logo.png" />
+
+  <!-- Structured Data: Organization & WebSite (JSON-LD) -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://www.veltalabs.net/#organization",
+          "name": "VeltaZ",
+          "url": "https://www.veltalabs.net",
+          "logo": "https://www.veltalabs.net/logo/logo.png",
+          "description": "Engineering high-performance web platforms, custom mobile applications, SEO, and intelligent automation systems for modern businesses.",
+          "email": "support@veltalabs.net",
+          "sameAs": [
+            "https://www.instagram.com/veltaz.ai",
+            "https://www.linkedin.com/company/velta-ai/",
+            "https://www.facebook.com/share/1bDqBcbFh8/"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://www.veltalabs.net/#website",
+          "url": "https://www.veltalabs.net",
+          "name": "VeltaZ",
+          "publisher": {
+            "@id": "https://www.veltalabs.net/#organization"
+          }
+        }
+      ]
+    }
+  </script>
+
   <title>VeltaZ – Custom Software</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Manrope:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
     rel="stylesheet" />
   <style>
     #preloader-overlay {
