@@ -1,7 +1,7 @@
 .footer {
   background: var(--bg);
   border-top: 1px solid var(--border);
-  padding: 80px 0 40px;
+  padding: 64px 0 24px;
   position: relative;
   overflow: hidden;
   transition: background 0.2s ease, border-color 0.2s ease;
@@ -11,7 +11,7 @@
   display: grid;
   grid-template-columns: 1.4fr 0.85fr 0.95fr 1.15fr 1.05fr;
   gap: 40px;
-  padding-bottom: 64px;
+  padding-bottom: 36px;
   border-bottom: 1px solid var(--border);
 }
 
@@ -119,78 +119,19 @@
   color: var(--text);
 }
 
-.socialsRow {
-  display: flex;
-  gap: 12px;
-  margin-bottom: 24px;
-}
-
-.socialCircle {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text2);
-  text-decoration: none;
-  font-size: 14px;
-  transition: border-color 0.2s, color 0.2s;
-}
-
-.socialCircle:hover {
-  border-color: var(--text);
-  color: var(--text);
-}
-
-.themeToggleWrapper {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.sunIcon, .moonIcon {
-  font-size: 16px;
-  color: var(--text2);
-  flex-shrink: 0;
-}
-.toggleSwitch {
-  width: 48px;
-  height: 24px;
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: 15px;
-  position: relative;
-  cursor: pointer;
-  transition: background-color 0.25s;
-  outline: none;
-  padding: 0;
-}
-
-.toggleSlider {
-  width: 18px;
-  height: 18px;
-  background: var(--text);
-  border-radius: 50%;
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  transition: transform 0.25s;
-}
-
-.toggleSwitchActive .toggleSlider {
-  transform: translateX(24px);
+.socialCardWrapper {
+  margin-bottom: 0;
 }
 
 .bottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 32px 0 0;
+  padding: 18px 0 0;
   font-size: 13px;
   color: var(--text3);
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 12px;
 }
 
 .legalLinks {
@@ -280,13 +221,10 @@
     justify-content: space-between;
     width: 100%;
     gap: 16px;
+    flex-wrap: wrap;
   }
-  .socialsRow {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+  .socialCardWrapper {
     margin-bottom: 0;
-    margin-left: 0;
   }
   .themeToggleWrapper {
     display: flex;
@@ -350,22 +288,14 @@
     justify-content: space-between;
     width: 100%;
     gap: 16px;
+    flex-wrap: wrap;
   }
-  .socialsRow {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  .socialCardWrapper {
     margin-bottom: 0;
-    margin-left: 0;
   }
   .themeToggleWrapper {
     display: flex;
     align-items: center;
     gap: 8px;
-  }
-  .socialCircle {
-    width: 34px;
-    height: 34px;
-    font-size: 13px;
   }
 }

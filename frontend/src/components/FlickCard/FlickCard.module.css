@@ -1,0 +1,1029 @@
+/* ── VeltaZ 3D Flick Card: Horizontal Titanium Obsidian Executive Pass ── */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800;900&family=Space+Mono:wght@700&display=swap');
+
+.root {
+  position: relative;
+  width: 440px;
+  height: 275px;
+  max-width: 100%;
+  user-select: none;
+  -webkit-user-select: none;
+  border-radius: 18px;
+  outline: none;
+  perspective: 1200px;
+  touch-action: pan-y;
+  cursor: grab;
+  margin: 0 auto 20px auto;
+}
+
+.root:active {
+  cursor: grabbing;
+}
+
+.root:focus-visible {
+  outline: 2px solid var(--accent, #dfa840);
+  outline-offset: 4px;
+}
+
+/* Floor shadow below the floating card */
+.shadow {
+  pointer-events: none;
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  bottom: -18px;
+  height: 20px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.8) 0%, rgba(223, 168, 64, 0.22) 40%, transparent 75%);
+  filter: blur(8px);
+  will-change: transform, opacity;
+  z-index: 0;
+}
+
+/* 3D tilt and card wrappers */
+.tilt {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 18px;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  will-change: transform;
+  transform-origin: center center;
+}
+
+/* Faces: Razor-sharp vector rendering with zero blur */
+.face {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 18px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  will-change: transform;
+  isolation: isolate;
+  box-shadow:
+    0 24px 55px rgba(0, 0, 0, 0.7),
+    0 2px 14px rgba(0, 0, 0, 0.45),
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.25);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
+  z-index: 10;
+}
+
+/* Base Titanium Obsidian Surface with Subtle Hairline Sheen */
+.styleObsidian {
+  background: radial-gradient(circle at 22% 16%, #282a36 0%, #12131b 52%, #08090d 100%);
+  border: 1.5px solid rgba(223, 168, 64, 0.45);
+}
+
+/* Metallic Inner Frame with Subtle Gold Rim Reflection */
+.innerFrame {
+  position: absolute;
+  inset: 7px;
+  border-radius: 12px;
+  border: 1px solid rgba(223, 168, 64, 0.22);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Light sheen / dynamic reflection band */
+.lightWrap {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 18px;
+  z-index: 10;
+}
+
+.shade {
+  position: absolute;
+  inset: 0;
+  background: #000000;
+  opacity: 0;
+  will-change: opacity;
+}
+
+.lightBand {
+  width: 45%;
+  height: 250%;
+  flex-shrink: 0;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.04) 25%,
+      rgba(255, 255, 255, 0.22) 50%,
+      rgba(223, 168, 64, 0.28) 75%,
+      transparent 100%);
+  opacity: 0;
+}
+
+/* ═════════════════════════════════════════════════
+   FRONT FACE: HORIZONTAL TITANIUM OBSIDIAN PASS
+═════════════════════════════════════════════════ */
+.faceFront {
+  padding: 18px 20px 14px;
+}
+
+/* Center Card Watermark: Large Faded Luxury Gold Crest */
+.centerWatermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateZ(0.1px);
+  width: 220px;
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+  opacity: 0.08;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.centerWatermarkImg {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 0 25px rgba(223, 168, 64, 0.4));
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* 1. Header */
+.frontHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+}
+
+.brandGroup {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brandLogoOrb {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #0b0c10;
+  border: 1.5px solid rgba(223, 168, 64, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.brandLogoImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.brandWordmarkImg {
+  height: 29px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.95));
+}
+
+.brandFallbackText {
+  font-family: var(--font-head, 'Plus Jakarta Sans', sans-serif);
+  font-size: 15.5px;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  color: #fae29c;
+  text-transform: uppercase;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.nfcIcon {
+  color: rgba(223, 168, 64, 0.95);
+  font-size: 19px;
+  transform: none;
+}
+
+/* 2. Chip Row: Brushed Gold EMV Chip on Left, White Gold Stamped Tier Badge on Right */
+.frontChipRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 14px;
+  position: relative;
+  z-index: 10;
+  transform: translateZ(2px);
+}
+
+.tierStamp {
+  position: relative;
+  z-index: 12;
+  transform: translateZ(2.5px);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 9px;
+  border-radius: 4px;
+  background: #0d0f16;
+  border: 1.2px solid #ecdcb9;
+  box-shadow:
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.25),
+    0 4px 12px rgba(0, 0, 0, 0.8);
+}
+
+.tierStar {
+  color: #ecdcb9;
+  font-size: 8px;
+  line-height: 1;
+  filter: drop-shadow(0 0 2px rgba(236, 220, 185, 0.5));
+}
+
+.tierLabel {
+  font-family: ui-monospace, "SF Mono", monospace;
+  font-size: 7.5px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: #ecdcb9;
+  text-transform: uppercase;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.95);
+}
+
+.emvChip {
+  position: relative;
+  width: 44px;
+  height: 32px;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #fce08e 0%, #caa13c 35%, #8f6a15 70%, #d4af37 100%);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 0.45),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.6),
+    0 2px 6px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.chipCenter {
+  position: absolute;
+  inset: 5px 8px;
+  border-radius: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+}
+
+.chipLineH {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.chipLineV {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+/* 3. Cardholder Name Block directly BELOW the Chip */
+.cardholderNameBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-top: 12px;
+  position: relative;
+  z-index: 2;
+}
+
+/* 3. Lower Corporate Telemetry Row (Business Name, Jurisdiction/State, Email - pushed down) */
+.frontTelemetryRow {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr 1.35fr;
+  gap: 10px;
+  align-items: flex-end;
+  margin-top: auto;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 2;
+}
+
+.telemetryCol {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.telemetryColEmail {
+  text-align: right;
+}
+
+/* 5. Bottom Footer Bar: Laser-Etched Physical Card Markings */
+.frontFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 8px;
+  border-top: 1px solid rgba(223, 168, 64, 0.2);
+  margin-top: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.footerLeft,
+.footerRight {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.footerMicroText {
+  font-family: ui-monospace, "SF Mono", monospace;
+  font-size: 7px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: rgba(223, 168, 64, 0.8);
+  text-transform: uppercase;
+}
+
+.footerDot {
+  color: rgba(223, 168, 64, 0.4);
+  font-size: 8px;
+}
+
+.footerPassId {
+  font-family: ui-monospace, "SF Mono", monospace;
+  font-size: 7.5px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
+}
+
+.footerVerified {
+  font-family: ui-monospace, "SF Mono", monospace;
+  font-size: 7px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: rgba(223, 168, 64, 0.9);
+  text-transform: uppercase;
+}
+
+/* ═════════════════════════════════════════════════
+   BASE ENGRAVED TYPOGRAPHY ELEMENTS
+═════════════════════════════════════════════════ */
+.engravedHeroName {
+  font-family: 'Cinzel', serif;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1.15;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
+  display: block;
+}
+
+.engravedSubText {
+  font-family: var(--font-head, 'Plus Jakarta Sans', sans-serif);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.25;
+}
+
+.engravedEmailText {
+  font-family: var(--font-head, 'Plus Jakarta Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.25;
+}
+
+.engravedMicroLabel {
+  font-family: ui-monospace, "SF Mono", monospace;
+  font-size: 7px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+  display: block;
+  color: #dfa840;
+  opacity: 0.9;
+}
+
+/* Executive Roman Imperial Serif (Rolex / Patek Luxury Inscribed) */
+.fontCinzel {
+  font-family: 'Cinzel', serif !important;
+  letter-spacing: 0.12em !important;
+}
+
+/* Executive Luxury Sans Typography */
+.fontExecutive {
+  font-family: var(--font-head, 'Plus Jakarta Sans', sans-serif) !important;
+}
+
+/* Authentic Razor-Sharp 3D Metal Laser Engraving / Deboss (Zero Blur) */
+.finishLaserWhite {
+  color: #dbe3eb !important;
+  text-shadow:
+    0 -1px 0 #000000,
+    0 1px 0 rgba(255, 255, 255, 0.32) !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
+}
+
+/* Subtle Placeholder Etching for Untouched Input States (Password Bullets & Hyphens) */
+.finishPlaceholder {
+  color: rgba(219, 227, 235, 0.38) !important;
+  text-shadow: none !important;
+  font-style: normal !important;
+  letter-spacing: 0.16em !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ═════════════════════════════════════════════════
+   BACK FACE: HORIZONTAL REAL-WORLD LUXURY CARD BACK
+═════════════════════════════════════════════════ */
+.faceBack {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.magneticStripe {
+  width: 100%;
+  height: 36px;
+  background: #000000;
+  margin-top: 18px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.8), 0 1px 0 rgba(255, 255, 255, 0.08);
+  position: relative;
+  z-index: 2;
+}
+
+.backBody {
+  padding: 12px 18px 14px;
+  display: grid;
+  grid-template-columns: 1.38fr 1fr;
+  gap: 14px;
+  flex: 1;
+  z-index: 2;
+}
+
+.backLeftCol {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 6px;
+  min-width: 0;
+}
+
+.signatureRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.signatureStrip {
+  flex: 1;
+  height: 32px;
+  background: #f8fafc;
+  border-radius: 4px;
+  background-image: repeating-linear-gradient(-45deg,
+      #f8fafc,
+      #f8fafc 4px,
+      #e2e8f0 4px,
+      #e2e8f0 8px);
+  display: flex;
+  align-items: center;
+  padding: 0 12px 0 16px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+  min-width: 0;
+}
+
+.signatureText {
+  font-family: "Brush Script MT", "Caveat", cursive, sans-serif;
+  font-size: 16.5px;
+  color: #0f172a;
+  opacity: 0.95;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 2px 8px;
+  line-height: 1.25;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.signaturePlaceholder {
+  color: #94a3b8 !important;
+  opacity: 0.55 !important;
+  font-style: normal !important;
+  letter-spacing: 0.16em !important;
+}
+
+.cvvBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #ffffff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  min-width: 44px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
+}
+
+.cvvLabel {
+  font-family: ui-monospace, "SF Mono", monospace;
+  font-size: 6.5px;
+  font-weight: 800;
+  color: #64748b;
+  letter-spacing: 0.08em;
+}
+
+.cvvVal {
+  font-family: ui-monospace, "SF Mono", monospace;
+  font-size: 10.5px;
+  font-weight: 900;
+  color: #0f172a;
+}
+
+.backInfoBlock {
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(223, 168, 64, 0.3);
+  border-radius: 8px;
+  padding: 11px 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.backInfoItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+  padding: 1px 0;
+}
+
+.backInfoItem:hover {
+  opacity: 0.85;
+}
+
+.backInfoLabel {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 7.5px;
+  font-weight: 700;
+  color: #dfa840;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.backInfoVal {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: #f8fafc;
+  letter-spacing: 0.02em;
+}
+
+.backHologramRow {
+  display: flex;
+  align-items: center;
+  margin-top: 2px;
+}
+
+.hologramBadge {
+  width: 34px;
+  height: 20px;
+  border-radius: 4px;
+  background: linear-gradient(135deg, #a78bfa 0%, #38bdf8 50%, #f472b6 100%);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  flex-shrink: 0;
+}
+
+/* Right Column: Scannable WhatsApp QR Code, Gold Action Button & Official Issuance Notice */
+.backRightCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  min-width: 0;
+  gap: 4px;
+}
+
+.qrCardWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.qrPlate {
+  background: #ffffff;
+  padding: 4px;
+  border-radius: 8px;
+  border: 1.5px solid rgba(223, 168, 64, 0.85);
+  box-shadow:
+    0 6px 18px rgba(0, 0, 0, 0.65),
+    0 0 12px rgba(223, 168, 64, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qrSvg {
+  width: 126px;
+  height: 126px;
+  display: block;
+}
+
+/* Non-Clickable Compact Gold Scan Guidance Badge */
+.scanBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  width: auto;
+  padding: 1.5px 5.5px;
+  border-radius: 3px;
+  background: rgba(223, 168, 64, 0.12);
+  border: 1px solid rgba(223, 168, 64, 0.45);
+  color: #fae29c;
+  font-family: var(--font-head, "Plus Jakarta Sans", sans-serif);
+  font-size: 6px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.35),
+    inset 0 1px 1px rgba(223, 168, 64, 0.2);
+}
+
+.scanBadgeWaIcon {
+  color: #25d366;
+  font-size: 7px;
+  flex-shrink: 0;
+  display: inline-block;
+  filter: drop-shadow(0 0 2px rgba(37, 211, 102, 0.6));
+}
+
+.backNoticeRight {
+  font-family: ui-monospace, "SF Mono", monospace;
+  font-size: 6.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: rgba(223, 168, 64, 0.7);
+  text-align: right;
+  text-transform: uppercase;
+  white-space: nowrap;
+  margin-top: 1px;
+}
+
+/* ═════════════════════════════════════════════════
+   MOBILE PORTRAIT (VERTICAL) LUXURY CARD PASS
+   Breakpoint: <= 680px
+═════════════════════════════════════════════════ */
+@media (max-width: 680px) {
+  .root {
+    width: 290px;
+    height: 460px;
+    max-width: calc(100vw - 32px);
+    aspect-ratio: 275 / 438;
+    margin: 0 auto 16px auto;
+  }
+
+  .shadow {
+    bottom: -16px;
+    height: 18px;
+    filter: blur(7px);
+  }
+
+  /* FRONT FACE - VERTICAL */
+  .faceFront {
+    padding: 22px 18px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .frontHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 2px;
+  }
+
+  .brandLogoImg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .brandWordmarkImg {
+    height: 22px;
+  }
+
+  .nfcIcon {
+    font-size: 18px;
+  }
+
+  .frontChipRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 14px;
+  }
+
+  .emvChip {
+    width: 42px;
+    height: 31px;
+  }
+
+  .tierStamp {
+    padding: 4px 8.5px;
+  }
+
+  .tierStar {
+    font-size: 7.5px;
+  }
+
+  .tierLabel {
+    font-size: 7.2px;
+    letter-spacing: 0.14em;
+  }
+
+  .centerWatermark {
+    width: 195px;
+    opacity: 0.07;
+  }
+
+  .frontHeroSection {
+    margin: 26px 0 16px;
+  }
+
+  .engravedHeroName {
+    font-size: 19px !important;
+    line-height: 1.25;
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  .frontTelemetryRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 10px;
+    margin-top: auto;
+    margin-bottom: 14px;
+  }
+
+  .telemetryCol:nth-child(3) {
+    grid-column: 1 / -1;
+    text-align: left;
+  }
+
+  .telemetryColEmail {
+    text-align: left;
+  }
+
+  .engravedMicroLabel {
+    font-size: 6.8px;
+    letter-spacing: 0.14em;
+  }
+
+  .engravedSubText {
+    font-size: 11px;
+  }
+
+  .engravedEmailText {
+    font-size: 11px;
+    word-break: break-all;
+  }
+
+  .frontFooter {
+    padding-top: 8px;
+    border-top: 1px solid rgba(223, 168, 64, 0.2);
+  }
+
+  .footerMicroText {
+    font-size: 6.5px;
+  }
+
+  .footerPassId {
+    font-size: 7.5px;
+  }
+
+  .footerVerified {
+    font-size: 6.8px;
+  }
+
+  /* BACK FACE - VERTICAL */
+  .faceBack {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .magneticStripe {
+    height: 30px;
+    margin-top: 14px;
+    width: 100%;
+  }
+
+  .backBody {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 14px 12px;
+    gap: 8px;
+    flex: 1;
+    z-index: 2;
+  }
+
+  .backLeftCol {
+    display: contents;
+  }
+
+  .backRightCol {
+    display: contents;
+  }
+
+  .signatureRow {
+    order: 1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .signatureStrip {
+    height: 28px;
+    padding: 0 10px 0 12px;
+  }
+
+  .signatureText {
+    font-size: 15px;
+  }
+
+  .cvvBox {
+    min-width: 44px;
+    padding: 2px 6px;
+  }
+
+  .cvvLabel {
+    font-size: 6px;
+  }
+
+  .cvvVal {
+    font-size: 10px;
+  }
+
+  .qrCardWrap {
+    order: 2;
+    margin: 4px 0 2px 0;
+  }
+
+  .qrPlate {
+    padding: 4px;
+    border-radius: 8px;
+  }
+
+  .qrSvg {
+    width: 122px;
+    height: 122px;
+  }
+
+  .scanBadge {
+    order: 3;
+    font-size: 6.2px;
+    padding: 1.5px 5.5px;
+    gap: 3px;
+    margin-bottom: 2px;
+  }
+
+  .scanBadgeWaIcon {
+    font-size: 7px;
+  }
+
+  .backInfoBlock {
+    order: 4;
+    width: 100%;
+    padding: 9px 12px;
+    gap: 7px;
+  }
+
+  .backInfoItem {
+    padding: 0;
+  }
+
+  .backInfoLabel {
+    font-size: 7px;
+  }
+
+  .backInfoVal {
+    font-size: 10.5px;
+  }
+
+  .backHologramRow {
+    order: 5;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+
+  .hologramBadge {
+    width: 32px;
+    height: 18px;
+  }
+
+  .backNoticeRight {
+    order: 6;
+    font-size: 6.5px;
+    text-align: center;
+    width: 100%;
+    margin-top: 1px;
+  }
+}
+
+/* Accessibility helper */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

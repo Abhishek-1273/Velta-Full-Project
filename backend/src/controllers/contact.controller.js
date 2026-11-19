@@ -157,7 +157,16 @@ const createContact = async (req, res) => {
         }).then(() => console.log(`✅ Notification email accepted by Resend — contact ${newContact._id}`))
             .catch(err => console.error(`⚠️ Notification email FAILED — contact ${newContact._id} is saved in the database but nobody was emailed: ${err.message}`));
 
-        return res.status(201).json({ success: true, message: 'Message sent successfully.' });
+        const count = await Contact.countDocuments();
+        const nextSequence = 4 + count;
+        const nextPassId = `#${String(nextSequence).padStart(2, '0')}`;
+
+        return res.status(201).json({
+            success: true,
+            message: 'Message sent successfully.',
+            nextSequence,
+            nextPassId,
+        });
 
     } catch (err) {
         if (err.name === 'ValidationError') {

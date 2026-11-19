@@ -1,12 +1,11 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { useTheme } from '../../context/ThemeContext.jsx'
 import { toast } from 'sonner'
-import { FaFacebookF, FaInstagram, FaLinkedinIn, FaPaperPlane, FaSun, FaMoon } from 'react-icons/fa'
+import { FaPaperPlane } from 'react-icons/fa'
+import SocialCard from '../ui/social-card.tsx'
 import styles from './Footer.module.css'
 
 export default function Footer() {
-  const { theme, toggle } = useTheme()
   const [email, setEmail] = useState('')
 
   const handleSubscribe = (e) => {
@@ -64,7 +63,6 @@ export default function Footer() {
               <Link to="/mobile-app-development" className={styles.link}>Mobile Applications</Link>
               <Link to="/seo-blogging-google-business-profile" className={styles.link}>SEO &amp; Google Profile</Link>
               <Link to="/content" className={styles.link}>Social Media &amp; Content</Link>
-              <Link to="/automation-systems" className={styles.link}>Automation Systems</Link>
               <Link to="/performance-marketing" className={styles.link}>Performance Marketing</Link>
             </div>
           </div>
@@ -73,30 +71,8 @@ export default function Footer() {
           <div className={`${styles.col} ${styles.followCol}`}>
             <span className={styles.colTitle}>Follow Us</span>
             <div className={styles.followActions}>
-              <div className={styles.socialsRow}>
-                <a href="https://www.facebook.com/share/1bDqBcbFh8/" target="_blank" rel="noopener noreferrer" className={styles.socialCircle} aria-label="Facebook">
-                  <FaFacebookF />
-                </a>
-                <a href="https://www.instagram.com/veltaz.ai?exln=bTR1YWQxMXYwdjJ2" target="_blank" rel="noopener noreferrer" className={styles.socialCircle} aria-label="Instagram">
-                  <FaInstagram />
-                </a>
-                <a href="https://www.linkedin.com/company/velta-ai/" target="_blank" rel="noopener noreferrer" className={styles.socialCircle} aria-label="LinkedIn">
-                  <FaLinkedinIn />
-                </a>
-              </div>
-
-              {/* Theme Toggle Switch */}
-              <div className={styles.themeToggleWrapper}>
-                <FaSun className={styles.sunIcon} />
-                <button
-                  type="button"
-                  className={`${styles.toggleSwitch} ${theme === 'dark' ? styles.toggleSwitchActive : ''}`}
-                  onClick={toggle}
-                  aria-label="Toggle theme"
-                >
-                  <span className={styles.toggleSlider} />
-                </button>
-                <FaMoon className={styles.moonIcon} />
+              <div className={styles.socialCardWrapper}>
+                <SocialCard />
               </div>
             </div>
           </div>

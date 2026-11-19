@@ -66,14 +66,12 @@
   height: 250%;
   top: -75%;
   left: -75%;
-  background: conic-gradient(
-    from 0deg,
-    transparent 0deg,
-    transparent 300deg,
-    rgba(223, 168, 64, 0.25) 325deg,
-    #dfa840 350deg,
-    #fff5d0 360deg
-  );
+  background: conic-gradient(from 0deg,
+      transparent 0deg,
+      transparent 300deg,
+      rgba(223, 168, 64, 0.25) 325deg,
+      #dfa840 350deg,
+      #fff5d0 360deg);
   animation: borderBeamSpin 7.5s linear infinite;
   will-change: transform;
 }
@@ -82,6 +80,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -191,6 +190,14 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  padding-top: 28px;
+}
+
+.cardSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 .infoCol h2 {
@@ -253,6 +260,46 @@
 .detailVal:hover {
   color: var(--accent);
 }
+
+.passFlipHint {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: ui-monospace, "SF Mono", monospace;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--accent, #dfa840);
+  background: rgba(223, 168, 64, 0.08);
+  border: 1px dashed rgba(223, 168, 64, 0.35);
+  border-radius: 999px;
+  padding: 6px 14px;
+  margin: -10px auto 22px auto;
+  text-align: center;
+  width: fit-content;
+}
+
+.passFlipIcon {
+  font-size: 13px;
+  display: inline-block;
+  animation: rotateHint 4s linear infinite;
+}
+
+@keyframes rotateHint {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .promises {
   background: var(--bg2);
   border: 1px solid var(--border);
@@ -263,6 +310,7 @@
   flex-direction: column;
   gap: 12px;
 }
+
 .promises h4 {
   font-family: var(--font-head);
   font-size: 13px;
@@ -292,6 +340,7 @@
   font-size: 12px;
   flex-shrink: 0;
 }
+
 /* ================= FORM PANEL ================= */
 .formCol {
   background: var(--surface);
@@ -392,13 +441,33 @@
 
 @media (max-width: 860px) {
   .layout {
-    grid-template-columns: 1fr;
-    gap: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
   }
-  
+
+  .infoCol {
+    display: contents;
+    padding-top: 0;
+  }
+
+  .cardSection {
+    order: 1; /* Executive Card at the top above form */
+    margin-bottom: 0;
+  }
+
   .formCol {
+    order: 2; /* Form directly below card */
     padding: 28px;
-    order: -1; /* on stacked (mobile/tablet) layouts show the form first, contact details below it */
+  }
+
+  .promises {
+    order: 3; /* What Happens Next below form on mobile/tablet */
+    margin-top: 10px;
+    width: 100%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
@@ -521,5 +590,17 @@ select.inp option {
 
   .formCol {
     padding: 22px 18px;
+  }
+}
+
+@keyframes fadeInSync {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

@@ -71,6 +71,12 @@ export const router = createBrowserRouter([
       { path: 'whatsflow', element: withSuspense(WhatsFlow) },
       { path: 'docket14', element: withSuspense(Docket14) },
       { path: 'kin-property', element: withSuspense(KinProperty) },
+      { path: 'deck-demo', loader: () => redirect('/case-studies') },
+
+      // ── Credit Card Playground (Removed: Redirecting to Contact)
+      { path: 'card-playground', loader: () => redirect('/contact') },
+      { path: 'credit-card', loader: () => redirect('/contact') },
+      { path: 'card-lab', loader: () => redirect('/contact') },
 
       // Legacy / alternate route aliases (seamless redirects)
       { path: 'products/whatsflow', loader: () => redirect('/whatsflow') },

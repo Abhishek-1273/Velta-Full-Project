@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect } from 'react'
 import api from '../../api/api.js'
-import { FaEnvelope, FaWhatsapp, FaCheck, FaMapMarkerAlt } from 'react-icons/fa'
+import { FaCheck } from 'react-icons/fa'
 import CustomSelect from '../../components/CustomSelect/CustomSelect.jsx'
+import FlickCard from '../../components/FlickCard/FlickCard.jsx'
 import styles from './Contact.module.css'
 
 // Contact details already used elsewhere in the project
@@ -82,6 +83,7 @@ export default function Contact() {
   const [loading, setLoading] = useState(false)
   const [sent, setSent] = useState(false)
   const [submitError, setSubmitError] = useState('')
+  const [passId, setPassId] = useState('#04')
 
   const inFlight = useRef(false)   // blocks double-submits even before React re-renders
   const formRef = useRef(null)
@@ -141,6 +143,16 @@ export default function Contact() {
 
       // Only treat the enquiry as submitted when the backend explicitly confirms it.
       if (data?.success !== true) throw new Error('Unexpected response from server')
+
+      // Real-time Global sequence update from database (#04 -> #05...)
+      if (data?.nextPassId) {
+        setPassId(data.nextPassId)
+      } else {
+        setPassId(prev => {
+          const num = parseInt(prev.replace('#', ''), 10) || 4
+          return `#${String(num + 1).padStart(2, '0')}`
+        })
+      }
 
       setErrors({})
       setForm(INIT)
@@ -203,31 +215,12 @@ export default function Contact() {
           <div className={styles.layout}>
             {/* Info panel */}
             <div className={styles.infoCol}>
-              <h2>Contact Details</h2>
-              <p className={styles.infoText}>
-                Prefer to reach us directly? You can use any of the channels below.
-              </p>
-              <div className={styles.detailsList}>
-                <div className={styles.detailItem}>
-                  <span className={styles.detailIcon}><FaEnvelope /></span>
-                  <div>
-                    <span className={styles.detailLabel}>Business Email</span>
-                    <a href={`mailto:${CONTACT_EMAIL}`} className={styles.detailVal}>{CONTACT_EMAIL}</a>
-                  </div>
-                </div>
-                <div className={styles.detailItem}>
-                  <span className={styles.detailIcon}><FaWhatsapp /></span>
-                  <div>
-                    <span className={styles.detailLabel}>WhatsApp</span>
-                    <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className={styles.detailVal}>Chat with us on WhatsApp</a>
-                  </div>
-                </div>
-                <div className={styles.detailItem}>
-                  <span className={styles.detailIcon}><FaMapMarkerAlt /></span>
-                  <div>
-                    <span className={styles.detailLabel}>Location</span>
-                    <span className={styles.detailVal}>Pune, India</span>
-                  </div>
+              <div className={styles.cardSection}>
+                <FlickCard clientData={form} passId={passId} />
+
+                <div className={styles.passFlipHint}>
+                  <span className={styles.passFlipIcon}>↺</span>
+                  <span>Flip card for phone, email &amp; WhatsApp QR code</span>
                 </div>
               </div>
 

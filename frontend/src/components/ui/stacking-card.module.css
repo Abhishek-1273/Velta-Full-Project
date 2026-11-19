@@ -1,0 +1,1177 @@
+/* ── DUAL THEME CONTAINER: Seamless Luxury Stacking ── */
+.container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  background: #ffffff;
+  background-image: 
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(223, 168, 64, 0.08) 0%, transparent 70%),
+    linear-gradient(180deg, #ffffff 0%, #f9fafb 50%, #ffffff 100%);
+  transition: background-color 0.3s ease;
+  overflow: hidden;
+  z-index: 10;
+}
+
+:global([data-theme="dark"]) .container {
+  background: #08090d;
+  background-image: 
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(223, 168, 64, 0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 50% 100%, rgba(56, 189, 248, 0.04) 0%, transparent 60%),
+    linear-gradient(180deg, #090a10 0%, #050608 100%);
+}
+
+.stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: clamp(55px, 7.5vh, 76px);
+  padding-bottom: clamp(20px, 3vh, 32px);
+  padding-left: clamp(16px, 3vw, 32px);
+  padding-right: clamp(16px, 3vw, 32px);
+  box-sizing: border-box;
+  background: transparent;
+  overflow: visible;
+}
+
+/* ── SECTION HEADER & LUXURY TYPOGRAPHY ── */
+.header {
+  text-align: center;
+  margin-bottom: clamp(22px, 3.2vh, 32px);
+  max-width: 840px;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.eyebrowWrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 6px;
+}
+
+.eyebrowLine {
+  display: inline-block;
+  width: 32px;
+  height: 1.5px;
+  background: #dfa840;
+  opacity: 0.75;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 16px;
+  border-radius: 9999px;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  background: rgba(212, 175, 55, 0.08);
+  font-family: var(--font-head, sans-serif);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #b58d20;
+  margin: 0;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+:global([data-theme="dark"]) .eyebrow {
+  color: #ffd54f;
+  border-color: rgba(212, 175, 55, 0.4);
+  background: rgba(212, 175, 55, 0.1);
+  text-shadow: 0 0 12px rgba(223, 168, 64, 0.25);
+}
+
+.heading {
+  font-family: var(--font-head, "Plus Jakarta Sans", sans-serif);
+  font-size: clamp(26px, 3.2vw, 38px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #0f172a;
+  margin: 0 0 6px 0;
+  line-height: 1.16;
+  text-wrap: balance;
+  transition: color 0.3s ease;
+}
+
+:global([data-theme="dark"]) .heading {
+  color: #ffffff;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.8), 0 0 35px rgba(223, 168, 64, 0.12);
+}
+
+.subtitle {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: clamp(13px, 1.05vw, 15px);
+  color: #475569;
+  max-width: 620px;
+  margin: 0 auto;
+  line-height: 1.52;
+  text-wrap: pretty;
+  transition: color 0.3s ease;
+}
+
+:global([data-theme="dark"]) .subtitle {
+  color: #94a3b8;
+}
+
+/* ── DECK DIMENSIONS (COMPACT & PROPORTIONAL) ── */
+.deck {
+  position: relative;
+  width: min(92%, 940px);
+  height: clamp(390px, 45vh, 430px);
+}
+
+.card {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  padding: clamp(16px, 1.8vw, 22px) clamp(20px, 2.4vw, 28px);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  transform-origin: 50% 50%;
+  will-change: transform, opacity;
+  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: #ffffff;
+}
+
+:global([data-theme="dark"]) .card {
+  background-color: #0c0d12;
+}
+
+/* ── CARD THEME PALETTES: ARCHITECTURAL PORCELAIN (LIGHT) & TITANIUM OBSIDIAN (DARK) ── */
+
+/* ─────────────────────────────────────────────────────────────
+   1. WhatsFlow (WhatsApp CRM & Automation -> Forest Emerald & Tech Teal)
+   ───────────────────────────────────────────────────────────── */
+.cardWhatsflow {
+  background: #ffffff;
+  background-image: 
+    radial-gradient(circle at 100% 0%, rgba(13, 148, 136, 0.04) 0%, transparent 60%),
+    linear-gradient(180deg, #ffffff 0%, #fafcfb 100%);
+  border: 1.5px solid rgba(5, 150, 105, 0.18);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.04), 0 2px 8px rgba(0, 0, 0, 0.02), inset 0 1px 2px #ffffff;
+}
+:global([data-theme="dark"]) .cardWhatsflow {
+  background: linear-gradient(145deg, #0b1210 0%, #060908 100%);
+  border: 1px solid rgba(52, 211, 153, 0.2);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8), 0 0 24px rgba(16, 185, 129, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+.cardWhatsflow .cardCategory {
+  color: #065f46;
+  border-color: rgba(5, 150, 105, 0.22);
+  background: rgba(5, 150, 105, 0.05);
+}
+:global([data-theme="dark"]) .cardWhatsflow .cardCategory {
+  color: #6ee7b7;
+  border-color: rgba(52, 211, 153, 0.25);
+  background: rgba(52, 211, 153, 0.08);
+}
+
+.cardWhatsflow .cardBtn {
+  color: #ffffff !important;
+  background: linear-gradient(135deg, #059669 0%, #047857 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  box-shadow: 0 4px 14px rgba(5, 150, 105, 0.3) !important;
+}
+.cardWhatsflow .cardBtn:hover {
+  background: linear-gradient(135deg, #047857 0%, #064e3b 100%) !important;
+  box-shadow: 0 6px 20px rgba(5, 150, 105, 0.4) !important;
+}
+
+.cardWhatsflow .liveStatusBadge {
+  color: #065f46;
+  background: rgba(5, 150, 105, 0.06);
+  border-color: rgba(5, 150, 105, 0.2);
+}
+:global([data-theme="dark"]) .cardWhatsflow .liveStatusBadge {
+  color: #6ee7b7;
+  background: rgba(5, 150, 105, 0.12);
+  border-color: rgba(52, 211, 153, 0.25);
+}
+.cardWhatsflow .statusDot {
+  background: #059669;
+  box-shadow: 0 0 6px #059669;
+}
+
+.cardWhatsflow .imgBezel {
+  border: 1.5px solid rgba(13, 148, 136, 0.2);
+}
+:global([data-theme="dark"]) .cardWhatsflow .imgBezel {
+  border: 1.5px solid rgba(45, 212, 191, 0.25);
+  box-shadow: 0 24px 50px -12px rgba(0, 0, 0, 0.85), 0 0 20px rgba(45, 212, 191, 0.1), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   2. Docket14 (Legal Practice SaaS for Lawyers & Advocates -> Executive Court Navy)
+   ───────────────────────────────────────────────────────────── */
+.cardDocket14 {
+  background: #ffffff;
+  background-image: 
+    radial-gradient(circle at 100% 0%, rgba(30, 58, 138, 0.04) 0%, transparent 60%),
+    linear-gradient(180deg, #ffffff 0%, #fafbfe 100%);
+  border: 1.5px solid rgba(30, 58, 138, 0.18);
+  box-shadow: 0 20px 48px rgba(15, 23, 42, 0.05), 0 2px 8px rgba(0, 0, 0, 0.02), inset 0 1px 2px #ffffff;
+}
+:global([data-theme="dark"]) .cardDocket14 {
+  background: linear-gradient(145deg, #0a0f1d 0%, #060911 100%);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8), 0 0 24px rgba(30, 58, 138, 0.1), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+.cardDocket14 .cardCategory {
+  color: #1e3a8a;
+  border-color: rgba(30, 58, 138, 0.22);
+  background: rgba(30, 58, 138, 0.05);
+}
+:global([data-theme="dark"]) .cardDocket14 .cardCategory {
+  color: #93c5fd;
+  border-color: rgba(59, 130, 246, 0.25);
+  background: rgba(59, 130, 246, 0.08);
+}
+
+.cardDocket14 .cardBtn {
+  color: #ffffff !important;
+  background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.25) !important;
+}
+.cardDocket14 .cardBtn:hover {
+  background: linear-gradient(135deg, #172554 0%, #020617 100%) !important;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.35) !important;
+}
+
+.cardDocket14 .liveStatusBadge {
+  color: #1e3a8a;
+  background: rgba(30, 58, 138, 0.06);
+  border-color: rgba(30, 58, 138, 0.2);
+}
+:global([data-theme="dark"]) .cardDocket14 .liveStatusBadge {
+  color: #93c5fd;
+  background: rgba(30, 58, 138, 0.14);
+  border-color: rgba(59, 130, 246, 0.25);
+}
+.cardDocket14 .statusDot {
+  background: #2563eb;
+  box-shadow: 0 0 6px #2563eb;
+}
+
+.cardDocket14 .imgBezel {
+  border: 1.5px solid rgba(30, 58, 138, 0.2);
+}
+:global([data-theme="dark"]) .cardDocket14 .imgBezel {
+  border: 1.5px solid rgba(59, 130, 246, 0.28);
+  box-shadow: 0 24px 50px -12px rgba(0, 0, 0, 0.85), 0 0 20px rgba(59, 130, 246, 0.1), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   3. KIN Property (Luxury Architectural Gold / Amber)
+   ───────────────────────────────────────────────────────────── */
+.cardKin {
+  background: #ffffff;
+  background-image: 
+    radial-gradient(circle at 100% 0%, rgba(212, 175, 55, 0.05) 0%, transparent 60%),
+    linear-gradient(180deg, #ffffff 0%, #fcfbf9 100%);
+  border: 1.5px solid rgba(212, 175, 55, 0.25);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.04), 0 2px 8px rgba(0, 0, 0, 0.02), inset 0 1px 2px #ffffff;
+}
+:global([data-theme="dark"]) .cardKin {
+  background: linear-gradient(145deg, #120f0a 0%, #090805 100%);
+  border: 1px solid rgba(212, 175, 55, 0.28);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8), 0 0 24px rgba(212, 175, 55, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+.cardKin .cardCategory {
+  color: #92400e;
+  border-color: rgba(212, 175, 55, 0.28);
+  background: rgba(212, 175, 55, 0.06);
+}
+:global([data-theme="dark"]) .cardKin .cardCategory {
+  color: #fbbf24;
+  border-color: rgba(212, 175, 55, 0.32);
+  background: rgba(212, 175, 55, 0.08);
+}
+
+.cardKin .cardBtn {
+  color: #111113 !important;
+  background: linear-gradient(135deg, #dfa840 0%, #c4912b 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 0 4px 14px rgba(223, 168, 64, 0.3) !important;
+}
+.cardKin .cardBtn:hover {
+  background: #f59e0b !important;
+  box-shadow: 0 6px 20px rgba(223, 168, 64, 0.45) !important;
+}
+
+.cardKin .liveStatusBadge {
+  color: #92400e;
+  background: rgba(212, 175, 55, 0.06);
+  border-color: rgba(212, 175, 55, 0.22);
+}
+:global([data-theme="dark"]) .cardKin .liveStatusBadge {
+  color: #fbbf24;
+  background: rgba(212, 175, 55, 0.14);
+  border-color: rgba(212, 175, 55, 0.3);
+}
+.cardKin .statusDot {
+  background: #d97706;
+  box-shadow: 0 0 6px #d97706;
+}
+
+.cardKin .imgBezel {
+  border: 1.5px solid rgba(212, 175, 55, 0.28);
+}
+:global([data-theme="dark"]) .cardKin .imgBezel {
+  border: 1.5px solid rgba(212, 175, 55, 0.38);
+  box-shadow: 0 24px 50px -12px rgba(0, 0, 0, 0.85), 0 0 20px rgba(212, 175, 55, 0.1), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+}
+
+/* ── CARD HEADER ── */
+.cardHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+  flex-shrink: 0;
+  transition: border-color 0.3s ease;
+}
+
+:global([data-theme="dark"]) .cardHead {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.cardTitle {
+  font-family: var(--font-head, sans-serif);
+  font-size: clamp(20px, 2vw, 24px);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: #0f172a;
+  margin: 0;
+  line-height: 1.15;
+  transition: color 0.3s ease;
+}
+
+:global([data-theme="dark"]) .cardTitle {
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+.titleAccent {
+  transition: color 0.3s ease;
+}
+
+/* 1. WhatsFlow Title Accent: Emerald Green */
+.cardWhatsflow .titleAccent {
+  color: #059669;
+}
+:global([data-theme="dark"]) .cardWhatsflow .titleAccent {
+  color: #34d399;
+}
+
+/* 2. Docket14 Title Accent: Executive Court Navy / Sapphire */
+.cardDocket14 .titleAccent {
+  color: #1e40af;
+}
+:global([data-theme="dark"]) .cardDocket14 .titleAccent {
+  color: #60a5fa;
+}
+
+/* 3. KIN Property Title Accent: Luxury Architectural Gold */
+.cardKin .titleAccent {
+  color: #c4912b;
+}
+:global([data-theme="dark"]) .cardKin .titleAccent {
+  color: #f59e0b;
+}
+
+.cardCounter {
+  font-family: ui-monospace, "SF Mono", monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: #475569;
+  letter-spacing: 0.12em;
+  background: rgba(0, 0, 0, 0.03);
+  padding: 3.5px 12px;
+  border-radius: 9999px;
+  border: 1px solid rgba(0, 0, 0, 0.09);
+  transition: all 0.3s ease;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  line-height: 1 !important;
+}
+
+:global([data-theme="dark"]) .cardCounter {
+  color: #94a3b8;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Title Group */
+.cardTitleGroup {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  flex: 1;
+  min-width: 0;
+}
+
+.cardCategory {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  border: 1px solid rgba(223, 168, 64, 0.32);
+  background: rgba(223, 168, 64, 0.08);
+  font-family: var(--font-head, sans-serif);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #c4912b;
+  white-space: nowrap;
+}
+
+:global([data-theme="dark"]) .cardCategory {
+  color: #f59e0b;
+  border-color: rgba(223, 168, 64, 0.38);
+  background: rgba(223, 168, 64, 0.12);
+}
+
+/* ── CARD BODY GRID ── */
+.cardBody {
+  display: grid;
+  grid-template-columns: 1.18fr 0.82fr;
+  gap: 20px;
+  align-items: center;
+  flex: 1;
+  min-height: 0;
+}
+
+.cardLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+}
+
+.cardDesc {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: clamp(12px, 0.92vw, 13px);
+  line-height: 1.45;
+  color: #334155;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+:global([data-theme="dark"]) .cardDesc {
+  color: rgba(255, 255, 255, 0.88);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* ── ATTRACTIVE 2x2 BENTO FEATURES GRID ── */
+.featuresSection {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 6px 0;
+  width: 100%;
+}
+
+.featuresHeading {
+  font-family: ui-monospace, "SF Mono", monospace;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+:global([data-theme="dark"]) .featuresHeading {
+  color: #94a3b8;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 10px;
+  width: 100%;
+}
+
+.featureCard {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 11px;
+  border-radius: 11px;
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  min-width: 0;
+}
+
+:global([data-theme="dark"]) .featureCard {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.featureCard:hover {
+  transform: translateY(-1.5px);
+  background: rgba(0, 0, 0, 0.04);
+}
+
+:global([data-theme="dark"]) .featureCard:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* Luxury Custom Feature Icon Badge */
+.featureIconBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  color: #475569;
+  font-size: 15px;
+  flex-shrink: 0;
+  transition: all 0.25s ease;
+}
+
+.featureIconBadge svg {
+  width: 15px;
+  height: 15px;
+  stroke-width: 2.2;
+}
+
+:global([data-theme="dark"]) .featureIconBadge {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #94a3b8;
+}
+
+/* ── THEME MATCHED CAPABILITY POINTS (100% UNIFIED WITH BUTTON COLORS) ── */
+
+/* 1. WhatsFlow: Pure Emerald Green Matching Button */
+.cardWhatsflow .featureCard {
+  background: rgba(5, 150, 105, 0.035);
+  border: 1px solid rgba(5, 150, 105, 0.14);
+}
+.cardWhatsflow .featureCard:hover {
+  background: rgba(5, 150, 105, 0.07);
+  border-color: rgba(5, 150, 105, 0.32);
+  box-shadow: 0 4px 14px rgba(5, 150, 105, 0.1);
+}
+.cardWhatsflow .featureIconBadge {
+  background: rgba(5, 150, 105, 0.12);
+  border: 1px solid rgba(5, 150, 105, 0.28);
+  color: #059669;
+}
+:global([data-theme="dark"]) .cardWhatsflow .featureCard {
+  background: rgba(52, 211, 153, 0.035);
+  border-color: rgba(52, 211, 153, 0.16);
+}
+:global([data-theme="dark"]) .cardWhatsflow .featureCard:hover {
+  background: rgba(52, 211, 153, 0.08);
+  border-color: rgba(52, 211, 153, 0.35);
+  box-shadow: 0 4px 14px rgba(52, 211, 153, 0.12);
+}
+:global([data-theme="dark"]) .cardWhatsflow .featureIconBadge {
+  background: rgba(5, 150, 105, 0.25);
+  border-color: rgba(52, 211, 153, 0.38);
+  color: #34d399;
+}
+
+/* 2. Docket14: Executive Court Navy Matching Button */
+.cardDocket14 .featureCard {
+  background: rgba(30, 58, 138, 0.035);
+  border: 1px solid rgba(30, 58, 138, 0.14);
+}
+.cardDocket14 .featureCard:hover {
+  background: rgba(30, 58, 138, 0.07);
+  border-color: rgba(30, 58, 138, 0.32);
+  box-shadow: 0 4px 14px rgba(30, 58, 138, 0.1);
+}
+.cardDocket14 .featureIconBadge {
+  background: rgba(30, 58, 138, 0.1);
+  border: 1px solid rgba(30, 58, 138, 0.26);
+  color: #1e3a8a;
+}
+:global([data-theme="dark"]) .cardDocket14 .featureCard {
+  background: rgba(59, 130, 246, 0.035);
+  border-color: rgba(59, 130, 246, 0.16);
+}
+:global([data-theme="dark"]) .cardDocket14 .featureCard:hover {
+  background: rgba(59, 130, 246, 0.08);
+  border-color: rgba(59, 130, 246, 0.35);
+  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.12);
+}
+:global([data-theme="dark"]) .cardDocket14 .featureIconBadge {
+  background: rgba(30, 58, 138, 0.28);
+  border-color: rgba(59, 130, 246, 0.38);
+  color: #93c5fd;
+}
+
+/* 3. KIN Property: Luxury Architectural Gold Matching Button */
+.cardKin .featureCard {
+  background: rgba(223, 168, 64, 0.035);
+  border: 1px solid rgba(223, 168, 64, 0.16);
+}
+.cardKin .featureCard:hover {
+  background: rgba(223, 168, 64, 0.08);
+  border-color: rgba(223, 168, 64, 0.36);
+  box-shadow: 0 4px 14px rgba(223, 168, 64, 0.12);
+}
+.cardKin .featureIconBadge {
+  background: rgba(223, 168, 64, 0.14);
+  border: 1px solid rgba(223, 168, 64, 0.32);
+  color: #c4912b;
+}
+:global([data-theme="dark"]) .cardKin .featureCard {
+  background: rgba(223, 168, 64, 0.05);
+  border-color: rgba(223, 168, 64, 0.2);
+}
+:global([data-theme="dark"]) .cardKin .featureCard:hover {
+  background: rgba(223, 168, 64, 0.1);
+  border-color: rgba(223, 168, 64, 0.42);
+  box-shadow: 0 4px 14px rgba(223, 168, 64, 0.16);
+}
+:global([data-theme="dark"]) .cardKin .featureIconBadge {
+  background: rgba(223, 168, 64, 0.24);
+  border-color: rgba(223, 168, 64, 0.42);
+  color: #dfa840;
+}
+
+.featureContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5px;
+  min-width: 0;
+  flex: 1;
+}
+
+.featureTitle {
+  font-family: var(--font-head, sans-serif);
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.25;
+}
+
+:global([data-theme="dark"]) .featureTitle {
+  color: #f8fafc;
+}
+
+.featureDesc {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 10px;
+  color: #64748b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.25;
+}
+
+:global([data-theme="dark"]) .featureDesc {
+  color: #94a3b8;
+}
+
+/* ── ACTION ROW ── */
+.cardActionRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 5px;
+  flex-wrap: wrap;
+}
+
+.liveStatusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: ui-monospace, "SF Mono", monospace;
+  font-size: 8.5px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #047857;
+  background: rgba(16, 185, 129, 0.08);
+  padding: 3px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+:global([data-theme="dark"]) .liveStatusBadge {
+  color: #34d399;
+  background: rgba(16, 185, 129, 0.14);
+  border-color: rgba(16, 185, 129, 0.35);
+}
+
+.statusDot {
+  width: 4.5px;
+  height: 4.5px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 6px #10b981;
+}
+
+/* ── BUTTON ── */
+.cardBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-head, sans-serif);
+  font-size: 12px;
+  font-weight: 800;
+  color: #111113;
+  background: #dfa840;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 7px 18px;
+  border-radius: 999px;
+  text-decoration: none;
+  width: fit-content;
+  box-shadow: 0 4px 14px rgba(223, 168, 64, 0.35);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), background 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cardBtn:hover {
+  transform: translateY(-2px) scale(1.02);
+  background: #f59e0b;
+  box-shadow: 0 8px 24px rgba(223, 168, 64, 0.5);
+}
+
+/* ── RIGHT COLUMN: INTERACTIVE 3D TILT STAGE ── */
+.cardRight {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+}
+
+.tiltOuter {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1100px;
+  cursor: grab;
+}
+
+.tiltOuter:active {
+  cursor: grabbing;
+}
+
+.tiltInner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.imgBezel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-height: 250px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1.5px solid rgba(223, 168, 64, 0.35);
+  box-shadow: 
+    0 18px 36px -10px rgba(0, 0, 0, 0.15),
+    0 4px 10px rgba(0, 0, 0, 0.04),
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0f172a;
+  transform: translateZ(0);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+:global([data-theme="dark"]) .imgBezel {
+  border: 1.5px solid rgba(223, 168, 64, 0.45);
+  box-shadow: 
+    0 30px 65px -12px rgba(0, 0, 0, 0.85),
+    0 0 25px rgba(223, 168, 64, 0.12),
+    inset 0 1px 1px rgba(255, 255, 255, 0.15);
+}
+
+.cardImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  border-radius: 16px;
+  transform-origin: center;
+  transition: transform 0.4s ease-out;
+}
+
+.tiltOuter:hover .cardImg {
+  transform: scale(1.03);
+}
+
+/* Dynamic Specular Light Glare */
+.glareLayer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  z-index: 3;
+  transition: opacity 0.25s ease;
+}
+
+/* ── RESPONSIVE MOBILE & TABLET LAYOUTS: CLEAN NATURAL DOCUMENT FLOW ── */
+@media (max-width: 860px) {
+  .container {
+    height: auto;
+    min-height: auto;
+    overflow: visible;
+    padding: 56px 0 64px;
+    z-index: 1;
+  }
+
+  .stage {
+    height: auto;
+    padding: 0 16px;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ── Mobile Section Header ── */
+  .header {
+    text-align: center;
+    margin-bottom: 32px;
+    padding: 0 8px;
+    max-width: 580px;
+    width: 100%;
+  }
+
+  .eyebrowWrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .eyebrowLine {
+    width: 24px;
+    height: 1.5px;
+    background: #dfa840;
+    opacity: 0.8;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 16px;
+    border-radius: 9999px;
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    background: rgba(212, 175, 55, 0.08);
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    color: #b58d20;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  :global([data-theme="dark"]) .eyebrow {
+    color: #ffd54f;
+    border-color: rgba(212, 175, 55, 0.4);
+    background: rgba(212, 175, 55, 0.1);
+  }
+
+  .heading {
+    font-family: var(--font-head, "Plus Jakarta Sans", sans-serif);
+    font-size: clamp(24px, 6.2vw, 32px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.22;
+    margin: 0 0 10px 0;
+    color: #0f172a;
+    text-wrap: balance;
+  }
+
+  :global([data-theme="dark"]) .heading {
+    color: #ffffff;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.8), 0 0 35px rgba(223, 168, 64, 0.12);
+  }
+
+  .subtitle {
+    font-family: var(--font-body, "Inter", sans-serif);
+    font-size: clamp(13px, 3.5vw, 14.5px);
+    line-height: 1.55;
+    color: #475569;
+    max-width: 440px;
+    margin: 0 auto;
+  }
+
+  :global([data-theme="dark"]) .subtitle {
+    color: #94a3b8;
+  }
+
+  /* ── Mobile Deck & Cards: Natural Vertical Stack Flow ── */
+  .deck {
+    position: relative;
+    width: 100%;
+    max-width: 580px;
+    height: auto;
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .card {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: auto;
+    transform: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    border-radius: 20px;
+    padding: clamp(18px, 4vw, 24px);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+  }
+
+  .cardHead {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-bottom: 12px;
+    margin-bottom: 14px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  :global([data-theme="dark"]) .cardHead {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .cardTitleGroup {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .cardTitle {
+    font-size: clamp(20px, 5vw, 23px);
+    font-weight: 800;
+  }
+
+  .cardCategory {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 9px;
+    border-radius: 9999px;
+    font-family: var(--font-head, sans-serif);
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .cardCounter {
+    font-size: 11px;
+    padding: 4px 12px !important;
+    border-radius: 9999px !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    line-height: 1 !important;
+  }
+
+  .cardBody {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* ── IMAGE ON TOP FOR MOBILE ── */
+  .cardRight {
+    order: -1;
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cardLeft {
+    order: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .cardDesc {
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: #475569;
+    margin: 0;
+    display: block;
+    -webkit-line-clamp: unset;
+    overflow: visible;
+  }
+
+  :global([data-theme="dark"]) .cardDesc {
+    color: #94a3b8;
+  }
+
+  .featuresSection {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 2px 0 0;
+  }
+
+  .featuresHeading {
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    font-weight: 800;
+  }
+
+  .featuresGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px 10px;
+  }
+
+  .featureCard {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 8px 10px;
+    border-radius: 10px;
+  }
+
+  .featureIconBadge {
+    width: 26px;
+    height: 26px;
+    border-radius: 7px;
+    flex-shrink: 0;
+  }
+
+  .featureIconBadge svg {
+    width: 14px;
+    height: 14px;
+    stroke-width: 2.2;
+  }
+
+  .featureTitle {
+    font-size: 11.5px;
+    font-weight: 700;
+    line-height: 1.25;
+  }
+
+  .featureDesc {
+    font-size: 10px;
+    line-height: 1.25;
+    color: #64748b;
+    -webkit-line-clamp: unset;
+    overflow: visible;
+  }
+
+  :global([data-theme="dark"]) .featureDesc {
+    color: #94a3b8;
+  }
+
+  .cardActionRow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 2px;
+    flex-wrap: wrap;
+  }
+
+  .cardBtn {
+    font-size: 12px;
+    font-weight: 700;
+    padding: 8px 18px;
+    border-radius: 9999px;
+  }
+
+  .liveStatusBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 9px;
+    padding: 4px 12px;
+    border-radius: 9999px;
+    white-space: nowrap;
+  }
+
+  .tiltOuter {
+    width: 100%;
+    cursor: default;
+  }
+
+  .tiltInner {
+    transform: none !important;
+  }
+
+  .imgBezel {
+    max-height: 200px;
+    height: 200px;
+    border-radius: 14px;
+    width: 100%;
+  }
+
+  .cardImg {
+    border-radius: 14px;
+    object-fit: cover;
+  }
+}
+
+@media (max-width: 480px) {
+  .featuresGrid {
+    grid-template-columns: 1fr !important;
+    gap: 6px;
+  }
+
+  .imgBezel {
+    max-height: 175px;
+    height: 175px;
+  }
+}

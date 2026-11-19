@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import PendulumHero from '../../components/PendulumHero/PendulumHero.jsx'
 import styles from './Home.module.css'
 import PhoneMockupBasic from '../../components/ui/phone-mockups-1'
+import StackingCard from '../../components/ui/stacking-card'
 import {
   HiOutlineCodeBracket,
   HiOutlineDevicePhoneMobile,
@@ -152,125 +153,62 @@ const kinScope = [
   { title: 'Lead-management workflows', desc: 'Workflows for handling and following up on enquiries.' },
 ]
 
-// Featured Builds & Systems (Exact match to reference design: WhatsFlow, Docket14, KIN Property)
-const featuredBuilds = [
+// Pinned Stacking Cards Data (Custom Tailored for both Light & Dark luxury modes)
+const veltaStackProjects = [
   {
-    id: 'whatsflow',
-    brand: 'WhatsFlow',
-    badge: 'LEAD AUTOMATION',
-    headlineLead: 'Every conversation.',
-    headlineSub: 'A smarter next step.',
-    desc: 'An automated lead capture & CRM system that turns WhatsApp conversations into organized, actionable leads.',
-    link: '/whatsflow',
-    img: 'https://res.cloudinary.com/dqc1awrnc/image/upload/f_auto,q_auto/v1793958348/whatsflow_che1la.png',
-    specs: [
-      {
-        icon: (
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M18.178 8c5.096 0 5.096 8 0 8-5.095 0-7.178-8-12.356-8-5.096 0-5.096 8 0 8 5.178 0 7.261-8 12.356-8Z" />
-          </svg>
-        ),
-        label: 'Meta Cloud API'
-      },
-      {
-        icon: (
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z" />
-          </svg>
-        ),
-        label: 'Instant Webhooks'
-      },
-      {
-        icon: (
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-            <path d="m12 2 10 5.5-10 5.5L2 7.5 12 2Z" />
-            <path d="m2 12 10 5.5 10-5.5" />
-            <path d="m2 16.5 10 5.5 10-5.5" />
-          </svg>
-        ),
-        label: 'Automated\nLead Routing'
-      }
-    ]
+    themeKey: 'whatsflow',
+    title: 'WhatsFlow',
+    titleAccent: 'Flow',
+    kicker: 'WhatsApp CRM & Automation',
+    badge: 'LIVE SYSTEM',
+    description:
+      'A custom WhatsApp automation system that captures incoming chat enquiries and converts them directly into organized sales leads for your business.',
+    features: [
+      { title: 'Instant Lead Capture', desc: 'From WhatsApp chats & ads', icon: 'chat' },
+      { title: '24/7 Smart Auto-Reply', desc: 'Instant query qualification', icon: 'bolt' },
+      { title: 'Shared Team Inbox', desc: 'Live lead pipeline tracking', icon: 'team' },
+      { title: 'Real-time CRM Sync', desc: 'Webhooks & Google Sheets', icon: 'sync' },
+    ],
+    link: 'https://res.cloudinary.com/dqc1awrnc/image/upload/f_auto,q_auto/v1793958348/whatsflow_che1la.png',
+    url: '/whatsflow',
+    cta: 'Explore WhatsFlow →',
   },
   {
-    id: 'docket14',
-    brand: 'Docket14',
-    badge: 'LEGAL SAAS',
-    headlineLead: 'Case management built',
-    headlineSub: 'for modern litigation.',
-    desc: 'A unified platform for legal advocates to track court dates, manage client document vaults, and streamline daily practice.',
-    link: '/docket14',
-    img: 'https://res.cloudinary.com/dqc1awrnc/image/upload/f_auto,q_auto/v1793958347/docket14_kt5kfl.png',
-    specs: [
-      {
-        icon: (
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-            <path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" />
-            <path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" />
-            <path d="M7 21h10" />
-            <path d="M12 3v18" />
-            <path d="M3 7h18" />
-          </svg>
-        ),
-        label: 'Court\nHearing Sync'
-      },
-      {
-        icon: (
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" />
-          </svg>
-        ),
-        label: 'Client\nDocument Vault'
-      },
-      {
-        icon: (
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-            <rect width="18" height="12" x="3" y="4" rx="2" />
-            <line x1="2" x2="22" y1="20" y2="20" />
-          </svg>
-        ),
-        label: 'Web &\nMobile Ready'
-      }
-    ]
+    themeKey: 'docket14',
+    title: 'Docket14',
+    titleAccent: '14',
+    kicker: 'Legal Practice Management SaaS',
+    badge: 'ACTIVE SAAS',
+    description:
+      'A unified legal management platform built for advocates and law firms to manage daily court hearings, client files, and confidential legal documents.',
+    features: [
+      { title: 'Court Hearing Alerts', desc: 'Daily causelist & digital diary', icon: 'calendar' },
+      { title: 'Encrypted Case Vault', desc: 'Bank-grade document security', icon: 'lock' },
+      { title: 'Client Directory', desc: 'Centralized history & notes', icon: 'folder' },
+      { title: 'Multi-Device Access', desc: 'Seamless PC, tablet & phone', icon: 'device' },
+    ],
+    link: 'https://res.cloudinary.com/dqc1awrnc/image/upload/f_auto,q_auto/v1793958347/docket14_kt5kfl.png',
+    url: '/docket14',
+    cta: 'Explore Docket14 →',
   },
   {
-    id: 'kin-property',
-    brand: 'KIN Property',
-    badge: 'REAL ESTATE PLATFORM',
-    headlineLead: 'Property management,',
-    headlineSub: 'streamlined.',
-    desc: 'A dedicated platform engineered to showcase premium properties, capture buyer enquiries, and streamline operations.',
-    link: '/kin-property',
-    img: 'https://res.cloudinary.com/dqc1awrnc/image/upload/f_auto,q_auto/v1793958347/kin_igcfcn.png',
-    specs: [
-      {
-        icon: (
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-            <polyline points="9 22 9 12 15 12 15 22" />
-          </svg>
-        ),
-        label: 'Property\nListings'
-      },
-      {
-        icon: (
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-            <circle cx="11" cy="11" r="8" />
-            <line x1="21" y1="21" x2="16.65" y2="16.65" />
-          </svg>
-        ),
-        label: 'High-Intent\nDiscovery'
-      },
-      {
-        icon: (
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z" />
-          </svg>
-        ),
-        label: 'Lead\nManagement'
-      }
-    ]
-  }
+    themeKey: 'kin',
+    title: 'KIN Property',
+    titleAccent: 'Property',
+    kicker: 'Real Estate & Property Platform',
+    badge: 'PRODUCTION READY',
+    description:
+      'A high-performance real estate portal engineered for property developers and brokers to showcase premium properties and capture verified buyer enquiries.',
+    features: [
+      { title: 'Property Showcase', desc: 'High-res galleries & specs', icon: 'building' },
+      { title: 'Instant WhatsApp Leads', desc: 'Direct click-to-call forms', icon: 'chat' },
+      { title: 'Valuation & EMI Tool', desc: 'Built-in property calculator', icon: 'calculator' },
+      { title: 'Fast Mobile Browsing', desc: 'Built for high-intent buyers', icon: 'sparkles' },
+    ],
+    link: 'https://res.cloudinary.com/dqc1awrnc/image/upload/f_auto,q_auto/v1793958347/kin_igcfcn.png',
+    url: '/kin-property',
+    cta: 'Explore KIN Property →',
+  },
 ]
 
 // High-Performance Spring Number Ticker Component (Magic UI Pattern)
@@ -381,7 +319,6 @@ const SparkleVectorShape = ({ type }) => {
 }
 
 export default function Home() {
-  const [activeBuildIdx, setActiveBuildIdx] = useState(0)
   const [isGrowthActive, setIsGrowthActive] = useState(false)
   const [sparkles, setSparkles] = useState([])
 
@@ -418,9 +355,6 @@ export default function Home() {
       return next
     })
   }
-
-  const prevBuild = () => setActiveBuildIdx((i) => (i - 1 + featuredBuilds.length) % featuredBuilds.length)
-  const nextBuild = () => setActiveBuildIdx((i) => (i + 1) % featuredBuilds.length)
 
   const carouselRef = useRef(null)
   const [isPaused, setIsPaused] = useState(false)
@@ -671,16 +605,16 @@ export default function Home() {
                           className={styles.sparkleParticle}
                           style={{ width: s.size, height: s.size }}
                           initial={{ opacity: 0, scale: 0, x: 0, y: 0 }}
-                          animate={{ 
-                            opacity: [0, 1, 0.9, 0], 
-                            scale: [0, s.scale * 1.15, s.scale * 0.95, 0], 
-                            x: s.x, 
-                            y: s.y, 
-                            rotate: s.rotate 
+                          animate={{
+                            opacity: [0, 1, 0.9, 0],
+                            scale: [0, s.scale * 1.15, s.scale * 0.95, 0],
+                            x: s.x,
+                            y: s.y,
+                            rotate: s.rotate
                           }}
                           exit={{ opacity: 0 }}
-                          transition={{ 
-                            duration: 1.85, 
+                          transition={{
+                            duration: 1.85,
                             ease: [0.22, 1, 0.36, 1],
                             opacity: { duration: 1.85, times: [0, 0.12, 0.72, 1], ease: 'easeInOut' },
                             scale: { duration: 1.85, times: [0, 0.15, 0.75, 1], ease: [0.22, 1, 0.36, 1] },
@@ -734,9 +668,9 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.36 }}
             >
-              <motion.div 
-                whileHover={{ scale: 1.04, y: -2 }} 
-                whileTap={{ scale: 0.97 }} 
+              <motion.div
+                whileHover={{ scale: 1.04, y: -2 }}
+                whileTap={{ scale: 0.97 }}
                 transition={{ type: 'spring', stiffness: 420, damping: 20 }}
                 style={{ display: 'inline-block' }}
               >
@@ -753,9 +687,9 @@ export default function Home() {
                   </span>
                 </Link>
               </motion.div>
-              <motion.div 
-                whileHover={{ scale: 1.04, y: -1 }} 
-                whileTap={{ scale: 0.97 }} 
+              <motion.div
+                whileHover={{ scale: 1.04, y: -1 }}
+                whileTap={{ scale: 0.97 }}
                 transition={{ type: 'spring', stiffness: 420, damping: 20 }}
                 style={{ display: 'inline-block' }}
               >
@@ -964,173 +898,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FEATURED BUILDS & SYSTEMS (EXACT MATCH TO REFERENCE DESIGN) */}
-      <section id="work" className={styles.buildsSection}>
-        <div className="container">
-          {/* Header */}
-          <motion.div
-            className={styles.buildsHeader}
-            initial={{ opacity: 0, y: 22 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <div className={styles.methodEyebrowWrap}>
-              <span className={styles.methodEyebrowLine} />
-              <div className={styles.methodEyebrowPill}>FEATURED BUILDS &amp; SYSTEMS</div>
-              <span className={styles.methodEyebrowLine} />
-            </div>
-
-            <h2 className={styles.buildsTitle}>
-              Built to move business <em>forward.</em>
-            </h2>
-
-            <p className={styles.buildsSubtitle}>
-              Custom software, automation systems, and digital platforms that solve real business problems.
-            </p>
-          </motion.div>
-
-          {/* Quick Switcher Tabs: WhatsFlow | Docket14 | KIN Property */}
-          <div className={styles.buildsTabsRow}>
-            {featuredBuilds.map((b, idx) => (
-              <button
-                key={b.id}
-                type="button"
-                className={`${styles.buildsTabBtn} ${idx === activeBuildIdx ? styles.buildsTabBtnActive : ''}`}
-                onClick={() => setActiveBuildIdx(idx)}
-              >
-                <span className={styles.buildsTabNum}>0{idx + 1}</span>
-                <span className={styles.buildsTabName}>{b.brand}</span>
-              </button>
-            ))}
-          </div>
-
-          {/* Interactive Card Stage with Shifted Backing Plate */}
-          <div className={styles.buildsStage}>
-            {/* Shifted Warm Cream Backing Plate */}
-            <div className={styles.buildsBackingPlate} />
-
-            {/* Prev Arrow Button */}
-            <button
-              type="button"
-              className={`${styles.buildsNavArrow} ${styles.buildsNavPrev}`}
-              onClick={prevBuild}
-              aria-label="Previous Build"
-            >
-              <HiChevronLeft className={styles.buildsNavArrowIcon} />
-            </button>
-
-            {/* Active Build Card with Smooth Slide & Fade Transition */}
-            <AnimatePresence mode="wait">
-              {(() => {
-                const build = featuredBuilds[activeBuildIdx]
-                return (
-                  <motion.div
-                    key={build.id}
-                    className={styles.buildsCard}
-                    initial={{ opacity: 0, x: 20, scale: 0.985 }}
-                    animate={{ opacity: 1, x: 0, scale: 1 }}
-                    exit={{ opacity: 0, x: -20, scale: 0.985 }}
-                    transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
-                    onMouseMove={(e) => {
-                      const card = e.currentTarget
-                      const rect = card.getBoundingClientRect()
-                      const x = (e.clientX - rect.left) / rect.width - 0.5
-                      const y = (e.clientY - rect.top) / rect.height - 0.5
-                      card.style.setProperty('--card-tilt-x', `${-y * 5}deg`)
-                      card.style.setProperty('--card-tilt-y', `${x * 5}deg`)
-                    }}
-                    onMouseLeave={(e) => {
-                      const card = e.currentTarget
-                      card.style.setProperty('--card-tilt-x', '0deg')
-                      card.style.setProperty('--card-tilt-y', '0deg')
-                    }}
-                  >
-                    {/* Left Column: Visual Mockup with 3D Depth Float */}
-                    <div className={styles.buildsVisualWrap}>
-                      <img
-                        src={build.img}
-                        alt={build.brand}
-                        className={styles.buildsVisualImg}
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    </div>
-
-                    {/* Right Column: Information & Specs */}
-                    <div className={styles.buildsInfo}>
-                      <div className={styles.buildsBrandRow}>
-                        <div className={styles.buildsBrandIdentity}>
-                          <span className={styles.buildsBrandName}>{build.brand}</span>
-                          <span className={styles.buildsBrandDivider}>|</span>
-                          <span className={styles.buildsBrandBadge}>{build.badge}</span>
-                        </div>
-                        <div className={styles.buildsLiveIndicator}>
-                          <span className={styles.livePulseDot} />
-                          <span>LIVE SYSTEM</span>
-                        </div>
-                      </div>
-
-                      <h3 className={styles.buildsHeadline}>
-                        <span>{build.headlineLead}</span>
-                        <br />
-                        <span>{build.headlineSub}</span>
-                      </h3>
-
-                      <p className={styles.buildsDesc}>{build.desc}</p>
-
-                      {/* 3 Specs with Gold Icons & Vertical Dividers */}
-                      <div className={styles.buildsSpecsRow}>
-                        {build.specs.map((spec, sIdx) => (
-                          <div key={sIdx} className={styles.buildSpecItem}>
-                            <div className={styles.buildSpecIcon}>{spec.icon}</div>
-                            <div className={styles.buildSpecLabel}>{spec.label}</div>
-                          </div>
-                        ))}
-                      </div>
-
-                      {/* Underlined Action Link with Bold Geometric Arrow */}
-                      <div className={styles.buildsActionWrap}>
-                        <Link to={build.link} className={styles.buildsActionLink}>
-                          <span>Explore the system</span>
-                          <span className={styles.buildsArrow}>
-                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
-                              <line x1="5" y1="12" x2="19" y2="12" />
-                              <polyline points="12 5 19 12 12 19" />
-                            </svg>
-                          </span>
-                        </Link>
-                      </div>
-                    </div>
-                  </motion.div>
-                )
-              })()}
-            </AnimatePresence>
-
-            {/* Next Arrow Button */}
-            <button
-              type="button"
-              className={`${styles.buildsNavArrow} ${styles.buildsNavNext}`}
-              onClick={nextBuild}
-              aria-label="Next Build"
-            >
-              <HiChevronRight className={styles.buildsNavArrowIcon} />
-            </button>
-          </div>
-
-          {/* Pagination Dots (Gold Pill Active) */}
-          <div className={styles.buildsPagination}>
-            {featuredBuilds.map((_, dotIdx) => (
-              <button
-                key={dotIdx}
-                type="button"
-                className={`${styles.buildsDot} ${dotIdx === activeBuildIdx ? styles.buildsDotActive : ''}`}
-                onClick={() => setActiveBuildIdx(dotIdx)}
-                aria-label={`Go to build ${dotIdx + 1}`}
-              />
-            ))}
-          </div>
-        </div>
+      {/* FEATURED BUILDS & SYSTEMS (PINNED STACKING CARDS) */}
+      <section id="work" className={styles.tiltStackSection}>
+        <StackingCard
+          projects={veltaStackProjects}
+          eyebrow="FEATURED BUILDS &amp; SYSTEMS · 2026"
+          heading="Built to move business forward."
+          subtitle="Production-ready platforms, automation engines, and custom applications engineered by VeltaZ."
+        />
       </section>
 
       {/* SELECTED WORK / CASE STUDIES (EXACT MATCH TO REFERENCE) */}
@@ -1379,9 +1154,9 @@ export default function Home() {
             Tell us what you're working on, what isn't working or what you'd like to build. Let's explore a practical next step.
           </p>
 
-          <motion.div 
-            whileHover={{ scale: 1.05, y: -2 }} 
-            whileTap={{ scale: 0.97 }} 
+          <motion.div
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.97 }}
             transition={{ type: 'spring', stiffness: 420, damping: 20 }}
             style={{ display: 'inline-block', marginTop: '24px' }}
           >

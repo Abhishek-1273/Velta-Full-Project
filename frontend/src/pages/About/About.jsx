@@ -148,57 +148,87 @@ const PRACTICAL_PRODUCTS = [
   {
     id: 'whatsflow',
     title: 'WhatsFlow',
-    badge: 'Automation & Lead OS',
-    status: 'Active Tool',
+    badge: 'WhatsApp CRM OS',
+    status: 'Live System',
     domain: 'app.whatsflow.io',
     icon: FaWhatsapp,
-    desc: 'Bespoke WhatsApp automation suite engineered to eliminate manual lead entry and sync conversations directly into CRM.',
-    metric: '< 120ms',
-    metricLabel: 'Inbound Latency',
-    pill: 'Meta Cloud API',
-    highlights: [
-      'Meta Cloud API direct webhook gateway',
-      'Shared multi-agent team inbox routing',
-      'Zero-leak automated lead capture flows',
-      'Bi-directional live CRM database sync',
+    problem:
+      'Businesses running Meta ads were bleeding 40%+ of high-intent leads because inquiries sat unassigned on personal phones and never synced to CRM.',
+    solutions: [
+      {
+        label: 'Direct Cloud Gateway',
+        text: 'Sub-120ms webhook router capturing incoming chats with zero dropped requests.',
+      },
+      {
+        label: '24/7 Smart Qualification',
+        text: 'Automated interactive flows pre-qualifying lead intent before staff notification.',
+      },
+      {
+        label: 'Shared Multi-Agent Inbox',
+        text: 'Centralized web dashboard routing chats across reps with zero phone hopping.',
+      },
+      {
+        label: 'Live 2-Way CRM Sync',
+        text: 'Instant webhook pipeline auto-logging contacts and chat transcripts into CRM & Sheets.',
+      },
     ],
     link: '/whatsflow',
   },
   {
     id: 'docket14',
     title: 'Docket14',
-    badge: 'Legal Practice CRM',
-    status: 'Internal Tool',
+    badge: 'Legal Practice OS',
+    status: 'Internal Platform',
     domain: 'docket14.legal',
     icon: FaBriefcase,
-    desc: 'Custom law firm practice management tool built to digitize daily court cause-lists, advocate dockets, and hearing lifecycles.',
-    metric: '100%',
-    metricLabel: 'Docket Sync Rate',
-    pill: 'Courtroom CRM',
-    highlights: [
-      'Daily District & High Court cause-lists',
-      'Hearing stage tracking & next-date alerts',
-      'Advocate case notes & client dockets',
-      'Fee ledger & expense approval system',
+    problem:
+      'Litigation advocates spent hours scouring 200+ page PDF causelists across High Court benches late at night, risking missed dates and lost case files.',
+    solutions: [
+      {
+        label: 'Automated Causelist Sync',
+        text: 'Daily scrapers index court listings and match case dockets directly to advocate calendars.',
+      },
+      {
+        label: 'Proactive Hearing Alerts',
+        text: 'Automated multi-channel notifications (WhatsApp/SMS) sent 24h prior to court call.',
+      },
+      {
+        label: 'Encrypted Digital Vault',
+        text: 'Client-isolated cloud storage for confidential petitions and case notes with zero paper clutter.',
+      },
+      {
+        label: 'Hearing Lifecycle Tracker',
+        text: 'Centralized case stage tracking, interim court orders, and advocate fee ledgers.',
+      },
     ],
     link: '/docket14',
   },
   {
     id: 'kin-property',
-    title: 'Kin Property',
-    badge: 'PropTech Ecosystem',
+    title: 'KIN Property',
+    badge: 'PropTech Platform',
     status: 'Live Platform',
     domain: 'kinproperty.in',
     icon: FaBuilding,
-    desc: 'End-to-end real estate engine featuring localized Pune property search, verified inventory, and instant WhatsApp tour routing.',
-    metric: '3.2×',
-    metricLabel: 'Inbound Surge',
-    pill: 'Pune PropTech',
-    highlights: [
-      'Localized Pune inventory search filters',
-      'Google SEO & GBP inbound lead funnels',
-      'Instant WhatsApp tour booking triggers',
-      'Admin property deal & inventory board',
+    problem:
+      'Property developers were losing high-intent buyers to slow, bloated aggregator portals with fake listings, where 70%+ of leads dropped before inquiry.',
+    solutions: [
+      {
+        label: 'Sub-Second Mobile UI',
+        text: 'Ultra-fast portal architecture built strictly for mobile buyers with sub-800ms load times.',
+      },
+      {
+        label: 'Verified Inventory Search',
+        text: 'Precision filters for verified carpet areas, high-res floor plans, and RERA data.',
+      },
+      {
+        label: '1-Click WhatsApp Booking',
+        text: 'Direct triggers scheduling physical site visits directly with verified sales agents.',
+      },
+      {
+        label: 'Valuation & EMI Engine',
+        text: 'Interactive calculators converting casual browsers into qualified, purchase-ready leads.',
+      },
     ],
     link: '/kin-property',
   },
@@ -367,10 +397,12 @@ export default function About() {
               <div className={styles.heroGlowBackdrop} />
               <div className={styles.heroVisualInner}>
                 <img
-                  src="https://res.cloudinary.com/dqc1awrnc/image/upload/v1794644576/VELTAZ_original_4K_zwclzg.png"
+                  src="https://res.cloudinary.com/dqc1awrnc/image/upload/f_auto,q_auto/v1794644576/VELTAZ_original_4K_zwclzg.png"
                   alt="VeltaZ 3D Logo"
                   className={styles.hero3dImg}
-                  fetchPriority="high"
+                  loading="eager"
+                  decoding="async"
+                  fetchpriority="high"
                 />
               </div>
             </div>
@@ -474,7 +506,7 @@ export default function About() {
                   <div className={styles.capIcon}><FaCompass size={18} /></div>
                   <span className={styles.bentoTag}>RESEARCH · STRATEGY</span>
                 </div>
-                <span className={styles.statusLivePill}>Phase 01</span>
+                <span className={styles.statusLivePill}>Discovery &amp; Blueprint</span>
               </div>
 
               <h3 className={styles.bentoTitle}>Research &amp; Scoping</h3>
@@ -828,11 +860,11 @@ export default function About() {
 
             <div className={styles.sectionEyebrowWrap}>
               <span className={styles.sectionEyebrowLine} />
-              <div className={styles.sectionEyebrowPill}>PRACTICAL SOLUTIONS</div>
+              <div className={styles.sectionEyebrowPill}>REAL PROBLEMS · ENGINEERED SOLUTIONS</div>
               <span className={styles.sectionEyebrowLine} />
             </div>
-            <h2 className={styles.sectionTitle}>We Build Solutions Around Real Operational Needs.</h2>
-            <p className={styles.sectionSub}>Practical software platforms engineered to solve tangible operational bottlenecks.</p>
+            <h2 className={styles.sectionTitle}>Real Operational Problems We Solved.</h2>
+            <p className={styles.sectionSub}>Software shouldn't be abstract. Here is how VeltaZ diagnosed real business bottlenecks and built production systems to eliminate them.</p>
           </div>
 
           <div className={styles.productsGrid}>
@@ -862,26 +894,36 @@ export default function About() {
                     </span>
                   </div>
 
-                  {/* Clear Focused Description (Strict Symmetrical Height) */}
-                  <p className={styles.infoDesc}>{product.desc}</p>
-
-                  {/* Core Feature Matrix (Strict Symmetrical Height) */}
-                  <div className={styles.infoCheckList}>
-                    {product.highlights.map((item) => (
-                      <div key={item} className={styles.checkItem}>
-                        <FaCheck size={9} className={styles.checkIcon} />
-                        <span>{item}</span>
-                      </div>
-                    ))}
+                  {/* 1. The Bottleneck Faced */}
+                  <div className={styles.problemCardBlock}>
+                    <div className={styles.blockEyebrowRow}>
+                      <span className={styles.problemBadge}>
+                        <span className={styles.problemDot} /> THE BOTTLENECK FACED
+                      </span>
+                    </div>
+                    <p className={styles.problemBodyText}>{product.problem}</p>
                   </div>
 
-                  {/* Telemetry Metric Bar (Strict Symmetrical Layout) */}
-                  <div className={styles.infoTelemetryBar}>
-                    <div className={styles.telemetryStat}>
-                      <span className={styles.statNum}>{product.metric}</span>
-                      <span className={styles.statLabel}>{product.metricLabel}</span>
+                  {/* 2. How VeltaZ Solved It */}
+                  <div className={styles.solutionCardBlock}>
+                    <div className={styles.blockEyebrowRow}>
+                      <span className={styles.solutionBadge}>
+                        <span className={styles.solutionDot} /> HOW VELTAZ SOLVED IT
+                      </span>
                     </div>
-                    <span className={styles.telemetryPill}>{product.pill}</span>
+                    <div className={styles.solutionList}>
+                      {product.solutions.map((item, idx) => (
+                        <div key={idx} className={styles.solutionItem}>
+                          <div className={styles.solutionIconPod}>
+                            <FaCheck size={8.5} />
+                          </div>
+                          <div className={styles.solutionItemText}>
+                            <strong className={styles.solutionItemLabel}>{item.label}:</strong>{' '}
+                            <span className={styles.solutionItemDesc}>{item.text}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
 
                   {/* Interactive Action Link Footer */}
