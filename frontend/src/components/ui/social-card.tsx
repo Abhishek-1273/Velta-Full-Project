@@ -54,40 +54,58 @@ const DEFAULT_LINKS: SocialLink[] = [
 ];
 
 export const SocialCard = ({
-  title,
   subtitle = "Socials",
   socialLinks = DEFAULT_LINKS,
   className = "",
 }: SocialCardProps) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
   const cardRef = useRef<HTMLDivElement | null>(null);
 
-  // Close when tapping outside on mobile or desktop
+  // Close when tapping outside on mobile touch devices
   useEffect(() => {
-    if (!isOpen) return;
+    if (!isMobileOpen) return;
     const handleOutsideClick = (e: MouseEvent | TouchEvent) => {
       if (cardRef.current && !cardRef.current.contains(e.target as Node)) {
-        setIsOpen(false);
+        setIsMobileOpen(false);
       }
     };
     document.addEventListener("pointerdown", handleOutsideClick);
     return () => {
       document.removeEventListener("pointerdown", handleOutsideClick);
     };
-  }, [isOpen]);
+  }, [isMobileOpen]);
 
+  // Mobile-only tap open: opens on tap, but clicking inside empty space keeps it open!
   const handleCardClick = () => {
-    setIsOpen((prev) => !prev);
+    const isMobile =
+      typeof window !== "undefined" &&
+      window.matchMedia("(hover: none), (max-width: 768px)").matches;
+    if (isMobile && !isMobileOpen) {
+      setIsMobileOpen(true);
+    }
   };
 
   return (
     <div
       ref={cardRef}
-      className={`${styles.socialCard} ${isOpen ? styles.isOpen : ""} ${className}`}
+      className={`${styles.socialCard} ${isMobileOpen ? styles.isMobileOpen : ""} ${className}`}
       onClick={handleCardClick}
       role="region"
       aria-label="VeltaZ Social Networks"
     >
+      {/* Authentic Instagram App Brand Gradient Definition */}
+      <svg width="0" height="0" style={{ position: "absolute", pointerEvents: "none" }} aria-hidden="true">
+        <defs>
+          <linearGradient id="ig-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#f09433" />
+            <stop offset="25%" stopColor="#e6683c" />
+            <stop offset="50%" stopColor="#dc2743" />
+            <stop offset="75%" stopColor="#cc2366" />
+            <stop offset="100%" stopColor="#bc1888" />
+          </linearGradient>
+        </defs>
+      </svg>
+
       <div className={styles.background} aria-hidden="true" />
 
       {/* Floating Center Badge with Official VeltaZ Gold Emblem & SOCIALS label */}
@@ -109,13 +127,19 @@ export const SocialCard = ({
           className={`${styles.box} ${link.className}`}
           style={{ transitionDelay: link.delay }}
           onClick={(e) => {
-            if (!isOpen) {
-              // On touch / first click, expand the card smoothly!
-              e.preventDefault();
-              setIsOpen(true);
-            } else {
-              // When open, clicking the icon navigates directly to the social link
-              e.stopPropagation();
+            const isMobile =
+              typeof window !== "undefined" &&
+              window.matchMedia("(hover: none), (max-width: 768px)").matches;
+            if (isMobile) {
+              if (!isMobileOpen) {
+                // First tap expands the fan smoothly on mobile
+                e.preventDefault();
+                e.stopPropagation();
+                setIsMobileOpen(true);
+              } else {
+                // When open, tapping the link directly navigates
+                e.stopPropagation();
+              }
             }
           }}
         >

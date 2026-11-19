@@ -6,13 +6,12 @@
   background: #ffffff;
   border-radius: 24px;
   overflow: hidden;
-  box-shadow: 
+  box-shadow:
     0 10px 25px rgba(0, 0, 0, 0.06),
     0 2px 8px rgba(223, 168, 64, 0.15),
     inset 0 1px 1px #ffffff;
   transition: transform 0.45s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.45s ease, border-color 0.45s ease;
   border: 1.5px solid rgba(223, 168, 64, 0.35);
-  cursor: pointer;
   user-select: none;
   -webkit-user-select: none;
   -webkit-tap-highlight-color: transparent;
@@ -21,7 +20,7 @@
 :global([data-theme="dark"]) .socialCard {
   background: #0d0f17;
   border: 1.5px solid rgba(223, 168, 64, 0.38);
-  box-shadow: 
+  box-shadow:
     0 12px 32px rgba(0, 0, 0, 0.7),
     0 0 20px rgba(223, 168, 64, 0.12),
     inset 0 1px 1px rgba(255, 255, 255, 0.08);
@@ -118,6 +117,7 @@
   box-sizing: border-box;
   z-index: 2;
   outline: none;
+  cursor: pointer;
 }
 
 :global([data-theme="dark"]) .box {
@@ -153,16 +153,20 @@
 /* ── IDLE / CLOSED STATE ICON COLORS (CRYSTAL CLEAR IN LIGHT & DARK MODE) ── */
 /* 1. Instagram */
 .box1 .socialSvg {
-  color: #d6249f;
+  fill: url(#ig-gradient);
+  color: #e4405f;
 }
+
 :global([data-theme="dark"]) .box1 .socialSvg {
-  color: #f472b6;
+  fill: url(#ig-gradient);
+  color: #e4405f;
 }
 
 /* 2. LinkedIn */
 .box2 .socialSvg {
   color: #0077b5;
 }
+
 :global([data-theme="dark"]) .box2 .socialSvg {
   color: #38bdf8;
 }
@@ -171,6 +175,7 @@
 .box3 .socialSvg {
   color: #1877f2;
 }
+
 :global([data-theme="dark"]) .box3 .socialSvg {
   color: #60a5fa;
 }
@@ -179,18 +184,18 @@
 .box4 .socialSvg {
   color: #111113;
 }
+
 :global([data-theme="dark"]) .box4 .socialSvg {
   color: #f8fafc;
 }
 
-/* ── HOVER & OPEN (EXPANDED) STATE: ALL ICONS BECOME PURE CRISP WHITE ON VIBRANT BRAND GRADIENTS ── */
+/* ── HOVER STATE: HOVERED BOX BECOMES PURE CRISP WHITE ── */
 .box1:hover .socialSvg,
 .box2:hover .socialSvg,
 .box3:hover .socialSvg,
-.box4:hover .socialSvg,
-.socialCard:hover .socialSvg,
-.socialCard.isOpen .socialSvg {
+.box4:hover .socialSvg {
   color: #ffffff !important;
+  fill: #ffffff !important;
   transform: scale(1.2);
   filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.45));
 }
@@ -246,49 +251,83 @@
   left: -28%;
   padding-top: 6px;
   padding-right: 7px;
-  background: rgba(223, 168, 64, 0.2);
-  border-top-color: rgba(223, 168, 64, 0.7);
 }
 
 .box4::before {
   background: linear-gradient(135deg, #000000 0%, #17181c 100%);
 }
 
-/* Hover and Click (isOpen) both light up brand colors */
+/* Specific Box Hover lights up that box's brand color */
 .box1:hover::before,
 .box2:hover::before,
 .box3:hover::before,
-.box4:hover::before,
-.socialCard.isOpen .box1::before,
-.socialCard.isOpen .box2::before,
-.socialCard.isOpen .box3::before,
-.socialCard.isOpen .box4::before {
+.box4:hover::before {
   opacity: 1;
 }
 
-/* ── Hover & Tap/Click Expansion State (Works on PC hover AND mobile click) ── */
-.socialCard:hover,
-.socialCard.isOpen {
+/* ── Hover Expansion State (Works strictly via hover) ── */
+.socialCard:hover {
   transform: translateY(-3px) scale(1.02);
   border-color: rgba(223, 168, 64, 0.65);
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12), 0 0 20px rgba(223, 168, 64, 0.25);
 }
 
-:global([data-theme="dark"]) .socialCard:hover,
-:global([data-theme="dark"]) .socialCard.isOpen {
+:global([data-theme="dark"]) .socialCard:hover {
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.75), 0 0 20px rgba(223, 168, 64, 0.3);
 }
 
-.socialCard:hover .box,
-.socialCard.isOpen .box {
+.socialCard:hover .box {
   bottom: -10px;
   left: -10px;
 }
 
-/* Hover & Tap par center VeltaZ text & emblem smoothly fade out */
-.socialCard:hover .logo,
-.socialCard.isOpen .logo {
+/* Hover par center VeltaZ text & emblem smoothly fade out */
+.socialCard:hover .logo {
   opacity: 0;
   transform: translate(-50%, -50%) scale(0.65);
   pointer-events: none;
+}
+
+/* ── Mobile Touch Expanded State (Active strictly on mobile / touch devices) ── */
+@media (hover: none), (max-width: 768px) {
+  .socialCard {
+    cursor: pointer;
+  }
+
+  .socialCard.isMobileOpen {
+    transform: translateY(-3px) scale(1.02);
+    border-color: rgba(223, 168, 64, 0.65);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12), 0 0 20px rgba(223, 168, 64, 0.25);
+  }
+
+  :global([data-theme="dark"]) .socialCard.isMobileOpen {
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.75), 0 0 20px rgba(223, 168, 64, 0.3);
+  }
+
+  .socialCard.isMobileOpen .box {
+    bottom: -10px;
+    left: -10px;
+  }
+
+  .socialCard.isMobileOpen .logo {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.65);
+    pointer-events: none;
+  }
+
+  /* On mobile open, each layer displays its signature brand color */
+  .socialCard.isMobileOpen .box1::before,
+  .socialCard.isMobileOpen .box2::before,
+  .socialCard.isMobileOpen .box3::before,
+  .socialCard.isMobileOpen .box4::before {
+    opacity: 1 !important;
+  }
+
+  /* On mobile open, all icons turn crisp white with drop shadow */
+  .socialCard.isMobileOpen .socialSvg {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+    transform: scale(1.2);
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.45));
+  }
 }

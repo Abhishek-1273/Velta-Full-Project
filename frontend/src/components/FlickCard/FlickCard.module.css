@@ -213,7 +213,7 @@
 }
 
 .brandWordmarkImg {
-  height: 29px;
+  height: 32px;
   width: auto;
   object-fit: contain;
   display: block;
@@ -786,7 +786,7 @@
   }
 
   .brandWordmarkImg {
-    height: 22px;
+    height: 28px;
   }
 
   .nfcIcon {

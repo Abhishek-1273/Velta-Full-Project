@@ -225,12 +225,43 @@ export default function Contact() {
               </div>
 
               <div className={styles.promises}>
-                <h4>What Happens Next</h4>
-                <ul>
-                  <li><FaCheck className={styles.checkIcon} /> You share your project details.</li>
-                  <li><FaCheck className={styles.checkIcon} /> We review them and consider a practical next step.</li>
-                  <li><FaCheck className={styles.checkIcon} /> We follow up using the contact details you provide.</li>
-                </ul>
+                <div className={styles.stepperHeader}>
+                  <span className={styles.stepperEyebrow}>PROCESS · PIPELINE</span>
+                  <h4 className={styles.stepperTitle}>What Happens Next</h4>
+                </div>
+                <div className={styles.stepperTrack}>
+                  <div className={styles.stepItem}>
+                    <div className={styles.stepIndicator}>
+                      <span className={styles.stepBadge}>01</span>
+                      <span className={styles.stepLine} aria-hidden="true" />
+                    </div>
+                    <div className={styles.stepBody}>
+                      <h5 className={styles.stepName}>Requirement Ingestion</h5>
+                      <p className={styles.stepText}>You share your project scope &amp; requirements.</p>
+                    </div>
+                  </div>
+
+                  <div className={styles.stepItem}>
+                    <div className={styles.stepIndicator}>
+                      <span className={styles.stepBadge}>02</span>
+                      <span className={styles.stepLine} aria-hidden="true" />
+                    </div>
+                    <div className={styles.stepBody}>
+                      <h5 className={styles.stepName}>Feasibility &amp; Architecture Review</h5>
+                      <p className={styles.stepText}>We review technical viability and blueprint practical next steps.</p>
+                    </div>
+                  </div>
+
+                  <div className={styles.stepItem}>
+                    <div className={styles.stepIndicator}>
+                      <span className={styles.stepBadge}>03</span>
+                    </div>
+                    <div className={styles.stepBody}>
+                      <h5 className={styles.stepName}>Direct Engagement</h5>
+                      <p className={styles.stepText}>We follow up directly with clear scope, pricing, and execution roadmap.</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
